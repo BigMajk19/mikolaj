@@ -13,23 +13,23 @@ return new class extends Migration
     {
         Schema::create('candidates_models', function (Blueprint $table) {
             $table->id();
-            $table->string('candidate_firstname');
-            $table->string('candidate_lastname');
-            $table->string('candidate_phone');
-            $table->string('candidate_email');
-            $table->string('job_as');
-            $table->string('location_city');
-            $table->string('candidate_age');
-            $table->string('candidate_growth');
-            $table->string('candidate_weight');
-            $table->string('cloth_size');
-            $table->string('exp_with_children');
-            $table->string('exp_as_santa');
-            $table->string('drive_license');
-            $table->string('work_at_xmas');
-            $table->longText('candidate_description');
-            $table->string('cv');
-            $table->string('privacy_policy');
+            $table->string('candidate_firstname')->nullable();
+            $table->string('candidate_lastname')->nullable();
+            $table->string('candidate_phone')->nullable();
+            $table->string('candidate_email')->nullable();
+            $table->string('job_as')->nullable();
+            $table->string('location_city')->nullable();
+            $table->string('candidate_age')->nullable();
+            $table->string('candidate_growth')->nullable();
+            $table->string('candidate_weight')->nullable();
+            $table->string('cloth_size')->nullable();
+            $table->string('exp_with_children')->nullable();
+            $table->string('exp_as_santa')->nullable();
+            $table->string('drive_license')->nullable();
+            $table->string('work_at_xmas')->nullable();
+            $table->longText('candidate_description')->nullable();
+            $table->string('cv')->nullable();
+            $table->string('privacy_policy')->nullable();
             $table->timestamps();
         });
     }
