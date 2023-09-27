@@ -63,7 +63,7 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
 
     //For Showing Visits
     Route::controller(VisitsController::class)->group(function () {
-        Route::get('show/all/visits', 'ShowAllVisits')->name('show.all.visits');
+        Route::get('show/visits/all', 'ShowAllVisits')->name('show.all.visits');
         Route::get('add/visit', 'AddVisit')->name('add.visit');
         Route::post('store/visit', 'StoreVisit')->name('store.visit');
         Route::get('edit/visit/{id}', 'EditVisit')->name('edit.visit');
