@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\CandidatesModel;
+use App\Models\Candidates;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +13,7 @@ class CandidatesController extends Controller
     public function ShowAllCandidates ()
     {
 
-        $show = CandidatesModel::latest()->get();
+        $show = Candidates::latest()->get();
         return view('admin.candidates.show_all_candidates',compact('show'));
     }
 
@@ -45,7 +45,7 @@ class CandidatesController extends Controller
 
         ]);
 
-        CandidatesModel::insert([
+        Candidates::insert([
 
             'candidate_firstname' => $request->candidate_firstname,
             'candidate_lastname' => $request->candidate_lastname,
@@ -74,7 +74,7 @@ class CandidatesController extends Controller
 
     public function EditNewCandidate($id)
     {
-        $types = CandidatesModel::findOrFail($id);
+        $types = Candidates::findOrFail($id);
         return view('backend.candidates.edit_candidate', compact('types'));
 
     }
@@ -83,7 +83,7 @@ class CandidatesController extends Controller
     {
         $cid = $request->id;
 
-        CandidatesModel::findOrFail($cid)->update([
+        Candidates::findOrFail($cid)->update([
 
             'candidate_firstname' => $request->candidate_firstname,
             'candidate_lastname' => $request->candidate_lastname,
@@ -112,7 +112,7 @@ class CandidatesController extends Controller
 
     public function DeleteCandidate ($id)
     {
-        CandidatesModel::findOrFail($id)->delete();
+        Candidates::findOrFail($id)->delete();
 
         $notification = array(
             'message' => 'Kandydat został pomyślnie usunięty.',
@@ -125,7 +125,7 @@ class CandidatesController extends Controller
     // Show Candidates for Santa
     public function ShowCandidatesNewSanta()
     {
-        $show = CandidatesModel::where('job_as', 'santa')->get();
+        $show = Candidates::where('job_as', 'santa')->get();
 
 
         return view('admin.candidates.show_all_santa_candidates',compact('show'));
@@ -135,7 +135,7 @@ class CandidatesController extends Controller
     // Show Candidates for Elf
     public function ShowCandidatesNewElf()
     {
-        $show = CandidatesModel::where('job_as', 'elf')->get();
+        $show = Candidates::where('job_as', 'elf')->get();
 
 
         return view('admin.candidates.show_all_elf_candidates',compact('show'));
@@ -145,7 +145,7 @@ class CandidatesController extends Controller
     // Show Candidates for Snowflake
     public function ShowCandidatesNewSnowflake()
     {
-        $show = CandidatesModel::where('job_as', 'snowflake')->get();
+        $show = Candidates::where('job_as', 'snowflake')->get();
 
 
         return view('admin.candidates.show_all_snowflake_candidates',compact('show'));

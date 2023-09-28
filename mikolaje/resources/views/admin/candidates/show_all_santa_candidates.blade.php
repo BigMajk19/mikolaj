@@ -21,60 +21,84 @@
               <thead>
                 <tr>
                   <th>Id</th>
-                  <th>Rodzaj Wizyty: </th>
-                  <th>Długość: </th>
-                  <th>Data Wizyty: </th>
                   <th>Telefon: </th>
-                  <th>Przedział godzinowy: </th>
-                  <th>GW: </th>
-                  <th>Miejscowość: </th>
-                  <th>Dzielnica: </th>
-                  <th>Adres: </th>
-                  <th>Województwo: </th>
-                  <th>Przydziel: </th>
+                  <th>Praca: </th>
+                  <th>Lokalizacja: </th>
+                  <th>Prawo jazdy: </th>
+                  <th>Praca w Wigilię: </th>
+                  <th>Doświadczenie: </th>
+                  <th>Wiek: </th>
+                  <th>Wzrost: </th>
+                  <th>Waga: </th>
+                  <th>Rozmiar: </th>
+                  <th>Imię i Nazwisko: </th>
+                  <th>Opis: </th>
+                  <th>CV: </th>
+                  <th>dropdown</th>
                   <th>Opcje: </th>
                 </tr>
               </thead>
 
-              {{-- <tbody>
+              <tbody>
                 @foreach($show as $key => $item)
                 <tr>
                   <td>{{ $item->id }}</td>
-                  <td>{{ $item->type_name }} {{ $item->visit_name }}</td>
-                  <td>{{ $item->length_visit*$item->visit_qty }} min.</td>
-                  <td>{{ $item->visit_date }}</td>
-                  <td>{{ $item->phone }}</td>
-                  <td>{{ $item->interval_hours }}</td>
-                  <td>{{ $item->guaranted }}</td>
-                  <td>{{ $item->city }}</td>
-                  <td>{{ $item->district }}</td>
-                  <td><a target="blank" href="https://www.google.pl/maps/place/{{ $item->street_address }}+{{ $item->street_number }},+{{ $item->zipcode }}+{{ $item->city }}">
-                    {{ $item->street_address }} {{ $item->street_number }} /{{ $item->flat_number }}</a></td>
-                  <td>{{ $item->voivodeship }}</td>
+                  <td><a href="tel:{{ $item->candidate_phone }}">{{ $item->candidate_phone }} </a></td>
+                  <td>{{ $item->job_as }}</td>
+                  <td>{{ $item->location_city }}</td>
+                  <td>
+                    @if($item->drive_license  == '1') Tak
+                    @elseif ($item->drive_license  == '0') Nie
+                    @endif
+                  </td>
+                  <td>
+                    @if($item->work_at_xmas  == '1') Tak
+                    @elseif ($item->work_at_xmas  == '0') Nie
+                    @endif
+                  </td>
+                  <td>
+                    Praca z dziećmi:
+                    <b> @if($item->exp_with_children  == '1') Tak
+                    @elseif ($item->exp_with_children  == '0') Nie
+                    @endif</b><br/>
+                    Praca jako Mikołaj:
+                    <b> @if($item->exp_as_santa  == '1') Tak
+                    @elseif ($item->exp_as_santa  == '0') Nie
+                    @endif</b></td>
+                  <td>{{ $item->candidate_age }}</td>
+                  <td>{{ $item->candidate_growth }}</td>
+                  <td>{{ $item->candidate_weight }}</td>
+                  <td>{{ $item->cloth_size }}</td>
+                  <td>{{ $item->candidate_firstname }} {{ $item->candidate_lastname }}</td>
+                  <td>{{ $item->candidate_description }}</td>
+                  <td>{{ $item->cv }}</td>
                   <td>dropdown</td>
                   <td>
-                    <a href="{{ route('confirm.new.visit',$item->id) }}" class="btn btn-inverse-success">Potwierdź</a>
-                    <a href="{{ route('cancel.new.visit',$item->id) }}" class="btn btn-inverse-danger" id="cancel">Anuluj wizytę</a>
+                    <a href="{{ route('edit.candidate',$item->id) }}" class="btn btn-inverse-success">Edycja</a>
+                    <a href="{{ route('delete.candidate',$item->id) }}" class="btn btn-inverse-danger" id="deleteCandidate">Usuń</a>
                   </td>
                 </tr>
                 @endforeach
-              </tbody> --}}
+              </tbody>
               <tfoot>
                 <tr>
-                    <th>Id</th>
-                    <th>Rodzaj Wizyty</th>
-                    <th>Długość</th>
-                    <th>Data Wizyty</th>
-                    <th>Telefon</th>
-                    <th>Przedział godzinowy</th>
-                    <th>GW</th>
-                    <th>Miejscowość</th>
-                    <th>Dzielnica</th>
-                    <th>Adres</th>
-                    <th>Województwo</th>
-                    <th>Przydziel</th>
-                    <th>Opcje</th>
-                  </tr>
+                  <th>Id</th>
+                  <th>Telefon: </th>
+                  <th>Praca: </th>
+                  <th>Lokalizacja: </th>
+                  <th>Prawo jazdy: </th>
+                  <th>Praca w Wigilię: </th>
+                  <th>Doświadczenie: </th>
+                  <th>Wiek: </th>
+                  <th>Wzrost: </th>
+                  <th>Waga: </th>
+                  <th>Rozmiar: </th>
+                  <th>Imię i Nazwisko: </th>
+                  <th>Opis: </th>
+                  <th>CV: </th>
+                  <th>dropdown</th>
+                  <th>Opcje: </th>
+                </tr>
               </tfoot>
             </table>
           </div>

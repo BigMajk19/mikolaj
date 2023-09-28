@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InboxController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\VisitsController;
 use App\Http\Controllers\Backend\CandidatesController;
@@ -45,6 +46,7 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
     Route::post('profile/store' , [AdminDashboardController::class, 'AdminProfileStore'])->name('admin.profile.store');
     Route::get('change/password' , [AdminDashboardController::class, 'AdminChangePassword'])->name('admin.change.password');
     Route::post('update/password' , [AdminDashboardController::class, 'AdminUpdatePassword'])->name('admin.update.password');
+    Route::get('inbox' , [InboxController::class, 'ShowAdminInbox'])->name('admin.inbox');
 });//End AdminDashboard Group
 
 

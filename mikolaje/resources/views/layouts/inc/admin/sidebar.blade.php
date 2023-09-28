@@ -33,7 +33,7 @@
         <div class="collapse" id="emails">
         <ul class="nav sub-menu">
           <li class="nav-item">
-            <a href="pages/email/inbox.html" class="nav-link">Skrzynka odbiorcza</a>
+            <a href="{{ route('admin.inbox') }}" class="nav-link">Skrzynka odbiorcza</a>
           </li>
           <li class="nav-item">
             <a href="pages/email/read.html" class="nav-link">Wysłane</a>
@@ -63,7 +63,7 @@
       </li>
         <!-- 1 panel Wizyty - Nowe wizyty-->
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#noweWizyty" role="button" aria-expanded="false" aria-controls="emails">
+        <a class="nav-link" data-bs-toggle="collapse" href="#noweWizyty" role="button" aria-expanded="false" aria-controls="newVisits">
           <i class="link-icon" data-feather="mail"></i>
           <span class="link-title">Nowe wizyty</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
@@ -87,7 +87,7 @@
       </li>
         <!-- 1 panel Wizyty - Poszczególne wizyty-->
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#PoszczegolneWizyty" role="button" aria-expanded="false" aria-controls="emails">
+        <a class="nav-link" data-bs-toggle="collapse" href="#PoszczegolneWizyty" role="button" aria-expanded="false" aria-controls="visits">
           <i class="link-icon" data-feather="mail"></i>
           <span class="link-title">Poszczególne wizyty</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
@@ -108,7 +108,7 @@
       </li>
         <!-- 1 panel Wizyty - Przypisane wizyty-->
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#przypisaneWizyty" role="button" aria-expanded="false" aria-controls="emails">
+        <a class="nav-link" data-bs-toggle="collapse" href="#przypisaneWizyty" role="button" aria-expanded="false" aria-controls="signtovisits">
           <i class="link-icon" data-feather="mail"></i>
           <span class="link-title">Przypisane wizyty</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
@@ -182,7 +182,7 @@
       </li>
         <!-- 2 panel Kandydaci do pracy - Mikołaje-->
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#kandydaciMikolaje" role="button" aria-expanded="false" aria-controls="uiComponents">
+        <a class="nav-link" data-bs-toggle="collapse" href="#kandydaciMikolaje" role="button" aria-expanded="false" aria-controls="candidatesforjobSanta">
           <i class="link-icon" data-feather="feather"></i>
           <span class="link-title">Mikołaje</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
@@ -245,7 +245,7 @@
       </li>
         <!-- 2 panel Kandydaci do pracy - Śnieżynki-->
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#kandydaciSniezynki" role="button" aria-expanded="false" aria-controls="uiComponents">
+        <a class="nav-link" data-bs-toggle="collapse" href="#kandydaciSniezynki" role="button" aria-expanded="false" aria-controls="candidatesforjobSnowflakes">
           <i class="link-icon" data-feather="feather"></i>
           <span class="link-title">Śnieżynki</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
@@ -308,7 +308,7 @@
       </li>
         <!-- 2 panel Kandydaci do pracy - Elfy-->
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#kandydaciElfy" role="button" aria-expanded="false" aria-controls="uiComponents">
+        <a class="nav-link" data-bs-toggle="collapse" href="#kandydaciElfy" role="button" aria-expanded="false" aria-controls="candidatesforjobElfs">
           <i class="link-icon" data-feather="arrow-down-right"></i>
           <span class="link-title">Elfy</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
@@ -874,7 +874,7 @@
         Koszty
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#reklamaKoszty" role="button" aria-expanded="false" aria-controls="emails">
+        <a class="nav-link" data-bs-toggle="collapse" href="#reklamaKoszty" role="button" aria-expanded="false" aria-controls="advertismentCost">
           <i class="link-icon" data-feather="mail"></i>
           <span class="link-title">Reklama</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
@@ -940,7 +940,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#reklamaPrzesylki" role="button" aria-expanded="false" aria-controls="emails">
+        <a class="nav-link" data-bs-toggle="collapse" href="#reklamaPrzesylki" role="button" aria-expanded="false" aria-controls="curier">
           <i class="link-icon" data-feather="mail"></i>
           <span class="link-title">Przesyłki</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
@@ -1016,7 +1016,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#zyskWojewodztwa" role="button" aria-expanded="false" aria-controls="emails">
+        <a class="nav-link" data-bs-toggle="collapse" href="#zyskWojewodztwa" role="button" aria-expanded="false" aria-controls="profit">
           <i class="link-icon" data-feather="mail"></i>
           <span class="link-title">Województwa</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
