@@ -6,7 +6,7 @@
 
   <nav class="page-breadcrumb">
     <ol class="breadcrumb">
-
+      <a href="{{ route('add.candidate') }}" class="btn btn-inverse-warning">Dodaj Kandydata</a>
     </ol>
   </nav>
 
@@ -14,7 +14,7 @@
     <div class="col-md-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h6 class="card-title">Wizyty anulowane i rezygnacje klientów</h6>
+          <h6 class="card-title">Kandydaci do pracy</h6>
           <div class="table-responsive">
             {{-- dataTableExample --}}
             <table id="example" class="table table-striped dt-responsive table-hover display nowrap">
@@ -32,10 +32,11 @@
                   <th>Adres: </th>
                   <th>Województwo: </th>
                   <th>Przydziel: </th>
+                  <th>Opcje: </th>
                 </tr>
               </thead>
 
-              <tbody>
+              {{-- <tbody>
                 @foreach($show as $key => $item)
                 <tr>
                   <td>{{ $item->id }}</td>
@@ -51,9 +52,13 @@
                     {{ $item->street_address }} {{ $item->street_number }} /{{ $item->flat_number }}</a></td>
                   <td>{{ $item->voivodeship }}</td>
                   <td>dropdown</td>
+                  <td>
+                    <a href="{{ route('edit.visit',$item->id) }}" class="btn btn-inverse-success">Edycja</a>
+                    <a href="{{ route('delete.visit',$item->id) }}" class="btn btn-inverse-danger" id="delete">Usuń</a>
+                  </td>
                 </tr>
                 @endforeach
-              </tbody>
+              </tbody> --}}
               <tfoot>
                 <tr>
                     <th>Id</th>
@@ -68,6 +73,7 @@
                     <th>Adres</th>
                     <th>Województwo</th>
                     <th>Przydziel</th>
+                    <th>Opcje</th>
                   </tr>
               </tfoot>
             </table>

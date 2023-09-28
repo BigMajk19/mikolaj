@@ -14,7 +14,7 @@
     <div class="col-md-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h6 class="card-title">Kategorie Wizyt</h6>
+          <h6 class="card-title">Nowe wizyty nie potwierdzone</h6>
           <div class="table-responsive">
             {{-- dataTableExample --}}
             <table id="example" class="table table-striped dt-responsive table-hover display nowrap">

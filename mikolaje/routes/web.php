@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\VisitsController;
+use App\Http\Controllers\Backend\CandidatesController;
 use App\Http\Controllers\Backend\VisitsTypeController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Client\ClientDashboardController;
@@ -89,6 +90,29 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
         // Option for Realized Visits
         Route::get('show/visits/realized', 'ShowVisitsRealized')->name('show.visits.realized');
     });
+
+    //For Showing Candidates
+    Route::controller(CandidatesController::class)->group(function () {
+        Route::get('show/candidates/all', 'ShowAllCandidates')->name('show.all.candidates');
+        Route::get('add/candidate', 'AddCandidate')->name('add.candidate');
+        Route::post('store/candidate', 'StoreNewCandidate')->name('store.candidate');
+        Route::get('edit/candidate/{id}', 'EditNewCandidate')->name('edit.candidate');
+        Route::post('update/candidate', 'UpdateNewCandidate')->name('update.candidate');
+        Route::get('delete/candidate/{id}', 'DeleteCandidate')->name('delete.candidate');
+
+        // Show Candidates for Santa
+        Route::get('show/candidates/new/santa', 'ShowCandidatesNewSanta')->name('show.all.candidates.santa');
+
+
+        // Show Candidates for Elf
+        Route::get('show/candidates/new/elf', 'ShowCandidatesNewElf')->name('show.all.candidates.elf');
+
+        // Show Candidates for Snowflake
+        Route::get('show/candidates/new/snowflake', 'ShowCandidatesNewSnowflake')->name('show.all.candidates.snowflake');
+
+
+    });
+
 
 }); //End Admin Middleware Group
 

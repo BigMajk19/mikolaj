@@ -175,7 +175,7 @@
       </li>
         <!-- 2 panel Kandydaci do pracy - Wszyscy-->
       <li class="nav-item">
-        <a href="#" target="_blank" class="nav-link">
+        <a href="{{ route('show.all.candidates') }}" class="nav-link">
           <i class="link-icon" data-feather="hash"></i>
           <span class="link-title">Wszyscy Kandydaci</span>
         </a>
@@ -190,9 +190,9 @@
         <div class="collapse" id="kandydaciMikolaje">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">Wszyscy</a>
+              <a href="{{ route('show.all.candidates.santa') }}" class="nav-link">Wszyscy</a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a href="pages/email/inbox.html" class="nav-link">mazowieckie</a>
             </li>
             <li class="nav-item">
@@ -239,7 +239,7 @@
             </li>
             <li class="nav-item">
               <a href="pages/email/inbox.html" class="nav-link">zachodniopomorskie</a>
-            </li>
+            </li> --}}
           </ul>
         </div>
       </li>
@@ -253,9 +253,9 @@
         <div class="collapse" id="kandydaciSniezynki">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">Wszyscy</a>
+              <a href="{{ route('show.all.candidates.snowflake') }}" class="nav-link">Wszyscy</a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a href="pages/email/inbox.html" class="nav-link">mazowieckie</a>
             </li>
             <li class="nav-item">
@@ -302,7 +302,7 @@
             </li>
             <li class="nav-item">
               <a href="pages/email/inbox.html" class="nav-link">zachodniopomorskie</a>
-            </li>
+            </li> --}}
           </ul>
         </div>
       </li>
@@ -316,9 +316,9 @@
         <div class="collapse" id="kandydaciElfy">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">Wszyscy</a>
+              <a href="{{ route('show.all.candidates.elf') }}" class="nav-link">Wszyscy</a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a href="pages/email/inbox.html" class="nav-link">mazowieckie</a>
             </li>
             <li class="nav-item">
@@ -365,7 +365,7 @@
             </li>
             <li class="nav-item">
               <a href="pages/email/inbox.html" class="nav-link">zachodniopomorskie</a>
-            </li>
+            </li> --}}
           </ul>
         </div>
       </li>

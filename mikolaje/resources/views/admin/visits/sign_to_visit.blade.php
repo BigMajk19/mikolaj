@@ -19,7 +19,7 @@
         <div class="col-md-12 grid-margin">
           <div class="card rounded">
             <div class="card-header">
-              <h4>Edycja Wizyty #{{ $types->id }}</h4>
+              <h4>Przypisz partnera do wizyty: #{{ $types->id }}</h4>
             </div>
             <div class="card-body">
               <form method="post" action="{{ route('update.visit.sign.partner') }}"
