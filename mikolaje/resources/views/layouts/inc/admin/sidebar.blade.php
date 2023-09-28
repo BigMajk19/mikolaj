@@ -36,10 +36,10 @@
             <a href="{{ route('admin.inbox') }}" class="nav-link">Skrzynka odbiorcza</a>
           </li>
           <li class="nav-item">
-            <a href="pages/email/read.html" class="nav-link">Wysłane</a>
+            <a href="#" class="nav-link">Wysłane</a>
           </li>
           <li class="nav-item">
-            <a href="pages/email/compose.html" class="nav-link">Wyślij wiadomość</a>
+            <a href="#" class="nav-link">Wyślij wiadomość</a>
           </li>
         </ul>
         </div>
@@ -116,71 +116,71 @@
         <div class="collapse" id="przypisaneWizyty">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">Wszystkie</a>
+              <a href="#" class="nav-link">Wszystkie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">mazowieckie</a>
+              <a href="#" class="nav-link">mazowieckie</a>
+            </li>
+            {{-- <li class="nav-item">
+              <a href="#" class="nav-link">dolnośląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/read.html" class="nav-link">dolnośląskie</a>
+              <a href="#" class="nav-link">kujawsko-pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/compose.html" class="nav-link">kujawsko-pomorskie</a>
+              <a href="#" class="nav-link">lubelskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubelskie</a>
+              <a href="#" class="nav-link">lubuskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubuskie</a>
+              <a href="#" class="nav-link">łódzkie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">łódzkie</a>
+              <a href="#" class="nav-link">małopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">małopolskie</a>
+              <a href="#" class="nav-link">opolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">opolskie</a>
+              <a href="#" class="nav-link">podkarpackie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podkarpackie</a>
+              <a href="#" class="nav-link">podlaskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podlaskie</a>
+              <a href="#" class="nav-link">pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">pomorskie</a>
+              <a href="#" class="nav-link">śląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">śląskie</a>
+              <a href="#" class="nav-link">świętokrzyskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">świętokrzyskie</a>
+              <a href="#" class="nav-link">warmińsko-mazurskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">warmińsko-mazurskie</a>
+              <a href="#" class="nav-link">wielkopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">wielkopolskie</a>
-            </li>
-            <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">zachodniopomorskie</a>
-            </li>
+              <a href="#" class="nav-link">zachodniopomorskie</a>
+            </li> --}}
           </ul>
         </div>
       </li>
-      <!-- 2 panel KONDYDACI DO PRACY-->
+    <!-- 2 panel KONDYDACI DO PRACY-->
       <li class="nav-item nav-category">
         Kandydaci do pracy
       </li>
-        <!-- 2 panel Kandydaci do pracy - Wszyscy-->
+      <!-- 2 panel Kandydaci do pracy - Wszyscy-->
       <li class="nav-item">
         <a href="{{ route('show.all.candidates') }}" class="nav-link">
           <i class="link-icon" data-feather="hash"></i>
           <span class="link-title">Wszyscy Kandydaci</span>
         </a>
       </li>
-        <!-- 2 panel Kandydaci do pracy - Mikołaje-->
+      <!-- 2 panel Kandydaci do pracy - Mikołaje-->
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#kandydaciMikolaje" role="button" aria-expanded="false" aria-controls="candidatesforjobSanta">
           <i class="link-icon" data-feather="feather"></i>
@@ -193,57 +193,57 @@
               <a href="{{ route('show.all.candidates.santa') }}" class="nav-link">Wszyscy</a>
             </li>
             {{-- <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">mazowieckie</a>
+              <a href="#" class="nav-link">mazowieckie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/read.html" class="nav-link">dolnośląskie</a>
+              <a href="#" class="nav-link">dolnośląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/compose.html" class="nav-link">kujawsko-pomorskie</a>
+              <a href="#" class="nav-link">kujawsko-pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubelskie</a>
+              <a href="#" class="nav-link">lubelskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubuskie</a>
+              <a href="#" class="nav-link">lubuskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">łódzkie</a>
+              <a href="#" class="nav-link">łódzkie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">małopolskie</a>
+              <a href="#" class="nav-link">małopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">opolskie</a>
+              <a href="#" class="nav-link">opolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podkarpackie</a>
+              <a href="#" class="nav-link">podkarpackie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podlaskie</a>
+              <a href="#" class="nav-link">podlaskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">pomorskie</a>
+              <a href="#" class="nav-link">pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">śląskie</a>
+              <a href="#" class="nav-link">śląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">świętokrzyskie</a>
+              <a href="#" class="nav-link">świętokrzyskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">warmińsko-mazurskie</a>
+              <a href="#" class="nav-link">warmińsko-mazurskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">wielkopolskie</a>
+              <a href="#" class="nav-link">wielkopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">zachodniopomorskie</a>
+              <a href="#" class="nav-link">zachodniopomorskie</a>
             </li> --}}
           </ul>
         </div>
       </li>
-        <!-- 2 panel Kandydaci do pracy - Śnieżynki-->
+      <!-- 2 panel Kandydaci do pracy - Śnieżynki-->
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#kandydaciSniezynki" role="button" aria-expanded="false" aria-controls="candidatesforjobSnowflakes">
           <i class="link-icon" data-feather="feather"></i>
@@ -256,57 +256,57 @@
               <a href="{{ route('show.all.candidates.snowflake') }}" class="nav-link">Wszyscy</a>
             </li>
             {{-- <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">mazowieckie</a>
+              <a href="#" class="nav-link">mazowieckie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/read.html" class="nav-link">dolnośląskie</a>
+              <a href="#" class="nav-link">dolnośląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/compose.html" class="nav-link">kujawsko-pomorskie</a>
+              <a href="#" class="nav-link">kujawsko-pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubelskie</a>
+              <a href="#" class="nav-link">lubelskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubuskie</a>
+              <a href="#" class="nav-link">lubuskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">łódzkie</a>
+              <a href="#" class="nav-link">łódzkie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">małopolskie</a>
+              <a href="#" class="nav-link">małopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">opolskie</a>
+              <a href="#" class="nav-link">opolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podkarpackie</a>
+              <a href="#" class="nav-link">podkarpackie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podlaskie</a>
+              <a href="#" class="nav-link">podlaskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">pomorskie</a>
+              <a href="#" class="nav-link">pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">śląskie</a>
+              <a href="#" class="nav-link">śląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">świętokrzyskie</a>
+              <a href="#" class="nav-link">świętokrzyskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">warmińsko-mazurskie</a>
+              <a href="#" class="nav-link">warmińsko-mazurskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">wielkopolskie</a>
+              <a href="#" class="nav-link">wielkopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">zachodniopomorskie</a>
+              <a href="#" class="nav-link">zachodniopomorskie</a>
             </li> --}}
           </ul>
         </div>
       </li>
-        <!-- 2 panel Kandydaci do pracy - Elfy-->
+      <!-- 2 panel Kandydaci do pracy - Elfy-->
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#kandydaciElfy" role="button" aria-expanded="false" aria-controls="candidatesforjobElfs">
           <i class="link-icon" data-feather="arrow-down-right"></i>
@@ -319,61 +319,61 @@
               <a href="{{ route('show.all.candidates.elf') }}" class="nav-link">Wszyscy</a>
             </li>
             {{-- <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">mazowieckie</a>
+              <a href="#" class="nav-link">mazowieckie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/read.html" class="nav-link">dolnośląskie</a>
+              <a href="#" class="nav-link">dolnośląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/compose.html" class="nav-link">kujawsko-pomorskie</a>
+              <a href="#" class="nav-link">kujawsko-pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubelskie</a>
+              <a href="#" class="nav-link">lubelskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubuskie</a>
+              <a href="#" class="nav-link">lubuskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">łódzkie</a>
+              <a href="#" class="nav-link">łódzkie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">małopolskie</a>
+              <a href="#" class="nav-link">małopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">opolskie</a>
+              <a href="#" class="nav-link">opolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podkarpackie</a>
+              <a href="#" class="nav-link">podkarpackie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podlaskie</a>
+              <a href="#" class="nav-link">podlaskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">pomorskie</a>
+              <a href="#" class="nav-link">pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">śląskie</a>
+              <a href="#" class="nav-link">śląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">świętokrzyskie</a>
+              <a href="#" class="nav-link">świętokrzyskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">warmińsko-mazurskie</a>
+              <a href="#" class="nav-link">warmińsko-mazurskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">wielkopolskie</a>
+              <a href="#" class="nav-link">wielkopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">zachodniopomorskie</a>
+              <a href="#" class="nav-link">zachodniopomorskie</a>
             </li> --}}
           </ul>
         </div>
       </li>
-      <!-- 3 panel PARTNERZY-->
+    <!-- 3 panel PARTNERZY-->
       <li class="nav-item nav-category">
         Partnerzy
       </li>
-        <!-- 3 panel Partnerzy - Współpracujący-->
+      <!-- 3 panel Partnerzy - Współpracujący-->
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#partnerzyWspolpracujacy" role="button" aria-expanded="false" aria-controls="general-pages">
           <i class="link-icon" data-feather="book"></i>
@@ -383,60 +383,60 @@
         <div class="collapse" id="partnerzyWspolpracujacy">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">Wszyscy Partnerzy</a>
+              <a href="#" class="nav-link">Wszyscy Partnerzy</a>
+            </li>
+            {{-- <li class="nav-item">
+              <a href="#" class="nav-link">mazowieckie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">mazowieckie</a>
+              <a href="#" class="nav-link">dolnośląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/read.html" class="nav-link">dolnośląskie</a>
+              <a href="#" class="nav-link">kujawsko-pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/compose.html" class="nav-link">kujawsko-pomorskie</a>
+              <a href="#" class="nav-link">lubelskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubelskie</a>
+              <a href="#" class="nav-link">lubuskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubuskie</a>
+              <a href="#" class="nav-link">łódzkie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">łódzkie</a>
+              <a href="#" class="nav-link">małopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">małopolskie</a>
+              <a href="#" class="nav-link">opolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">opolskie</a>
+              <a href="#" class="nav-link">podkarpackie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podkarpackie</a>
+              <a href="#" class="nav-link">podlaskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podlaskie</a>
+              <a href="#" class="nav-link">pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">pomorskie</a>
+              <a href="#" class="nav-link">śląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">śląskie</a>
+              <a href="#" class="nav-link">świętokrzyskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">świętokrzyskie</a>
+              <a href="#" class="nav-link">warmińsko-mazurskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">warmińsko-mazurskie</a>
+              <a href="#" class="nav-link">wielkopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">wielkopolskie</a>
-            </li>
-            <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">zachodniopomorskie</a>
-            </li>
+              <a href="#" class="nav-link">zachodniopomorskie</a>
+            </li> --}}
           </ul>
         </div>
       </li>
-        <!-- 3 panel Partnerzy - Kandydaci-->
+      <!-- 3 panel Partnerzy - Kandydaci-->
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#kandydaciPartnerzy" role="button" aria-expanded="false" aria-controls="authPages">
           <i class="link-icon" data-feather="unlock"></i>
@@ -446,60 +446,60 @@
         <div class="collapse" id="kandydaciPartnerzy">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">Wszyscy kandydaci</a>
+              <a href="#" class="nav-link">Wszyscy kandydaci</a>
             </li>
             {{-- <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">mazowieckie</a>
+              <a href="#" class="nav-link">mazowieckie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/read.html" class="nav-link">dolnośląskie</a>
+              <a href="#" class="nav-link">dolnośląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/compose.html" class="nav-link">kujawsko-pomorskie</a>
+              <a href="#" class="nav-link">kujawsko-pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubelskie</a>
+              <a href="#" class="nav-link">lubelskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubuskie</a>
+              <a href="#" class="nav-link">lubuskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">łódzkie</a>
+              <a href="#" class="nav-link">łódzkie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">małopolskie</a>
+              <a href="#" class="nav-link">małopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">opolskie</a>
+              <a href="#" class="nav-link">opolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podkarpackie</a>
+              <a href="#" class="nav-link">podkarpackie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podlaskie</a>
+              <a href="#" class="nav-link">podlaskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">pomorskie</a>
+              <a href="#" class="nav-link">pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">śląskie</a>
+              <a href="#" class="nav-link">śląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">świętokrzyskie</a>
+              <a href="#" class="nav-link">świętokrzyskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">warmińsko-mazurskie</a>
+              <a href="#" class="nav-link">warmińsko-mazurskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">wielkopolskie</a>
+              <a href="#" class="nav-link">wielkopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">zachodniopomorskie</a>
+              <a href="#" class="nav-link">zachodniopomorskie</a>
             </li> --}}
           </ul>
         </div>
       </li>
-        <!-- 3 panel Partnerzy - Wysłane stroje-->
+      <!-- 3 panel Partnerzy - Wysłane stroje-->
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#wyslaneStroje" role="button" aria-expanded="false" aria-controls="errorPages">
           <i class="link-icon" data-feather="cloud-off"></i>
@@ -509,60 +509,60 @@
         <div class="collapse" id="wyslaneStroje">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">Wszyscy Partnerzy</a>
+              <a href="#" class="nav-link">Wszyscy Partnerzy</a>
             </li>
             {{-- <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">mazowieckie</a>
+              <a href="#" class="nav-link">mazowieckie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/read.html" class="nav-link">dolnośląskie</a>
+              <a href="#" class="nav-link">dolnośląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/compose.html" class="nav-link">kujawsko-pomorskie</a>
+              <a href="#" class="nav-link">kujawsko-pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubelskie</a>
+              <a href="#" class="nav-link">lubelskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubuskie</a>
+              <a href="#" class="nav-link">lubuskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">łódzkie</a>
+              <a href="#" class="nav-link">łódzkie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">małopolskie</a>
+              <a href="#" class="nav-link">małopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">opolskie</a>
+              <a href="#" class="nav-link">opolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podkarpackie</a>
+              <a href="#" class="nav-link">podkarpackie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podlaskie</a>
+              <a href="#" class="nav-link">podlaskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">pomorskie</a>
+              <a href="#" class="nav-link">pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">śląskie</a>
+              <a href="#" class="nav-link">śląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">świętokrzyskie</a>
+              <a href="#" class="nav-link">świętokrzyskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">warmińsko-mazurskie</a>
+              <a href="#" class="nav-link">warmińsko-mazurskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">wielkopolskie</a>
+              <a href="#" class="nav-link">wielkopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">zachodniopomorskie</a>
+              <a href="#" class="nav-link">zachodniopomorskie</a>
             </li> --}}
           </ul>
         </div>
       </li>
-        <!-- 3 panel Partnerzy - Prowizje do wypłaty-->
+      <!-- 3 panel Partnerzy - Prowizje do wypłaty-->
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#prowizje" role="button" aria-expanded="false" aria-controls="errorPages">
           <i class="link-icon" data-feather="cloud-off"></i>
@@ -572,60 +572,60 @@
         <div class="collapse" id="prowizje">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">Wszyscy Partnerzy</a>
+              <a href="#" class="nav-link">Wszyscy Partnerzy</a>
             </li>
             {{-- <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">mazowieckie</a>
+              <a href="#" class="nav-link">mazowieckie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/read.html" class="nav-link">dolnośląskie</a>
+              <a href="#" class="nav-link">dolnośląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/compose.html" class="nav-link">kujawsko-pomorskie</a>
+              <a href="#" class="nav-link">kujawsko-pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubelskie</a>
+              <a href="#" class="nav-link">lubelskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubuskie</a>
+              <a href="#" class="nav-link">lubuskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">łódzkie</a>
+              <a href="#" class="nav-link">łódzkie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">małopolskie</a>
+              <a href="#" class="nav-link">małopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">opolskie</a>
+              <a href="#" class="nav-link">opolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podkarpackie</a>
+              <a href="#" class="nav-link">podkarpackie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podlaskie</a>
+              <a href="#" class="nav-link">podlaskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">pomorskie</a>
+              <a href="#" class="nav-link">pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">śląskie</a>
+              <a href="#" class="nav-link">śląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">świętokrzyskie</a>
+              <a href="#" class="nav-link">świętokrzyskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">warmińsko-mazurskie</a>
+              <a href="#" class="nav-link">warmińsko-mazurskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">wielkopolskie</a>
+              <a href="#" class="nav-link">wielkopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">zachodniopomorskie</a>
+              <a href="#" class="nav-link">zachodniopomorskie</a>
             </li> --}}
           </ul>
         </div>
       </li>
-      <!-- 4 panel PRZYCHODY-->
+    <!-- 4 panel PRZYCHODY-->
       <li class="nav-item nav-category">
         Przychody
       </li>
@@ -639,55 +639,55 @@
         <div class="collapse" id="oplatyPartnerow">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">Wszyscy Partnerzy</a>
+              <a href="#" class="nav-link">Wszyscy Partnerzy</a>
             </li>
             {{-- <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">mazowieckie</a>
+              <a href="#" class="nav-link">mazowieckie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/read.html" class="nav-link">dolnośląskie</a>
+              <a href="#" class="nav-link">dolnośląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/compose.html" class="nav-link">kujawsko-pomorskie</a>
+              <a href="#" class="nav-link">kujawsko-pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubelskie</a>
+              <a href="#" class="nav-link">lubelskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubuskie</a>
+              <a href="#" class="nav-link">lubuskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">łódzkie</a>
+              <a href="#" class="nav-link">łódzkie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">małopolskie</a>
+              <a href="#" class="nav-link">małopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">opolskie</a>
+              <a href="#" class="nav-link">opolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podkarpackie</a>
+              <a href="#" class="nav-link">podkarpackie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podlaskie</a>
+              <a href="#" class="nav-link">podlaskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">pomorskie</a>
+              <a href="#" class="nav-link">pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">śląskie</a>
+              <a href="#" class="nav-link">śląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">świętokrzyskie</a>
+              <a href="#" class="nav-link">świętokrzyskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">warmińsko-mazurskie</a>
+              <a href="#" class="nav-link">warmińsko-mazurskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">wielkopolskie</a>
+              <a href="#" class="nav-link">wielkopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">zachodniopomorskie</a>
+              <a href="#" class="nav-link">zachodniopomorskie</a>
             </li> --}}
           </ul>
         </div>
@@ -699,177 +699,177 @@
           <span class="link-title">Wizyty</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
         </a>
+        <!-- 4 panel Przychody - Wszystkie wizyty-->
         <div class="collapse" id="przychodyWizyty">
           <ul class="nav sub-menu">
-            <!-- 4 panel Przychody - Wszystkie wizyty-->
             <li class="nav-item nav-category">
               Wszystkie wizyty
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">Wszystkie wizyty</a>
+              <a href="#" class="nav-link">Wszystkie wizyty</a>
             </li>
             {{-- <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">mazowieckie</a>
+              <a href="#" class="nav-link">mazowieckie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/read.html" class="nav-link">dolnośląskie</a>
+              <a href="#" class="nav-link">dolnośląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/compose.html" class="nav-link">kujawsko-pomorskie</a>
+              <a href="#" class="nav-link">kujawsko-pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubelskie</a>
+              <a href="#" class="nav-link">lubelskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubuskie</a>
+              <a href="#" class="nav-link">lubuskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">łódzkie</a>
+              <a href="#" class="nav-link">łódzkie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">małopolskie</a>
+              <a href="#" class="nav-link">małopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">opolskie</a>
+              <a href="#" class="nav-link">opolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podkarpackie</a>
+              <a href="#" class="nav-link">podkarpackie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podlaskie</a>
+              <a href="#" class="nav-link">podlaskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">pomorskie</a>
+              <a href="#" class="nav-link">pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">śląskie</a>
+              <a href="#" class="nav-link">śląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">świętokrzyskie</a>
+              <a href="#" class="nav-link">świętokrzyskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">warmińsko-mazurskie</a>
+              <a href="#" class="nav-link">warmińsko-mazurskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">wielkopolskie</a>
+              <a href="#" class="nav-link">wielkopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">zachodniopomorskie</a>
+              <a href="#" class="nav-link">zachodniopomorskie</a>
             </li> --}}
             <!-- 4 panel Przychody - Anulowane wizyty-->
             <li class="nav-item nav-category">
               Anulowane wizyty
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">Wszystkie anulowane wizyty</a>
+              <a href="#" class="nav-link">Wszystkie anulowane wizyty</a>
             </li>
             {{-- <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">mazowieckie</a>
+              <a href="#" class="nav-link">mazowieckie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/read.html" class="nav-link">dolnośląskie</a>
+              <a href="#" class="nav-link">dolnośląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/compose.html" class="nav-link">kujawsko-pomorskie</a>
+              <a href="#" class="nav-link">kujawsko-pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubelskie</a>
+              <a href="#" class="nav-link">lubelskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubuskie</a>
+              <a href="#" class="nav-link">lubuskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">łódzkie</a>
+              <a href="#" class="nav-link">łódzkie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">małopolskie</a>
+              <a href="#" class="nav-link">małopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">opolskie</a>
+              <a href="#" class="nav-link">opolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podkarpackie</a>
+              <a href="#" class="nav-link">podkarpackie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podlaskie</a>
+              <a href="#" class="nav-link">podlaskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">pomorskie</a>
+              <a href="#" class="nav-link">pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">śląskie</a>
+              <a href="#" class="nav-link">śląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">świętokrzyskie</a>
+              <a href="#" class="nav-link">świętokrzyskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">warmińsko-mazurskie</a>
+              <a href="#" class="nav-link">warmińsko-mazurskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">wielkopolskie</a>
+              <a href="#" class="nav-link">wielkopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">zachodniopomorskie</a>
+              <a href="#" class="nav-link">zachodniopomorskie</a>
             </li> --}}
             <!-- 4 panel Przychody - Odbyte wizyty-->
             <li class="nav-item nav-category">
               Odbyte wizyty
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">Wszystkie odbyte wizyty</a>
+              <a href="#" class="nav-link">Wszystkie odbyte wizyty</a>
             </li>
             {{-- <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">mazowieckie</a>
+              <a href="#" class="nav-link">mazowieckie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/read.html" class="nav-link">dolnośląskie</a>
+              <a href="#" class="nav-link">dolnośląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/compose.html" class="nav-link">kujawsko-pomorskie</a>
+              <a href="#" class="nav-link">kujawsko-pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubelskie</a>
+              <a href="#" class="nav-link">lubelskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubuskie</a>
+              <a href="#" class="nav-link">lubuskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">łódzkie</a>
+              <a href="#" class="nav-link">łódzkie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">małopolskie</a>
+              <a href="#" class="nav-link">małopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">opolskie</a>
+              <a href="#" class="nav-link">opolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podkarpackie</a>
+              <a href="#" class="nav-link">podkarpackie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podlaskie</a>
+              <a href="#" class="nav-link">podlaskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">pomorskie</a>
+              <a href="#" class="nav-link">pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">śląskie</a>
+              <a href="#" class="nav-link">śląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">świętokrzyskie</a>
+              <a href="#" class="nav-link">świętokrzyskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">warmińsko-mazurskie</a>
+              <a href="#" class="nav-link">warmińsko-mazurskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">wielkopolskie</a>
+              <a href="#" class="nav-link">wielkopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">zachodniopomorskie</a>
+              <a href="#" class="nav-link">zachodniopomorskie</a>
             </li> --}}
           </ul>
         </div>
       </li>
-      <!-- 5 panel KOSZTY-->
+    <!-- 5 panel KOSZTY-->
       <li class="nav-item nav-category">
         Koszty
       </li>
@@ -879,66 +879,67 @@
           <span class="link-title">Reklama</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
         </a>
+      <!-- 5 panel Koszty - Reklama-->
         <div class="collapse" id="reklamaKoszty">
-            <!-- 5 panel Koszty - Reklama-->
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="pages/email/compose.html" class="nav-link">Cała Polska</a>
+              <a href="#" class="nav-link">Cała Polska</a>
             </li>
             {{-- <li class="nav-item nav-category">
               Województwa
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">mazowieckie</a>
+              <a href="#" class="nav-link">mazowieckie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/read.html" class="nav-link">dolnośląskie</a>
+              <a href="#" class="nav-link">dolnośląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/compose.html" class="nav-link">kujawsko-pomorskie</a>
+              <a href="#" class="nav-link">kujawsko-pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubelskie</a>
+              <a href="#" class="nav-link">lubelskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubuskie</a>
+              <a href="#" class="nav-link">lubuskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">łódzkie</a>
+              <a href="#" class="nav-link">łódzkie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">małopolskie</a>
+              <a href="#" class="nav-link">małopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">opolskie</a>
+              <a href="#" class="nav-link">opolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podkarpackie</a>
+              <a href="#" class="nav-link">podkarpackie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podlaskie</a>
+              <a href="#" class="nav-link">podlaskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">pomorskie</a>
+              <a href="#" class="nav-link">pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">śląskie</a>
+              <a href="#" class="nav-link">śląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">świętokrzyskie</a>
+              <a href="#" class="nav-link">świętokrzyskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">warmińsko-mazurskie</a>
+              <a href="#" class="nav-link">warmińsko-mazurskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">wielkopolskie</a>
+              <a href="#" class="nav-link">wielkopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">zachodniopomorskie</a>
+              <a href="#" class="nav-link">zachodniopomorskie</a>
             </li> --}}
           </ul>
         </div>
       </li>
+      <!-- 5 panel Koszty - Przesyłki-->
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#reklamaPrzesylki" role="button" aria-expanded="false" aria-controls="curier">
           <i class="link-icon" data-feather="mail"></i>
@@ -946,66 +947,65 @@
           <i class="link-arrow" data-feather="chevron-down"></i>
         </a>
         <div class="collapse" id="reklamaPrzesylki">
-            <!-- 5 panel Koszty - Przesyłki-->
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="pages/email/compose.html" class="nav-link">Cała Polska</a>
+              <a href="#" class="nav-link">Cała Polska</a>
             </li>
             {{-- <li class="nav-item nav-category">
               Województwa
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">mazowieckie</a>
+              <a href="#" class="nav-link">mazowieckie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/read.html" class="nav-link">dolnośląskie</a>
+              <a href="#" class="nav-link">dolnośląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/compose.html" class="nav-link">kujawsko-pomorskie</a>
+              <a href="#" class="nav-link">kujawsko-pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubelskie</a>
+              <a href="#" class="nav-link">lubelskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubuskie</a>
+              <a href="#" class="nav-link">lubuskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">łódzkie</a>
+              <a href="#" class="nav-link">łódzkie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">małopolskie</a>
+              <a href="#" class="nav-link">małopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">opolskie</a>
+              <a href="#" class="nav-link">opolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podkarpackie</a>
+              <a href="#" class="nav-link">podkarpackie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podlaskie</a>
+              <a href="#" class="nav-link">podlaskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">pomorskie</a>
+              <a href="#" class="nav-link">pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">śląskie</a>
+              <a href="#" class="nav-link">śląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">świętokrzyskie</a>
+              <a href="#" class="nav-link">świętokrzyskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">warmińsko-mazurskie</a>
+              <a href="#" class="nav-link">warmińsko-mazurskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">wielkopolskie</a>
+              <a href="#" class="nav-link">wielkopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">zachodniopomorskie</a>
+              <a href="#" class="nav-link">zachodniopomorskie</a>
             </li> --}}
           </ul>
         </div>
       </li>
-      <!-- 6 panel ZYSK-->
+    <!-- 6 panel ZYSK-->
       <li class="nav-item nav-category">
         Zysk
       </li>
@@ -1027,75 +1027,59 @@
             <li class="nav-item nav-category">
               Województwa
             </li>
-            <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">mazowieckie</a>
+            {{-- <li class="nav-item">
+              <a href="#" class="nav-link">mazowieckie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/read.html" class="nav-link">dolnośląskie</a>
+              <a href="#" class="nav-link">dolnośląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/compose.html" class="nav-link">kujawsko-pomorskie</a>
+              <a href="#" class="nav-link">kujawsko-pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubelskie</a>
+              <a href="#" class="nav-link">lubelskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">lubuskie</a>
+              <a href="#" class="nav-link">lubuskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">łódzkie</a>
+              <a href="#" class="nav-link">łódzkie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">małopolskie</a>
+              <a href="#" class="nav-link">małopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">opolskie</a>
+              <a href="#" class="nav-link">opolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podkarpackie</a>
+              <a href="#" class="nav-link">podkarpackie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">podlaskie</a>
+              <a href="#" class="nav-link">podlaskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">pomorskie</a>
+              <a href="#" class="nav-link">pomorskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">śląskie</a>
+              <a href="#" class="nav-link">śląskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">świętokrzyskie</a>
+              <a href="#" class="nav-link">świętokrzyskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">warmińsko-mazurskie</a>
+              <a href="#" class="nav-link">warmińsko-mazurskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">wielkopolskie</a>
+              <a href="#" class="nav-link">wielkopolskie</a>
             </li>
             <li class="nav-item">
-              <a href="pages/email/inbox.html" class="nav-link">zachodniopomorskie</a>
-            </li>
+              <a href="#" class="nav-link">zachodniopomorskie</a>
+            </li> --}}
           </ul>
         </div>
       </li>
     </ul>
   </div>
 </nav>
-{{-- <nav class="settings-sidebar">
-  <div class="sidebar-body">
-    <a href="#" class="settings-sidebar-toggler">
-      <i data-feather="settings"></i>
-    </a>
-    <div class="theme-wrapper">
-      <h6 class="text-muted mb-2">Light Theme:</h6>
-      <a class="theme-item" href="../demo1/dashboard.html">
-          <img src="{{ asset('../assets/images/screenshots/light.jpg') }}" alt="light theme">
-      </a>
-      <h6 class="text-muted mb-2">Dark Theme:</h6>
-      <a class="theme-item active" href="../demo2/dashboard.html">
-          <img src="{{ asset('../assets/images/screenshots/dark.jpg') }}" alt="light theme">
-      </a>
-    </div>
-  </div>
-</nav> --}}
-<!-- partial -->
+
+
