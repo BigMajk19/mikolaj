@@ -83,7 +83,7 @@
                 <div class="row mb-3">
                   <div class="col-md-12">
                     <label for="defaultconfig-4" class="col-form-label">Opisz siebie i swoje doświadczenie w kilku słowach:</label>
-                    <textarea name="candidate_description" id="maxlength-textarea" class="form-control" maxlength="500" rows="8" value="{{ $types->candidate_description }}"></textarea>
+                    <textarea name="candidate_description" id="maxlength-textarea" class="form-control" maxlength="500" rows="8" value="{{ $types->candidate_description }}">{{ $types->candidate_description }}</textarea>
                   </div>
                 </div>
                 <div class="row mb-3">
@@ -142,28 +142,56 @@
                   </div>
                 </div>
                 <div class="row mb-3">
+                  @if($types->exp_as_santa == 'on')
+                  <div class="form-check form-switch mb-2">
+                    <input type="checkbox" checked name="exp_as_santa" class="form-check-input">
+                    <label class="form-check-label" for="formSwitch1">Pracowałeś/aś jako Świety Mikołaj/Elf/Śniezynka?</label>
+                  </div>
+                  @else
                   <div class="form-check form-switch mb-2">
                     <input type="checkbox" name="exp_as_santa" class="form-check-input">
                     <label class="form-check-label" for="formSwitch1">Pracowałeś/aś jako Świety Mikołaj/Elf/Śniezynka?</label>
                   </div>
+                  @endif
                 </div>
                 <div class="row mb-3">
+                  @if($types->drive_license == 'on')
+                  <div class="form-check form-switch mb-2">
+                    <input type="checkbox" checked name="drive_license" class="form-check-input">
+                    <label class="form-check-label" for="formSwitch1">Posiadasz prawo jazdy Kat. B?*</label>
+                  </div>
+                  @else
                   <div class="form-check form-switch mb-2">
                     <input type="checkbox" name="drive_license" class="form-check-input">
                     <label class="form-check-label" for="formSwitch1">Posiadasz prawo jazdy Kat. B?*</label>
                   </div>
+                  @endif
                 </div>
                 <div class="row mb-3">
+                  @if($types->work_at_xmas == 'on')
+                  <div class="form-check form-switch mb-2">
+                    <input type="checkbox" checked name="work_at_xmas" class="form-check-input">
+                    <label class="form-check-label" for="formSwitch1">Czy praca w Wigilię 24 grudnia również Cię interesuje?</label>
+                  </div>
+                  @else
                   <div class="form-check form-switch mb-2">
                     <input type="checkbox" name="work_at_xmas" class="form-check-input">
                     <label class="form-check-label" for="formSwitch1">Czy praca w Wigilię 24 grudnia również Cię interesuje?</label>
                   </div>
+                  @endif
                 </div>
                 <div class="row mb-3">
+                  @if($types->exp_with_children == 'on')
+                  <div class="form-check form-switch mb-2">
+                    <input type="checkbox" checked name="exp_with_children" class="form-check-input">
+                    <label class="form-check-label" for="formSwitch1">Czy masz doświadczenie w pracy z dziećmi?</label>
+                  </div>
+                  @else
                   <div class="form-check form-switch mb-2">
                     <input type="checkbox" name="exp_with_children" class="form-check-input">
                     <label class="form-check-label" for="formSwitch1">Czy masz doświadczenie w pracy z dziećmi?</label>
                   </div>
+                  @endif
                 </div>
                 <button type="submit" class="btn btn-primary me-2">Zapisz zmiany</button>
                 <a href="{{ route('show.all.candidates') }}" class="btn btn-inverse-warning">Cofnij</a>

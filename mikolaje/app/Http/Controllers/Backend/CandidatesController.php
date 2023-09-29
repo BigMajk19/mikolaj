@@ -13,8 +13,8 @@ class CandidatesController extends Controller
     public function ShowAllCandidates ()
     {
 
-        $show = Candidates::latest()->get();
-        return view('admin.candidates.show_all_candidates',compact('show'));
+        $show_candidates = Candidates::latest()->get();
+        return view('admin.candidates.show_all_candidates',compact('show_candidates'));
     }
 
     public function AddCandidate()
@@ -40,10 +40,15 @@ class CandidatesController extends Controller
             'drive_license' => '',
             'work_at_xmas' => '',
             'candidate_description' => '',
-            'cv' => '',
+            'cv' => 'image|max:2048',
             'privacy_policy' => '',
 
         ]);
+
+        // $imagePath = $request->file('cv')->store('public/backend/upload/images/candidates');
+        $file=$request->file('cv');
+        $filename= date('YmdHis').$file->getClientOriginalName();
+        $file->move(public_path('upload/images/candidates'), $filename);
 
         Candidates::insert([
 
@@ -62,9 +67,11 @@ class CandidatesController extends Controller
             'drive_license' => $request->drive_license,
             'work_at_xmas' => $request->work_at_xmas,
             'candidate_description' => $request->candidate_description,
-            'cv' => $request->cv,
+            'cv' => $filename,
             'privacy_policy' => $request->privacy_policy,
         ]);
+
+
         $notification = array(
             'message' => 'Pomyślnie dodano nowego kandydata.',
             'alert-type' => 'success',
@@ -125,30 +132,30 @@ class CandidatesController extends Controller
     // Show Candidates for Santa
     public function ShowCandidatesNewSanta()
     {
-        $show = Candidates::where('job_as', 'santa')->get();
+        $show_new_santa = Candidates::where('job_as', 'santa')->get();
 
 
-        return view('admin.candidates.show_all_santa_candidates',compact('show'));
+        return view('admin.candidates.show_all_santa_candidates',compact('show_new_santa'));
     }
 
 
     // Show Candidates for Elf
     public function ShowCandidatesNewElf()
     {
-        $show = Candidates::where('job_as', 'elf')->get();
+        $show_new_elf = Candidates::where('job_as', 'elf')->get();
 
 
-        return view('admin.candidates.show_all_elf_candidates',compact('show'));
+        return view('admin.candidates.show_all_elf_candidates',compact('show_new_elf'));
     }
 
 
     // Show Candidates for Snowflake
     public function ShowCandidatesNewSnowflake()
     {
-        $show = Candidates::where('job_as', 'snowflake')->get();
+        $show_new_snowflake = Candidates::where('job_as', 'snowflake')->get();
 
 
-        return view('admin.candidates.show_all_snowflake_candidates',compact('show'));
+        return view('admin.candidates.show_all_snowflake_candidates',compact('show_new_snowflake'));
     }
 
 

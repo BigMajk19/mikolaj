@@ -17,7 +17,7 @@
           <h6 class="card-title">Kandydaci na Mikołaja</h6>
           <div class="table-responsive">
             {{-- dataTableExample --}}
-            <table id="example" class="table table-striped dt-responsive table-hover display nowrap">
+            <table id="example" class="display table-hover table-sm table-striped dt-responsive" cellspacing="0" width="100%">
               <thead>
                 <tr>
                   <th>Id</th>
@@ -40,7 +40,7 @@
               </thead>
 
               <tbody>
-                @foreach($show as $key => $item)
+                @foreach($show_new_santa as $key => $item)
                 <tr>
                   <td>{{ $item->id }}</td>
                   <td><a href="tel:{{ $item->candidate_phone }}">{{ $item->candidate_phone }} </a></td>

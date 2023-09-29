@@ -1,4 +1,3 @@
-<!-- partial:partials/_sidebar.html -->
 <nav class="sidebar">
   <div class="sidebar-header">
     <a href="#" class="sidebar-brand">
@@ -44,7 +43,7 @@
         </ul>
         </div>
       </li>
-      <!-- 1 panel WIZYTY-->
+    <!-- 1 panel WIZYTY-->
       <li class="nav-item nav-category">
         Wizyty
       </li>
@@ -177,7 +176,7 @@
       <li class="nav-item">
         <a href="{{ route('show.all.candidates') }}" class="nav-link">
           <i class="link-icon" data-feather="hash"></i>
-          <span class="link-title">Wszyscy Kandydaci</span>
+          <span class="link-title">Wszyscy Kandydaci (786)</span>
         </a>
       </li>
       <!-- 2 panel Kandydaci do pracy - Mikołaje-->
@@ -873,13 +872,13 @@
       <li class="nav-item nav-category">
         Koszty
       </li>
+      <!-- 5 panel Koszty - Reklama-->
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#reklamaKoszty" role="button" aria-expanded="false" aria-controls="advertismentCost">
           <i class="link-icon" data-feather="mail"></i>
           <span class="link-title">Reklama</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
         </a>
-      <!-- 5 panel Koszty - Reklama-->
         <div class="collapse" id="reklamaKoszty">
           <ul class="nav sub-menu">
             <li class="nav-item">

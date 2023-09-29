@@ -189,14 +189,23 @@
   </script>
 
 <script>
-    new DataTable('#example', {
-        order: [[0, 'desc']],
-        responsive: true,
-        colReorder: true,
-        // select: true,
-        keys: true
+  // new DataTable('#example', {
+  //     order: [[0, 'desc']],
+  //     responsive: true,
+  //     colReorder: true,
+  //     keys: true
 
-    });
+  // });
+  $(document).ready( function () {
+  var table = $('#example').DataTable();
+  } );
+
+  $.extend( $.fn.dataTable.defaults, {
+    order: [[0, 'desc']],
+    responsive: true,
+    colReorder: true,
+    keys: true
+  } );
 </script>
 
 

@@ -23,9 +23,10 @@
             </div>
             <div class="card-body">
               <form method="post" action="{{ route('store.candidate') }}"
-                class="forms-sample">
+                class="forms-sample" enctype="multipart/form-data">
                 @csrf
                 <h4>Dane Kandydata/ki</h4>
+                {{-- Imię i nazwisko --}}
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <input type="text" name= "candidate_firstname" class="form-control
@@ -44,6 +45,7 @@
                     @enderror
                   </div>
                 </div>
+                {{-- Telefon i email --}}
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <input type="text" name= "candidate_phone" class="form-control
@@ -62,6 +64,7 @@
                     @enderror
                   </div>
                 </div>
+                {{-- Praca jako --}}
                 <div class="row mb-3">
                   <div class="col-md-4">
                     <select class="form-select" id="jobAs" name="job_as" >
@@ -75,6 +78,7 @@
                     </select>
                   </div>
                 </div>
+                {{-- Opis osoby --}}
                 <div class="row mb-3">
                   <div class="col-md-12">
                     <label for="defaultconfig-4" class="col-form-label">Opisz siebie i swoje doświadczenie w kilku słowach:</label>
@@ -82,6 +86,7 @@
                   </div>
                 </div>
                 <div class="row mb-3">
+                {{-- Lokalizacja --}}
                   <div class="col-md-6">
                     <input type="text" name= "location_city" class="form-control
                     @error('location_city') is-invalid @enderror" placeholder="Gdzie chcesz pracować?">
@@ -155,6 +160,10 @@
                     <input type="checkbox" name="exp_with_children" class="form-check-input">
                     <label class="form-check-label" for="formSwitch1">Czy masz doświadczenie w pracy z dziećmi?</label>
                   </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Zdjęcie profilowe</label>
+                  <input class="form-control" name="cv" type="file" id="image">
                 </div>
                 <button type="submit" class="btn btn-primary me-2">Zapisz zmiany</button>
                 <a href="{{ route('show.all.candidates') }}" class="btn btn-inverse-warning">Cofnij</a>
