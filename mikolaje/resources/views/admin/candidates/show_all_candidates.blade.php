@@ -47,23 +47,23 @@
                   <td>{{ $item->job_as }}</td>
                   <td>{{ $item->location_city }}</td>
                   <td>
-                    @if($item->drive_license  == '1') Tak
-                    @elseif ($item->drive_license  == '0') Nie
+                    @if($item->drive_license  == 'on') Tak
+                    @elseif ($item->drive_license  == NULL) Nie
                     @endif
                   </td>
                   <td>
-                    @if($item->work_at_xmas  == '1') Tak
-                    @elseif ($item->work_at_xmas  == '0') Nie
+                    @if($item->work_at_xmas  == 'on') Tak
+                    @elseif ($item->work_at_xmas  == NULL) Nie
                     @endif
                   </td>
                   <td>
                     Praca z dziećmi:
-                    <b> @if($item->exp_with_children  == '1') Tak
-                    @elseif ($item->exp_with_children  == '0') Nie
+                    <b> @if($item->exp_with_children  == 'on') Tak
+                    @elseif ($item->exp_with_children  == NULL) Nie
                     @endif</b><br/>
                     Praca jako Mikołaj:
-                    <b> @if($item->exp_as_santa  == '1') Tak
-                    @elseif ($item->exp_as_santa  == '0') Nie
+                    <b> @if($item->exp_as_santa  == 'on') Tak
+                    @elseif ($item->exp_as_santa  == NULL) Nie
                     @endif</b></td>
                   <td>{{ $item->candidate_age }}</td>
                   <td>{{ $item->candidate_growth }}</td>
