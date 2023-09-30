@@ -55,6 +55,9 @@
   <link rel="stylesheet" href="{{ asset('backend/assets/vendors/dropzone/dropzone.min.css') }}">
   <link rel="stylesheet" href="{{ asset('backend/assets/vendors/dropify/dist/dropify.min.css') }}">
   <link rel="stylesheet" href="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.css') }}">
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
+
   <!-- End plugin css for this page -->
 
   <!-- core:css -->
@@ -159,6 +162,10 @@
   <script src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></script>
   <script src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js"></script>
   <script src="https://cdn.datatables.net/keytable/2.10.0/js/dataTables.keyTable.min.js"></script>
+
+  <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
+
   <!-- koniec dodatków -->
 
   <!-- End datatable -->
@@ -204,7 +211,9 @@
     order: [[0, 'desc']],
     responsive: true,
     colReorder: true,
-    keys: true
+    keys: true,
+    dom: 'Bfrtip',
+    buttons: ['colvis']
   } );
 </script>
 
