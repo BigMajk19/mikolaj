@@ -55,6 +55,8 @@
   <link rel="stylesheet" href="{{ asset('backend/assets/vendors/dropzone/dropzone.min.css') }}">
   <link rel="stylesheet" href="{{ asset('backend/assets/vendors/dropify/dist/dropify.min.css') }}">
   <link rel="stylesheet" href="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css">
+
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
 
@@ -92,12 +94,7 @@
 
       @yield('admin')
 
-      <!-- partial:partials/_footer.html -->
-      <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between px-4 py-3 border-top small">
-      <p class="text-muted mb-1 mb-md-0">Copyright © 2022 <a href="https://www.nobleui.com" target="_blank">NobleUI</a>.</p>
-      <p class="text-muted">Handcrafted With <i class="mb-1 text-primary ms-1 icon-sm" data-feather="heart"></i></p>
-      </footer>
-      <!-- partial -->
+      @include('layouts.inc.footer')
 
 
     </div>
@@ -119,6 +116,8 @@
   <script src="{{ asset('backend/assets/vendors/dropzone/dropzone.min.js') }}"></script>
   <script src="{{ asset('backend/assets/vendors/dropify/dist/dropify.min.js') }}"></script>
   <script src="{{ asset('backend/assets/vendors/moment/moment.min.js') }}"></script>
+  {{-- <script src="{{ asset('backend/assets/DataTableDateTimeScript.js') }}"></script> --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
   <!-- End plugin js for this page -->
 
   <!-- Custom Plugin js for this page -->
@@ -164,6 +163,14 @@
   <script src="https://cdn.datatables.net/keytable/2.10.0/js/dataTables.keyTable.min.js"></script>
 
   <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.bootstrap5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+
+
   <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
 
   <!-- koniec dodatków -->
@@ -195,16 +202,52 @@
   @endif
   </script>
 
-<script>
-  // new DataTable('#example', {
-  //     order: [[0, 'desc']],
-  //     responsive: true,
-  //     colReorder: true,
-  //     keys: true
+@yield('JSscripts')
+{{-- Skrypt od sortowania tabeli datą min/max --}}
+{{-- <script>
 
-  // });
-  $(document).ready( function () {
-  var table = $('#example').DataTable();
+$(document).ready( function () {
+  var table = $('#example').DataTable({
+    lengthChange: false,
+    buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
+  });
+  table.buttons().container()
+    .appendTo( '#example_wrapper .col-md-6:eq(0)' );
+
+    let minDate, maxDate;
+
+// Custom filtering function which will search data in column four between two values
+      DataTable.ext.search.push(function (settings, data, dataIndex) {
+        let min = minDate.val();
+        let max = maxDate.val();
+        let date = new Date(data[3]);
+
+        if (
+          (min === null && max === null) ||
+          (min === null && date <= max) ||
+          (min <= date && max === null) ||
+          (min <= date && date <= max)
+        ) {
+          return true;
+        }
+        return false;
+      });
+
+      // Create date inputs
+      minDate = new DateTime('#min', {
+        format: 'DD-MM-YYYY'
+      });
+      maxDate = new DateTime('#max', {
+        format: 'DD-MM-YYYY'
+      });
+
+      // DataTables initialisation
+      // let table = new DataTable('#example');
+
+      // Refilter the table
+      document.querySelectorAll('#min, #max').forEach((el) => {
+        el.addEventListener('change', () => table.draw());
+      });
   } );
 
   $.extend( $.fn.dataTable.defaults, {
@@ -212,10 +255,9 @@
     responsive: true,
     colReorder: true,
     keys: true,
-    dom: 'Bfrtip',
-    buttons: ['colvis']
   } );
-</script>
+
+</script> --}}
 
 
 </body>

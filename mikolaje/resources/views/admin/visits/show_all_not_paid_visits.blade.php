@@ -17,6 +17,18 @@
           <h6 class="card-title">Wizyty nie opłacone</h6>
           <div class="table-responsive">
             {{-- dataTableExample --}}
+            <table cellspacing="5" cellpadding="5">
+              <tbody>
+                <tr>
+                  <td>Data wizyty min:</td>
+                  <td><input type="text" id="min" name="min"></td>
+                </tr>
+                <tr>
+                  <td>Data wizyty max:</td>
+                  <td><input type="text" id="max" name="max"></td>
+                </tr>
+              </tbody>
+            </table>
             <table id="example" class="display table-hover table-sm table-striped dt-responsive" cellspacing="0" width="100%">
               <thead>
                 <tr>

@@ -17,6 +17,18 @@
           <h6 class="card-title">Wszystkie Wizyty</h6>
           <div class="table-responsive">
             {{-- dataTableExample --}}
+            <table cellspacing="5" cellpadding="5">
+              <tbody>
+                <tr>
+                  <td>Data wizyty min:</td>
+                  <td><input type="text" id="min" name="min"></td>
+                </tr>
+                <tr>
+                  <td>Data wizyty max:</td>
+                  <td><input type="text" id="max" name="max"></td>
+                </tr>
+              </tbody>
+            </table>
             <table id="example" class="display table-hover table-sm table-striped dt-responsive" cellspacing="0" width="100%">
               <thead>
                 <tr>
@@ -84,6 +96,65 @@
   </div>
 </div>
 
+@endsection
 
+
+
+@section('JSscripts')
+
+<script>
+
+    $(document).ready( function () {
+      var table = $('#example').DataTable({
+        lengthChange: false,
+        buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
+      });
+      table.buttons().container()
+        .appendTo( '#example_wrapper .col-md-6:eq(0)' );
+
+        let minDate, maxDate;
+
+    // Custom filtering function which will search data in column four between two values
+          DataTable.ext.search.push(function (settings, data, dataIndex) {
+            let min = minDate.val();
+            let max = maxDate.val();
+            let date = new Date(data[3]);
+
+            if (
+              (min === null && max === null) ||
+              (min === null && date <= max) ||
+              (min <= date && max === null) ||
+              (min <= date && date <= max)
+            ) {
+              return true;
+            }
+            return false;
+          });
+
+          // Create date inputs
+          minDate = new DateTime('#min', {
+            format: 'DD-MM-YYYY'
+          });
+          maxDate = new DateTime('#max', {
+            format: 'DD-MM-YYYY'
+          });
+
+          // DataTables initialisation
+          // let table = new DataTable('#example');
+
+          // Refilter the table
+          document.querySelectorAll('#min, #max').forEach((el) => {
+            el.addEventListener('change', () => table.draw());
+          });
+      } );
+
+      $.extend( $.fn.dataTable.defaults, {
+        order: [[0, 'desc']],
+        responsive: true,
+        colReorder: true,
+        keys: true,
+      } );
+
+    </script>
 
 @endsection

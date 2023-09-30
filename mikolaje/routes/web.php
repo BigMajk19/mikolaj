@@ -5,6 +5,7 @@ use App\Http\Controllers\InboxController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\VisitsController;
 use App\Http\Controllers\Backend\CandidatesController;
+use App\Http\Controllers\Backend\VisitCountController;
 use App\Http\Controllers\Backend\VisitsTypeController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Client\ClientDashboardController;
@@ -91,6 +92,13 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
 
         // Option for Realized Visits
         Route::get('show/visits/realized', 'ShowVisitsRealized')->name('show.visits.realized');
+
+    });
+
+    //For Couting Visits
+    Route::controller(VisitCountController::class)->group(function () {
+        Route::get('visits/count/all', 'CountAllVisits')->name('visits.count.all');
+
     });
 
     //For Showing Candidates

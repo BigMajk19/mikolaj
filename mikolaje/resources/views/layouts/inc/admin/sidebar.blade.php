@@ -32,7 +32,7 @@
         <div class="collapse" id="emails">
         <ul class="nav sub-menu">
           <li class="nav-item">
-            <a href="{{ route('admin.inbox') }}" class="nav-link">Skrzynka odbiorcza</a>
+            <a href="{{ route('inbox') }}" class="nav-link">Skrzynka odbiorcza</a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">Wysłane</a>
@@ -176,7 +176,7 @@
       <li class="nav-item">
         <a href="{{ route('show.all.candidates') }}" class="nav-link">
           <i class="link-icon" data-feather="hash"></i>
-          <span class="link-title">Wszyscy Kandydaci (786)</span>
+          <span class="link-title">Wszyscy Kandydaci ()</span>
         </a>
       </li>
       <!-- 2 panel Kandydaci do pracy - Mikołaje-->
