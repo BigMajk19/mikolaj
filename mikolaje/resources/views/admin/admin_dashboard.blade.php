@@ -116,7 +116,6 @@
   <script src="{{ asset('backend/assets/vendors/dropzone/dropzone.min.js') }}"></script>
   <script src="{{ asset('backend/assets/vendors/dropify/dist/dropify.min.js') }}"></script>
   <script src="{{ asset('backend/assets/vendors/moment/moment.min.js') }}"></script>
-  {{-- <script src="{{ asset('backend/assets/DataTableDateTimeScript.js') }}"></script> --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
   <!-- End plugin js for this page -->
 

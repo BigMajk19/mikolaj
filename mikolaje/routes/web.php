@@ -95,11 +95,6 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
 
     });
 
-    //For Couting Visits
-    Route::controller(VisitCountController::class)->group(function () {
-        Route::get('visits/count/all', 'CountAllVisits')->name('visits.count.all');
-
-    });
 
     //For Showing Candidates
     Route::controller(CandidatesController::class)->group(function () {

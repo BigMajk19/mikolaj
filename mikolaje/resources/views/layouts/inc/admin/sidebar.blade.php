@@ -1,3 +1,22 @@
+@php
+// For Counting Visits
+    $countAll = App\Models\VisitsSubmissions::count();
+    $countAllNew = App\Models\VisitsSubmissions::where('status', 'new')->count();
+    $countAllNot_paid = App\Models\VisitsSubmissions::where('status', 'not_paid')->count();
+    $countAllNot_sign_to = App\Models\VisitsSubmissions::where('status', 'not_sign_to')->count();
+    $countAllReserve_list = App\Models\VisitsSubmissions::where('status', 'reserve_list')->count();
+    $countAllNewVisits = $countAllNew+$countAllNot_paid+$countAllNot_sign_to+$countAllReserve_list;
+    $countPaid = App\Models\VisitsSubmissions::whereNotNull('partner')->where('status','paid')->count();
+    $countRealized = App\Models\VisitsSubmissions::where('status', 'realized')->count();
+    $countCanceled = App\Models\VisitsSubmissions::where('status', 'canceled')->count();
+    $countSignVisits = App\Models\VisitsSubmissions::whereNotNull('partner')->count();
+    // For Counting Candidates
+    $countCandidates = App\Models\Candidates::count();
+    $countAllSantas = App\Models\Candidates::where('job_as', 'santa')->count();
+    $countAllSnowflakes = App\Models\Candidates::where('job_as', 'snowflake')->count();
+    $countAllElfs = App\Models\Candidates::where('job_as', 'elf')->count();
+@endphp
+
 <nav class="sidebar">
   <div class="sidebar-header">
     <a href="#" class="sidebar-brand">
@@ -57,29 +76,29 @@
       <li class="nav-item">
         <a href="{{ route('show.all.visits') }}" class="nav-link">
           <i class="link-icon" data-feather="message-square"></i>
-          <span class="link-title">Wszystkie Wizyty</span>
+          <span class="link-title">Wszystkie Wizyty ( {{ $countAll }} )</span>
         </a>
       </li>
         <!-- 1 panel Wizyty - Nowe wizyty-->
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#noweWizyty" role="button" aria-expanded="false" aria-controls="newVisits">
           <i class="link-icon" data-feather="mail"></i>
-          <span class="link-title">Nowe wizyty</span>
+          <span class="link-title">Nowe wizyty ( {{ $countAllNewVisits }} )</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
         </a>
         <div class="collapse" id="noweWizyty">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="{{ route('show.visits.new') }}" class="nav-link">Nie potwierdzone</a>
+              <a href="{{ route('show.visits.new') }}" class="nav-link">Nie potwierdzone ( {{ $countAllNew }} )</a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('show.visits.not_paid') }}" class="nav-link">Nie opłacone</a>
+              <a href="{{ route('show.visits.not_paid') }}" class="nav-link">Nie opłacone ( {{ $countAllNot_paid }} )</a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('show.visits.not_sign_to') }}" class="nav-link">Nie przypisane</a>
+              <a href="{{ route('show.visits.not_sign_to') }}" class="nav-link">Nie przypisane ( {{ $countAllNot_sign_to }} )</a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('show.visits.reserve_list') }}" class="nav-link">Lista rezerwowa</a>
+                <a href="{{ route('show.visits.reserve_list') }}" class="nav-link">Lista rezerwowa ( {{ $countAllReserve_list }} )</a>
             </li>
           </ul>
         </div>
@@ -94,13 +113,13 @@
         <div class="collapse" id="PoszczegolneWizyty">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="{{ route('show.visits.paid_and_sign_to') }}" class="nav-link">Opłacone i przypisane</a>
+              <a href="{{ route('show.visits.paid_and_sign_to') }}" class="nav-link">Opłacone i przypisane ( {{ $countPaid }} )</a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('show.visits.realized') }}" class="nav-link">Zrealizowane</a>
+              <a href="{{ route('show.visits.realized') }}" class="nav-link">Zrealizowane ( {{ $countRealized }} )</a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('show.visits.canceled') }}" class="nav-link">Anulowane/Rezygnacja</a>
+              <a href="{{ route('show.visits.canceled') }}" class="nav-link">Anulowane/Rezygnacja ( {{ $countCanceled }} )</a>
             </li>
           </ul>
         </div>
@@ -115,10 +134,10 @@
         <div class="collapse" id="przypisaneWizyty">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="#" class="nav-link">Wszystkie</a>
+              <a href="#" class="nav-link">Wszystkie ( {{ $countSignVisits }} )</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">mazowieckie</a>
+              <a href="#" class="nav-link">mazowieckie ( 000 )</a>
             </li>
             {{-- <li class="nav-item">
               <a href="#" class="nav-link">dolnośląskie</a>
@@ -176,20 +195,20 @@
       <li class="nav-item">
         <a href="{{ route('show.all.candidates') }}" class="nav-link">
           <i class="link-icon" data-feather="hash"></i>
-          <span class="link-title">Wszyscy Kandydaci ()</span>
+          <span class="link-title">Wszyscy Kandydaci ( {{ $countCandidates }} )</span>
         </a>
       </li>
       <!-- 2 panel Kandydaci do pracy - Mikołaje-->
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#kandydaciMikolaje" role="button" aria-expanded="false" aria-controls="candidatesforjobSanta">
           <i class="link-icon" data-feather="feather"></i>
-          <span class="link-title">Mikołaje</span>
+          <span class="link-title">Mikołaje ( {{ $countAllSantas }} )</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
         </a>
         <div class="collapse" id="kandydaciMikolaje">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="{{ route('show.all.candidates.santa') }}" class="nav-link">Wszyscy</a>
+              <a href="{{ route('show.all.candidates.santa') }}" class="nav-link">Wszyscy ( {{ $countAllSantas }} )</a>
             </li>
             {{-- <li class="nav-item">
               <a href="#" class="nav-link">mazowieckie</a>
@@ -246,13 +265,13 @@
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#kandydaciSniezynki" role="button" aria-expanded="false" aria-controls="candidatesforjobSnowflakes">
           <i class="link-icon" data-feather="feather"></i>
-          <span class="link-title">Śnieżynki</span>
+          <span class="link-title">Śnieżynki ( {{ $countAllSnowflakes }} )</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
         </a>
         <div class="collapse" id="kandydaciSniezynki">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="{{ route('show.all.candidates.snowflake') }}" class="nav-link">Wszyscy</a>
+              <a href="{{ route('show.all.candidates.snowflake') }}" class="nav-link">Wszyscy ( {{ $countAllSnowflakes }} )</a>
             </li>
             {{-- <li class="nav-item">
               <a href="#" class="nav-link">mazowieckie</a>
@@ -309,13 +328,13 @@
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#kandydaciElfy" role="button" aria-expanded="false" aria-controls="candidatesforjobElfs">
           <i class="link-icon" data-feather="arrow-down-right"></i>
-          <span class="link-title">Elfy</span>
+          <span class="link-title">Elfy ( {{ $countAllElfs }} )</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
         </a>
         <div class="collapse" id="kandydaciElfy">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="{{ route('show.all.candidates.elf') }}" class="nav-link">Wszyscy</a>
+              <a href="{{ route('show.all.candidates.elf') }}" class="nav-link">Wszyscy ( {{ $countAllElfs }} )</a>
             </li>
             {{-- <li class="nav-item">
               <a href="#" class="nav-link">mazowieckie</a>
