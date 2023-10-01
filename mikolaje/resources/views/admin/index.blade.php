@@ -1,3 +1,9 @@
+{{-- Początek HEAD --}}
+
+
+{{-- Koniec HEAD --}}
+
+{{-- Początek BODY --}}
 @extends('admin.admin_dashboard')
 
 @section('admin')
@@ -422,3 +428,14 @@
 </div>
 
 @endsection
+
+@section('JSscripts')
+
+<script src="{{ asset('backend/assets/vendors/apexcharts/apexcharts.min.js') }}"></script>
+<script src="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.js') }}"></script>
+
+
+
+@endsection
+
+{{-- koniec BODY --}}

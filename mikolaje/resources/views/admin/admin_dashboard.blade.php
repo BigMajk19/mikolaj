@@ -106,31 +106,16 @@
   <!-- endinject -->
 
   <!-- Plugin js for this page -->
-  <script src="{{ asset('backend/assets/vendors/apexcharts/apexcharts.min.js') }}"></script>
-  <script src="{{ asset('backend/assets/vendors/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
-  <script src="{{ asset('backend/assets/vendors/inputmask/jquery.inputmask.min.js') }}"></script>
-  <script src="{{ asset('backend/assets/vendors/typeahead.js/typeahead.bundle.min.js') }}"></script>
-  <script src="{{ asset('backend/assets/vendors/jquery-tags-input/jquery.tagsinput.min.js') }}"></script>
-  <script src="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.js') }}"></script>
-  <script src="{{ asset('backend/assets/vendors/select2/select2.min.js') }}"></script>
-  <script src="{{ asset('backend/assets/vendors/dropzone/dropzone.min.js') }}"></script>
-  <script src="{{ asset('backend/assets/vendors/dropify/dist/dropify.min.js') }}"></script>
-  <script src="{{ asset('backend/assets/vendors/moment/moment.min.js') }}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
-  <!-- End plugin js for this page -->
+
+
+
 
   <!-- Custom Plugin js for this page -->
   <script src="{{ asset('backend/assets/js/dashboard-dark.js') }}"></script>
   <script src="{{ asset('backend/assets/js/form-validation.js') }}"></script>
-  <script src="{{ asset('backend/assets/js/bootstrap-maxlength.js') }}"></script>
-  <script src="{{ asset('backend/assets/js/inputmask.js') }}"></script>
-  <script src="{{ asset('backend/assets/js/select2.js') }}"></script>
-  <script src="{{ asset('backend/assets/js/typeahead.js') }}"></script>
-  <script src="{{ asset('backend/assets/js/tags-input.js') }}"></script>
-  <script src="{{ asset('backend/assets/js/dropzone.js') }}"></script>
-  <script src="{{ asset('backend/assets/js/dropify.js') }}"></script>
-  <script src="{{ asset('backend/assets/js/flatpickr.js') }}"></script>
-  <!-- End Custom Plugin js for this page -->
+
+
+
 
 
   <!-- inject:js -->
@@ -143,38 +128,7 @@
   <script src="{{ asset('backend/assets/js/SweetAlert/code.js') }}"></script>
   <!-- End SweetAlert Script -->
 
-
-  <!-- Start datatable -->
   <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-  <script src="{{ asset('backend/assets/vendors/datatables.net/jquery.dataTables.min.js') }}"></script>
-  <script src="{{ asset('backend/assets/vendors/datatables.net-bs5/dataTables.bootstrap5.min.js') }}"></script>
-  <script src="{{ asset('backend/assets/vendors/datatables.net/jquery.dataTables.min.css') }}"></script>
-  <script src="{{ asset('backend/assets/vendors/responsive/dataTables.responsive.min.js') }}"></script>
-  <script src="{{ asset('backend/assets/vendors/responsive/responsive.bootstrap5.min.js') }}"></script>
-  <!-- dodatki do DataTables-->
-  <script src="https://cdn.datatables.net/colreorder/1.7.0/js/dataTables.colReorder.min.js"></script>
-  <script src="https://cdn.datatables.net/autofill/2.6.0/js/dataTables.autoFill.min.js"></script>
-  <script src="https://cdn.datatables.net/autofill/2.6.0/js/autoFill.bootstrap5.min.js"></script>
-  <script src="https://cdn.datatables.net/searchbuilder/1.5.0/js/dataTables.searchBuilder.min.js"></script>
-  <script src="https://cdn.datatables.net/searchbuilder/1.5.0/js/searchBuilder.bootstrap5.min.js"></script>
-  <script src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></script>
-  <script src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js"></script>
-  <script src="https://cdn.datatables.net/keytable/2.10.0/js/dataTables.keyTable.min.js"></script>
-
-  <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
-  <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.bootstrap5.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-  <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
-  <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
-
-
-  <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
-
-  <!-- koniec dodatków -->
-
-  <!-- End datatable -->
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
@@ -201,62 +155,8 @@
   @endif
   </script>
 
+
 @yield('JSscripts')
-{{-- Skrypt od sortowania tabeli datą min/max --}}
-{{-- <script>
-
-$(document).ready( function () {
-  var table = $('#example').DataTable({
-    lengthChange: false,
-    buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
-  });
-  table.buttons().container()
-    .appendTo( '#example_wrapper .col-md-6:eq(0)' );
-
-    let minDate, maxDate;
-
-// Custom filtering function which will search data in column four between two values
-      DataTable.ext.search.push(function (settings, data, dataIndex) {
-        let min = minDate.val();
-        let max = maxDate.val();
-        let date = new Date(data[3]);
-
-        if (
-          (min === null && max === null) ||
-          (min === null && date <= max) ||
-          (min <= date && max === null) ||
-          (min <= date && date <= max)
-        ) {
-          return true;
-        }
-        return false;
-      });
-
-      // Create date inputs
-      minDate = new DateTime('#min', {
-        format: 'DD-MM-YYYY'
-      });
-      maxDate = new DateTime('#max', {
-        format: 'DD-MM-YYYY'
-      });
-
-      // DataTables initialisation
-      // let table = new DataTable('#example');
-
-      // Refilter the table
-      document.querySelectorAll('#min, #max').forEach((el) => {
-        el.addEventListener('change', () => table.draw());
-      });
-  } );
-
-  $.extend( $.fn.dataTable.defaults, {
-    order: [[0, 'desc']],
-    responsive: true,
-    colReorder: true,
-    keys: true,
-  } );
-
-</script> --}}
 
 
 </body>
