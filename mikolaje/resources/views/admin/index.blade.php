@@ -1,6 +1,8 @@
 {{-- Początek HEAD --}}
+@section('CSSscripts')
 
 
+@endsection
 {{-- Koniec HEAD --}}
 
 {{-- Początek BODY --}}

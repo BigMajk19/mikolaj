@@ -39,35 +39,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <!-- End fonts -->
 
-  <!-- Plugin css for this page dla TABEL-->
-  <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/vendors/datatables.net-bs5/dataTables.bootstrap5.min.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/vendors/responsive/responsive.bootstrap5.min.css') }}">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/colreorder/1.7.0/css/colReorder.bootstrap5.min.css">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/autofill/2.6.0/css/autoFill.bootstrap5.min.css">
-  <!-- dodatki do DataTables-->
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/searchbuilder/1.5.0/css/searchBuilder.bootstrap5.min.css">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/datetime/1.5.1/css/dataTables.dateTime.min.css">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.7.0/css/select.bootstrap5.min.css">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/keytable/2.10.0/css/keyTable.bootstrap5.min.css">
-  <!-- -->
-  <link rel="stylesheet" href="{{ asset('backend/assets/vendors/select2/select2.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('backend/assets/vendors/jquery-tags-input/jquery.tagsinput.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('backend/assets/vendors/dropzone/dropzone.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('backend/assets/vendors/dropify/dist/dropify.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.css') }}">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css">
-
-
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
-
-  <!-- End plugin css for this page -->
-
-  <!-- core:css -->
-  <link rel="stylesheet" href="{{ asset('backend/assets/vendors/select2/select2.min.css') }}">
+   <!-- core:css -->
   <link rel="stylesheet" href="{{ asset('backend/assets/vendors/core/core.css') }}">
-  <!-- endinject -->
+   <!-- end core:css -->
 
-  <!-- inject:css -->
+   <link rel="stylesheet" href="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.css') }}">
+
+    <!-- inject:css -->
   <link rel="stylesheet" href="{{ asset('backend/assets/fonts/feather-font/css/iconfont.css') }}">
   <link rel="stylesheet" href="{{ asset('backend/assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
   <!-- endinject -->
@@ -78,8 +56,9 @@
 
   <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.png') }}" />
 
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+@yield('CSSscripts')
 
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 
 </head>
 
@@ -105,30 +84,27 @@
   <script src="{{ asset('backend/assets/vendors/core/core.js') }}"></script>
   <!-- endinject -->
 
-  <!-- Plugin js for this page -->
-
-
-
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
   <!-- Custom Plugin js for this page -->
   <script src="{{ asset('backend/assets/js/dashboard-dark.js') }}"></script>
   <script src="{{ asset('backend/assets/js/form-validation.js') }}"></script>
-
-
-
-
 
   <!-- inject:js -->
   <script src="{{ asset('backend/assets/vendors/feather-icons/feather.min.js') }}"></script>
   <script src="{{ asset('backend/assets/js/template.js') }}"></script>
   <!-- endinject -->
 
+
+  @yield('JSscripts')
+
+
   <!-- SweetAlert Script -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="{{ asset('backend/assets/js/SweetAlert/code.js') }}"></script>
   <!-- End SweetAlert Script -->
 
-  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
@@ -154,10 +130,6 @@
   }
   @endif
   </script>
-
-
-@yield('JSscripts')
-
 
 </body>
 </html>
