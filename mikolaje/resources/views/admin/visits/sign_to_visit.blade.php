@@ -68,15 +68,16 @@
                   </div>
                 </div>
                 <div class="row mb-3">
+
                   <div class="col-md-6">
                     <select class="js-example-basic-single form-select select2-hidden-accessible" data-width="100%" data-select2-id="2" tabindex="-1" aria-hidden="true" id="choosePartner" name="partner">
-                    {{-- <select class="form-select"  > --}}
                       <option selected="" disabled="">Wybierz partnera</option>
                       <option>Partner 1</option>
                       <option>Partner 2</option>
                       <option>Partner 3</option>
                     </select>
                   </div>
+
                 </div>
                 <button type="submit" class="btn btn-primary me-2">Zapisz zmiany</button>
                 <a href="{{ route('show.visits.not_sign_to') }}" class="btn btn-inverse-warning">Cofnij</a>

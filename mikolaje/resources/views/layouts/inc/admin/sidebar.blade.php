@@ -3,7 +3,7 @@
     $countAll = App\Models\VisitsSubmissions::count();
     $countAllNew = App\Models\VisitsSubmissions::where('status', 'new')->count();
     $countAllNot_paid = App\Models\VisitsSubmissions::where('status', 'not_paid')->count();
-    $countAllNot_sign_to = App\Models\VisitsSubmissions::where('status', 'not_sign_to')->count();
+    $countAllNot_sign_to = App\Models\VisitsSubmissions::where('status', 'paid')->count();
     $countAllReserve_list = App\Models\VisitsSubmissions::where('status', 'reserve_list')->count();
     $countAllNewVisits = $countAllNew+$countAllNot_paid+$countAllNot_sign_to+$countAllReserve_list;
     $countPaid = App\Models\VisitsSubmissions::whereNotNull('partner')->where('status','paid')->count();
