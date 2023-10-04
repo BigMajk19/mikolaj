@@ -32,8 +32,8 @@
             <div class="card-header">
               <h4>Przypisz partnera do wizyty: #{{ $types->id }}</h4>
             </div>
-            <div class="card-body">
-              <form method="post" action="{{ route('update.visit.sign.partner') }}"
+            <div class="form-group card-body">
+              <form id="myForm" method="post" action="{{ route('update.visit.sign.partner') }}"
                 class="forms-sample">
                 @csrf
                 <input type="hidden" name="id" value="{{$types->id}}">
@@ -88,14 +88,47 @@
     </div>
     <!-- middle wrapper end -->
   </div>
-
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function (){
+    $('#myForm').validate({
+      rules: {
+        partner: {
+          required : true,
+        },
+
+
+      },
+      messages :{
+        field_name: {
+          required : 'Please Enter Partner',
+        },
+
+
+      },
+      errorElement : 'span',
+      errorPlacement: function (error,element) {
+        error.addClass('invalid-feedback');
+        element.closest('.form-group').append(error);
+      },
+      highlight : function(element, errorClass, validClass){
+        $(element).addClass('is-invalid');
+      },
+      unhighlight : function(element, errorClass, validClass){
+        $(element).removeClass('is-invalid');
+      },
+    });
+  });
+
+</script>
 
 @endsection
 
 @section('JSscripts')
 <script src="{{ asset('backend/assets/vendors/select2/select2.min.js') }}"></script>
 <script src="{{ asset('backend/assets/js/select2.js') }}"></script>
+<script src="{{ asset('backend/assets/js/code/validate.min.js') }}"></script>
 
 @endsection
 
