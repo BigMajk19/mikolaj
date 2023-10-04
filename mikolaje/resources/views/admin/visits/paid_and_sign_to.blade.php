@@ -1,3 +1,28 @@
+{{-- Początek HEAD --}}
+@section('CSSscripts')
+{{-- for DataTables --}}
+<link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/vendors/datatables.net-bs5/dataTables.bootstrap5.min.css') }}">
+<script src="{{ asset('backend/assets/vendors/datatables.net/jquery.dataTables.min.css') }}"></script>
+{{-- Responsive --}}
+<link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/vendors/responsive/responsive.bootstrap5.min.css') }}">
+{{-- Buttons --}}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css">
+{{-- ColReorder --}}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/colreorder/1.7.0/css/colReorder.bootstrap5.min.css">
+{{-- KeyTables --}}
+{{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/keytable/2.10.0/css/keyTable.bootstrap5.min.css"> --}}
+{{-- Date range filter DataTables --}}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/datetime/1.5.1/css/dataTables.dateTime.min.css">
+{{-- Select (blue stripe) --}}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.7.0/css/select.bootstrap5.min.css">
+
+{{-- end for DataTables --}}
+
+@endsection
+{{-- Koniec HEAD --}}
+
+
+{{-- Początek BODY --}}
 @extends('admin.admin_dashboard')
 
 @section('admin')
@@ -16,19 +41,10 @@
         <div class="card-body">
           <h6 class="card-title">Wizyty opłacone i przypisane</h6>
           <div class="table-responsive">
-            {{-- dataTableExample --}}
-            <table cellspacing="5" cellpadding="5">
-              <tbody>
-                <tr>
-                  <td>Data wizyty min:</td>
-                  <td><input type="text" id="min" name="min"></td>
-                </tr>
-                <tr>
-                  <td>Data wizyty max:</td>
-                  <td><input type="text" id="max" name="max"></td>
-                </tr>
-              </tbody>
-            </table>
+            {{-- dataTableRangeFilter --}}
+            @include('admin.visits.dataTableRangeFilter')
+            {{-- END dataTableRangeFilter --}}
+            {{-- DataTable --}}
             <table id="example" class="display table-hover table-sm table-striped dt-responsive" cellspacing="0" width="100%">
               <thead>
                 <tr>
@@ -98,3 +114,39 @@
 
 
 @endsection
+
+@section('JSscripts')
+
+{{-- JS for DataTables --}}
+<script src="{{ asset('backend/assets/vendors/datatables.net/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('backend/assets/vendors/datatables.net-bs5/dataTables.bootstrap5.min.js') }}"></script>
+{{-- DataTables Sorting --}}
+<script src="{{ asset('backend/assets/sortingScript.js') }}"></script>
+{{-- Responsive --}}
+<script src="{{ asset('backend/assets/vendors/responsive/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('backend/assets/vendors/responsive/responsive.bootstrap5.min.js') }}"></script>
+{{-- Buttons --}}
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.bootstrap5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
+{{-- ColReorder --}}
+<script src="https://cdn.datatables.net/colreorder/1.7.0/js/dataTables.colReorder.min.js"></script>
+{{-- KeyTables --}}
+{{-- <script src="https://cdn.datatables.net/keytable/2.10.0/js/dataTables.keyTable.min.js"></script> --}}
+{{-- Date range filter DataTables --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+<script src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></script>
+{{-- Select (blue stripe) --}}
+<script src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js"></script>
+
+
+{{-- JS for DataTables --}}
+
+@endsection
+
+{{-- koniec BODY --}}

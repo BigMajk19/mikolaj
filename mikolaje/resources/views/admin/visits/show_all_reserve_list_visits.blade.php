@@ -81,7 +81,7 @@
                   <td>{{ $item->voivodeship }}</td>
                   <td>dropdown</td>
                   <td>
-                    <a href="{{ route('change.status.new.visit',$item->id) }}" class="btn btn-inverse-success" id="reserve_to_new">Zmień status</a>
+                    <a href="{{ route('change.status.new.visit',$item->id) }}" class="btn btn-inverse-success" id="reserve_to_new">Zmień status</a>&nbsp;&nbsp;&nbsp;
                     <a href="{{ route('cancel.new.visit',$item->id) }}" class="btn btn-inverse-danger" id="cancel">Anuluj wizytę</a>
                   </td>
                 </tr>

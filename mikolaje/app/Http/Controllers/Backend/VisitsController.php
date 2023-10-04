@@ -137,7 +137,7 @@ class VisitsController extends Controller
             'remind_visit' => $request->remind_visit,
         ]);
         $notification = array(
-            'message' => 'Kategoria została pomyślnie zaktualizowana.',
+            'message' => 'Wizyta została pomyślnie zaktualizowana.',
             'alert-type' => 'success',
         );
         return redirect()->route('show.all.visits')->with($notification);

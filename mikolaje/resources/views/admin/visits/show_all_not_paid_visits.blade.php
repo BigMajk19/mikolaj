@@ -82,7 +82,7 @@
                   <td>{{ $item->voivodeship }}</td>
                   <td>dropdown</td>
                   <td>
-                    <a href="{{ route('paid.new.visit',$item->id) }}" class="btn btn-inverse-success">Opłacono</a>
+                    <a href="{{ route('paid.new.visit',$item->id) }}" class="btn btn-inverse-success">Opłacono</a>&nbsp;&nbsp;&nbsp;
                     <a href="{{ route('cancel.new.visit',$item->id) }}" class="btn btn-inverse-danger" id="cancel">Anuluj wizytę</a>
                   </td>
                 </tr>

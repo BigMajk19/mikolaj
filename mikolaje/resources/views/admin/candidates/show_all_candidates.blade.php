@@ -105,7 +105,7 @@
                   <td><img class="wd-300 ht-300 rounded-circle" src="{{ (!empty($item->cv)) ? url('upload/images/candidates/'.$item->cv) : url('upload/images/no_image.jpg') }}" ></td>
                   <td>dropdown</td>
                   <td>
-                    <a href="{{ route('edit.candidate',$item->id) }}" class="btn btn-inverse-success">Edycja</a>
+                    <a href="{{ route('edit.candidate',$item->id) }}" class="btn btn-inverse-success">Edycja</a>&nbsp;&nbsp;&nbsp;
                     <a href="{{ route('delete.candidate',$item->id) }}" class="btn btn-inverse-danger" id="deleteCandidate">Usuń</a>
                   </td>
                 </tr>

@@ -13,13 +13,9 @@
 
 @section('admin')
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
 <div class="page-content">
-
-  <div class="row">
-    <div class="col-12 grid-margin">
-
-    </div>
-  </div>
   @php
     $id = Auth::user()->id;
     $profileData = App\Models\User::find($id);
@@ -32,7 +28,7 @@
             <div class="card-header">
               <h4>Przypisz partnera do wizyty: #{{ $types->id }}</h4>
             </div>
-            <div class="form-group card-body">
+            <div class="card-body">
               <form id="myForm" method="post" action="{{ route('update.visit.sign.partner') }}"
                 class="forms-sample">
                 @csrf
@@ -67,8 +63,7 @@
                     <input type="text" class="form-control" id="exampleInputDisabled1" disabled="" value="{{ $types->counties }}">
                   </div>
                 </div>
-                <div class="row mb-3">
-
+                <div class="form-group row mb-3">
                   <div class="col-md-6">
                     <select class="js-example-basic-single form-select select2-hidden-accessible" data-width="100%" data-select2-id="2" tabindex="-1" aria-hidden="true" id="choosePartner" name="partner">
                       <option selected="" disabled="">Wybierz partnera</option>
@@ -77,9 +72,9 @@
                       <option>Partner 3</option>
                     </select>
                   </div>
-
                 </div>
-                <button type="submit" class="btn btn-primary me-2">Zapisz zmiany</button>
+                <br/>
+                <button type="submit" class="btn btn-inverse-success">Zapisz zmiany</button>&nbsp;&nbsp;&nbsp;
                 <a href="{{ route('show.visits.not_sign_to') }}" class="btn btn-inverse-warning">Cofnij</a>
               </form>
             </div>
@@ -87,7 +82,6 @@
         </div>
       </div>
     </div>
-    <!-- middle wrapper end -->
   </div>
 </div>
 
@@ -102,8 +96,8 @@
 
       },
       messages :{
-        field_name: {
-          required : 'Please Enter Partner',
+        partner: {
+          required : 'Wybierz Partnera do przydzielenia wizyty',
         },
 
 
@@ -121,7 +115,6 @@
       },
     });
   });
-
 </script>
 
 @endsection

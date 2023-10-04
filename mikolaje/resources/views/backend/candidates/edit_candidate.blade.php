@@ -1,6 +1,16 @@
+{{-- Początek HEAD --}}
+@section('CSSscripts')
+
+@endsection
+{{-- Koniec HEAD --}}
+
+
+{{-- Początek BODY --}}
+
 @extends('admin.admin_dashboard')
 
 @section('admin')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
 <div class="page-content">
 
@@ -22,61 +32,38 @@
               <h4>Edycja Kandydata #{{ $types->id }}</h4>
             </div>
             <div class="card-body">
-                <form method="post" action="{{ route('update.candidate') }}"
+                <form id="myForm" method="post" action="{{ route('update.candidate') }}"
                 class="forms-sample">
                 @csrf
                 <h4>Dane Kandydata/ki</h4>
                 <input type="hidden" name="id" value="{{$types->id}}">
-                <div class="row mb-3">
+                <div class="form-group row mb-3">
                   <div class="col-md-6">
                     Imię
-                    <input type="text" name= "candidate_firstname" class="form-control
-                    @error('candidate_firstname') is-invalid @enderror"  value="{{ $types->candidate_firstname }}" required>
-
-                    @error ('candidate_firstname')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <input type="text" name= "candidate_firstname" class="form-control"  value="{{ $types->candidate_firstname }}" required>
                   </div>
                   <div class="col-md-6">
                     Nazwisko
-                    <input type="text" name= "candidate_lastname" class="form-control
-                    @error('candidate_lastname') is-invalid @enderror"  value="{{ $types->candidate_lastname }}" required>
-
-                    @error ('candidate_lastname')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <input type="text" name= "candidate_lastname" class="form-control"  value="{{ $types->candidate_lastname }}" required>
                   </div>
                 </div>
-                <div class="row mb-3">
+                <div class="form-group row mb-3">
                   <div class="col-md-6">
                     Telefon
-                    <input type="text" name= "candidate_phone" class="form-control
-                    @error('candidate_phone') is-invalid @enderror"  value="{{ $types->candidate_phone }}" required>
-
-                    @error ('candidate_phone')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <input type="text" name= "candidate_phone" class="form-control"  value="{{ $types->candidate_phone }}" required>
                   </div>
                   <div class="col-md-6">
                     E-mail
-                    <input name="candidate_email" class="form-control mb-4 mb-md-0
-                    @error('candidate_email') is-invalid @enderror" data-inputmask="'alias': 'email'" inputmode="email" value="{{ $types->candidate_email }}">
-
-                    @error ('candidate_email')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <input name="candidate_email" class="form-control mb-4 mb-md-0" data-inputmask="'alias': 'email'" inputmode="email" value="{{ $types->candidate_email }}">
                   </div>
                 </div>
-                <div class="row mb-3">
+                <div class="form-group row mb-3">
                   <div class="col-md-4">
                     Praca jako:
-                    <select class="form-select" id="jobAs" name="job_as" value="{{ $types->candidate_email }}">
+                    <select class="form-select" id="jobAs" name="job_as" value="{{ $types->job_as }}">
                       <option value="santa">Mikołaj</option>
                       <option value="elf">Elf</option>
                       <option value="snowflake">Śnieżynka</option>
-                      @error ('job_as')
-                      <span class="text-danger">{{ $message }}</span>
-                      @enderror
                     </select>
                   </div>
                 </div>
@@ -89,41 +76,21 @@
                 <div class="row mb-3">
                   <div class="col-md-6">
                     Gdzie chcesz pracować?
-                    <input type="text" name= "location_city" class="form-control
-                    @error('location_city') is-invalid @enderror" value="{{ $types->location_city }}">
-
-                    @error ('location_city')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <input type="text" name= "location_city" class="form-control" value="{{ $types->location_city }}">
                   </div>
                 </div>
-                <div class="row mb-3">
+                <div class="form-group row mb-3">
                   <div class="col-md-3">
                     Ile masz lat?
-                    <input type="text" name= "candidate_age" class="form-control
-                    @error('candidate_age') is-invalid @enderror" value="{{ $types->candidate_age }}">
-
-                    @error ('candidate_age')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <input type="text" name= "candidate_age" class="form-control" value="{{ $types->candidate_age }}">
                   </div>
                   <div class="col-md-3">
                     Wzrost
-                    <input type="text" name= "candidate_growth" class="form-control
-                    @error('candidate_growth') is-invalid @enderror" value="{{ $types->candidate_growth }}">
-
-                    @error ('candidate_growth')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <input type="text" name= "candidate_growth" class="form-control" value="{{ $types->candidate_growth }}">
                   </div>
                   <div class="col-md-3">
                     Waga
-                    <input type="text" name= "candidate_weight" class="form-control
-                    @error('candidate_weight') is-invalid @enderror" value="{{ $types->candidate_weight }}">
-
-                    @error ('candidate_weight')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <input type="text" name= "candidate_weight" class="form-control" value="{{ $types->candidate_weight }}">
                   </div>
                   <div class="col-md-3">
                     Rozmiar ubrań
@@ -135,9 +102,6 @@
                       <option value="XL">XL</option>
                       <option value="XXL">XXL</option>
                       <option value="XXXL">XXXL</option>
-                      @error ('cloth_size')
-                      <span class="text-danger">{{ $message }}</span>
-                      @enderror
                     </select>
                   </div>
                 </div>
@@ -193,7 +157,8 @@
                   </div>
                   @endif
                 </div>
-                <button type="submit" class="btn btn-primary me-2">Zapisz zmiany</button>
+                <br/>
+                <button type="submit" class="btn btn-inverse-success">Zapisz zmiany</button>&nbsp;&nbsp;&nbsp;
                 <a href="{{ route('show.all.candidates') }}" class="btn btn-inverse-warning">Cofnij</a>
               </form>
             </div>
@@ -208,4 +173,94 @@
 
 
 
-@endsection
+<script type="text/javascript">
+    $(document).ready(function (){
+      $('#myForm').validate({
+        rules: {
+          candidate_firstname: {
+            required : true,
+          },
+          candidate_lastname: {
+            required : true,
+          },
+          candidate_phone: {
+            required : true,
+          },
+          candidate_email: {
+            required : true,
+          },
+          job_as: {
+            required : true,
+          },
+          location_city: {
+            required : true,
+          },
+          candidate_age: {
+            required : true,
+          },
+          candidate_growth: {
+            required : true,
+          },
+          candidate_weight: {
+            required : true,
+          },
+          cloth_size: {
+            required : true,
+          },
+
+
+        },
+        messages :{
+          candidate_firstname: {
+            required : 'Podaj imię',
+          },
+          candidate_lastname: {
+            required : 'Podaj Nazwisko',
+          },
+          candidate_phone: {
+            required : 'Podaj nr telefonu',
+          },
+          candidate_email: {
+            required : 'Podaj adres email',
+          },
+          job_as: {
+            required : 'Wybierz rolę w pracy',
+          },
+          location_city: {
+            required : 'Podaj miasto, w którym chcesz się pracować',
+          },
+          candidate_age: {
+            required : 'Podaj swój wiek',
+          },
+          candidate_growth: {
+            required : 'Podaj swój wzrost',
+          },
+          candidate_weight: {
+            required : 'Podaj swoją wagę',
+          },
+          cloth_size: {
+            required : 'Podaj swój rozmiar ubrań',
+          },
+
+
+        },
+        errorElement : 'span',
+        errorPlacement: function (error,element) {
+          error.addClass('invalid-feedback');
+          element.closest('.form-group').append(error);
+        },
+        highlight : function(element, errorClass, validClass){
+          $(element).addClass('is-invalid');
+        },
+        unhighlight : function(element, errorClass, validClass){
+          $(element).removeClass('is-invalid');
+        },
+      });
+    });
+  </script>
+
+  @endsection
+
+  @section('JSscripts')
+  <script src="{{ asset('backend/assets/js/code/validate.min.js') }}"></script>
+  @endsection

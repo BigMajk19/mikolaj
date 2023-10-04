@@ -1,6 +1,16 @@
+{{-- Początek HEAD --}}
+@section('CSSscripts')
+
+@endsection
+{{-- Koniec HEAD --}}
+
+
+{{-- Początek BODY --}}
+
 @extends('admin.admin_dashboard')
 
 @section('admin')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
 <div class="page-content">
 
@@ -22,11 +32,10 @@
               <h4>Dodaj nową Wizytę</h4>
             </div>
             <div class="card-body">
-              <form method="post" action="{{ route('store.visit') }}"
-                class="forms-sample">
+              <form id="myForm" method="post" action="{{ route('store.visit') }}" class="forms-sample">
                 @csrf
                 <h4>Dane wizyty</h4>
-                <div class="row mb-3">
+                <div class="form-group row mb-3">
                   <div class="col-md-6">
                     <select class="form-select" id="typeOfVisit" name="type_name" >
                       <option selected="" disabled="">Rodzaj wizyty</option>
@@ -51,7 +60,7 @@
                     </select>
                   </div>
                 </div>
-                <div class="row mb-3">
+                <div class="form-group row mb-3">
                   <div class="col-md-3">
                     <select class="form-select" id="lengthVisit" name="length_visit" >
                       <option selected="" disabled="">Długość wizyty</option>
@@ -62,12 +71,7 @@
                     </select>
                   </div>
                   <div class="col-md-2">
-                    <input type="number" name= "visit_qty" class="form-control
-                    @error('visit_qty') is-invalid @enderror" placeholder="Ilość" required>
-
-                    @error ('visit_qty')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <input type="number" name= "visit_qty" class="form-control" placeholder="Ilość" required>
                   </div>
                   <div class="col-md-3">
                     <select class="form-select" id="guaranted" name="guaranted">
@@ -76,16 +80,11 @@
                       <option value="yes">Tak</option>
                     </select>
                   </div>
-                  <div class="col-md-4">
-                    <input type="text" name= "price" class="form-control
-                    @error('price') is-invalid @enderror" placeholder="Cena">
-
-                    @error ('price')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                  <div class="form-group col-md-4">
+                    <input type="text" name= "price" class="form-control" placeholder="Cena">
                   </div>
                 </div>
-                <div class="row mb-3">
+                <div class="form-group form-group row mb-3">
                   <div class="col-md-4">
                     <select class="form-select" id="intervalHours" name="interval_hours" >
                       <option selected="" disabled="">Przedział godzinowy</option>
@@ -141,20 +140,12 @@
                       <option>20:15 - 22:15</option>
                       <option>20:30 - 22:30</option>
                       <option>20:45 - 22:45</option>
-                      @error ('interval_hours')
-                      <span class="text-danger">{{ $message }}</span>
-                      @enderror
                     </select>
                   </div>
                   <div class="col-md-4">
                     <div class="input-group flatpickr" id="flatpickr-date">
-                      <input type="text" name= "visit_date" class="form-control flatpickr-input
-                      @error('visit_date') is-invalid @enderror"  data-input="" placeholder="Data wizyty" >
+                      <input type="text" name= "visit_date" class="form-control flatpickr-input"  data-input="" placeholder="Data wizyty" >
                       <span class="input-group-text input-group-addon" data-toggle=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
-
-                      @error ('visit_date')
-                      <span class="text-danger">{{ $message }}</span>
-                      @enderror
                     </div>
                   </div>
                   <div class="col-md-4">
@@ -173,30 +164,15 @@
                 </div>
                 <h4>Dane Zamawiającego</h4>
                 <!-- Dane zamawiającego Osoba prywatna -->
-                <div class="row mb-3">
+                <div class="form-group row mb-3">
                   <div class="col-md-6">
-                    <input type="text" name= "client_name" class="form-control
-                    @error('client_name') is-invalid @enderror" placeholder="Imię i Nazwisko">
-
-                    @error ('client_name')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <input type="text" name= "client_name" class="form-control" placeholder="Imię i Nazwisko">
                   </div>
                   <div class="col-md-3">
-                    <input type="text" name= "phone" class="form-control
-                    @error('phone') is-invalid @enderror" placeholder="Telefon">
-
-                    @error ('phone')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <input type="text" name= "phone" class="form-control" placeholder="Telefon">
                   </div>
                   <div class="col-md-3">
-                    <input name="email" class="form-control mb-4 mb-md-0
-                    @error('email') is-invalid @enderror" data-inputmask="'alias': 'email'" inputmode="email" placeholder="E-mail">
-
-                    @error ('email')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <input name="email" class="form-control mb-4 mb-md-0" data-inputmask="'alias': 'email'" inputmode="email" placeholder="E-mail">
                   </div>
                 </div>
                 <div class="form-check form-switch mb-2">
@@ -206,28 +182,13 @@
                 <!-- Dane zamawiającego Firma -->
                 <div class="row mb-3">
                   <div class="col-md-3">
-                    <input type="text" name= "invoice_NIP" class="form-control
-                    @error('invoice_NIP') is-invalid @enderror" placeholder="NIP">
-
-                    @error ('invoice_NIP')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <input type="text" name= "invoice_NIP" class="form-control" placeholder="NIP">
                   </div>
                   <div class="col-md-4">
-                    <input type="text" name= "invoice_company_name" class="form-control
-                    @error('invoice_company_name') is-invalid @enderror" placeholder="Nazwa firmy">
-
-                    @error ('invoice_company_name')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <input type="text" name= "invoice_company_name" class="form-control" placeholder="Nazwa firmy">
                   </div>
                   <div class="col-md-5">
-                    <input type="text" name= "invoice_company_adress" class="form-control
-                    @error('invoice_company_adress') is-invalid @enderror" placeholder="Adres siedziby">
-
-                    @error ('invoice_company_adress')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <input type="text" name= "invoice_company_adress" class="form-control" placeholder="Adres siedziby">
                   </div>
                 </div>
                 <!-- Dane adresowe wizyty -->
@@ -238,69 +199,34 @@
                     <input type="text" id= "companyOrder" name= "facility_name" class="form-control" placeholder="Nazwa placówki">
                   </div>
                 </div>
-                <div class="row mb-3">
+                <div class="form-group row mb-3">
                   <div class="col-md-6">
-                    <input type="text" name= "street_address" class="form-control
-                    @error('street_address') is-invalid @enderror" placeholder="Ulica">
-
-                    @error ('street_address')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <input type="text" name= "street_address" class="form-control" placeholder="Ulica">
                   </div>
                   <div class="col-md-3">
-                    <input type="text" name= "street_number" class="form-control
-                    @error('street_number') is-invalid @enderror" placeholder="Nr domu">
-
-                    @error ('street_number')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <input type="text" name= "street_number" class="form-control" placeholder="Nr domu">
                   </div>
                   <div class="col-md-3">
-                    <input type="text" name= "flat_number" class="form-control
-                    @error('flat_number') is-invalid @enderror" placeholder="Nr lok.">
-
-                    @error ('flat_number')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <input type="text" name= "flat_number" class="form-control" placeholder="Nr lok.">
                   </div>
                 </div>
-                <div class="row mb-3">
+                <div class="form-group row mb-3">
                   <div class="col-md-4">
-                    <input type="text" name= "voivodeship" class="form-control
-                    @error('voivodeship') is-invalid @enderror" placeholder="Województwo">
-
-                    @error ('voivodeship')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <input type="text" name= "voivodeship" class="form-control" placeholder="Województwo">
                   </div>
                   <div class="col-md-4">
-                    <input type="text" name= "city" class="form-control
-                    @error('city') is-invalid @enderror" placeholder="Miasto">
-
-                    @error ('city')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <input type="text" name= "city" class="form-control" placeholder="Miasto">
                   </div>
                   <div class="col-md-4">
                     <input type="text" name= "district" class="form-control" placeholder="Dzielnica">
                   </div>
                 </div>
-                <div class="row mb-3">
+                <div class="form-group row mb-3">
                   <div class="col-md-4">
-                    <input name="zipcode" placeholder="Kod pocztowy" class="form-control
-                    @error('zipcode') is-invalid @enderror" data-inputmask-alias="99-999" inputmode="text">
-
-                    @error ('zipcode')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <input name="zipcode" placeholder="Kod pocztowy" class="form-control" data-inputmask-alias="99-999" inputmode="text">
                   </div>
                   <div class="col-md-4">
-                    <input type="text" name= "counties" class="form-control
-                    @error('counties') is-invalid @enderror" placeholder="Miejscowość">
-
-                    @error ('counties')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <input type="text" name= "counties" class="form-control" placeholder="Miejscowość">
                   </div>
                   <div class="col-md-4">
                     <select class="form-select" id="driveFee" name="drive_fee" >
@@ -312,7 +238,7 @@
                   </div>
                 </div>
                 <!-- Zgody -->
-                <div class="form-check form-switch mb-2">
+                <div class="form-group form-check form-switch mb-2">
                   <input type="checkbox" name="accepted_statue" class="form-check-input" required>
                   <label class="form-check-label" for="formSwitch1">Akceptuję Regulamin</label>
                 </div>
@@ -324,7 +250,8 @@
                   <input type="checkbox" name="remind_visit" class="form-check-input">
                   <label class="form-check-label" for="formSwitch1">Przypomnij o wizycie</label>
                 </div>
-                <button type="submit" class="btn btn-primary me-2">Zapisz zmiany</button>
+                <br/>
+                <button type="submit" class="btn btn-inverse-success">Zapisz zmiany</button>&nbsp;&nbsp;&nbsp;
                 <a href="{{ route('show.all.visits') }}" class="btn btn-inverse-warning">Cofnij</a>
               </form>
             </div>
@@ -332,11 +259,145 @@
         </div>
       </div>
     </div>
-    <!-- middle wrapper end -->
   </div>
-
 </div>
 
+<script type="text/javascript">
+  $(document).ready(function (){
+    $('#myForm').validate({
+      rules: {
+        type_name: {
+          required : true,
+        },
+        visit_name: {
+          required : true,
+        },
+        length_visit: {
+          required : true,
+        },
+        guaranted: {
+          required : true,
+        },
+        interval_hours: {
+          required : true,
+        },
+        visit_date: {
+          required : true,
+        },
+        preffered_time: {
+          required : true,
+        },
+        client_name: {
+          required : true,
+        },
+        phone: {
+          required : true,
+        },
+        email: {
+          required : true,
+        },
+        street_address: {
+          required : true,
+        },
+        street_number: {
+          required : true,
+        },
+        voivodeship: {
+          required : true,
+        },
+        city: {
+          required : true,
+        },
+        zipcode: {
+          required : true,
+        },
+        visit_qty: {
+          required : true,
+        },
+        price: {
+          required : true,
+        },
+        accepted_statue: {
+          required : true,
+        },
 
 
+      },
+      messages :{
+        type_name: {
+          required : 'Podaj rodzaj wizyty',
+        },
+        visit_name: {
+          required : 'Podaj nazwę wizyty',
+        },
+        length_visit: {
+          required : 'Podaj długość wizyty',
+        },
+        guaranted: {
+          required : 'Czy wizyta ma być gwarantowana?',
+        },
+        interval_hours: {
+          required : 'Podaj przedział godzinowy',
+        },
+        visit_date: {
+          required : 'Podaj datę wizyty',
+        },
+        preffered_time: {
+          required : 'Podaj preferowaną godzinę wizyty',
+        },
+        client_name: {
+          required : 'Podaj Imię i Nazwisko klienta',
+        },
+        phone: {
+          required : 'Podaj telefon klienta',
+        },
+        email: {
+          required : 'Podaj e-mail klienta',
+        },
+        street_address: {
+          required : 'Podaj ulicę Wizyty',
+        },
+        street_number: {
+          required : 'Podaj numer ulicy',
+        },
+        voivodeship: {
+          required : 'Podaj województwo wizyty',
+        },
+        city: {
+          required : 'Podaj miasto wizyty',
+        },
+        zipcode: {
+          required : 'Podaj kod pocztowy wizyty',
+        },
+        visit_qty: {
+          required : 'Musisz podać ilość wizyt',
+        },
+        price: {
+          required : 'Proszę wpisać cenę',
+        },
+        accepted_statue: {
+          required : 'Musisz zaakceptować Regulamin',
+        },
+
+
+      },
+      errorElement : 'span',
+      errorPlacement: function (error,element) {
+        error.addClass('invalid-feedback');
+        element.closest('.form-group').append(error);
+      },
+      highlight : function(element, errorClass, validClass){
+        $(element).addClass('is-invalid');
+      },
+      unhighlight : function(element, errorClass, validClass){
+        $(element).removeClass('is-invalid');
+      },
+    });
+  });
+</script>
+
+@endsection
+
+@section('JSscripts')
+<script src="{{ asset('backend/assets/js/code/validate.min.js') }}"></script>
 @endsection

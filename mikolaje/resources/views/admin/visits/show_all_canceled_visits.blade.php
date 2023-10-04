@@ -5,8 +5,6 @@
 <script src="{{ asset('backend/assets/vendors/datatables.net/jquery.dataTables.min.css') }}"></script>
 {{-- Responsive --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/vendors/responsive/responsive.bootstrap5.min.css') }}">
-{{-- Buttons --}}
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css">
 {{-- ColReorder --}}
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/colreorder/1.7.0/css/colReorder.bootstrap5.min.css">
 {{-- KeyTables --}}
@@ -52,14 +50,8 @@
                   <th>Rodzaj Wizyty: </th>
                   <th>Długość: </th>
                   <th>Data Wizyty: </th>
-                  <th>Telefon: </th>
-                  <th>Przedział godzinowy: </th>
-                  <th>GW: </th>
                   <th>Miejscowość: </th>
-                  <th>Dzielnica: </th>
-                  <th>Adres: </th>
                   <th>Województwo: </th>
-                  <th>Przydziel: </th>
                 </tr>
               </thead>
 
@@ -70,15 +62,8 @@
                   <td>{{ $item->type_name }} {{ $item->visit_name }}</td>
                   <td>{{ $item->length_visit*$item->visit_qty }} min.</td>
                   <td>{{ $item->visit_date }}</td>
-                  <td><a href="tel:{{ $item->phone }}">{{ $item->phone }}</a></td>
-                  <td>{{ $item->interval_hours }}</td>
-                  <td>{{ $item->guaranted }}</td>
                   <td>{{ $item->city }}</td>
-                  <td>{{ $item->district }}</td>
-                  <td><a target="blank" href="https://www.google.pl/maps/place/{{ $item->street_address }}+{{ $item->street_number }},+{{ $item->zipcode }}+{{ $item->city }}">
-                    {{ $item->street_address }} {{ $item->street_number }} /{{ $item->flat_number }}</a></td>
                   <td>{{ $item->voivodeship }}</td>
-                  <td>dropdown</td>
                 </tr>
                 @endforeach
               </tbody>
@@ -88,14 +73,8 @@
                     <th>Rodzaj Wizyty</th>
                     <th>Długość</th>
                     <th>Data Wizyty</th>
-                    <th>Telefon</th>
-                    <th>Przedział godzinowy</th>
-                    <th>GW</th>
                     <th>Miejscowość</th>
-                    <th>Dzielnica</th>
-                    <th>Adres</th>
                     <th>Województwo</th>
-                    <th>Przydziel</th>
                   </tr>
               </tfoot>
             </table>
@@ -118,15 +97,6 @@
 {{-- Responsive --}}
 <script src="{{ asset('backend/assets/vendors/responsive/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('backend/assets/vendors/responsive/responsive.bootstrap5.min.js') }}"></script>
-{{-- Buttons --}}
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.bootstrap5.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
 {{-- ColReorder --}}
 <script src="https://cdn.datatables.net/colreorder/1.7.0/js/dataTables.colReorder.min.js"></script>
 {{-- KeyTables --}}
