@@ -60,7 +60,7 @@
                   <th>Opis: </th>
                   <th>CV: </th>
                   <th>dropdown</th>
-                  <th>Opcje: </th>
+                  <th></th>
                 </tr>
               </thead>
 
@@ -122,7 +122,7 @@
                   <th>Opis: </th>
                   <th>CV: </th>
                   <th>dropdown</th>
-                  <th>Opcje: </th>
+                  <th></th>
                 </tr>
               </tfoot>
             </table>

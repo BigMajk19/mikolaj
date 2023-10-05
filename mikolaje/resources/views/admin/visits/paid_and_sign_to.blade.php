@@ -49,18 +49,12 @@
               <thead>
                 <tr>
                   <th>Id</th>
-                  <th>Rodzaj Wizyty: </th>
-                  <th>Długość: </th>
                   <th>Data Wizyty: </th>
                   <th>Telefon: </th>
-                  <th>Przedział godzinowy: </th>
-                  <th>GW: </th>
                   <th>Miejscowość: </th>
-                  <th>Dzielnica: </th>
-                  <th>Adres: </th>
                   <th>Województwo: </th>
-                  <th>Przydziel: </th>
-                  <th>Opcje: </th>
+                  <th>Partner</th>
+                  <th></th>
                 </tr>
               </thead>
 
@@ -68,20 +62,13 @@
                 @foreach($show as $key => $item)
                 <tr>
                   <td>{{ $item->id }}</td>
-                  <td>{{ $item->type_name }} {{ $item->visit_name }}</td>
-                  <td>{{ $item->length_visit*$item->visit_qty }} min.</td>
                   <td>{{ $item->visit_date }}</td>
                   <td><a href="tel:{{ $item->phone }}">{{ $item->phone }}</a></td>
-                  <td>{{ $item->interval_hours }}</td>
-                  <td>{{ $item->guaranted }}</td>
                   <td>{{ $item->city }}</td>
-                  <td>{{ $item->district }}</td>
-                  <td><a target="blank" href="https://www.google.pl/maps/place/{{ $item->street_address }}+{{ $item->street_number }},+{{ $item->zipcode }}+{{ $item->city }}">
-                    {{ $item->street_address }} {{ $item->street_number }} /{{ $item->flat_number }}</a></td>
                   <td>{{ $item->voivodeship }}</td>
-                  <td>dropdown</td>
+                  <td>{{ $item->partner }}</td>
                   <td>
-                    <a href="{{ route('cancel.new.visit',$item->id) }}" class="btn btn-inverse-danger" id="delete">Anuluj wizytę</a>
+                    <a href="{{ route('cancel.new.visit',$item->id) }}" class="btn btn-inverse-danger" id="cancel">Anuluj wizytę</a>
                   </td>
                 </tr>
                 @endforeach
@@ -89,18 +76,12 @@
               <tfoot>
                 <tr>
                     <th>Id</th>
-                    <th>Rodzaj Wizyty</th>
-                    <th>Długość</th>
                     <th>Data Wizyty</th>
                     <th>Telefon</th>
-                    <th>Przedział godzinowy</th>
-                    <th>GW</th>
                     <th>Miejscowość</th>
-                    <th>Dzielnica</th>
-                    <th>Adres</th>
                     <th>Województwo</th>
-                    <th>Przydziel</th>
-                    <th>Opcje</th>
+                    <th>Partner</th>
+                    <th></th>
                   </tr>
               </tfoot>
             </table>

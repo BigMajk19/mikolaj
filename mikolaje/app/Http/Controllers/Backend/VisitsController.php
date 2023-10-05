@@ -24,37 +24,6 @@ class VisitsController extends Controller
 
     public function StoreVisit(Request $request)
     {
-        $request->validate([
-            'type_name' => 'required|unique:visits_types|max:200',
-            'visit_name' => 'required',
-            'length_visit' => 'required',
-            'visit_qty' => 'required',
-            'facility_name' => '',
-            'client_name' => 'required',
-            'phone' => 'required',
-            'email' => 'required',
-            'visit_date' => 'required',
-            'preffered_time' => '',
-            'interval_hours' => '',
-            'guaranted' => '',
-            'price' => '',
-            'additional_information' => '',
-            'street_address' => 'required',
-            'street_number' => 'required',
-            'flat_number' => '',
-            'district' => '',
-            'city' => 'required',
-            'zipcode' => 'required',
-            'voivodeship' => 'required',
-            'counties' => '',
-            'drive_fee' => '',
-            'invoice_company_name' => '',
-            'invoice_NIP' => '',
-            'invoice_company_adress' => '',
-            'accepted_statue' => 'required',
-            'accepted_marketing' => '',
-            'remind_visit' => '',
-        ]);
 
         VisitsSubmissions::insert([
 
@@ -154,7 +123,7 @@ class VisitsController extends Controller
         return redirect()->back()->with($notification);
     }
 
-    // For Showing New Visits
+    // For Showing Visits
 
     public function ShowVisitsNew()
     {
@@ -204,6 +173,16 @@ class VisitsController extends Controller
 
         return view('admin.visits.paid_and_sign_to',compact('show'));
     }
+
+    public function ShowVisitsRealized()
+    {
+        $show = VisitsSubmissions::where('status', 'realized')->get();
+
+
+        return view('admin.visits.show_realized_visits',compact('show'));
+    }
+
+
 
 
     // For Service New Visits
@@ -292,12 +271,6 @@ class VisitsController extends Controller
 
     // For showing Realized Visits
 
-    public function ShowVisitsRealized()
-    {
-        $show = VisitsSubmissions::where('status', 'realized')->get();
 
-
-        return view('admin.visits.show_realized_visits',compact('show'));
-    }
 
 }

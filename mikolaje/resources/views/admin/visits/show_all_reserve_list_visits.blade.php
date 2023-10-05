@@ -60,7 +60,7 @@
                   <th>Adres: </th>
                   <th>Województwo: </th>
                   <th>Przydziel: </th>
-                  <th>Opcje: </th>
+                  <th></th>
                 </tr>
               </thead>
 
@@ -101,7 +101,7 @@
                     <th>Adres</th>
                     <th>Województwo</th>
                     <th>Przydziel</th>
-                    <th>Opcje</th>
+                    <th></th>
                   </tr>
               </tfoot>
             </table>

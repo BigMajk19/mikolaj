@@ -74,7 +74,7 @@
                   </div>
                 </div>
                 <br/>
-                <button type="submit" class="btn btn-inverse-success">Zapisz zmiany</button>&nbsp;&nbsp;&nbsp;
+                <button type="submit" class="btn btn-inverse-success">Przypisz partnera</button>&nbsp;&nbsp;&nbsp;
                 <a href="{{ route('show.visits.not_sign_to') }}" class="btn btn-inverse-warning">Cofnij</a>
               </form>
             </div>

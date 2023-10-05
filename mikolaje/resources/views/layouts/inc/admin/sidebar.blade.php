@@ -103,89 +103,30 @@
           </ul>
         </div>
       </li>
-        <!-- 1 panel Wizyty - Poszczególne wizyty-->
+        <!-- 1 panel Wizyty - Przypisane wizyty-->
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#PoszczegolneWizyty" role="button" aria-expanded="false" aria-controls="visits">
           <i class="link-icon" data-feather="mail"></i>
-          <span class="link-title">Poszczególne wizyty</span>
+          <span class="link-title">Przypisane wizyty</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
         </a>
         <div class="collapse" id="PoszczegolneWizyty">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="{{ route('show.visits.paid_and_sign_to') }}" class="nav-link">Opłacone i przypisane ( {{ $countPaid }} )</a>
+              <a href="{{ route('show.visits.paid_and_sign_to') }}" class="nav-link">Opłacone( {{ $countPaid }} )</a>
             </li>
             <li class="nav-item">
               <a href="{{ route('show.visits.realized') }}" class="nav-link">Zrealizowane ( {{ $countRealized }} )</a>
             </li>
-            <li class="nav-item">
-              <a href="{{ route('show.visits.canceled') }}" class="nav-link">Anulowane/Rezygnacja ( {{ $countCanceled }} )</a>
-            </li>
           </ul>
         </div>
       </li>
-        <!-- 1 panel Wizyty - Przypisane wizyty-->
+        <!-- 1 panel Wizyty - Anulowane wizyty-->
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#przypisaneWizyty" role="button" aria-expanded="false" aria-controls="signtovisits">
-          <i class="link-icon" data-feather="mail"></i>
-          <span class="link-title">Przypisane wizyty</span>
-          <i class="link-arrow" data-feather="chevron-down"></i>
+        <a href="{{ route('show.visits.canceled') }}" class="nav-link">
+          <i class="link-icon" data-feather="box"></i>
+          <span class="link-title">Anulowane ( {{ $countCanceled }} )</span>
         </a>
-        <div class="collapse" id="przypisaneWizyty">
-          <ul class="nav sub-menu">
-            <li class="nav-item">
-              <a href="#" class="nav-link">Wszystkie ( {{ $countSignVisits }} )</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">mazowieckie ( 000 )</a>
-            </li>
-            {{-- <li class="nav-item">
-              <a href="#" class="nav-link">dolnośląskie</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">kujawsko-pomorskie</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">lubelskie</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">lubuskie</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">łódzkie</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">małopolskie</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">opolskie</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">podkarpackie</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">podlaskie</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">pomorskie</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">śląskie</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">świętokrzyskie</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">warmińsko-mazurskie</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">wielkopolskie</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">zachodniopomorskie</a>
-            </li> --}}
-          </ul>
-        </div>
       </li>
     <!-- 2 panel KONDYDACI DO PRACY-->
       <li class="nav-item nav-category">

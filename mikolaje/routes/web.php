@@ -93,6 +93,9 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
         // Option for Realized Visits
         Route::get('show/visits/realized', 'ShowVisitsRealized')->name('show.visits.realized');
 
+        // For showing Sing To Visits
+
+
     });
 
 
