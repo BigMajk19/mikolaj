@@ -56,12 +56,19 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
 
     //For Visits Controller
     Route::controller(VisitsTypeController::class)->group(function () {
+        //For Type Visits
         Route::get('all/typevisits', 'AllType')->name('all.typevisits');
         Route::get('add/type', 'AddType')->name('add.type');
         Route::post('store/type', 'StoreType')->name('store.type');
         Route::get('edit/type/{id}', 'EditType')->name('edit.type_visits');
         Route::post('update/type', 'UpdateType')->name('update.type');
         Route::get('delete/type/{id}', 'DeleteType')->name('delete.type_visits');
+        //For Name Visits
+        Route::get('add/name', 'AddNameVisit')->name('add.name.visit');
+        Route::post('store/name', 'StoreNameVisit')->name('store.name.visit');
+        Route::get('edit/name/{id}', 'EditNameVisit')->name('edit.name.visit');
+        Route::post('update/name', 'UpdateNameVisit')->name('update.name.visit');
+        Route::get('delete/name/{id}', 'DeleteNameVisit')->name('delete.name.visit');
 
     });
 
@@ -121,6 +128,17 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
 
     });
 
+    //For Showing Partners
+    Route::controller(PartnerController::class)->group(function () {
+        Route::get('show/partners/active', 'ShowActivePartners')->name('show.partners.active');
+        Route::get('show/partners/notactive', 'ShowNotActivePartners')->name('show.partners.notactive');
+        // Route::post('store/candidate', 'StoreNewCandidate')->name('store.candidate');
+        // Route::get('edit/candidate/{id}', 'EditNewCandidate')->name('edit.candidate');
+        // Route::post('update/candidate', 'UpdateNewCandidate')->name('update.candidate');
+        // Route::get('delete/candidate/{id}', 'DeleteCandidate')->name('delete.candidate');
+
+
+    });
 
 }); //End Admin Middleware Group
 

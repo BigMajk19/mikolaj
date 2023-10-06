@@ -15,6 +15,8 @@
     $countAllSantas = App\Models\Candidates::where('job_as', 'santa')->count();
     $countAllSnowflakes = App\Models\Candidates::where('job_as', 'snowflake')->count();
     $countAllElfs = App\Models\Candidates::where('job_as', 'elf')->count();
+    $countActivePartners = App\Models\Partners::where('partner_status', 'active')->count();
+    $countNotActivePartners = App\Models\Partners::where('partner_status', 'notactive')->count();
 @endphp
 
 <nav class="sidebar">
@@ -31,7 +33,7 @@
   </div>
   <div class="sidebar-body overflow-auto">
     <ul class="nav">
-      <!-- panel MAIN-->
+    <!-- panel MAIN-->
       <li class="nav-item nav-category">
         Main
       </li>
@@ -41,7 +43,7 @@
               <span class="link-title">Dashboard</span>
           </a>
       </li>
-      <!-- Panel Poczty-->
+    <!-- Panel Poczty-->
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
           <i class="link-icon" data-feather="mail"></i>
@@ -128,7 +130,7 @@
           <span class="link-title">Anulowane ( {{ $countCanceled }} )</span>
         </a>
       </li>
-    <!-- 2 panel KONDYDACI DO PRACY-->
+    <!-- 2 panel KANDYDACI DO PRACY-->
       <li class="nav-item nav-category">
         Kandydaci do pracy
       </li>
@@ -334,15 +336,15 @@
       </li>
       <!-- 3 panel Partnerzy - Współpracujący-->
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#partnerzyWspolpracujacy" role="button" aria-expanded="false" aria-controls="general-pages">
+        <a class="nav-link" data-bs-toggle="collapse" href="#ActivePartners" role="button" aria-expanded="false" aria-controls="general-pages">
           <i class="link-icon" data-feather="book"></i>
           <span class="link-title">Współpracujący</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
         </a>
-        <div class="collapse" id="partnerzyWspolpracujacy">
+        <div class="collapse" id="ActivePartners">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="#" class="nav-link">Wszyscy Partnerzy</a>
+              <a href="{{ route('show.partners.active') }}" class="nav-link">Wszyscy Partnerzy ( {{ $countActivePartners }} )</a>
             </li>
             {{-- <li class="nav-item">
               <a href="#" class="nav-link">mazowieckie</a>
@@ -397,15 +399,15 @@
       </li>
       <!-- 3 panel Partnerzy - Kandydaci-->
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#kandydaciPartnerzy" role="button" aria-expanded="false" aria-controls="authPages">
+        <a class="nav-link" data-bs-toggle="collapse" href="#NotActivePartners" role="button" aria-expanded="false" aria-controls="authPages">
           <i class="link-icon" data-feather="unlock"></i>
           <span class="link-title">Kandydaci</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
         </a>
-        <div class="collapse" id="kandydaciPartnerzy">
+        <div class="collapse" id="NotActivePartners">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="#" class="nav-link">Wszyscy kandydaci</a>
+              <a href="{{ route('show.partners.notactive') }}" class="nav-link">Wszyscy kandydaci ( {{ $countNotActivePartners }} )</a>
             </li>
             {{-- <li class="nav-item">
               <a href="#" class="nav-link">mazowieckie</a>

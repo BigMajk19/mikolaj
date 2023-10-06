@@ -18,7 +18,8 @@ return new class extends Migration
             $table->integer('length_visit')->nullable();
             $table->integer('visit_qty')->nullable();
             $table->string('facility_name')->nullable();
-            $table->string('client_name')->nullable();
+            $table->string('client_firstname')->nullable();
+            $table->string('client_lastname')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->date('visit_date')->nullable();

@@ -11,9 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('visits_types', function (Blueprint $table) {
+        Schema::create('visits_names', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('type_name');
+            $table->string('visit_name');
+            $table->string('visit_length');
+            $table->string('visit_price_net');
+            $table->string('visit_price_gross');
+            $table->string('visit_image')->nullable();
             $table->timestamps();
         });
     }
@@ -23,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('visits_types');
+        Schema::dropIfExists('visits_names');
     }
 };

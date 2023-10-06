@@ -7,7 +7,7 @@ $(function(){
         text: "Ta operacja usunie dane bezpowrotnie.",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
+        confirmButtonColor: '#34b825',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Tak, usuń!'
       }).then((result) => {
@@ -33,7 +33,7 @@ $(function(){
         text: "Czy napewno chcesz anulować wizytę?",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
+        confirmButtonColor: '#34b825',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Tak, anuluj!'
       }).then((result) => {
@@ -58,7 +58,7 @@ $(function(){
         text: "Czy napewno chcesz zmienić status wizyty z \"Lista Rezerwowa\" na \"Nowa Wizyta\"?",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
+        confirmButtonColor: '#34b825',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Tak, potwierdź!'
       }).then((result) => {
@@ -82,7 +82,7 @@ $(function(){
         text: "Ta operacja usunie dane bezpowrotnie.",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
+        confirmButtonColor: '#34b825',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Tak, usuń!'
       }).then((result) => {
@@ -108,7 +108,7 @@ $(function(){
         text: "Czy napewno chcesz potwierdzić zgłoszenie wizyty?",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
+        confirmButtonColor: '#34b825',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Tak, potwierdż!'
       }).then((result) => {
@@ -133,7 +133,7 @@ $(function(){
         text: "Czy napewno chcesz potwierdzić, że wizyta została opłacona?",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
+        confirmButtonColor: '#34b825',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Tak, potwierdż!'
       }).then((result) => {

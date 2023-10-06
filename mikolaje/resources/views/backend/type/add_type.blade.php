@@ -1,6 +1,16 @@
+{{-- Początek HEAD --}}
+@section('CSSscripts')
+
+
+@endsection
+{{-- Koniec HEAD --}}
+
+
+{{-- Początek BODY --}}
 @extends('admin.admin_dashboard')
 
 @section('admin')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
 <div class="page-content">
 
@@ -9,10 +19,6 @@
 
     </div>
   </div>
-  @php
-    $id = Auth::user()->status;
-    $profileData = App\Models\User::find($id);
-  @endphp
   <div class="row profile-body">
     <div class="col-md-8 col-xl-8 middle-wrapper">
       <div class="row">
@@ -22,26 +28,16 @@
               <h4>Dodaj nową kategorią</h4>
             </div>
             <div class="card-body">
-              <form method="post" action="{{ route('store.type') }}"
+              <form id="myForm" method="post" action="{{ route('store.type') }}"
                 class="forms-sample">
                 @csrf
-                <div class="mb-3">
+                <div class="form-group mb-3">
                   <label for="exampleInputUsername1" class="form-label">Nazwa kategorii</label>
-                  <input type="text" name= "type_name" class="form-control
-                  @error('type_name') is-invalid @enderror">
-
-                  @error ('type_name')
-                  <span class="text-danger">{{ $message }}</span>
-                  @enderror
+                  <input type="text" name= "type_name" class="form-control">
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputUsername1" class="form-label">Ikona kategorii</label>
-                  <input type="text" name= "type_icon" class="form-control
-                  @error('type_icon') is-invalid @enderror">
-
-                  @error ('type_icon')
-                  <span class="text-danger">{{ $message }}</span>
-                  @enderror
+                  <input type="text" name= "type_icon" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-primary me-2">Zapisz zmiany</button>
                 <a href="{{ route('all.typevisits') }}" class="btn btn-inverse-warning">Cofnij</a>
@@ -56,6 +52,44 @@
 
 </div>
 
+<script type="text/javascript">
+  $(document).ready(function (){
+    $('#myForm').validate({
+      rules: {
+        type_name: {
+          required : true,
+        },
 
+
+      },
+      messages :{
+        type_name: {
+          required : 'Podaj nazwę kategorii.',
+        },
+
+
+      },
+      errorElement : 'span',
+      errorPlacement: function (error,element) {
+        error.addClass('invalid-feedback');
+        element.closest('.form-group').append(error);
+      },
+      highlight : function(element, errorClass, validClass){
+        $(element).addClass('is-invalid');
+      },
+      unhighlight : function(element, errorClass, validClass){
+        $(element).removeClass('is-invalid');
+      },
+    });
+  });
+</script>
 
 @endsection
+
+@section('JSscripts')
+
+<script src="{{ asset('backend/assets/js/code/validate.min.js') }}"></script>
+
+@endsection
+
+{{-- koniec BODY --}}

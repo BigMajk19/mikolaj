@@ -13,8 +13,6 @@
 {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/keytable/2.10.0/css/keyTable.bootstrap5.min.css"> --}}
 {{-- Date range filter DataTables --}}
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/datetime/1.5.1/css/dataTables.dateTime.min.css">
-{{-- Select (blue stripe) --}}
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.7.0/css/select.bootstrap5.min.css">
 
 {{-- end for DataTables --}}
 
@@ -45,7 +43,7 @@
             @include('admin.visits.dataTableRangeFilter')
             {{-- END dataTableRangeFilter --}}
             {{-- DataTable --}}
-            <table id="example" class="display table-hover table-sm table-striped dt-responsive" cellspacing="0" width="100%">
+            <table id="example" class="display table table-hover table-sm table-striped dt-responsive" cellspacing="0" width="100%">
               <thead>
                 <tr>
                   <th>Id</th>
@@ -141,8 +139,6 @@
 {{-- Date range filter DataTables --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
 <script src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></script>
-{{-- Select (blue stripe) --}}
-<script src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js"></script>
 
 {{-- end JS for DataTables --}}
 

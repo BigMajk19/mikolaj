@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('candidates', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement();
             $table->string('candidate_firstname')->nullable();
             $table->string('candidate_lastname')->nullable();
             $table->string('candidate_phone')->nullable();
@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('drive_license')->nullable();
             $table->string('work_at_xmas')->nullable();
             $table->longText('candidate_description')->nullable();
+            $table->string('candidate_photo')->nullable();
             $table->string('cv')->nullable();
             $table->string('privacy_policy')->nullable();
             $table->timestamps();
