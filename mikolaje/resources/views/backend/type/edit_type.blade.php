@@ -36,10 +36,6 @@
                   <label for="toUpdateVisitsCat" class="form-label">Nazwa kategorii</label>
                   <input type="text" name= "type_name" class="form-control" value="{{ $types->type_name }}">
                 </div>
-                <div class="mb-3">
-                  <label for="exampleInputUsername1" class="form-label">Ikona kategorii</label>
-                  <input type="text" name= "type_icon" class="form-control" value="{{ $types->type_icon }}">
-                </div>
                 <button type="submit" class="btn btn-primary me-2">Zapisz zmiany</button>
                 <a href="{{ route('all.typevisits') }}" class="btn btn-inverse-warning">Cofnij</a>
               </form>

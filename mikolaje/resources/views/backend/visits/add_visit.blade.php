@@ -10,7 +10,8 @@
 @extends('admin.admin_dashboard')
 
 @section('admin')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> --}}
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
 <div class="page-content">
 
@@ -19,10 +20,10 @@
 
     </div>
   </div>
-  @php
+  {{-- @php
     $id = Auth::user()->id;
     $profileData = App\Models\User::find($id);
-  @endphp
+  @endphp --}}
   <div class="row profile-body">
     <div class="col-md-8 col-xl-8 middle-wrapper">
       <div class="row">
@@ -37,38 +38,24 @@
                 <h4>Dane wizyty</h4>
                 <div class="form-group row mb-3">
                   <div class="col-md-6">
-                    <select class="form-select" id="typeOfVisit" name="type_name" >
+                    <label for="typeName">Rodzaj wizyty:</label>
+                    <select class="form-select" id="typeName" name="type_name" >
                       <option selected="" disabled="">Rodzaj wizyty</option>
-                      <option>Prywatna</option>
-                      <option>Przedszkolna</option>
-                      <option>Firmowa</option>
+                      @foreach($types as $key => $item)
+                      <option value="{{ $item->id }}">{{ $item->type_name }}</option>
+                      @endforeach
                     </select>
                   </div>
                   <div class="col-md-6">
+                    <label for="visitName">Nazwa wizyty:</label>
                     <select class="form-select" id="visitName" name="visit_name" >
-                      <option selected="" disabled="">Nazwa wizyty</option>
-                      <option value="SzybkiPrezent">Prywatna - SzybkiPrezent</option>
-                      <option value="Standard">Prywatna - Standard</option>
-                      <option value="EkstraM">Prywatna - EkstraM</option>
-                      <option value="Long">Prywatna - Long</option>
-                      <option value="SzybkiMikołaj">Przedszkolna - SzybkiMikołaj</option>
-                      <option value="StandardP">Przedszkolna - Standard</option>
-                      <option value="NiestandardowaP">Przedszkolna - Niestandardowa</option>
-                      <option value="SzybkaWizyta">Firmowa - SzybkaWizyta</option>
-                      <option value="StandardF">Firmowa - Standard</option>
-                      <option value="NiestandardowaF">Firmowa - Niestandardowa</option>
+
                     </select>
                   </div>
                 </div>
                 <div class="form-group row mb-3">
                   <div class="col-md-3">
-                    <select class="form-select" id="lengthVisit" name="length_visit" >
-                      <option selected="" disabled="">Długość wizyty</option>
-                      <option value="10">10 min.</option>
-                      <option value="20">20 min.</option>
-                      <option value="30">30 min.</option>
-                      <option value="60">60 min.</option>
-                    </select>
+                    <input type="text" class="form-control" id="lengthVisit" name="length_visit" readonly>
                   </div>
                   <div class="col-md-2">
                     <input type="number" name= "visit_qty" class="form-control" placeholder="Ilość" required>
@@ -81,7 +68,10 @@
                     </select>
                   </div>
                   <div class="form-group col-md-4">
-                    <input type="text" name= "price" class="form-control" placeholder="Cena">
+                    <input type="text" name= "price_net" class="form-control" id="priceNet" placeholder="Cena netto">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <input type="text" name= "price_gross" class="form-control" id="priceGross" placeholder="Cena brutto">
                   </div>
                 </div>
                 <div class="form-group form-group row mb-3">
@@ -400,4 +390,5 @@
 
 @section('JSscripts')
 <script src="{{ asset('backend/assets/js/code/validate.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/code/getVisitDataForm.js') }}"></script>
 @endsection

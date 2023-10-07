@@ -35,10 +35,6 @@
                   <label for="exampleInputUsername1" class="form-label">Nazwa kategorii</label>
                   <input type="text" name= "type_name" class="form-control">
                 </div>
-                <div class="mb-3">
-                  <label for="exampleInputUsername1" class="form-label">Ikona kategorii</label>
-                  <input type="text" name= "type_icon" class="form-control">
-                </div>
                 <button type="submit" class="btn btn-primary me-2">Zapisz zmiany</button>
                 <a href="{{ route('all.typevisits') }}" class="btn btn-inverse-warning">Cofnij</a>
               </form>

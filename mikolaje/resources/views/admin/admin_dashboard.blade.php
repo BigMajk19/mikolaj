@@ -84,7 +84,8 @@
   <script src="{{ asset('backend/assets/vendors/core/core.js') }}"></script>
   <!-- endinject -->
 
-  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
 
   <!-- Custom Plugin js for this page -->
   <script src="{{ asset('backend/assets/js/dashboard-dark.js') }}"></script>

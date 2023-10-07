@@ -29,7 +29,7 @@ class VisitsTypeController extends Controller
         VisitsType::insert([
 
             'type_name' => $request->type_name,
-            'type_icon' => $request->type_icon,
+
         ]);
         $notification = array(
             'message' => 'Pomyślnie dodano nową kategorię.',
@@ -52,7 +52,7 @@ class VisitsTypeController extends Controller
         VisitsType::findOrFail($pid)->update([
 
             'type_name' => $request->type_name,
-            'type_icon' => $request->type_icon,
+
         ]);
         $notification = array(
             'message' => 'Kategoria została pomyślnie zaktualizowana.',
@@ -137,4 +137,8 @@ class VisitsTypeController extends Controller
         );
         return redirect()->back()->with($notification);
     }
+
+
+
 }
+

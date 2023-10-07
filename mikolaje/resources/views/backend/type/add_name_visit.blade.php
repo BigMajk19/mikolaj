@@ -50,12 +50,12 @@
                   <input type="text" name= "visit_length" class="form-control">
                 </div>
                 <div class="form-group mb-3">
-                  <label for="exampleInputUsername1" class="form-label">Cena netto</label>
-                  <input type="text" name= "visit_price_net" class="form-control" id="visit_price_net">
+                  <label for="netInput" class="form-label">Cena netto</label>
+                  <input type="text" name= "visit_price_net" class="form-control" id="netInput" oninput="calculateGross()">
                 </div>
                 <div class="form-group mb-3">
-                  <label for="exampleInputUsername1" class="form-label">Cena brutto</label>
-                  <input type="text" name= "visit_price_gross" class="form-control">
+                  <label for="grossInput" class="form-label" >Cena brutto</label>
+                  <input type="text" name= "visit_price_gross" class="form-control" id="grossInput"  oninput="calculateNet()">
                 </div>
                 <button type="submit" class="btn btn-primary me-2">Zapisz zmiany</button>
                 <a href="{{ route('all.typevisits') }}" class="btn btn-inverse-warning">Cofnij</a>
@@ -65,7 +65,6 @@
         </div>
       </div>
     </div>
-    <!-- middle wrapper end -->
   </div>
 
 </div>
@@ -131,6 +130,7 @@
 @section('JSscripts')
 
 <script src="{{ asset('backend/assets/js/code/validate.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/code/calculateGrossPrice.js') }}"></script>
 
 @endsection
 

@@ -70,6 +70,7 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
         Route::post('update/name', 'UpdateNameVisit')->name('update.name.visit');
         Route::get('delete/name/{id}', 'DeleteNameVisit')->name('delete.name.visit');
 
+
     });
 
     //For Showing Visits
@@ -100,7 +101,10 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
         // Option for Realized Visits
         Route::get('show/visits/realized', 'ShowVisitsRealized')->name('show.visits.realized');
 
-        // For showing Sing To Visits
+        //For Display Data Visits in Form
+        Route::get('get/type/name/visit/{typeName}', 'GetTypeNameVisit')->name('get.type.name.visit');
+        Route::get('get/data/visit', 'GetDataVisit')->name('get.data.visit');
+
 
 
     });

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\User;
+use App\Models\VisitsName;
+use App\Models\VisitsType;
 use Illuminate\Http\Request;
 use App\Models\VisitsSubmissions;
 use App\Http\Controllers\Controller;
@@ -19,7 +21,8 @@ class VisitsController extends Controller
 
     public function AddVisit()
     {
-        return view('backend.visits.add_visit');
+        $types = VisitsType::latest()->get();
+        return view('backend.visits.add_visit', compact('types'));
     }
 
     public function StoreVisit(Request $request)
@@ -269,7 +272,32 @@ class VisitsController extends Controller
     }
 
 
-    // For showing Realized Visits
+    // For switching options in Visits Form
+    public function GetTypeNameVisit($typeName)
+    {
+        // Pobierz opcje nazw wizyt na podstawie wybranego rodzaju wizyty
+        $visitsName = VisitsName::where('type_name', $typeName)->pluck('type_name', 'id');
+
+        return response()->json($visitsName);
+    }
+
+    public function GetDataVisit($visitNameId)
+    {
+        // Pobierz długość trwania i cenę na podstawie wybranej nazwy wizyty
+        $visitName = VisitsName::find($visitNameId);
+
+        if (!$visitName) {
+            return response()->json(['error' => 'Nie znaleziono wizyty']);
+        }
+
+        $data = [
+            'lengthVisit' => $visitName->visit_length,
+            'priceNet' => $visitName->visit_price_net,
+            'priceGross' => $visitName->visit_price_gross,
+        ];
+
+        return response()->json($data);
+    }
 
 
 
