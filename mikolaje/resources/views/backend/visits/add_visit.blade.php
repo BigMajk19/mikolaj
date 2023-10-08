@@ -1,16 +1,16 @@
 {{-- Początek HEAD --}}
 @section('CSSscripts')
 
+<link rel="stylesheet" href="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.css') }}">
 @endsection
 {{-- Koniec HEAD --}}
 
 
 {{-- Początek BODY --}}
-
 @extends('admin.admin_dashboard')
 
 @section('admin')
-{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> --}}
+
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
 <div class="page-content">
@@ -20,10 +20,6 @@
 
     </div>
   </div>
-  {{-- @php
-    $id = Auth::user()->id;
-    $profileData = App\Models\User::find($id);
-  @endphp --}}
   <div class="row profile-body">
     <div class="col-md-8 col-xl-8 middle-wrapper">
       <div class="row">
@@ -37,47 +33,53 @@
                 @csrf
                 <h4>Dane wizyty</h4>
                 <div class="form-group row mb-3">
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <label for="typeName">Rodzaj wizyty:</label>
                     <select class="form-select" id="typeName" name="type_name" >
                       <option selected="" disabled="">Rodzaj wizyty</option>
                       @foreach($types as $key => $item)
-                      <option value="{{ $item->id }}">{{ $item->type_name }}</option>
+                      <option value="{{ $item->type_name }}">{{ $item->type_name }}</option>
                       @endforeach
                     </select>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-5">
                     <label for="visitName">Nazwa wizyty:</label>
                     <select class="form-select" id="visitName" name="visit_name" >
-
+                      <option selected="" disabled="">Nazwa wizyty</option>
                     </select>
+                  </div>
+                  <div class="col-md-3">
+                    <label for="lengthVisit">Długość wizyty</label>
+                    <input type="text" class="form-control" id="lengthVisit" name="length_visit" disabled="">
                   </div>
                 </div>
                 <div class="form-group row mb-3">
-                  <div class="col-md-3">
-                    <input type="text" class="form-control" id="lengthVisit" name="length_visit" readonly>
-                  </div>
                   <div class="col-md-2">
-                    <input type="number" name= "visit_qty" class="form-control" placeholder="Ilość" required>
+                    <label for="visit_qty">Ilość wizyt:</label>
+                    <input type="number" id="visit_qty" name= "visit_qty" class="form-control" placeholder="Ilość" >
                   </div>
                   <div class="col-md-3">
+                    <label for="guaranted">Godz. gwar.</label>
                     <select class="form-select" id="guaranted" name="guaranted">
                       <option selected="" disabled="">Gwarantowana</option>
                       <option value="no">Nie</option>
                       <option value="yes">Tak</option>
                     </select>
                   </div>
-                  <div class="form-group col-md-4">
-                    <input type="text" name= "price_net" class="form-control" id="priceNet" placeholder="Cena netto">
+                  <div class="col-md-3">
+                    <label for="priceNet">Cena netto</label>
+                    <input type="text" name= "price_net" id="priceNet" class="form-control" placeholder="Cena netto" disabled="">
                   </div>
-                  <div class="form-group col-md-4">
-                    <input type="text" name= "price_gross" class="form-control" id="priceGross" placeholder="Cena brutto">
+                  <div class="col-md-4">
+                    <label for="priceGross">Cena brutto</label>
+                    <input type="text" name= "price_gross" id="priceGross" class="form-control" placeholder="Cena brutto" disabled="">
                   </div>
                 </div>
-                <div class="form-group form-group row mb-3">
+                <div class="form-group row mb-3">
                   <div class="col-md-4">
+                    <label for="intervalHours">Przedział godzinowy</label>
                     <select class="form-select" id="intervalHours" name="interval_hours" >
-                      <option selected="" disabled="">Przedział godzinowy</option>
+                      <option selected="" disabled="">Wybierz</option>
                       <option>08:00 - 10:00</option>
                       <option>08:15 - 10:15</option>
                       <option>08:30 - 10:30</option>
@@ -133,14 +135,16 @@
                     </select>
                   </div>
                   <div class="col-md-4">
+                    <label for="visit_date">Data wizyty</label>
                     <div class="input-group flatpickr" id="flatpickr-date">
-                      <input type="text" name= "visit_date" class="form-control flatpickr-input"  data-input="" placeholder="Data wizyty" >
+                      <input type="text" name= "visit_date" id="visit_date" class="form-control flatpickr-input"  data-input="" placeholder='Select Date'>
                       <span class="input-group-text input-group-addon" data-toggle=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
                     </div>
                   </div>
                   <div class="col-md-4">
+                    <label for="preffered_time">Preferowana godz.</label>
                     <div class="input-group flatpickr" id="flatpickr-time">
-                      <input type="text" name="preffered_time" class="form-control flatpickr-input" placeholder="Preferowana godzina" data-input="" readonly="readonly">
+                      <input type="text" name="preffered_time" id="preffered_time" class="form-control flatpickr-input" data-input="" readonly="readonly">
                       <span class="input-group-text input-group-addon" data-toggle="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></span>
                     </div>
@@ -148,7 +152,7 @@
                 </div>
                 <div class="row mb-3">
                   <div class="col-md-12">
-                    <label for="defaultconfig-4" class="col-form-label">Informacje dodatkowe</label>
+                    <label for="maxlength-textarea" class="col-form-label">Informacje dodatkowe</label>
                     <textarea name="additional_information" id="maxlength-textarea" class="form-control" maxlength="500" rows="8" placeholder="Możesz wpisać maksymalnie 500 znaków"></textarea>
                   </div>
                 </div>
@@ -156,69 +160,92 @@
                 <!-- Dane zamawiającego Osoba prywatna -->
                 <div class="form-group row mb-3">
                   <div class="col-md-6">
-                    <input type="text" name= "client_name" class="form-control" placeholder="Imię i Nazwisko">
+                    <label for="client_firstname">Imię</label>
+                    <input type="text" name= "client_firstname" id="client_firstname"class="form-control" placeholder="Wprowadź imię">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="client_lastname">Nazwisko</label>
+                    <input type="text" name= "client_lastname" id="client_lastname"class="form-control" placeholder="Wprowadź nazwisko">
                   </div>
                   <div class="col-md-3">
-                    <input type="text" name= "phone" class="form-control" placeholder="Telefon">
+                    <label for="phone">Telefon</label>
+                    <input type="text" name= "phone" id="phone" class="form-control" placeholder="Nr. telefonu">
                   </div>
                   <div class="col-md-3">
-                    <input name="email" class="form-control mb-4 mb-md-0" data-inputmask="'alias': 'email'" inputmode="email" placeholder="E-mail">
+                    <label for="email">Email</label>
+                    <input name="email" id="email" class="form-control mb-4 mb-md-0" data-inputmask="'alias': 'email'" inputmode="email" placeholder="E-mail">
                   </div>
                 </div>
                 <div class="form-check form-switch mb-2">
-                  <input type="checkbox" class="form-check-input">
-                  <label class="form-check-label" for="formSwitch1">Chcę otrzymać fakturę</label>
+                  <input type="checkbox" id="invoiceSwitcher" name="invoice" class="form-check-input">
+                  <label class="form-check-label" for="invoiceSwitcher">Chcę otrzymać fakturę</label>
                 </div>
                 <!-- Dane zamawiającego Firma -->
-                <div class="row mb-3">
-                  <div class="col-md-3">
-                    <input type="text" name= "invoice_NIP" class="form-control" placeholder="NIP">
-                  </div>
-                  <div class="col-md-4">
-                    <input type="text" name= "invoice_company_name" class="form-control" placeholder="Nazwa firmy">
-                  </div>
-                  <div class="col-md-5">
-                    <input type="text" name= "invoice_company_adress" class="form-control" placeholder="Adres siedziby">
+                <div id="additionalFieldsInvoice" style="display: none;">
+                  <div class="row mb-3">
+                    <div class="col-md-3">
+                      <label for="nip">NIP</label>
+                      <input type="text" name= "invoice_NIP" id="nip" class="form-control" placeholder="Podaj NIP">
+                    </div>
+                    <div class="col-md-4">
+                      <label for="companyName">Nazwa firmy</label>
+                      <input type="text" name= "invoice_company_name" id="companyName" class="form-control" placeholder="Wprowadź nazwę">
+                    </div>
+                    <div class="col-md-5">
+                      <label for="companyAdress">Adres siedziby</label>
+                      <input type="text" name= "invoice_company_adress" id="companyAdress" class="form-control" placeholder="Podaj adres">
+                    </div>
                   </div>
                 </div>
                 <!-- Dane adresowe wizyty -->
                 <h4>Dane adresowe wizyty</h4>
                 <div class="row mb-3">
-                  <div class="col-md-12">
-                    <label for="companyOrder" class="form-label">W przypadku zamówienia przez przedszkole lub firmę</label>
-                    <input type="text" id= "companyOrder" name= "facility_name" class="form-control" placeholder="Nazwa placówki">
+                  <div id="additionalFields" style="display: none;">
+                    <div class="col-md-12">
+                      <label for="companyVisitPlace">Nazwa placówki</label>
+                      <input type="text" id= "companyVisitPlace" name= "facility_name" class="form-control" placeholder="Nazwa placówki">
+                    </div>
                   </div>
                 </div>
                 <div class="form-group row mb-3">
                   <div class="col-md-6">
-                    <input type="text" name= "street_address" class="form-control" placeholder="Ulica">
+                    <label for="street">Ulica</label>
+                    <input type="text" name= "street_address" id="street" class="form-control" placeholder="Ulica">
                   </div>
                   <div class="col-md-3">
-                    <input type="text" name= "street_number" class="form-control" placeholder="Nr domu">
+                    <label for="streetNum">Nr ulicy</label>
+                    <input type="text" name= "street_number" id="streetNum" class="form-control" placeholder="Nr domu">
                   </div>
                   <div class="col-md-3">
-                    <input type="text" name= "flat_number" class="form-control" placeholder="Nr lok.">
+                    <label for="flatNum">Nr lok.</label>
+                    <input type="text" name= "flat_number" id="flatNum" class="form-control" placeholder="Nr lok.">
                   </div>
                 </div>
                 <div class="form-group row mb-3">
                   <div class="col-md-4">
-                    <input type="text" name= "voivodeship" class="form-control" placeholder="Województwo">
+                    <label for="voivodeship">Województwo</label>
+                    <input type="text" id="voivodeship" name= "voivodeship" class="form-control" placeholder="Wybierz województwo">
                   </div>
                   <div class="col-md-4">
-                    <input type="text" name= "city" class="form-control" placeholder="Miasto">
+                    <label for="city">Miasto</label>
+                    <input type="text" name= "city" id="city" class="form-control" placeholder="Wybierz miasto">
                   </div>
                   <div class="col-md-4">
-                    <input type="text" name= "district" class="form-control" placeholder="Dzielnica">
+                    <label for="district">Dzielnica</label>
+                    <input type="text" name= "district" id="district" class="form-control" placeholder="Wybierz dzielnicę">
                   </div>
                 </div>
                 <div class="form-group row mb-3">
                   <div class="col-md-4">
-                    <input name="zipcode" placeholder="Kod pocztowy" class="form-control" data-inputmask-alias="99-999" inputmode="text">
+                    <label for="zipcode">Kod pocztowy</label>
+                    <input name="zipcode" id="zipcode" placeholder="Kod pocztowy" class="form-control" data-inputmask-alias="99-999" inputmode="text">
                   </div>
                   <div class="col-md-4">
-                    <input type="text" name= "counties" class="form-control" placeholder="Miejscowość">
+                    <label for="counties">Miejscowość</label>
+                    <input type="text" name= "counties" id="counties" class="form-control" placeholder="Miejscowość">
                   </div>
                   <div class="col-md-4">
+                    <label for="driveFee">Opłata dojazdowa</label>
                     <select class="form-select" id="driveFee" name="drive_fee" >
                       <option selected="" disabled="">Opłata dojazdowa</option>
                       <option value="50">10 km - 50 zł</option>
@@ -229,16 +256,16 @@
                 </div>
                 <!-- Zgody -->
                 <div class="form-group form-check form-switch mb-2">
-                  <input type="checkbox" name="accepted_statue" class="form-check-input" required>
-                  <label class="form-check-label" for="formSwitch1">Akceptuję Regulamin</label>
+                  <input type="checkbox" name="accepted_statue" id="accepted_statue" class="form-check-input" required>
+                  <label class="form-check-label" for="accepted_statue">Akceptuję Regulamin</label>
                 </div>
                 <div class="form-check form-switch mb-2">
-                  <input type="checkbox" name="accepted_marketing" class="form-check-input">
-                  <label class="form-check-label" for="formSwitch1">Zgoda marketingowa</label>
+                  <input type="checkbox" name="accepted_marketing" id="accepted_marketing" class="form-check-input">
+                  <label class="form-check-label" for="accepted_marketing">Zgoda marketingowa</label>
                 </div>
                 <div class="form-check form-switch mb-2">
-                  <input type="checkbox" name="remind_visit" class="form-check-input">
-                  <label class="form-check-label" for="formSwitch1">Przypomnij o wizycie</label>
+                  <input type="checkbox" name="remind_visit" id="remind_visit" class="form-check-input">
+                  <label class="form-check-label" for="remind_visit">Przypomnij o wizycie</label>
                 </div>
                 <br/>
                 <button type="submit" class="btn btn-inverse-success">Zapisz zmiany</button>&nbsp;&nbsp;&nbsp;
@@ -386,9 +413,14 @@
   });
 </script>
 
+
 @endsection
 
 @section('JSscripts')
 <script src="{{ asset('backend/assets/js/code/validate.min.js') }}"></script>
 <script src="{{ asset('backend/assets/js/code/getVisitDataForm.js') }}"></script>
+<script src="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/flatpickr.js') }}"></script>
+<script src="{{ asset('backend/assets/vendors/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/bootstrap-maxlength.js') }}"></script>
 @endsection

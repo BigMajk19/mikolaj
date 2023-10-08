@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InboxController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DisplayFieldsInForm;
 use App\Http\Controllers\Backend\VisitsController;
 use App\Http\Controllers\Backend\CandidatesController;
 use App\Http\Controllers\Backend\VisitCountController;
@@ -50,6 +51,13 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
     Route::get('inbox' , [InboxController::class, 'ShowAdminInbox'])->name('inbox');
 });//End AdminDashboard Group
 
+//For Displaying Fields in Visits Form
+Route::middleware(['auth','role:admin'])->group(function () {
+    Route::controller(DisplayFieldsInForm::class)->group(function () {
+        Route::get('get/type/name/visit/{typeNameId}', 'GetTypeNameVisit')->name('get.type.name.visit');
+        Route::get('get/data/visit/{visitNameId}', 'GetDataVisit')->name('get.data.visit');
+    });
+});
 
 //Admin Group Middleware
 Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
@@ -101,9 +109,7 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
         // Option for Realized Visits
         Route::get('show/visits/realized', 'ShowVisitsRealized')->name('show.visits.realized');
 
-        //For Display Data Visits in Form
-        Route::get('get/type/name/visit/{typeName}', 'GetTypeNameVisit')->name('get.type.name.visit');
-        Route::get('get/data/visit', 'GetDataVisit')->name('get.data.visit');
+
 
 
 

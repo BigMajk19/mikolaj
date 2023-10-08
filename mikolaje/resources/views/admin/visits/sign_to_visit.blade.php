@@ -16,10 +16,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
 <div class="page-content">
-  @php
-    $id = Auth::user()->id;
-    $profileData = App\Models\User::find($id);
-  @endphp
   <div class="row profile-body">
     <div class="col-md-8 col-xl-8 middle-wrapper">
       <div class="row">
@@ -67,9 +63,9 @@
                   <div class="col-md-6">
                     <select class="js-example-basic-single form-select select2-hidden-accessible" data-width="100%" data-select2-id="2" tabindex="-1" aria-hidden="true" id="choosePartner" name="partner">
                       <option selected="" disabled="">Wybierz partnera</option>
-                      <option>Partner 1</option>
-                      <option>Partner 2</option>
-                      <option>Partner 3</option>
+                      @foreach($partners as $key => $item)
+                      <option>{{ $item->partner_name }}</option>
+                      @endforeach
                     </select>
                   </div>
                 </div>

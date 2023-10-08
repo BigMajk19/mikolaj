@@ -1,5 +1,6 @@
 {{-- Początek HEAD --}}
 @section('CSSscripts')
+<link rel="stylesheet" href="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.css') }}">
 
 @endsection
 {{-- Koniec HEAD --}}
@@ -9,7 +10,8 @@
 @extends('admin.admin_dashboard')
 
 @section('admin')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
 <div class="page-content">
 
@@ -18,10 +20,6 @@
 
     </div>
   </div>
-  @php
-    $id = Auth::user()->id;
-    $profileData = App\Models\User::find($id);
-  @endphp
   <div class="row profile-body">
     <div class="col-md-8 col-xl-8 middle-wrapper">
       <div class="row">
@@ -36,56 +34,47 @@
                 @csrf
                 <input type="hidden" name="id" value="{{$types->id}}">
                 <h4>Dane wizyty</h4>
-                <div class="row mb-3">
+                <div class="form-group row mb-3">
                   <div class="col-md-6">
-                    <h6>Rodzaj wizyty</h6>
-                    <input type="text" class="form-control" name="type_name" id="exampleInputDisabled1" disabled="" value="{{ $types->type_name }}">
+                    <label for="typeName">Rodzaj wizyty:</label>
+                    <input type="text" class="form-control" name="type_name" id="typeName" disabled="" value="{{ $types->type_name }}">
                   </div>
                   <div class="col-md-6">
-                    <h6>Nazwa wizyty</h6>
-                    <select class="form-select" id="visitName" name="visit_name" value="{{ $types->visit_name }}">
-                      <option value="SzybkiPrezent">Prywatna - SzybkiPrezent</option>
-                      <option value="Standard">Prywatna - Standard</option>
-                      <option value="EkstraM">Prywatna - EkstraM</option>
-                      <option value="Long">Prywatna - Long</option>
-                      <option value="SzybkiMikołaj">Przedszkolna - SzybkiMikołaj</option>
-                      <option value="StandardP">Przedszkolna - Standard</option>
-                      <option value="NiestandardowaP">Przedszkolna - Niestandardowa</option>
-                      <option value="SzybkaWizyta">Firmowa - SzybkaWizyta</option>
-                      <option value="StandardF">Firmowa - Standard</option>
-                      <option value="NiestandardowaF">Firmowa - Niestandardowa</option>
-                    </select>
+                    <label for="visitName">Nazwa wizyty:</label>
+                    <input type="text" class="form-control" name="visit_name" id="visitName" disabled="" value="{{ $types->visit_name }}">
+                    {{-- <select class="form-select" id="visitName" name="visit_name" value="{{ $types->visit_name }}">
+
+                    </select> --}}
                   </div>
                 </div>
                 <div class="form-group row mb-3">
                   <div class="col-md-3">
-                    <h6>Długość wizyty</h6>
-                    <select class="form-select" id="lengthVisit" name="length_visit" value="{{ $types->length_visit }}">
-                      <option value="10">10 min.</option>
-                      <option value="20">20 min.</option>
-                      <option value="30">30 min.</option>
-                      <option value="60">60 min.</option>
-                    </select>
+                    <label for="lengthVisit">Długość wizyty</label>
+                    <input type="text" class="form-control" id="lengthVisit" name="length_visit" disabled="" value="{{ $types->length_visit }}">
                   </div>
                   <div class="col-md-2">
-                    <h6>Ilość</h6>
-                    <input type="number" name= "visit_qty" class="form-control" value="{{ $types->visit_qty }}" placeholder="Ilość" required>
+                    <label for="visit_qty">Ilość wizyt:</label>
+                    <input type="number" id="visit_qty" name= "visit_qty" class="form-control" value="{{ $types->visit_qty }}" placeholder="Ilość" required>
                   </div>
                   <div class="col-md-3">
-                    <h6>Gwar. godz.</h6>
+                    <label for="guaranted">Godz. gwar.</label>
                     <select class="form-select" id="guaranted" name="guaranted" value="{{ $types->guaranted }}">
                       <option value="no">Nie</option>
                       <option value="yes">Tak</option>
                     </select>
                   </div>
                   <div class="col-md-4">
-                    <h6>Cena</h6>
-                    <input type="text" name= "price" class="form-control" value="{{ $types->price }}">
+                    <label for="priceNet">Cena netto</label>
+                    <input type="text" name= "price_net" id="priceNet" class="form-control" value="{{ $types->price_net }}" disabled="">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="priceGross">Cena brutto</label>
+                    <input type="text" name= "price_gross" id="priceGross" class="form-control" value="{{ $types->price_net }}" disabled="">
                   </div>
                 </div>
                 <div class="form-group row mb-3">
                   <div class="col-md-4">
-                    <h6>Przedział godzinowy</h6>
+                    <label for="intervalHours">Przedział godzinowy</label>
                     <select class="form-select" id="intervalHours" name="interval_hours"  value="{{ $types->interval_hours }}">
                       <option>08:00 - 10:00</option>
                       <option>08:15 - 10:15</option>
@@ -139,22 +128,19 @@
                       <option>20:15 - 22:15</option>
                       <option>20:30 - 22:30</option>
                       <option>20:45 - 22:45</option>
-                      @error ('interval_hours')
-                      <span class="text-danger">{{ $message }}</span>
-                      @enderror
                     </select>
                   </div>
                   <div class="col-md-4">
-                    <h6>Data wizyty</h6>
+                    <label for="visit_date">Data wizyty</label>
                     <div class="input-group flatpickr" id="flatpickr-date">
-                      <input type="text" name= "visit_date" class="form-control flatpickr-input" value="{{ $types->visit_date }}" data-input="" >
+                      <input type="text" name= "visit_date" id="visit_date" class="form-control flatpickr-input" value="{{ $types->visit_date }}" data-input="" >
                       <span class="input-group-text input-group-addon" data-toggle=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
                     </div>
                   </div>
                   <div class="col-md-4">
-                    <h6>Preferowana godz.</h6>
+                    <label for="preffered_time">Preferowana godz.</label>
                     <div class="input-group flatpickr" id="flatpickr-time">
-                      <input type="text" name="preffered_time" value="{{ $types->preffered_time }}" class="form-control flatpickr-input" data-input="" readonly="readonly">
+                      <input type="text" name="preffered_time" id="preffered_time" value="{{ $types->preffered_time }}" class="form-control flatpickr-input" data-input="" readonly="readonly">
                       <span class="input-group-text input-group-addon" data-toggle="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></span>
                     </div>
@@ -162,7 +148,7 @@
                 </div>
                 <div class="row mb-3">
                   <div class="col-md-12">
-                    <h4>Informacje dodatkowe</h4>
+                    <label for="maxlength-textarea" class="col-form-label">Informacje dodatkowe</label>
                     <textarea name="additional_information" id="maxlength-textarea" class="form-control" maxlength="500" rows="8" value="{{ $types->additional_information }}"></textarea>
                   </div>
                 </div>
@@ -170,86 +156,99 @@
                 <!-- Dane zamawiającego Osoba prywatna -->
                 <div class="form-group row mb-3">
                   <div class="col-md-6">
-                    <h6>Imię i Nazwisko</h6>
-                    <input type="text" name= "client_name" value="{{ $types->client_name }}" class="form-control">
+                    <label for="client_firstname">Imię</label>
+                    <input type="text" name= "client_firstname" id="client_firstname"class="form-control" value="{{ $types->client_firstname }}">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="client_lastname">Nazwisko</label>
+                    <input type="text" name= "client_lastname" id="client_lastname"class="form-control" value="{{ $types->client_lastname }}">
                   </div>
                   <div class="col-md-3">
-                    <h6>Telefon</h6>
-                    <input type="text" name= "phone" class="form-control" value="{{ $types->phone }}">
+                    <<label for="phone">Telefon</label>
+                    <input type="text" name= "phone" id="phone" class="form-control" value="{{ $types->phone }}">
                   </div>
                   <div class="col-md-3">
-                    <h6>E-mail</h6>
-                    <input name="email" class="form-control mb-4 mb-md-0" data-inputmask="'alias': 'email'" inputmode="email" value="{{ $types->email }}">
+                    <label for="email">Email</label>
+                    <input name="email" id="email" class="form-control mb-4 mb-md-0" data-inputmask="'alias': 'email'" inputmode="email" value="{{ $types->email }}">
                   </div>
                 </div>
+                @if($types->accepted_marketing == 'on')
                 <div class="form-check form-switch mb-2">
-                  <input type="checkbox" class="form-check-input">
-                  <label class="form-check-label" for="formSwitch1">Chcę otrzymać fakturę</label>
+                  <input type="checkbox" checked id="invoiceSwitcher" name="invoice" class="form-check-input">
+                  <label class="form-check-label" for="invoiceSwitcher">Chcę otrzymać fakturę</label>
                 </div>
+                @else
+                <div class="form-check form-switch mb-2">
+                  <input type="checkbox" id="invoiceSwitcher" name="invoice" class="form-check-input">
+                  <label class="form-check-label" for="invoiceSwitcher" value="{{ $types->invoice }}">>Chcę otrzymać fakturę</label>
+                </div>
+                @endif
                 <!-- Dane zamawiającego Firma -->
-                <div class="row mb-3">
-                  <div class="col-md-3">
-                    <h6>NIP</h6>
-                    <input type="text" name= "invoice_NIP" class="form-control" value="{{ $types->invoice_NIP }}">
-                  </div>
-                  <div class="col-md-4">
-                    <h6>Nazwa firmy</h6>
-                    <input type="text" name= "invoice_company_name" class="form-control" value="{{ $types->invoice_company_name }}">
-                  </div>
-                  <div class="col-md-5">
-                    <h6>Adres siedziby</h6>
-                    <input type="text" name= "invoice_company_adress" value="{{ $types->invoice_company_adress }}" class="form-control">
+                <div id="additionalFieldsInvoice" style="display: none;">
+                  <div class="row mb-3">
+                    <div class="col-md-3">
+                      <label for="nip">NIP</label>
+                      <input type="text" name= "invoice_NIP" id="nip" class="form-control" value="{{ $types->invoice_NIP }}">
+                    </div>
+                    <div class="col-md-4">
+                      <h6>Nazwa firmy</h6><label for="companyName">Nazwa firmy</label><input type="text" name= "invoice_company_name" id="companyName" class="form-control" value="{{ $types->invoice_company_name }}">
+                    </div>
+                    <div class="col-md-5">
+                      <label for="companyAdress">Adres siedziby</label>
+                      <input type="text" name= "invoice_company_adress" id="companyName" value="{{ $types->invoice_company_adress }}" class="form-control">
+                    </div>
                   </div>
                 </div>
                 <!-- Dane adresowe wizyty -->
                 <h4>Dane adresowe wizyty</h4>
                 <div class="row mb-3">
-                  <div class="col-md-12">
-                    <label for="companyOrder" class="form-label">W przypadku zamówienia przez przedszkole lub firmę</label>
-                    <h6>Nazwa placówki</h6>
-                    <input type="text" id= "companyOrder" name= "facility_name" class="form-control" value="{{ $types->facility_name }}">
+                  <div id="additionalFields" style="display: none;">
+                    <div class="col-md-12">
+                      <label for="companyVisitPlace">Nazwa placówki</label>
+                      <input type="text" id= "companyVisitPlace" name= "facility_name" class="form-control" value="{{ $types->facility_name }}">
+                    </div>
                   </div>
                 </div>
                 <div class="form-group row mb-3">
                   <div class="col-md-6">
-                    <h6>Ulica</h6>
-                    <input type="text" name= "street_address" class="form-control" value="{{ $types->street_address }}">
+                    <label for="street">Ulica</label>
+                    <input type="text" name= "street_address" id="street" class="form-control" value="{{ $types->street_address }}">
                   </div>
                   <div class="col-md-3">
-                    <h6>Nr domu</h6>
-                    <input type="text" name= "street_number" class="form-control" value="{{ $types->street_number }}">
+                    <label for="streetNum">Nr ulicy</label>
+                    <input type="text" name= "street_number" id="streetNum" class="form-control" value="{{ $types->street_number }}">
                   </div>
                   <div class="col-md-3">
-                    <h6>Nr lok.</h6>
-                    <input type="text" name= "flat_number" class="form-control" value="{{ $types->flat_number }}">
+                    <label for="flatNum">Nr lok.</label>
+                    <input type="text" name= "flat_number" id="flatNum" class="form-control" value="{{ $types->flat_number }}">
                   </div>
                 </div>
                 <div class="form-group row mb-3">
                   <div class="col-md-4">
-                    <h6>Województwo</h6>
-                    <input type="text" name= "voivodeship" value="{{ $types->voivodeship }}" class="form-control">
+                    <label for="voivodeship">Województwo</label>
+                    <input type="text" name= "voivodeship" id="voivodeship" value="{{ $types->voivodeship }}" class="form-control">
                   </div>
                   <div class="col-md-4">
-                    <h6>Miasto</h6>
-                    <input type="text" name= "city" class="form-control
+                    <label for="city">Miasto</label>
+                    <input type="text" name= "city" id="city" class="form-control
                     " value="{{ $types->city }}">
                   </div>
                   <div class="col-md-4">
-                    <h6>Dzielnica</h6>
-                    <input type="text" name= "district" class="form-control" value="{{ $types->district }}">
+                    <label for="district">Dzielnica</label>
+                    <input type="text" name= "district" id="district" class="form-control" value="{{ $types->district }}">
                   </div>
                 </div>
                 <div class="form-group row mb-3">
                   <div class="col-md-4">
-                    <h6>Kod pocztowy</h6>
-                    <input name="zipcode" value="{{ $types->zipcode }}" class="form-control" data-inputmask-alias="99-999" inputmode="text">
+                    <label for="zipcode">Kod pocztowy</label>
+                    <input name="zipcode" id="zipcode" value="{{ $types->zipcode }}" class="form-control" data-inputmask-alias="99-999" inputmode="text">
                   </div>
                   <div class="col-md-4">
-                    <h6>Miejscowość</h6>
-                    <input type="text" name= "counties" class="form-control" value="{{ $types->counties }}">
+                    <label for="counties">Miejscowość</label>
+                    <input type="text" name= "counties" id="counties" class="form-control" value="{{ $types->counties }}">
                   </div>
                   <div class="col-md-4">
-                    <h6>Opłata dojazdowa</h6>
+                    <label for="driveFee">Opłata dojazdowa</label>
                     <select class="form-select" id="driveFee" name="drive_fee" value="{{ $types->drive_fee }}">
                       <option value="50">10 km - 50 zł</option>
                       <option value="100">20 km - 100 zł</option>
@@ -260,35 +259,35 @@
                 <!-- Zgody -->
                 @if($types->accepted_statue == 'on')
                 <div class="form-group form-check form-switch mb-2">
-                  <input type="checkbox" checked name="accepted_statue" class="form-check-input" required>
-                  <label class="form-check-label" for="formSwitch1">Akceptuję Regulamin</label>
+                  <input type="checkbox" checked name="accepted_statue" id="accepted_statue" class="form-check-input">
+                  <label class="form-check-label" for="accepted_statue">Akceptuję Regulamin</label>
                 </div>
                 @else
                 <div class="form-check form-switch mb-2">
-                  <input type="checkbox" name="accepted_statue" class="form-check-input" required>
-                  <label class="form-check-label" for="formSwitch1">Akceptuję Regulamin</label>
+                  <input type="checkbox" name="accepted_statue" id="accepted_statue"class="form-check-input">
+                  <label class="form-check-label" for="accepted_statue">Akceptuję Regulamin</label>
                 </div>
                 @endif
                 @if($types->accepted_marketing == 'on')
                 <div class="form-check form-switch mb-2">
-                  <input type="checkbox" checked name="accepted_marketing" class="form-check-input">
-                  <label class="form-check-label" for="formSwitch1">Zgoda marketingowa</label>
+                  <input type="checkbox" checked name="accepted_marketing" id="accepted_marketing"class="form-check-input">
+                  <label class="form-check-label" for="accepted_marketing">Zgoda marketingowa</label>
                 </div>
                 @else
                 <div class="form-check form-switch mb-2">
-                  <input type="checkbox" name="accepted_marketing" class="form-check-input">
-                  <label class="form-check-label" for="formSwitch1">Zgoda marketingowa</label>
+                  <input type="checkbox" name="accepted_marketing" id="accepted_marketing"class="form-check-input">
+                  <label class="form-check-label" for="accepted_marketing">Zgoda marketingowa</label>
                 </div>
                 @endif
                 @if($types->remind_visit == 'on')
                   <div class="form-check form-switch mb-2">
-                    <input type="checkbox" checked id="formSwitch1" name="remind_visit" class="form-check-input">
-                    <label class="form-check-label" for="formSwitch1">Przypomnij o wizycie</label>
+                    <input type="checkbox" checked id="remind_visit" name="remind_visit" class="form-check-input">
+                    <label class="form-check-label" for="remind_visit">Przypomnij o wizycie</label>
                   </div>
                 @else
                   <div class="form-check form-switch mb-2">
-                    <input type="checkbox" id="formSwitch1" name="remind_visit" class="form-check-input">
-                    <label class="form-check-label" for="formSwitch1">Przypomnij o wizycie</label>
+                    <input type="checkbox" id="remind_visit" name="remind_visit" class="form-check-input">
+                    <label class="form-check-label" for="remind_visit">Przypomnij o wizycie</label>
                   </div>
                 @endif
                 <br/>
@@ -300,148 +299,151 @@
         </div>
       </div>
     </div>
-    <!-- middle wrapper end -->
   </div>
-
 </div>
 
 
 <script type="text/javascript">
-    $(document).ready(function (){
-      $('#myForm').validate({
-        rules: {
-          type_name: {
-            required : true,
-          },
-          visit_name: {
-            required : true,
-          },
-          length_visit: {
-            required : true,
-          },
-          guaranted: {
-            required : true,
-          },
-          interval_hours: {
-            required : true,
-          },
-          visit_date: {
-            required : true,
-          },
-          preffered_time: {
-            required : true,
-          },
-          client_name: {
-            required : true,
-          },
-          phone: {
-            required : true,
-          },
-          email: {
-            required : true,
-          },
-          street_address: {
-            required : true,
-          },
-          street_number: {
-            required : true,
-          },
-          voivodeship: {
-            required : true,
-          },
-          city: {
-            required : true,
-          },
-          zipcode: {
-            required : true,
-          },
-          visit_qty: {
-            required : true,
-          },
-          price: {
-            required : true,
-          },
-          accepted_statue: {
-            required : true,
-          },
+  $(document).ready(function (){
+    $('#myForm').validate({
+      rules: {
+        type_name: {
+          required : true,
+        },
+        visit_name: {
+          required : true,
+        },
+        length_visit: {
+          required : true,
+        },
+        guaranted: {
+          required : true,
+        },
+        interval_hours: {
+          required : true,
+        },
+        visit_date: {
+          required : true,
+        },
+        preffered_time: {
+          required : true,
+        },
+        client_name: {
+          required : true,
+        },
+        phone: {
+          required : true,
+        },
+        email: {
+          required : true,
+        },
+        street_address: {
+          required : true,
+        },
+        street_number: {
+          required : true,
+        },
+        voivodeship: {
+          required : true,
+        },
+        city: {
+          required : true,
+        },
+        zipcode: {
+          required : true,
+        },
+        visit_qty: {
+          required : true,
+        },
+        price: {
+          required : true,
+        },
+        accepted_statue: {
+          required : true,
+        },
 
 
+      },
+      messages :{
+        type_name: {
+          required : 'Podaj rodzaj wizyty',
         },
-        messages :{
-          type_name: {
-            required : 'Podaj rodzaj wizyty',
-          },
-          visit_name: {
-            required : 'Podaj nazwę wizyty',
-          },
-          length_visit: {
-            required : 'Podaj długość wizyty',
-          },
-          guaranted: {
-            required : 'Czy wizyta ma być gwarantowana?',
-          },
-          interval_hours: {
-            required : 'Podaj przedział godzinowy',
-          },
-          visit_date: {
-            required : 'Podaj datę wizyty',
-          },
-          preffered_time: {
-            required : 'Podaj preferowaną godzinę wizyty',
-          },
-          client_name: {
-            required : 'Podaj Imię i Nazwisko klienta',
-          },
-          phone: {
-            required : 'Podaj telefon klienta',
-          },
-          email: {
-            required : 'Podaj e-mail klienta',
-          },
-          street_address: {
-            required : 'Podaj ulicę Wizyty',
-          },
-          street_number: {
-            required : 'Podaj numer ulicy',
-          },
-          voivodeship: {
-            required : 'Podaj województwo wizyty',
-          },
-          city: {
-            required : 'Podaj miasto wizyty',
-          },
-          zipcode: {
-            required : 'Podaj kod pocztowy wizyty',
-          },
-          visit_qty: {
-            required : 'Musisz podać ilość wizyt',
-          },
-          price: {
-            required : 'Proszę wpisać cenę',
-          },
-          accepted_statue: {
-            required : 'Musisz zaakceptować Regulamin',
-          },
+        visit_name: {
+          required : 'Podaj nazwę wizyty',
+        },
+        length_visit: {
+          required : 'Podaj długość wizyty',
+        },
+        guaranted: {
+          required : 'Czy wizyta ma być gwarantowana?',
+        },
+        interval_hours: {
+          required : 'Podaj przedział godzinowy',
+        },
+        visit_date: {
+          required : 'Podaj datę wizyty',
+        },
+        preffered_time: {
+          required : 'Podaj preferowaną godzinę wizyty',
+        },
+        client_name: {
+          required : 'Podaj Imię i Nazwisko klienta',
+        },
+        phone: {
+          required : 'Podaj telefon klienta',
+        },
+        email: {
+          required : 'Podaj e-mail klienta',
+        },
+        street_address: {
+          required : 'Podaj ulicę Wizyty',
+        },
+        street_number: {
+          required : 'Podaj numer ulicy',
+        },
+        voivodeship: {
+          required : 'Podaj województwo wizyty',
+        },
+        city: {
+          required : 'Podaj miasto wizyty',
+        },
+        zipcode: {
+          required : 'Podaj kod pocztowy wizyty',
+        },
+        visit_qty: {
+          required : 'Musisz podać ilość wizyt',
+        },
+        price: {
+          required : 'Proszę wpisać cenę',
+        },
+        accepted_statue: {
+          required : 'Musisz zaakceptować Regulamin',
+        },
 
 
-        },
-        errorElement : 'span',
-        errorPlacement: function (error,element) {
-          error.addClass('invalid-feedback');
-          element.closest('.form-group').append(error);
-        },
-        highlight : function(element, errorClass, validClass){
-          $(element).addClass('is-invalid');
-        },
-        unhighlight : function(element, errorClass, validClass){
-          $(element).removeClass('is-invalid');
-        },
-      });
+      },
+      errorElement : 'span',
+      errorPlacement: function (error,element) {
+        error.addClass('invalid-feedback');
+        element.closest('.form-group').append(error);
+      },
+      highlight : function(element, errorClass, validClass){
+        $(element).addClass('is-invalid');
+      },
+      unhighlight : function(element, errorClass, validClass){
+        $(element).removeClass('is-invalid');
+      },
     });
-  </script>
+  });
+</script>
 
 @endsection
 
 @section('JSscripts')
+
 <script src="{{ asset('backend/assets/js/code/validate.min.js') }}"></script>
+<script src="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/flatpickr.js') }}"></script>
+<script src="{{ asset('backend/assets/vendors/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/bootstrap-maxlength.js') }}"></script>
 @endsection

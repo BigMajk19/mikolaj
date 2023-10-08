@@ -26,7 +26,8 @@ return new class extends Migration
             $table->string('preffered_time')->nullable();
             $table->string('interval_hours')->nullable();
             $table->string('guaranted')->default('no');
-            $table->float('price')->nullable();
+            $table->float('price_net')->nullable();
+            $table->float('price_gross')->nullable();
             $table->longText('additional_information')->nullable();
             $table->text('street_address')->nullable();
             $table->string('street_number')->nullable();
@@ -37,6 +38,7 @@ return new class extends Migration
             $table->string('voivodeship')->nullable();
             $table->string('counties')->nullable();
             $table->string('drive_fee')->nullable();
+            $table->string('invoice')->nullable();
             $table->text('invoice_company_name')->nullable();
             $table->string('invoice_NIP')->nullable();
             $table->text('invoice_company_adress')->nullable();

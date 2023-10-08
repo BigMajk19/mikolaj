@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\User;
+use App\Models\Partners;
 use App\Models\VisitsName;
 use App\Models\VisitsType;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class VisitsController extends Controller
 
     public function AddVisit()
     {
-        $types = VisitsType::latest()->get();
+        $types = VisitsType::get();
         return view('backend.visits.add_visit', compact('types'));
     }
 
@@ -35,14 +36,16 @@ class VisitsController extends Controller
             'length_visit' => $request->length_visit,
             'visit_qty' => $request->visit_qty,
             'facility_name' => $request->facility_name,
-            'client_name' => $request->client_name,
+            'client_firstname' => $request->client_name,
+            'client_lastname' => $request->client_name,
             'phone' => $request->phone,
             'email' => $request->email,
             'visit_date' => $request->visit_date,
             'preffered_time' => $request->preffered_time,
             'interval_hours' => $request->interval_hours,
             'guaranted' => $request->guaranted,
-            'price' =>  $request->price,
+            'price_net' =>  $request->price_net,
+            'price_gross' =>  $request->price_gross,
             'additional_information' => $request->additional_information,
             'street_address' => $request->street_address,
             'street_number' => $request->street_number,
@@ -53,6 +56,7 @@ class VisitsController extends Controller
             'voivodeship' => $request->voivodeship,
             'counties' => $request->counties,
             'drive_fee' => $request->drive_fee,
+            'invoice' => $request->invoice,
             'invoice_company_name' => $request->invoice_company_name,
             'invoice_NIP' => $request-> invoice_NIP,
             'invoice_company_adress' => $request->invoice_company_adress,
@@ -83,14 +87,16 @@ class VisitsController extends Controller
             'length_visit' => $request->length_visit,
             'visit_qty' => $request->visit_qty,
             'facility_name' => $request->facility_name,
-            'client_name' => $request->client_name,
+            'client_firstname' => $request->client_name,
+            'client_lastname' => $request->client_name,
             'phone' => $request->phone,
             'email' => $request->email,
             'visit_date' => $request->visit_date,
             'preffered_time' => $request->preffered_time,
             'interval_hours' => $request->interval_hours,
             'guaranted' => $request->guaranted,
-            'price' =>  $request->price,
+            'price_net' =>  $request->price_net,
+            'price_gross' =>  $request->price_gross,
             'additional_information' => $request->additional_information,
             'street_address' => $request->street_address,
             'street_number' => $request->street_number,
@@ -101,6 +107,7 @@ class VisitsController extends Controller
             'voivodeship' => $request->voivodeship,
             'counties' => $request->counties,
             'drive_fee' => $request->drive_fee,
+            'invoice' => $request->invoice,
             'invoice_company_name' => $request->invoice_company_name,
             'invoice_NIP' => $request-> invoice_NIP,
             'invoice_company_adress' => $request->invoice_company_adress,
@@ -236,8 +243,9 @@ class VisitsController extends Controller
 
     public function SignToNewVisit($id)
     {
+        $partners = Partners::latest()->get();
         $types = VisitsSubmissions::findOrFail($id);
-        return view('admin.visits.sign_to_visit', compact('types'));
+        return view('admin.visits.sign_to_visit', compact('types','partners'));
 
     }
 
@@ -271,33 +279,6 @@ class VisitsController extends Controller
 
     }
 
-
-    // For switching options in Visits Form
-    public function GetTypeNameVisit($typeName)
-    {
-        // Pobierz opcje nazw wizyt na podstawie wybranego rodzaju wizyty
-        $visitsName = VisitsName::where('type_name', $typeName)->pluck('type_name', 'id');
-
-        return response()->json($visitsName);
-    }
-
-    public function GetDataVisit($visitNameId)
-    {
-        // Pobierz długość trwania i cenę na podstawie wybranej nazwy wizyty
-        $visitName = VisitsName::find($visitNameId);
-
-        if (!$visitName) {
-            return response()->json(['error' => 'Nie znaleziono wizyty']);
-        }
-
-        $data = [
-            'lengthVisit' => $visitName->visit_length,
-            'priceNet' => $visitName->visit_price_net,
-            'priceGross' => $visitName->visit_price_gross,
-        ];
-
-        return response()->json($data);
-    }
 
 
 

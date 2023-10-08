@@ -4,7 +4,7 @@
 $(function() {
   'use strict';
 
-  // date picker 
+  // date picker
   if($('#flatpickr-date').length) {
     flatpickr("#flatpickr-date", {
       wrap: true,
@@ -19,6 +19,7 @@ $(function() {
       wrap: true,
       enableTime: true,
       noCalendar: true,
+      time_24hr: true,
       dateFormat: "H:i",
     });
   }

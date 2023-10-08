@@ -90,6 +90,7 @@
   <!-- Custom Plugin js for this page -->
   <script src="{{ asset('backend/assets/js/dashboard-dark.js') }}"></script>
   <script src="{{ asset('backend/assets/js/form-validation.js') }}"></script>
+  <script src="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.js') }}"></script>
 
   <!-- inject:js -->
   <script src="{{ asset('backend/assets/vendors/feather-icons/feather.min.js') }}"></script>

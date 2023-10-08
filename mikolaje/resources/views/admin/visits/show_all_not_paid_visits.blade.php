@@ -52,7 +52,7 @@
                   <th>Telefon: </th>
                   <th>Miejscowość: </th>
                   <th>Województwo: </th>
-                  <th>Cena: </th>
+                  <th>Cena brutto: </th>
                   <th></th>
                 </tr>
               </thead>
@@ -67,7 +67,7 @@
                   <td><a href="tel:{{ $item->phone }}">{{ $item->phone }}</a></td>
                   <td>{{ $item->city }}</td>
                   <td>{{ $item->voivodeship }}</td>
-                  <td>{{ $item->price }}</td>
+                  <td>{{ $item->price_net }}</td>
 
                   <td>
                     <a href="{{ route('paid.new.visit',$item->id) }}" class="btn btn-inverse-success" id="paid">Opłacono</a>&nbsp;&nbsp;&nbsp;
@@ -85,7 +85,7 @@
                     <th>Telefon</th>
                     <th>Miejscowość</th>
                     <th>Województwo</th>
-                    <th>Cena</th>
+                    <th>Cena brutto</th>
                     <th></th>
                   </tr>
               </tfoot>
