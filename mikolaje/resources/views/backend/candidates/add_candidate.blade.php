@@ -19,10 +19,10 @@
 
     </div>
   </div>
-  @php
+  {{-- @php
     $id = Auth::user()->id;
     $profileData = App\Models\User::find($id);
-  @endphp
+  @endphp --}}
   <div class="row profile-body">
     <div class="col-md-8 col-xl-8 middle-wrapper">
       <div class="row">

@@ -60,7 +60,7 @@
                   <th>Imię i Nazwisko: </th>
                   <th class="none">Opis: </th>
                   <th>CV: </th>
-                  <th>dropdown</th>
+                  <th>Przypisany do partnera:</th>
                   <th></th>
                 </tr>
               </thead>
@@ -103,7 +103,7 @@
                   <td>{{ $item->candidate_firstname }} {{ $item->candidate_lastname }}</td>
                   <td>{{ $item->candidate_description }}</td>
                   <td><img class="wd-300 ht-300 rounded-circle" src="{{ (!empty($item->cv)) ? url('upload/images/candidates/'.$item->cv) : url('upload/images/no_image.jpg') }}" ></td>
-                  <td>dropdown</td>
+                  <td>{{ $item->partner }}</td>
                   <td>
                     <a href="{{ route('edit.candidate',$item->id) }}" class="btn btn-inverse-success">Edycja</a>&nbsp;&nbsp;&nbsp;
                     <a href="{{ route('delete.candidate',$item->id) }}" class="btn btn-inverse-danger" id="deleteCandidate">Usuń</a>
@@ -128,7 +128,7 @@
                   <th>Imię i Nazwisko: </th>
                   <th>Opis: </th>
                   <th>CV: </th>
-                  <th>dropdown</th>
+                  <th>Przypisany do partnera:</th>
                   <th></th>
                   </tr>
               </tfoot>

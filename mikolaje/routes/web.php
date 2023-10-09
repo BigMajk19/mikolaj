@@ -5,8 +5,8 @@ use App\Http\Controllers\InboxController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DisplayFieldsInForm;
 use App\Http\Controllers\Backend\VisitsController;
+use App\Http\Controllers\Backend\PartnerController;
 use App\Http\Controllers\Backend\CandidatesController;
-use App\Http\Controllers\Backend\VisitCountController;
 use App\Http\Controllers\Backend\VisitsTypeController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Client\ClientDashboardController;
@@ -109,44 +109,44 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
         // Option for Realized Visits
         Route::get('show/visits/realized', 'ShowVisitsRealized')->name('show.visits.realized');
 
-
-
-
-
     });
 
 
     //For Showing Candidates
     Route::controller(CandidatesController::class)->group(function () {
-        Route::get('show/candidates/all', 'ShowAllCandidates')->name('show.all.candidates');
-        Route::get('add/candidate', 'AddCandidate')->name('add.candidate');
-        Route::post('store/candidate', 'StoreNewCandidate')->name('store.candidate');
-        Route::get('edit/candidate/{id}', 'EditNewCandidate')->name('edit.candidate');
-        Route::post('update/candidate', 'UpdateNewCandidate')->name('update.candidate');
-        Route::get('delete/candidate/{id}', 'DeleteCandidate')->name('delete.candidate');
+      Route::get('candidates/show/all', 'ShowAllCandidates')->name('show.all.candidates');
+      Route::get('candidate/add', 'AddCandidate')->name('add.candidate');
+      Route::post('candidate/store', 'StoreNewCandidate')->name('store.candidate');
+      Route::get('candidate/edit/{id}', 'EditNewCandidate')->name('edit.candidate');
+      Route::post('candidate/update', 'UpdateNewCandidate')->name('update.candidate');
+      Route::get('candidate/delete/{id}', 'DeleteCandidate')->name('delete.candidate');
 
-        // Show Candidates for Santa
-        Route::get('show/candidates/new/santa', 'ShowCandidatesNewSanta')->name('show.all.candidates.santa');
+      // Show Candidates for Santa
+      Route::get('show/candidates/new/santa', 'ShowCandidatesNewSanta')->name('show.all.candidates.santa');
 
 
-        // Show Candidates for Elf
-        Route::get('show/candidates/new/elf', 'ShowCandidatesNewElf')->name('show.all.candidates.elf');
+      // Show Candidates for Elf
+      Route::get('show/candidates/new/elf', 'ShowCandidatesNewElf')->name('show.all.candidates.elf');
 
-        // Show Candidates for Snowflake
-        Route::get('show/candidates/new/snowflake', 'ShowCandidatesNewSnowflake')->name('show.all.candidates.snowflake');
+      // Show Candidates for Snowflake
+      Route::get('show/candidates/new/snowflake', 'ShowCandidatesNewSnowflake')->name('show.all.candidates.snowflake');
 
+      // For Sign Candidates To Partner
+      Route::get('candidate/sign/{id}', 'SignCandidate')->name('sign.candidate');
+      Route::post('candidate/update/sign', 'SignCandidateToPartner')->name('update.sign.candidate');
 
     });
 
     //For Showing Partners
     Route::controller(PartnerController::class)->group(function () {
-        Route::get('show/partners/active', 'ShowActivePartners')->name('show.partners.active');
-        Route::get('show/partners/notactive', 'ShowNotActivePartners')->name('show.partners.notactive');
-        // Route::post('store/candidate', 'StoreNewCandidate')->name('store.candidate');
-        // Route::get('edit/candidate/{id}', 'EditNewCandidate')->name('edit.candidate');
-        // Route::post('update/candidate', 'UpdateNewCandidate')->name('update.candidate');
-        // Route::get('delete/candidate/{id}', 'DeleteCandidate')->name('delete.candidate');
-
+      Route::get('show/partners/active', 'ShowActivePartners')->name('show.partners.active');
+      Route::get('show/partners/notactive', 'ShowNotActivePartners')->name('show.partners.notactive');
+      Route::get('add/candidate', 'AddNewPartner')->name('add.partner');
+      Route::post('store/partner', 'StoreNewPartner')->name('store.partner');
+      Route::get('edit/partner/{id}', 'EditPartner')->name('edit.partner');
+      Route::post('update/partner', 'UpdatePartner')->name('update.partner');
+      Route::get('delete/partner/{id}', 'DeletePartner')->name('delete.partner');
+      Route::get('confirm/partner/{id}', 'ConfirmNewPartner')->name('confirm.new.partner');
 
     });
 

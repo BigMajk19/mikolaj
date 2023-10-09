@@ -148,3 +148,28 @@ $(function(){
       })
     });
   });
+  activatePartner
+  $(function(){
+    $(document).on('click','#activatePartner',function(e){
+      e.preventDefault();
+      var link = $(this).attr("href");
+      Swal.fire({
+        title: 'Aktywować Partnera?',
+        text: "Czy napewno chcesz potwierdzić i aktywować nowego Partnera?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#34b825',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Tak, potwierdż!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = link
+          Swal.fire(
+            'Potwierdzono aktywację!',
+            'Aktywacja Partnera przebiegła pomyślnie!',
+            'success'
+          )
+        }
+      })
+    });
+  });

@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('partner_voivodeship')->nullable();
             $table->string('partner_country')->nullable();
             $table->enum('partner_status', ['active', 'notactive'])->default('notactive');
+            $table->string('agreement')->nullable();
             $table->timestamps();
         });
     }

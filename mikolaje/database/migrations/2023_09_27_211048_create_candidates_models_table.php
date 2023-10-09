@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('candidate_photo')->nullable();
             $table->string('cv')->nullable();
             $table->string('privacy_policy')->nullable();
+            $table->string('partner')->nullable();
             $table->timestamps();
         });
     }

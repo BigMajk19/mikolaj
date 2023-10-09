@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\User;
-use Illuminate\Http\Request;
+use App\Models\Partners;
 use App\Models\Candidates;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,26 +25,6 @@ class CandidatesController extends Controller
 
     public function StoreNewCandidate(Request $request)
     {
-        $request->validate([
-            'candidate_firstname' => 'required|max:200',
-            'candidate_lastname' => 'required|max:200',
-            'candidate_phone' => 'required',
-            'candidate_email' => 'required',
-            'job_as' => 'required',
-            'location_city' => 'required',
-            'candidate_age' => 'required',
-            'candidate_growth' => 'required',
-            'candidate_weight' => 'required',
-            'cloth_size' => '',
-            'exp_with_children' => '',
-            'exp_as_santa' => '',
-            'drive_license' => '',
-            'work_at_xmas' => '',
-            'candidate_description' => '',
-            'cv' => 'image|max:2048',
-            'privacy_policy' => '',
-
-        ]);
 
         // $imagePath = $request->file('cv')->store('public/backend/upload/images/candidates');
         $file=$request->file('cv');
@@ -158,6 +139,28 @@ class CandidatesController extends Controller
         return view('admin.candidates.show_all_snowflake_candidates',compact('show_new_snowflake'));
     }
 
+    // For Service Candidates
+    public function SignCandidate($id)
+    {
+        $partners = Partners::latest()->get();
+        $types = Candidates::findOrFail($id);
+        return view('backend.candidates.sign_to_partner', compact('types','partners'));
 
+    }
+
+    public function SignCandidateToPartner(Request $request)
+    {
+        $cid = $request->id;
+
+        Candidates::findOrFail($cid)->update([
+
+            'partner' => $request->partner,
+        ]);
+        $notification = array(
+            'message' => 'Partner został pomyślnie przypisany do Kandydata',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('show.all.candidates')->with($notification);
+    }
 }
 
