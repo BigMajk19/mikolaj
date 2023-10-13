@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('candidate_phone')->nullable();
             $table->string('candidate_email')->nullable();
             $table->string('job_as')->nullable();
-            $table->string('location_city')->nullable();
+            $table->string('candidate_city')->nullable();
+            $table->string('candidate_voivodeship')->nullable();
             $table->string('candidate_age')->nullable();
             $table->string('candidate_growth')->nullable();
             $table->string('candidate_weight')->nullable();
