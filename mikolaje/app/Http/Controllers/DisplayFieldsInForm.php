@@ -14,7 +14,7 @@ class DisplayFieldsInForm extends Controller
     public function GetTypeNameVisit($typeNameId)
     {
         // Pobierz opcje nazw wizyt na podstawie wybranego rodzaju wizyty
-        $visitsName = VisitsName::where('type_name', $typeNameId)->pluck('visit_name', 'id');
+        $visitsName = VisitsName::where('visits_type_id', $typeNameId)->pluck('visit_name', 'id');
 
         return response()->json($visitsName);
     }

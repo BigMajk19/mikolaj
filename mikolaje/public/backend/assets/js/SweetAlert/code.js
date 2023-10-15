@@ -1,4 +1,5 @@
-$(function(){
+//Deleting
+  $(function(){
     $(document).on('click','#delete',function(e){
       e.preventDefault();
       var link = $(this).attr("href");
@@ -17,56 +18,6 @@ $(function(){
             'Usunięto!',
             'Wizyta została usunięta bezpowrotnie',
             'success'
-          )
-        }
-      })
-    });
-  });
-
-
-  $(function(){
-    $(document).on('click','#cancel',function(e){
-      e.preventDefault();
-      var link = $(this).attr("href");
-      Swal.fire({
-        title: 'Potwierdź anulowanie wizyty.',
-        text: "Czy napewno chcesz anulować wizytę?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#34b825',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Tak, anuluj!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          window.location.href = link
-          Swal.fire(
-            'Anulowano!',
-            'Wizyta została anulowana!'
-          )
-        }
-      })
-    });
-  });
-
-
-  $(function(){
-    $(document).on('click','#reserve_to_new',function(e){
-      e.preventDefault();
-      var link = $(this).attr("href");
-      Swal.fire({
-        title: 'Zmiana statusu wizyty',
-        text: "Czy napewno chcesz zmienić status wizyty z \"Lista Rezerwowa\" na \"Nowa Wizyta\"?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#34b825',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Tak, potwierdź!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          window.location.href = link
-          Swal.fire(
-            'Zmieniono status!',
-            'Status wizyty został zmieniony na \"Nowa wizyta\"!'
           )
         }
       })
@@ -98,6 +49,105 @@ $(function(){
     });
   });
 
+  $(function(){
+    $(document).on('click','#deleteVoivodeship',function(e){
+      e.preventDefault();
+      var link = $(this).attr("href");
+      Swal.fire({
+        title: 'Usuńąć województwo?',
+        text: "Czy napewno chcesz usunąć województwo?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#34b825',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Tak, potwierdż!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = link
+          Swal.fire(
+            'Potwierdzono aktywację!',
+            'Aktywacja Partnera przebiegła pomyślnie!',
+            'success'
+          )
+        }
+      })
+    });
+  });
+
+  $(function(){
+    $(document).on('click','#deleteCity',function(e){
+      e.preventDefault();
+      var link = $(this).attr("href");
+      Swal.fire({
+        title: 'Usunąć miasto?',
+        text: "Czy napewno chcesz usunąć miasto?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#34b825',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Tak, potwierdż!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = link
+          Swal.fire(
+            'Potwierdzono aktywację!',
+            'Aktywacja Partnera przebiegła pomyślnie!',
+            'success'
+          )
+        }
+      })
+    });
+  });
+
+  $(function(){
+    $(document).on('click','#cancel',function(e){
+      e.preventDefault();
+      var link = $(this).attr("href");
+      Swal.fire({
+        title: 'Potwierdź anulowanie wizyty.',
+        text: "Czy napewno chcesz anulować wizytę?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#34b825',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Tak, anuluj!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = link
+          Swal.fire(
+            'Anulowano!',
+            'Wizyta została anulowana!'
+          )
+        }
+      })
+    });
+  });
+
+// Confirmations
+
+  $(function(){
+    $(document).on('click','#reserve_to_new',function(e){
+      e.preventDefault();
+      var link = $(this).attr("href");
+      Swal.fire({
+        title: 'Zmiana statusu wizyty',
+        text: "Czy napewno chcesz zmienić status wizyty z \"Lista Rezerwowa\" na \"Nowa Wizyta\"?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#34b825',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Tak, potwierdź!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = link
+          Swal.fire(
+            'Zmieniono status!',
+            'Status wizyty został zmieniony na \"Nowa wizyta\"!'
+          )
+        }
+      })
+    });
+  });
 
   $(function(){
     $(document).on('click','#confirm',function(e){
@@ -148,7 +198,7 @@ $(function(){
       })
     });
   });
-  activatePartner
+
   $(function(){
     $(document).on('click','#activatePartner',function(e){
       e.preventDefault();

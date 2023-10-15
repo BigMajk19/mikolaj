@@ -33,10 +33,10 @@
                 @csrf
                 <div class="form-group mb-3">
                   <label for="exampleInputUsername1" class="form-label">Nazwa kategorii</label>
-                  <select class="form-select" id="toUpdateVisitsCat" name= "type_name">
+                  <select class="form-select" id="toUpdateVisitsCat" name= "visits_type_id">
                     <option selected="" disabled="">Wybierz kategorię</option>
                     @foreach($types as $key => $item)
-                    <option>{{ $item->type_name }}</option>
+                    <option value="{{ $item->id }}">{{ $item->type_name }}</option>
                     @endforeach
                   </select>
 

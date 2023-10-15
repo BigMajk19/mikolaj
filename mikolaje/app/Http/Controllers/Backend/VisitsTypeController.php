@@ -84,7 +84,7 @@ class VisitsTypeController extends Controller
 
         VisitsName::insert([
 
-            'type_name' => $request->type_name,
+            'visits_type_id' => $request->visits_type_id,
             'visit_name' => $request->visit_name,
             'visit_length' => $request->visit_length,
             'visit_price_net' => $request->visit_price_net,
@@ -113,7 +113,7 @@ class VisitsTypeController extends Controller
 
         VisitsName::findOrFail($nid)->update([
 
-            'type_name' => $request->type_name,
+            'visits_type_id' => $request->visits_type_id,
             'visit_name' => $request->visit_name,
             'visit_length' => $request->visit_length,
             'visit_price_net' => $request->visit_price_net,

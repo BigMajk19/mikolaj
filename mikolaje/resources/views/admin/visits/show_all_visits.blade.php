@@ -66,7 +66,7 @@
                 @foreach($show as $key => $item)
                 <tr>
                   <td>{{ $item->id }}</td>
-                  <td>{{ $item->type_name }} {{ $item->visit_name }}</td>
+                  <td> {{ $item->type_name }} {{ $item->visit_name }}</td>
                   <td>{{ $item->length_visit*$item->visit_qty }} min.</td>
                   <td>{{ $item->visit_date }}</td>
                   <td><a href="tel:{{ $item->phone }}">{{ $item->phone }}</a></td>

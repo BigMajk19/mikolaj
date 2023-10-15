@@ -28,98 +28,101 @@ class VisitsController extends Controller
 
     public function StoreVisit(Request $request)
     {
+      $selectedTypeName = $request->input('selected_type_name');
+      $typeId = VisitsType::where('type_name', $selectedTypeName)->value('type_name');
 
-        VisitsSubmissions::insert([
+      VisitsSubmissions::insert([
 
-            'type_name' => $request->type_name,
-            'visit_name' => $request->visit_name,
-            'length_visit' => $request->length_visit,
-            'visit_qty' => $request->visit_qty,
-            'facility_name' => $request->facility_name,
-            'client_firstname' => $request->client_name,
-            'client_lastname' => $request->client_name,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'visit_date' => $request->visit_date,
-            'preffered_time' => $request->preffered_time,
-            'interval_hours' => $request->interval_hours,
-            'guaranted' => $request->guaranted,
-            'price_net' =>  $request->price_net,
-            'price_gross' =>  $request->price_gross,
-            'additional_information' => $request->additional_information,
-            'street_address' => $request->street_address,
-            'street_number' => $request->street_number,
-            'flat_number' => $request->flat_number,
-            'district' => $request->district,
-            'city' => $request->city,
-            'zipcode' => $request->zipcode,
-            'voivodeship' => $request->voivodeship,
-            'counties' => $request->counties,
-            'drive_fee' => $request->drive_fee,
-            'invoice' => $request->invoice,
-            'invoice_company_name' => $request->invoice_company_name,
-            'invoice_NIP' => $request-> invoice_NIP,
-            'invoice_company_adress' => $request->invoice_company_adress,
-            'accepted_statue' => $request->accepted_statue,
-            'accepted_marketing' => $request->accepted_marketing,
-            'remind_visit' => $request->remind_visit,
-        ]);
-        $notification = array(
-            'message' => 'Pomyślnie dodano nową Wizytę.',
-            'alert-type' => 'success',
-        );
-        return redirect()->route('show.all.visits')->with($notification);
+        'type_name' => $typeId,
+        'visit_name' => $request->visit_name,
+        'length_visit' => $request->length_visit,
+        'visit_qty' => $request->visit_qty,
+        'facility_name' => $request->facility_name,
+        'client_firstname' => $request->client_firstname,
+        'client_lastname' => $request->client_lastname,
+        'phone' => $request->phone,
+        'email' => $request->email,
+        'visit_date' => $request->visit_date,
+        'preffered_time' => $request->preffered_time,
+        'interval_hours' => $request->interval_hours,
+        'guaranted' => $request->guaranted,
+        'price_net' =>  $request->price_net,
+        'price_gross' =>  $request->price_gross,
+        'additional_information' => $request->additional_information,
+        'street_address' => $request->street_address,
+        'street_number' => $request->street_number,
+        'flat_number' => $request->flat_number,
+        'district' => $request->district,
+        'city' => $request->city,
+        'zipcode' => $request->zipcode,
+        'voivodeship' => $request->voivodeship,
+        'counties' => $request->counties,
+        'drive_fee' => $request->drive_fee,
+        'invoice' => $request->invoice,
+        'invoice_company_name' => $request->invoice_company_name,
+        'invoice_NIP' => $request-> invoice_NIP,
+        'invoice_company_adress' => $request->invoice_company_adress,
+        'accepted_statue' => $request->accepted_statue,
+        'accepted_marketing' => $request->accepted_marketing,
+        'remind_visit' => $request->remind_visit,
+      ]);
+      $notification = array(
+        'message' => 'Pomyślnie dodano nową Wizytę.',
+        'alert-type' => 'success',
+      );
+      return redirect()->route('show.all.visits')->with($notification);
     }
+
     public function EditVisit($id)
     {
-        $types = VisitsSubmissions::findOrFail($id);
-        return view('backend.visits.edit_visit', compact('types'));
+      $types = VisitsSubmissions::findOrFail($id);
+      return view('backend.visits.edit_visit', compact('types'));
 
     }
 
     public function UpdateVisit(Request $request)
     {
-        $vid = $request->id;
+      $vid = $request->id;
 
-        VisitsSubmissions::findOrFail($vid)->update([
+      VisitsSubmissions::findOrFail($vid)->update([
 
-            'visit_name' => $request->visit_name,
-            'length_visit' => $request->length_visit,
-            'visit_qty' => $request->visit_qty,
-            'facility_name' => $request->facility_name,
-            'client_firstname' => $request->client_name,
-            'client_lastname' => $request->client_name,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'visit_date' => $request->visit_date,
-            'preffered_time' => $request->preffered_time,
-            'interval_hours' => $request->interval_hours,
-            'guaranted' => $request->guaranted,
-            'price_net' =>  $request->price_net,
-            'price_gross' =>  $request->price_gross,
-            'additional_information' => $request->additional_information,
-            'street_address' => $request->street_address,
-            'street_number' => $request->street_number,
-            'flat_number' => $request->flat_number,
-            'district' => $request->district,
-            'city' => $request->city,
-            'zipcode' => $request->zipcode,
-            'voivodeship' => $request->voivodeship,
-            'counties' => $request->counties,
-            'drive_fee' => $request->drive_fee,
-            'invoice' => $request->invoice,
-            'invoice_company_name' => $request->invoice_company_name,
-            'invoice_NIP' => $request-> invoice_NIP,
-            'invoice_company_adress' => $request->invoice_company_adress,
-            'accepted_statue' => $request->accepted_statue,
-            'accepted_marketing' => $request->accepted_marketing,
-            'remind_visit' => $request->remind_visit,
-        ]);
-        $notification = array(
-            'message' => 'Wizyta została pomyślnie zaktualizowana.',
-            'alert-type' => 'success',
-        );
-        return redirect()->route('show.all.visits')->with($notification);
+        'visit_name' => $request->visit_name,
+        'length_visit' => $request->length_visit,
+        'visit_qty' => $request->visit_qty,
+        'facility_name' => $request->facility_name,
+        'client_firstname' => $request->client_firstname,
+        'client_lastname' => $request->client_lastname,
+        'phone' => $request->phone,
+        'email' => $request->email,
+        'visit_date' => $request->visit_date,
+        'preffered_time' => $request->preffered_time,
+        'interval_hours' => $request->interval_hours,
+        'guaranted' => $request->guaranted,
+        'price_net' =>  $request->price_net,
+        'price_gross' =>  $request->price_gross,
+        'additional_information' => $request->additional_information,
+        'street_address' => $request->street_address,
+        'street_number' => $request->street_number,
+        'flat_number' => $request->flat_number,
+        'district' => $request->district,
+        'city' => $request->city,
+        'zipcode' => $request->zipcode,
+        'voivodeship' => $request->voivodeship,
+        'counties' => $request->counties,
+        'drive_fee' => $request->drive_fee,
+        'invoice' => $request->invoice,
+        'invoice_company_name' => $request->invoice_company_name,
+        'invoice_NIP' => $request-> invoice_NIP,
+        'invoice_company_adress' => $request->invoice_company_adress,
+        'accepted_statue' => $request->accepted_statue,
+        'accepted_marketing' => $request->accepted_marketing,
+        'remind_visit' => $request->remind_visit,
+      ]);
+      $notification = array(
+        'message' => 'Wizyta została pomyślnie zaktualizowana.',
+        'alert-type' => 'success',
+      );
+      return redirect()->route('show.all.visits')->with($notification);
     }
 
     public function DeleteVisit ($id)

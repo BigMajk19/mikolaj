@@ -64,15 +64,21 @@
         </ul>
         </div>
       </li>
-    <!-- 1 panel WIZYTY-->
-      <li class="nav-item nav-category">
-        Wizyty
-      </li>
       <li class="nav-item">
         <a href="{{ route('all.typevisits') }}" class="nav-link">
           <i class="link-icon" data-feather="message-square"></i>
           <span class="link-title">Typy Kategorii Wizyt</span>
         </a>
+      </li>
+      <li class="nav-item">
+        <a href="{{ route('show.working.area') }}" class="nav-link">
+          <i class="link-icon" data-feather="message-square"></i>
+          <span class="link-title">Obszar działania</span>
+        </a>
+      </li>
+    <!-- 1 panel WIZYTY-->
+      <li class="nav-item nav-category">
+        Wizyty
       </li>
         <!-- 1 panel Wizyty - Wszystkie wizyty-->
       <li class="nav-item">

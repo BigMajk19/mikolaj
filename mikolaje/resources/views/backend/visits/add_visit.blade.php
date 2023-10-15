@@ -38,26 +38,27 @@
                     <select class="form-select" id="typeName" name="type_name" >
                       <option selected="" disabled="">Rodzaj wizyty</option>
                       @foreach($types as $key => $item)
-                      <option value="{{ $item->type_name }}">{{ $item->type_name }}</option>
+                      <option value="{{ $item->id }}">{{ $item->type_name }}</option>
                       @endforeach
                     </select>
+                    <input type="hidden" id="selectedTypeName" name="selected_type_name" value="">
                   </div>
-                  <div class="col-md-5">
+                  <div class="col-md-4">
                     <label for="visitName">Nazwa wizyty:</label>
                     <select class="form-select" id="visitName" name="visit_name" >
                       <option selected="" disabled="">Nazwa wizyty</option>
                     </select>
                   </div>
-                  <div class="col-md-3">
-                    <label for="lengthVisit">Długość wizyty</label>
-                    <input type="text" class="form-control" id="lengthVisit" name="length_visit" disabled="">
+                  <div class="col-md-2">
+                    <label for="visit_qty">Qty:</label>
+                    <input type="number" id="visit_qty" name= "visit_qty" class="form-control" min="1">
+                  </div>
+                  <div class="col-md-2">
+                    <label for="lengthVisit">Długość</label>
+                    <input type="text" class="form-control" id="lengthVisit" name="length_visit" readonly>
                   </div>
                 </div>
                 <div class="form-group row mb-3">
-                  <div class="col-md-2">
-                    <label for="visit_qty">Ilość wizyt:</label>
-                    <input type="number" id="visit_qty" name= "visit_qty" class="form-control" placeholder="Ilość" >
-                  </div>
                   <div class="col-md-3">
                     <label for="guaranted">Godz. gwar.</label>
                     <select class="form-select" id="guaranted" name="guaranted">
@@ -68,11 +69,11 @@
                   </div>
                   <div class="col-md-3">
                     <label for="priceNet">Cena netto</label>
-                    <input type="text" name= "price_net" id="priceNet" class="form-control" placeholder="Cena netto" disabled="">
+                    <input type="text" name= "price_net" id="priceNet" class="form-control" placeholder="Cena netto" readonly>
                   </div>
                   <div class="col-md-4">
                     <label for="priceGross">Cena brutto</label>
-                    <input type="text" name= "price_gross" id="priceGross" class="form-control" placeholder="Cena brutto" disabled="">
+                    <input type="text" name= "price_gross" id="priceGross" class="form-control" placeholder="Cena brutto" readonly>
                   </div>
                 </div>
                 <div class="form-group row mb-3">
@@ -167,11 +168,13 @@
                     <label for="client_lastname">Nazwisko</label>
                     <input type="text" name= "client_lastname" id="client_lastname"class="form-control" placeholder="Wprowadź nazwisko">
                   </div>
-                  <div class="col-md-3">
+                </div>
+                <div class="form-group row mb-3">
+                  <div class="col-md-6">
                     <label for="phone">Telefon</label>
                     <input type="text" name= "phone" id="phone" class="form-control" placeholder="Nr. telefonu">
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-6">
                     <label for="email">Email</label>
                     <input name="email" id="email" class="form-control mb-4 mb-md-0" data-inputmask="'alias': 'email'" inputmode="email" placeholder="E-mail">
                   </div>

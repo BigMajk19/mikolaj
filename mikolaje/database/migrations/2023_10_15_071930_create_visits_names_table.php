@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\VisitsType;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -12,8 +13,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('visits_names', function (Blueprint $table) {
-            $table->id()->autoIncrement();
-            $table->string('type_name');
+            $table->id();
+            $table->foreignIdFor(VisitsType::class);
             $table->string('visit_name');
             $table->string('visit_length');
             $table->string('visit_price_net');

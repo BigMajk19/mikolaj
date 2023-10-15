@@ -60,7 +60,7 @@
                   <th>Imię i Nazwisko: </th>
                   <th class="none">Opis: </th>
                   <th>CV: </th>
-                  <th>Przypisany do partnera:</th>
+                  <th><u>Przypisany do partnera:</u></th>
                   <th></th>
                 </tr>
               </thead>

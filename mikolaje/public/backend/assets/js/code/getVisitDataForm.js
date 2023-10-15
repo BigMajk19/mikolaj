@@ -1,6 +1,8 @@
 $(document).ready(function() {
   // Obsługa zmiany wyboru w pierwszym polu select
   $('#typeName').on('change', function() {
+    var selectedTypeName = $('#typeName option:selected').text();
+    $('#selectedTypeName').val(selectedTypeName);
     var typeNameId = $(this).val();
 
     // Wyślij żądanie AJAX do kontrolera Laravel, aby pobrać opcje dla drugiego pola select
@@ -24,15 +26,18 @@ $(document).ready(function() {
         // Dodaj nowe opcje na podstawie odpowiedzi AJAX
         $.each(data, function(key, value) {
           $('#visitName').append($('<option>', {
-            value: key,
-            text: value
+            value: value,
+            text: value,
+            data: {
+                id: key
+            }
           }));
         });
       }
     });
 
     var selectedValue = $(this).val();
-      if (selectedValue === 'Firmowa' || selectedValue === 'Przedszkolna') {
+      if (selectedValue === '1' || selectedValue === '3') {
         // Jeśli wybrano "Firmowa" lub "Przedszkolna", pokaż dodatkowe pola
         $('#additionalFields').show();
       } else {
@@ -43,7 +48,9 @@ $(document).ready(function() {
 
   // Obsługa zmiany wyboru w drugim polu select
   $('#visitName').on('change', function() {
-    var visitNameId = $(this).val();
+    var selectedOption = $('#visitName option:selected');
+    var visitNameId = selectedOption.data('id');
+    // var visitNameId = $(this).val(); - stary KOD
 
     // Wyślij żądanie AJAX, aby pobrać długość trwania i cenę na podstawie wyboru w drugim polu select
     $.ajax({

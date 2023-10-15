@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\VisitsController;
 use App\Http\Controllers\Backend\PartnerController;
 use App\Http\Controllers\Backend\CandidatesController;
 use App\Http\Controllers\Backend\VisitsTypeController;
+use App\Http\Controllers\Backend\WorkingAreaController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Client\ClientDashboardController;
 use App\Http\Controllers\Partner\PartnerDashboardController;
@@ -147,6 +148,28 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
       Route::post('update/partner', 'UpdatePartner')->name('update.partner');
       Route::get('delete/partner/{id}', 'DeletePartner')->name('delete.partner');
       Route::get('confirm/partner/{id}', 'ConfirmNewPartner')->name('confirm.new.partner');
+
+    });
+
+    //For Working Area
+    Route::controller(WorkingAreaController::class)->group(function () {
+
+        //ShowingArea
+        Route::get('show/working/area', 'ShowWorkingArea')->name('show.working.area');
+
+    // Options for Area Voivodeship
+        Route::get('add/voivodeship', 'AddVoivodeship')->name('add.voivodeship');
+        Route::post('store/voivodeship', 'StoreAreaVoivodeship')->name('store.voivodeship');
+        Route::get('edit/voivodeship/{id}', 'EditAreaVoivodeship')->name('edit.voivodeship');
+        Route::post('update/voivodeship', 'UpdateAreaVoivodeship')->name('update.voivodeship');
+        Route::get('delete/voivodeship/{id}', 'DeleteAreaVoivodeship')->name('delete.voivodeship');
+    //For Area City
+        Route::get('add/city', 'AddCity')->name('add.city');
+        Route::post('store/city', 'StoreAreaCity')->name('store.city');
+        Route::get('edit/city/{id}', 'EditAreaCity')->name('edit.city');
+        Route::post('update/city', 'UpdateAreaCity')->name('update.city');
+        Route::get('delete/city/{id}', 'DeleteAreaCity')->name('delete.city');
+
 
     });
 

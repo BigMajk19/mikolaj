@@ -12,37 +12,37 @@
 @section('admin')
 
 <div class="page-content">
-{{-- Kategorie wizyt --}}
+  <h3>Obszar działania</h3>
+  <br/>
+{{-- Obszar działania --}}
   <nav class="page-breadcrumb">
     <ol class="breadcrumb">
-      <a href="{{ route('add.type') }}" class="btn btn-inverse-warning">Dodaj kategorię</a>
+      <a href="{{ route('add.voivodeship') }}" class="btn btn-inverse-warning">Dodaj województwo</a>
     </ol>
   </nav>
-
   <div class="row">
     <div class="col-md-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h6 class="card-title">Kategorie Wizyt</h6>
+          <h6 class="card-title">Województwa</h6>
           <div class="table-responsive">
             <table id="example" class="table table-striped dt-responsive table-hover display nowrap">
               <thead>
                 <tr>
-                  <th>NR</th>
-                  <th>Typ wizyty</th>
+                  <th>Id</th>
+                  <th>Województwo</th>
                   <th></th>
                 </tr>
               </thead>
 
               <tbody>
-                @foreach($types as $key => $item)
+                @foreach($varea as $key => $item)
                 <tr>
                   <td>{{ $item->id }}</td>
-                  <td>{{ $item->type_name }}</td>
-                  <td>{{ $item->type_icon }}</td>
+                  <td>{{ $item->voivodeship_name }}</td>
                   <td>
-                    <a href="{{ route('edit.type_visits',$item->id) }}" class="btn btn-inverse-success">Edycja</a>
-                    <a href="{{ route('delete.type_visits',$item->id) }}" class="btn btn-inverse-danger" id="delete">Usuń</a>
+                    <a href="{{ route('edit.voivodeship',$item->id) }}" class="btn btn-inverse-success">Edycja</a>
+                    <a href="{{ route('delete.voivodeship',$item->id) }}" class="btn btn-inverse-danger" id="deleteVoivodeship">Usuń</a>
                   </td>
                 </tr>
                 @endforeach
@@ -54,9 +54,10 @@
     </div>
   </div>
 {{-- Rodzaje wizyt --}}
+
   <nav class="page-breadcrumb">
     <ol class="breadcrumb">
-      <a href="{{ route('add.name.visit') }}" class="btn btn-inverse-warning">Dodaj rodzaj wizyty</a>
+      <a href="{{ route('add.city') }}" class="btn btn-inverse-warning">Dodaj miasto</a>
     </ol>
   </nav>
 
@@ -64,40 +65,34 @@
     <div class="col-md-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h6 class="card-title">Rodzaje Wizyt</h6>
+          <h6 class="card-title">Miasta</h6>
           <div class="table-responsive">
             <table id="example" class="table table-striped dt-responsive table-hover display nowrap">
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Typ wizyty</th>
-                  <th>Nazwa wizyty</th>
-                  <th>Długość wizyty</th>
-                  <th>Cena netto</th>
-                  <th>Cena brutto</th>
-                  <th>Zdjęcie</th>
+                  <th>Województwo</th>
+                  <th>Nazwa miasta</th>
+                  <th>Status</th>
                   <th></th>
                 </tr>
               </thead>
 
               <tbody>
-                @foreach($names as $key => $item)
+                @foreach($carea as $key => $item)
                 @php
-                  $vname = App\Models\VisitsType::where('id',$item->visits_type_id)->value('type_name');
+                  $vname = App\Models\AreaVoivodeship::where('id',$item->area_voivodeship_id)->value('voivodeship_name');
                 @endphp
                 <tr>
                   <td>{{ $item->id }}</td>
-                  @if ($item->visits_type_id)
+                  @if ($item->area_voivodeship_id)
                   <td> {{ $vname }}</td>
                   @endif
-                  <td>{{ $item->visit_name }}</td>
-                  <td>{{ $item->visit_length }} min.</td>
-                  <td>{{ $item->visit_price_net }} PLN</td>
-                  <td>{{ $item->visit_price_gross }} PLN</td>
-                  <td>{{ $item->visit_image }}</td>
+                  <td>{{ $item->city_name }}</td>
+                  <td>{{ $item->status }}</td>
                   <td>
-                    <a href="{{ route('edit.name.visit',$item->id) }}" class="btn btn-inverse-success">Edycja</a>
-                    <a href="{{ route('delete.name.visit',$item->id) }}" class="btn btn-inverse-danger" id="delete">Usuń</a>
+                    <a href="{{ route('edit.city',$item->id) }}" class="btn btn-inverse-success">Edycja</a>
+                    <a href="{{ route('delete.city',$item->id) }}" class="btn btn-inverse-danger" id="deleteCity">Usuń</a>
                   </td>
                 </tr>
                 @endforeach

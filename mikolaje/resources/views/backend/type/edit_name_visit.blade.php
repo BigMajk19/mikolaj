@@ -35,14 +35,11 @@
                 <input type="hidden" name="id" value="{{$names->id}}">
                 <div class="form-group mb-3">
                   <label for="exampleInputUsername1" class="form-label">Nazwa kategorii</label>
-                  <select class="form-select" id="toUpdateVisitsCat" name= "type_name" value="{{ $names->type_name }}">
-                    <option selected="" disabled="">{{ $names->type_name }}</option>
+                  <select class="form-select" id="toUpdateVisitsCat" name= "visits_type_id">
                     @foreach($types as $key => $item)
-                    <option>{{ $item->type_name }}</option>
+                    <option value="{{ $item->id }}" {{ $item->id == $names->visits_type_id ? 'selected' : '' }}>{{ $item->type_name }}</option>
                     @endforeach
                   </select>
-                  {{-- <input type="text" name= "type_name" class="form-control" value="{{ $names->type_name }}" disabled> --}}
-
                   </div>
                   <div class="form-group mb-3">
                     <label for="exampleInputUsername1" class="form-label">Nazwa wizyty</label>
