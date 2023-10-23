@@ -48,6 +48,7 @@ return new class extends Migration
             $table->string('status')->default('new');
             $table->string('partner')->nullable();
             $table->string('employee')->nullable();
+            $table->longText('visit_notes')->nullable();
             $table->timestamps();
         });
     }

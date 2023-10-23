@@ -65,8 +65,8 @@
         if (result.isConfirmed) {
           window.location.href = link
           Swal.fire(
-            'Potwierdzono aktywację!',
-            'Aktywacja Partnera przebiegła pomyślnie!',
+            'Potwierdzono usunięcie województwa!',
+            'Usunięcie województwa przebiegło pomyślnie!',
             'success'
           )
         }
@@ -90,8 +90,33 @@
         if (result.isConfirmed) {
           window.location.href = link
           Swal.fire(
-            'Potwierdzono aktywację!',
-            'Aktywacja Partnera przebiegła pomyślnie!',
+            'Potwierdzono usunięcie miasta!',
+            'Usunięcie miasta przebiegło pomyślnie!',
+            'success'
+          )
+        }
+      })
+    });
+  });
+
+  $(function(){
+    $(document).on('click','#deleteDistrict',function(e){
+      e.preventDefault();
+      var link = $(this).attr("href");
+      Swal.fire({
+        title: 'Usunąć dzielnicę?',
+        text: "Czy napewno chcesz usunąć dzielnicę?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#34b825',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Tak, potwierdż!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = link
+          Swal.fire(
+            'Potwierdzono Usunięcie!',
+            'Usunięto poprawnie dzielnicę!',
             'success'
           )
         }

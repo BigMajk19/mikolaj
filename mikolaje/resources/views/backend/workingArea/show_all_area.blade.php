@@ -53,7 +53,7 @@
       </div>
     </div>
   </div>
-{{-- Rodzaje wizyt --}}
+{{-- Miasta --}}
 
   <nav class="page-breadcrumb">
     <ol class="breadcrumb">
@@ -72,7 +72,7 @@
                 <tr>
                   <th>ID</th>
                   <th>Województwo</th>
-                  <th>Nazwa miasta</th>
+                  <th>Miasto</th>
                   <th>Status</th>
                   <th></th>
                 </tr>
@@ -93,6 +93,53 @@
                   <td>
                     <a href="{{ route('edit.city',$item->id) }}" class="btn btn-inverse-success">Edycja</a>
                     <a href="{{ route('delete.city',$item->id) }}" class="btn btn-inverse-danger" id="deleteCity">Usuń</a>
+                  </td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{-- Dzielnice --}}
+  <nav class="page-breadcrumb">
+    <ol class="breadcrumb">
+      <a href="{{ route('add.district') }}" class="btn btn-inverse-warning">Dodaj dzielnicę</a>
+    </ol>
+  </nav>
+  <div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title">Dzielnice</h6>
+          <div class="table-responsive">
+            <table id="example" class="table table-striped dt-responsive table-hover display nowrap">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Miasto</th>
+                  <th>Dzielnica</th>
+                  <th></th>
+                </tr>
+              </thead>
+
+              <tbody>
+                @foreach($darea as $key => $item)
+                @php
+                  $cname = App\Models\AreaCity::where('id',$item->area_city_id)->value('city_name');
+                @endphp
+                <tr>
+                  <td>{{ $item->id }}</td>
+                  @if ($item->area_city_id)
+                  <td> {{ $cname }}</td>
+                  @endif
+                  <td>{{ $item->district_name }}</td>
+                  <td>
+                    <a href="{{ route('edit.district',$item->id) }}" class="btn btn-inverse-success">Edycja</a>
+                    <a href="{{ route('delete.district',$item->id) }}" class="btn btn-inverse-danger" id="deleteDistrict">Usuń</a>
                   </td>
                 </tr>
                 @endforeach

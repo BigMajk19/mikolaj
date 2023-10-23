@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\AreaCity;
+use App\Models\AreaDistrict;
 use App\Models\AreaVoivodeship;
 
 class WorkingAreaController extends Controller
@@ -15,7 +16,8 @@ class WorkingAreaController extends Controller
     {
         $varea = AreaVoivodeship::latest()->get();
         $carea = AreaCity::latest()->get();
-        return view('backend.workingArea.show_all_area', compact('varea', 'carea'));
+        $darea = AreaDistrict::latest()->get();
+        return view('backend.workingArea.show_all_area', compact('varea', 'carea', 'darea'));
     }
     //For Voivodeship_Area
     public function AddVoivodeship()
@@ -133,5 +135,62 @@ class WorkingAreaController extends Controller
         return redirect()->back()->with($notification);
     }
 
+// For Area City District
+    public function AddDistrict()
+    {
+        $carea = AreaCity::latest()->get();
+        return view('backend.workingArea.add_district', compact('carea'));
+    }
 
+    public function StoreAreaDistrict(Request $request)
+    {
+
+        AreaDistrict::insert([
+
+          'district_name' => $request->district_name,
+          'area_city_id' => $request->area_city_id,
+
+        ]);
+        $notification = array(
+            'message' => 'Pomyślnie dodano nową dzielnicę.',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('show.working.area')->with($notification);
+    }
+
+    public function EditAreaDistrict($id)
+    {
+        $carea = AreaCity::latest()->get();
+        $darea = AreaDistrict::findOrFail($id);
+        return view('backend.workingArea.edit_district', compact('carea','darea'));
+
+    }
+
+    public function UpdateAreaDistrict(Request $request)
+    {
+        $did = $request->id;
+
+        AreaDistrict::findOrFail($did)->update([
+
+            'district_name' => $request->district_name,
+            'area_city_id' => $request->area_city_id,
+
+        ]);
+        $notification = array(
+            'message' => 'Miasto zostało pomyślnie zaktualizowane.',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('show.working.area')->with($notification);
+    }
+
+    public function DeleteAreaDistrict ($id)
+    {
+        AreaDistrict::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Dzielnica została pomyślnie usunięta.',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
+    }
 }

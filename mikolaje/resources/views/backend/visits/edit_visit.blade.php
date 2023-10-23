@@ -1,7 +1,12 @@
 {{-- Początek HEAD --}}
 @section('CSSscripts')
-<link rel="stylesheet" href="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.css') }}">
 
+<link rel="stylesheet" href="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.css') }}">
+@endsection
+
+@section('JSscripts')
+
+<script src="{{ asset('backend/assets/js/code/getVisitDataForm.js') }}"></script>
 @endsection
 {{-- Koniec HEAD --}}
 
@@ -37,11 +42,11 @@
                 <div class="form-group row mb-3">
                   <div class="col-md-6">
                     <label for="typeName">Rodzaj wizyty:</label>
-                    <input type="text" class="form-control" name="type_name" id="typeName" disabled="" value="{{ $types->type_name }}">
+                    <input type="text" class="form-control" name="type_name" id="typeName" readonly value="{{ $types->type_name }}">
                   </div>
                   <div class="col-md-6">
                     <label for="visitName">Nazwa wizyty:</label>
-                    <input type="text" class="form-control" name="visit_name" id="visitName" disabled="" value="{{ $types->visit_name }}">
+                    <input type="text" class="form-control" name="visit_name" id="visitName" readonly value="{{ $types->visit_name }}">
                     {{-- <select class="form-select" id="visitName" name="visit_name" value="{{ $types->visit_name }}">
 
                     </select> --}}
@@ -50,7 +55,7 @@
                 <div class="form-group row mb-3">
                   <div class="col-md-3">
                     <label for="lengthVisit">Długość wizyty</label>
-                    <input type="text" class="form-control" id="lengthVisit" name="length_visit" disabled="" value="{{ $types->length_visit }}">
+                    <input type="text" class="form-control" id="lengthVisit" name="length_visit" readonly value="{{ $types->length_visit }}">
                   </div>
                   <div class="col-md-2">
                     <label for="visit_qty">Ilość wizyt:</label>
@@ -65,11 +70,11 @@
                   </div>
                   <div class="col-md-4">
                     <label for="priceNet">Cena netto</label>
-                    <input type="text" name= "price_net" id="priceNet" class="form-control" value="{{ $types->price_net }}" disabled="">
+                    <input type="text" name= "price_net" id="priceNet" class="form-control" value="{{ $types->price_net }}" readonly>
                   </div>
                   <div class="col-md-4">
                     <label for="priceGross">Cena brutto</label>
-                    <input type="text" name= "price_gross" id="priceGross" class="form-control" value="{{ $types->price_net }}" disabled="">
+                    <input type="text" name= "price_gross" id="priceGross" class="form-control" value="{{ $types->price_gross }}" readonly>
                   </div>
                 </div>
                 <div class="form-group row mb-3">
@@ -164,7 +169,7 @@
                     <input type="text" name= "client_lastname" id="client_lastname"class="form-control" value="{{ $types->client_lastname }}">
                   </div>
                   <div class="col-md-3">
-                    <<label for="phone">Telefon</label>
+                    <label for="phone">Telefon</label>
                     <input type="text" name= "phone" id="phone" class="form-control" value="{{ $types->phone }}">
                   </div>
                   <div class="col-md-3">
@@ -172,7 +177,7 @@
                     <input name="email" id="email" class="form-control mb-4 mb-md-0" data-inputmask="'alias': 'email'" inputmode="email" value="{{ $types->email }}">
                   </div>
                 </div>
-                @if($types->accepted_marketing == 'on')
+                @if($types->invoice == 'on')
                 <div class="form-check form-switch mb-2">
                   <input type="checkbox" checked id="invoiceSwitcher" name="invoice" class="form-check-input">
                   <label class="form-check-label" for="invoiceSwitcher">Chcę otrzymać fakturę</label>
@@ -180,7 +185,7 @@
                 @else
                 <div class="form-check form-switch mb-2">
                   <input type="checkbox" id="invoiceSwitcher" name="invoice" class="form-check-input">
-                  <label class="form-check-label" for="invoiceSwitcher" value="{{ $types->invoice }}">>Chcę otrzymać fakturę</label>
+                  <label class="form-check-label" for="invoiceSwitcher" value="{{ $types->invoice }}">Chcę otrzymać fakturę</label>
                 </div>
                 @endif
                 <!-- Dane zamawiającego Firma -->
@@ -191,7 +196,7 @@
                       <input type="text" name= "invoice_NIP" id="nip" class="form-control" value="{{ $types->invoice_NIP }}">
                     </div>
                     <div class="col-md-4">
-                      <h6>Nazwa firmy</h6><label for="companyName">Nazwa firmy</label><input type="text" name= "invoice_company_name" id="companyName" class="form-control" value="{{ $types->invoice_company_name }}">
+                      <label for="companyName">Nazwa firmy</label><input type="text" name= "invoice_company_name" id="companyName" class="form-control" value="{{ $types->invoice_company_name }}">
                     </div>
                     <div class="col-md-5">
                       <label for="companyAdress">Adres siedziby</label>
@@ -225,17 +230,30 @@
                 </div>
                 <div class="form-group row mb-3">
                   <div class="col-md-4">
-                    <label for="voivodeship">Województwo</label>
-                    <input type="text" name= "voivodeship" id="voivodeship" value="{{ $types->voivodeship }}" class="form-control">
+                    <label for="voivodeshipName">Województwo:</label>
+                    <select class="form-select" id="voivodeshipName" name="voivodeship" >
+                      @foreach($vareas as $item)
+                        <option value="{{ $item->id }}" {{ $item->voivodeship_name == $types->voivodeship ? 'selected' : '' }}>{{ $item->voivodeship_name }}</option>
+                      @endforeach
+                    </select>
+                    <input type="hidden" id="selectedVoivodeshipName" name="selected_voivodeship_name" value="">
                   </div>
                   <div class="col-md-4">
-                    <label for="city">Miasto</label>
-                    <input type="text" name= "city" id="city" class="form-control
-                    " value="{{ $types->city }}">
+                    {{-- Nowy kod --}}
+                    <label for="cityName">Miasto</label>
+                    <select class="form-select" id="cityName" name="city">
+                      <option selected="" value="{{ $types->city }}">{{ $types->city }}</option>
+                    </select>
                   </div>
-                  <div class="col-md-4">
-                    <label for="district">Dzielnica</label>
-                    <input type="text" name= "district" id="district" class="form-control" value="{{ $types->district }}">
+                  <div class="col-md-4" id="districtField" style="{{ $types->district ? 'display: block;' : 'display: none;' }}">
+                    <label for="districtName">Dzielnica</label>
+                    <select class="form-select" id="districtName" name="district">
+                      <option selected="" disabled="" value="{{ $types->district }}">{{ $types->district }}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4" id="countiesField" style="{{ $types->counties ? 'display: block;' : 'display: none;' }}">
+                    <label for="counties">Miejscowość</label>
+                    <input type="text" name= "counties" id="counties" class="form-control" value="{{ $types->counties }}">
                   </div>
                 </div>
                 <div class="form-group row mb-3">
@@ -243,10 +261,7 @@
                     <label for="zipcode">Kod pocztowy</label>
                     <input name="zipcode" id="zipcode" value="{{ $types->zipcode }}" class="form-control" data-inputmask-alias="99-999" inputmode="text">
                   </div>
-                  <div class="col-md-4">
-                    <label for="counties">Miejscowość</label>
-                    <input type="text" name= "counties" id="counties" class="form-control" value="{{ $types->counties }}">
-                  </div>
+
                   <div class="col-md-4">
                     <label for="driveFee">Opłata dojazdowa</label>
                     <select class="form-select" id="driveFee" name="drive_fee" value="{{ $types->drive_fee }}">
@@ -442,6 +457,7 @@
 @section('JSscripts')
 
 <script src="{{ asset('backend/assets/js/code/validate.min.js') }}"></script>
+{{-- <script src="{{ asset('backend/assets/js/code/getVisitDataForm.js') }}"></script> --}}
 <script src="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.js') }}"></script>
 <script src="{{ asset('backend/assets/js/flatpickr.js') }}"></script>
 <script src="{{ asset('backend/assets/vendors/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>

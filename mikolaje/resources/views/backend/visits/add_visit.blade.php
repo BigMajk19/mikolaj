@@ -62,7 +62,7 @@
                   <div class="col-md-3">
                     <label for="guaranted">Godz. gwar.</label>
                     <select class="form-select" id="guaranted" name="guaranted">
-                      <option selected="" disabled="">Gwarantowana</option>
+                      {{-- <option selected="" disabled="">Gwarantowana</option> --}}
                       <option value="no">Nie</option>
                       <option value="yes">Tak</option>
                     </select>
@@ -226,16 +226,31 @@
                 </div>
                 <div class="form-group row mb-3">
                   <div class="col-md-4">
-                    <label for="voivodeship">Województwo</label>
-                    <input type="text" id="voivodeship" name= "voivodeship" class="form-control" placeholder="Wybierz województwo">
+                    <label for="voivodeshipName">Województwo:</label>
+                    <select class="form-select" id="voivodeshipName" name="voivodeship" >
+                      <option selected="" disabled="">Wybierz...</option>
+                      @foreach($vareas as $key => $item)
+                      <option value="{{ $item->id }}">{{ $item->voivodeship_name }}</option>
+                      @endforeach
+                    </select>
+                    <input type="hidden" id="selectedVoivodeshipName" name="selected_voivodeship_name" value="">
+
                   </div>
                   <div class="col-md-4">
-                    <label for="city">Miasto</label>
-                    <input type="text" name= "city" id="city" class="form-control" placeholder="Wybierz miasto">
+                    <label for="cityName">Miasto:</label>
+                    <select class="form-select" id="cityName" name="city" >
+                      <option selected="" disabled="">Wybierz...</option>
+                    </select>
                   </div>
-                  <div class="col-md-4">
-                    <label for="district">Dzielnica</label>
-                    <input type="text" name= "district" id="district" class="form-control" placeholder="Wybierz dzielnicę">
+                  <div class="col-md-4" id="districtField" style="display: none">
+                    <label for="districtName">Dzielnica</label>
+                    <select class="form-select" id="districtName" name="district">
+                      <option selected="" disabled="">Wybierz</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4" id="countiesField" style="display: none">
+                    <label for="counties" >Miejscowość</label>
+                    <input type="text" name= "counties" id="counties" class="form-control" placeholder="Miejscowość">
                   </div>
                 </div>
                 <div class="form-group row mb-3">
@@ -243,10 +258,7 @@
                     <label for="zipcode">Kod pocztowy</label>
                     <input name="zipcode" id="zipcode" placeholder="Kod pocztowy" class="form-control" data-inputmask-alias="99-999" inputmode="text">
                   </div>
-                  <div class="col-md-4">
-                    <label for="counties">Miejscowość</label>
-                    <input type="text" name= "counties" id="counties" class="form-control" placeholder="Miejscowość">
-                  </div>
+
                   <div class="col-md-4">
                     <label for="driveFee">Opłata dojazdowa</label>
                     <select class="form-select" id="driveFee" name="drive_fee" >

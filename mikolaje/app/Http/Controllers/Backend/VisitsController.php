@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\User;
+use App\Models\AreaCity;
 use App\Models\Partners;
 use App\Models\VisitsName;
 use App\Models\VisitsType;
 use Illuminate\Http\Request;
+use App\Models\AreaVoivodeship;
 use App\Models\VisitsSubmissions;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -23,17 +25,21 @@ class VisitsController extends Controller
     public function AddVisit()
     {
         $types = VisitsType::get();
-        return view('backend.visits.add_visit', compact('types'));
+        $vareas = AreaVoivodeship::get();
+        return view('backend.visits.add_visit', compact('types', 'vareas'));
     }
 
     public function StoreVisit(Request $request)
     {
       $selectedTypeName = $request->input('selected_type_name');
-      $typeId = VisitsType::where('type_name', $selectedTypeName)->value('type_name');
+      $typeName = VisitsType::where('type_name', $selectedTypeName)->value('type_name');
+
+      $selectedVoivodeshipName = $request->input('selected_voivodeship_name');
+      $voivodeshipName = AreaVoivodeship::where('voivodeship_name', $selectedVoivodeshipName)->value('voivodeship_name');
 
       VisitsSubmissions::insert([
 
-        'type_name' => $typeId,
+        'type_name' => $typeName,
         'visit_name' => $request->visit_name,
         'length_visit' => $request->length_visit,
         'visit_qty' => $request->visit_qty,
@@ -55,7 +61,7 @@ class VisitsController extends Controller
         'district' => $request->district,
         'city' => $request->city,
         'zipcode' => $request->zipcode,
-        'voivodeship' => $request->voivodeship,
+        'voivodeship' => $voivodeshipName,
         'counties' => $request->counties,
         'drive_fee' => $request->drive_fee,
         'invoice' => $request->invoice,
@@ -76,13 +82,17 @@ class VisitsController extends Controller
     public function EditVisit($id)
     {
       $types = VisitsSubmissions::findOrFail($id);
-      return view('backend.visits.edit_visit', compact('types'));
+      $vareas = AreaVoivodeship::get();
+      $careas = AreaCity::get();
+      return view('backend.visits.edit_visit', compact('types', 'vareas','careas'));
 
     }
 
     public function UpdateVisit(Request $request)
     {
       $vid = $request->id;
+      $selectedVoivodeshipName = $request->input('selected_voivodeship_name');
+      $voivodeshipName = AreaVoivodeship::where('voivodeship_name', $selectedVoivodeshipName)->value('voivodeship_name');
 
       VisitsSubmissions::findOrFail($vid)->update([
 
@@ -107,7 +117,7 @@ class VisitsController extends Controller
         'district' => $request->district,
         'city' => $request->city,
         'zipcode' => $request->zipcode,
-        'voivodeship' => $request->voivodeship,
+        'voivodeship' => $voivodeshipName,
         'counties' => $request->counties,
         'drive_fee' => $request->drive_fee,
         'invoice' => $request->invoice,

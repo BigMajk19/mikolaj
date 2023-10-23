@@ -55,8 +55,15 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
 //For Displaying Fields in Visits Form
 Route::middleware(['auth','role:admin'])->group(function () {
     Route::controller(DisplayFieldsInForm::class)->group(function () {
+       //For Visits Service
         Route::get('get/type/name/visit/{typeNameId}', 'GetTypeNameVisit')->name('get.type.name.visit');
-        Route::get('get/data/visit/{visitNameId}', 'GetDataVisit')->name('get.data.visit');
+        Route::get('get/data/visitname/{visitNameId}', 'GetDataVisit')->name('get.data.visit');
+        Route::get('get/voivodeship/name/forvisits/{voivodeshipNameId}', 'GetVoivodeshipNameForVisits')->name('get.voivodeship.name.forvisits');
+
+        // For Area Service
+        Route::get('get/voivodeship/name/{voivodeshipNameId}', 'GetVoivodeshipName')->name('get.voivodeship.name');
+        Route::get('get/city/name/{cityNameId}', 'GetCityName')->name('get.city.name');
+        Route::get('get/district/name/{districtNameId}', 'GetDistrictData')->name('get.district.name');
     });
 });
 
@@ -170,6 +177,12 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
         Route::post('update/city', 'UpdateAreaCity')->name('update.city');
         Route::get('delete/city/{id}', 'DeleteAreaCity')->name('delete.city');
 
+    //For Area City District
+        Route::get('add/district', 'AddDistrict')->name('add.district');
+        Route::post('store/district', 'StoreAreaDistrict')->name('store.district');
+        Route::get('edit/district/{id}', 'EditAreaDistrict')->name('edit.district');
+        Route::post('update/district', 'UpdateAreaDistrict')->name('update.district');
+        Route::get('delete/district/{id}', 'DeleteAreaDistrict')->name('delete.district');
 
     });
 
