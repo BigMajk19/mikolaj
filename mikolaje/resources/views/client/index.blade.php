@@ -1,4 +1,4 @@
-@extends('client.client_dashboard')
+@extends('dashboard')
 @section('client')
 
 <div class="page-content">

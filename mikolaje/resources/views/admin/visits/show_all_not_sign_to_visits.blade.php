@@ -54,8 +54,8 @@
                 @foreach($show as $key => $item)
                 <tr>
                   <td>{{ $item->id }}</td>
-                  <td>{{ $item->type_name }} {{ $item->visit_name }}</td>
-                  <td>{{ $item->length_visit*$item->visit_qty }} min.</td>
+                  <td> {{ $item->visit_qty }}x {{ $item->type_name }} {{ $item->visit_name }}</td>
+                  <td>{{ $item->length_visit }} min.</td>
                   <td>{{ $item->city }}</td>
                   <td>{{ $item->district }}</td>
                   <td><a target="blank" href="https://www.google.pl/maps/place/{{ $item->street_address }}+{{ $item->street_number }},+{{ $item->zipcode }}+{{ $item->city }}">

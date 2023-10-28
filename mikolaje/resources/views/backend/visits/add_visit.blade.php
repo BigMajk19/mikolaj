@@ -259,7 +259,7 @@
                     <input name="zipcode" id="zipcode" placeholder="Kod pocztowy" class="form-control" data-inputmask-alias="99-999" inputmode="text">
                   </div>
 
-                  <div class="col-md-4">
+                  <div class="col-md-4" id="driveFeeField" style="display: none">
                     <label for="driveFee">Opłata dojazdowa</label>
                     <select class="form-select" id="driveFee" name="drive_fee" >
                       <option selected="" disabled="">Opłata dojazdowa</option>
@@ -268,7 +268,34 @@
                       <option value="150">30 km - 150 zł</option>
                     </select>
                   </div>
+                </div><br/><br/>
+                <!-- Podsumowanie -->
+                <div class="row mb-3">
+                  <h3>Podsumowanie</h3><br/><br/>
+                  <table id="example" class="table table-striped dt-responsive table-hover display nowrap">
+                    <thead>
+                      <tr>
+                        <th>Rodzaj wizyty</th>
+                        <th>Długość</th>
+                        <th>Cena netto</th>
+                        <th>Cena brutto</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td id="selectedTypeHeader"></td>
+                        <td id="lengthVisitCell"></td>
+                        <td id="priceNetCell"></td>
+                        <td id="priceGrossCell"></td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
+                <br/>
+                <input type="hidden" id="totalLengthInput" name="totalLength">
+                <input type="hidden" id="totalPriceNetInput" name="totalPriceNet">
+                <input type="hidden" id="totalPriceGrossInput" name="totalPriceGross">
                 <!-- Zgody -->
                 <div class="form-group form-check form-switch mb-2">
                   <input type="checkbox" name="accepted_statue" id="accepted_statue" class="form-check-input" required>
@@ -343,6 +370,9 @@
         zipcode: {
           required : true,
         },
+        counties:{
+          required : true,
+        },
         visit_qty: {
           required : true,
         },
@@ -400,6 +430,9 @@
         },
         zipcode: {
           required : 'Podaj kod pocztowy wizyty',
+        },
+        counties:{
+          required : 'Podaj miejscowość wizyty',
         },
         visit_qty: {
           required : 'Musisz podać ilość wizyt',

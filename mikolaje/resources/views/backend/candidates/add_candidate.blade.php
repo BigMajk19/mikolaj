@@ -75,7 +75,10 @@
                 <div class="form-group row mb-3">
                 {{-- Lokalizacja --}}
                   <div class="col-md-6">
-                    <input type="text" name= "location_city" class="form-control" placeholder="Gdzie chcesz pracować?">
+                    <input type="text" name= "candidate_city" class="form-control" placeholder="Gdzie chcesz pracować?">
+                  </div>
+                  <div class="col-md-6">
+                    <input type="text" name= "candidate_voivodeship" class="form-control" placeholder="Województwo">
                   </div>
                 </div>
                 <div class="form-group row mb-3">
@@ -115,6 +118,10 @@
                 </div>
                 <div class="row mb-3">
                   <div class="form-check form-switch mb-2">
+                    <input type="checkbox" name="work_before_xmas" class="form-check-input">
+                    <label class="form-check-label" for="formSwitch1">Czy praca poza Wigilią 24 grudnia również Cię interesuje?</label>
+                  </div>
+                  <div class="form-check form-switch mb-2">
                     <input type="checkbox" name="work_at_xmas" class="form-check-input">
                     <label class="form-check-label" for="formSwitch1">Czy praca w Wigilię 24 grudnia również Cię interesuje?</label>
                   </div>
@@ -127,7 +134,7 @@
                 </div>
                 <div class="row mb-3">
                   <label for="exampleInputEmail1" class="form-label">Zdjęcie profilowe</label>
-                  <input class="form-control" name="cv" type="file" id="image">
+                  <input class="form-control" name="candidate_photo" type="file" id="image">
                 </div>
                 <br/>
                 <button type="submit" class="btn btn-inverse-success">Zapisz zmiany</button>&nbsp;&nbsp;&nbsp;

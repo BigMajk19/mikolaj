@@ -49,10 +49,10 @@ class UsersTableSeeder extends Seeder
 
             // Client
             [
-                'name'=>'client',
-                'username'=>'client',
-                'email'=>'client@demo.com',
-                'role_as' => 'client',
+                'name'=>'user',
+                'username'=>'user',
+                'email'=>'user@demo.com',
+                'role_as' => 'user',
                 'status' => 'active',
                 'password' => Hash::make('111'),
             ],

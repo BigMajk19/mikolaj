@@ -41,7 +41,7 @@
                   <td>{{ $item->type_name }}</td>
                   <td>{{ $item->type_icon }}</td>
                   <td>
-                    <a href="{{ route('edit.type_visits',$item->id) }}" class="btn btn-inverse-success">Edycja</a>
+                    <a href="{{ route('edit.type_visits',$item->id) }}" class="btn btn-inverse-success">Edycja</a>&nbsp;&nbsp;&nbsp;
                     <a href="{{ route('delete.type_visits',$item->id) }}" class="btn btn-inverse-danger" id="delete">Usuń</a>
                   </td>
                 </tr>
@@ -96,7 +96,7 @@
                   <td>{{ $item->visit_price_gross }} PLN</td>
                   <td>{{ $item->visit_image }}</td>
                   <td>
-                    <a href="{{ route('edit.name.visit',$item->id) }}" class="btn btn-inverse-success">Edycja</a>
+                    <a href="{{ route('edit.name.visit',$item->id) }}" class="btn btn-inverse-success">Edycja</a>&nbsp;&nbsp;&nbsp;
                     <a href="{{ route('delete.name.visit',$item->id) }}" class="btn btn-inverse-danger" id="delete">Usuń</a>
                   </td>
                 </tr>

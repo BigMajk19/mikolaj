@@ -34,7 +34,7 @@
                 @csrf
                 <input type="hidden" name="id" value="{{$names->id}}">
                 <div class="form-group mb-3">
-                  <label for="exampleInputUsername1" class="form-label">Nazwa kategorii</label>
+                  <label for="exampleInputUsername1" class="form-label"><b>Nazwa kategorii</b></label>
                   <select class="form-select" id="toUpdateVisitsCat" name= "visits_type_id">
                     @foreach($types as $key => $item)
                     <option value="{{ $item->id }}" {{ $item->id == $names->visits_type_id ? 'selected' : '' }}>{{ $item->type_name }}</option>
@@ -42,22 +42,22 @@
                   </select>
                   </div>
                   <div class="form-group mb-3">
-                    <label for="exampleInputUsername1" class="form-label">Nazwa wizyty</label>
+                    <label for="exampleInputUsername1" class="form-label"><b>Nazwa wizyty</b></label>
                     <input type="text" name= "visit_name" class="form-control" value="{{ $names->visit_name }}">
                   </div>
                   <div class="form-group mb-3">
-                    <label for="exampleInputUsername1" class="form-label">Długość wizyty</label>
+                    <label for="exampleInputUsername1" class="form-label"><b>Długość wizyty</b></label>
                     <input type="text" name= "visit_length" class="form-control" value="{{ $names->visit_length }}">
                   </div>
                   <div class="form-group mb-3">
-                    <label for="netInput" class="form-label">Cena netto</label>
+                    <label for="netInput" class="form-label"><b>Cena netto</b></label>
                     <input type="text" name= "visit_price_net" class="form-control"  id="netInput" oninput="calculateGross()" value="{{ $names->visit_price_net }}">
                   </div>
                   <div class="form-group mb-3">
-                    <label for="grossInput" class="form-label">Cena brutto</label>
+                    <label for="grossInput" class="form-label"><b>Cena brutto</b></label>
                     <input type="text" name= "visit_price_gross" class="form-control" id="grossInput" value="{{ $names->visit_price_gross }}">
                   </div>
-                <button type="submit" class="btn btn-primary me-2">Zapisz zmiany</button>
+                <button type="submit" class="btn btn-inverse-info">Zapisz zmiany</button>&nbsp;&nbsp;&nbsp;
                 <a href="{{ route('all.typevisits') }}" class="btn btn-inverse-warning">Cofnij</a>
               </form>
             </div>

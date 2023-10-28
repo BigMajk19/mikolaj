@@ -27,9 +27,13 @@ class CandidatesController extends Controller
     {
 
         // $imagePath = $request->file('cv')->store('public/backend/upload/images/candidates');
-        $file=$request->file('cv');
-        $filename= date('YmdHis').$file->getClientOriginalName();
-        $file->move(public_path('upload/images/candidates'), $filename);
+        $photo=$request->file('candidate_photo');
+        $photoname= date('YmdHis').$photo;
+        $photo->move(public_path('upload/images/candidates'), $photoname);
+
+        // $file=$request->file('cv');
+        // $filename= date('YmdHis').$file;
+        // $file->move(public_path('upload/cv/candidates'), $filename);
 
         Candidates::insert([
 
@@ -38,7 +42,8 @@ class CandidatesController extends Controller
             'candidate_phone' => $request->candidate_phone,
             'candidate_email' => $request->candidate_email,
             'job_as' => $request->job_as,
-            'location_city' => $request->location_city,
+            'candidate_city' => $request->candidate_city,
+            'candidate_voivodeship' => $request->candidate_voivodeship,
             'candidate_age' => $request->candidate_age,
             'candidate_growth' => $request->candidate_growth,
             'candidate_weight' => $request->candidate_weight,
@@ -46,10 +51,13 @@ class CandidatesController extends Controller
             'exp_with_children' => $request->exp_with_children,
             'exp_as_santa' => $request->exp_as_santa,
             'drive_license' => $request->drive_license,
+            'work_before_xmas' => $request->work_before_xmas,
             'work_at_xmas' => $request->work_at_xmas,
             'candidate_description' => $request->candidate_description,
-            'cv' => $filename,
+            'candidate_photo' => $photoname,
+            'cv' => $photoname,
             'privacy_policy' => $request->privacy_policy,
+            'hired' => $request->hired,
         ]);
 
 
@@ -78,7 +86,8 @@ class CandidatesController extends Controller
             'candidate_phone' => $request->candidate_phone,
             'candidate_email' => $request->candidate_email,
             'job_as' => $request->job_as,
-            'location_city' => $request->location_city,
+            'candidate_city' => $request->candidate_city,
+            'candidate_voivodeship' => $request->candidate_voivodeship,
             'candidate_age' => $request->candidate_age,
             'candidate_growth' => $request->candidate_growth,
             'candidate_weight' => $request->candidate_weight,
@@ -86,10 +95,13 @@ class CandidatesController extends Controller
             'exp_with_children' => $request->exp_with_children,
             'exp_as_santa' => $request->exp_as_santa,
             'drive_license' => $request->drive_license,
+            'work_before_xmas' => $request->work_before_xmas,
             'work_at_xmas' => $request->work_at_xmas,
             'candidate_description' => $request->candidate_description,
+            'candidate_photo' => $request->candidate_photo,
             'cv' => $request->cv,
             'privacy_policy' => $request->privacy_policy,
+            'hired' => $request->hired,
         ]);
         $notification = array(
             'message' => 'Kandydat został pomyślnie zaktualizowany.',
@@ -157,7 +169,7 @@ class CandidatesController extends Controller
             'partner' => $request->partner,
         ]);
         $notification = array(
-            'message' => 'Partner został pomyślnie przypisany do Kandydata',
+            'message' => 'Kandydat został pomyślnie przypisany do Partnera',
             'alert-type' => 'success',
         );
         return redirect()->route('show.all.candidates')->with($notification);

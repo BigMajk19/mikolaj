@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('role_as', ['admin', 'partner','employee','client'])->default('client');
-            $table->enum('status', ['active', 'notactive'])->default('notactive');
+            $table->enum('role_as', ['admin', 'partner','employee','user'])->default('user');
+            $table->enum('status', ['active', 'not_active'])->default('not_active');
             $table->string('phone_number')->nullable();
             $table->text('company_name')->nullable();
             $table->string('NIP')->nullable();

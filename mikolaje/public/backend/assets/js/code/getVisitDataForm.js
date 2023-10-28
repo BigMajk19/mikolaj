@@ -44,6 +44,8 @@ $(document).ready(function() {
         // W przeciwnym razie ukryj dodatkowe pola
         $('#additionalFields').hide();
       }
+
+      updateTable();
   });
 
   // Obsługa zmiany wyboru w drugim polu select >>>Visit Name<<<
@@ -63,47 +65,42 @@ $(document).ready(function() {
         $('#priceGross').val(data.priceGross);
       }
     });
+
+    updateTable();
   });
 
-  //For Visits Form ONLY
-  // Obsługa zmiany wyboru w pierwszym polu select VoivodeshipName
-//   $('#voivodeshipNameForVisits').on('change', function() {
-//     var selectedVoivodeshipNameForVisits = $('#voivodeshipNameForVisits option:selected').text();
-//     $('#selectedVoivodeshipNameForVisits').val(selectedVoivodeshipNameForVisits);
-//     var voivodeshipNameId = $(this).val();
+  // Obsługa zmiany ilości wizyt
+  $('#visit_qty').on('change', function() {
+    // Aktualizuj tabelę po zmianie ilości wizyt
+    updateTable();
+    });
 
-//     // Wyślij żądanie AJAX do kontrolera Laravel, aby pobrać opcje dla drugiego pola select
-//     $.ajax({
-//       url: '/get/voivodeship/name/forvisits/' + voivodeshipNameId,
-//       type: 'GET',
-//       dataType: 'json',
+  function updateTable() {
+    var selectedTypeName = $('#typeName option:selected').text();
+    var selectedVisitName = $('#visitName option:selected').text();
+    var lengthVisit = parseFloat($('#lengthVisit').val()); // Pobierz długość wizyty jako float
+    var priceNet = parseFloat($('#priceNet').val()); // Pobierz cenę netto jako float
+    var priceGross = parseFloat($('#priceGross').val()); // Pobierz cenę netto jako float
+    var visitQty = parseInt($('#visit_qty').val()); // Pobierz ilość wizyt jako int
 
-//       success: function(data) {
-//         // Wyczyść istniejące opcje w drugim polu select
-//         $('#cityName').empty();
 
-//         // Dodaj stałą opcję "Wybierz wizytę"
-//         $('#cityName').append($('<option>', {
-//           value: '',
-//           text: 'Wybierz...',
-//           selected: true,
-//           disabled: true
-//         }));
+    // Aktualizuj div z podsumowaniem
+    $('#selectedTypeHeader').text(selectedTypeName +' '+ selectedVisitName);
 
-//         // Dodaj nowe opcje na podstawie odpowiedzi AJAX
-//         $.each(data, function(key, value) {
-//           $('#cityName').append($('<option>', {
-//             value: value,
-//             text: value,
-//             data: {
-//                 id: key
-//             }
-//           }));
-//         });
-//       }
-//     });
-//   });
-// End for visits Form ONLY
+    // Oblicz długość wizyty i cenę pomnożone przez ilość wizyt
+    var totalLength = lengthVisit * visitQty;
+    var totalPriceNet = priceNet * visitQty;
+    var totalPriceGross = priceGross * visitQty;
+
+    $('#lengthVisitCell').text(totalLength + " minut");
+    $('#priceNetCell').text(totalPriceNet + " PLN");
+    $('#priceGrossCell').text(totalPriceGross + " PLN");
+
+    // Ustawienie wartości ukrytych pól
+    $('#totalLengthInput').val(totalLength);
+    $('#totalPriceNetInput').val(totalPriceNet);
+    $('#totalPriceGrossInput').val(totalPriceGross);
+}
 
   // Obsługa zmiany wyboru w pierwszym polu select VoivodeshipName
   $('#voivodeshipName').on('change', function() {
@@ -194,13 +191,15 @@ $(document).ready(function() {
   $('#cityName').on('change', function() {
     var selectedCity = $(this).val();
 
-    if (selectedCity === 'okolice') {
+    if (selectedCity === 'inne') {
       // Jeśli wybrano "okolice", pokaż pole wprowadzania miejscowości i ukryj pole wyboru dzielnicy
       $('#countiesField').show();
+      $('#driveFeeField').show();
       $('#districtField').hide();
     } else {
       // W przeciwnym razie pokaż pole wyboru dzielnicy i ukryj pole wprowadzania miejscowości
       $('#countiesField').hide();
+      $('#driveFeeField').hide();
       $('#districtField').show();
 
       // Tutaj można wykonać zapytanie AJAX, aby pobrać opcje dzielnic na podstawie wybranego miasta

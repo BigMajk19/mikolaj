@@ -79,7 +79,12 @@
                       echo ($drive_pkt+$work_xmas_pkt+$exp_child_pkt+$exp_santa_pkt)
                     @endphp
                   </td>
-                  <td>{{ $item->job_as }}</td>
+                  <td>
+                    @if($item->job_as == 'santa')<span class="badge border border-danger text-danger">Mikołaj</span>
+                    @elseif($item->job_as == 'elf')<span class="badge border border-success text-success">Elf</span>
+                    @elseif($item->job_as == 'snowflake')<span class="badge border border-light text-light">Śnieżynka</span>
+                    @endif
+                  </td>
                   <td>{{ $item->location_city }}</td>
                   <td>
                     @if($item->drive_license  == 'on') Tak

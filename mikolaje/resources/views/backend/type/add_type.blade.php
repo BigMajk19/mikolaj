@@ -32,10 +32,10 @@
                 class="forms-sample">
                 @csrf
                 <div class="form-group mb-3">
-                  <label for="exampleInputUsername1" class="form-label">Nazwa kategorii</label>
+                  <label for="exampleInputUsername1" class="form-label"><b>Nazwa kategorii</b></label>
                   <input type="text" name= "type_name" class="form-control">
                 </div>
-                <button type="submit" class="btn btn-primary me-2">Zapisz zmiany</button>
+                <button type="submit" class="btn btn-inverse-info">Zapisz zmiany</button>&nbsp;&nbsp;&nbsp;
                 <a href="{{ route('all.typevisits') }}" class="btn btn-inverse-warning">Cofnij</a>
               </form>
             </div>

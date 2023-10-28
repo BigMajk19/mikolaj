@@ -1,8 +1,12 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Employee;
+use App\Models\Partners;
+use App\Models\VisitsName;
+use App\Models\VisitsType;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -13,7 +17,9 @@ return new class extends Migration
     {
         Schema::create('visits_submissions', function (Blueprint $table) {
             $table->id()->autoIncrement();
+            $table->foreignIdFor(VisitsType::class);
             $table->string('type_name');
+            $table->foreignIdFor(VisitsName::class);
             $table->string('visit_name')->nullable();
             $table->integer('length_visit')->nullable();
             $table->integer('visit_qty')->nullable();
@@ -46,7 +52,9 @@ return new class extends Migration
             $table->string('accepted_marketing')->nullable();
             $table->string('remind_visit')->nullable();
             $table->string('status')->default('new');
+            $table->foreignIdFor(Partners::class)->default(0);
             $table->string('partner')->nullable();
+            $table->foreignIdFor(Employee::class)->default(0);
             $table->string('employee')->nullable();
             $table->longText('visit_notes')->nullable();
             $table->timestamps();

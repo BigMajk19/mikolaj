@@ -1,7 +1,29 @@
 $(document).ready( function () {
     var table = $('#example').DataTable({
-      lengthChange: false,
-      buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
+    //   lengthChange: false,
+      dom: 'Bfrtip',
+      select: true,
+      buttons: [
+        {
+          extend:'excel',
+          className: 'fred'
+        },
+        {
+          extend:'pdf',
+          className: 'fred'
+        },
+        {
+          extend:'colvis',
+          text: 'Ukryj kolumny',
+          className: 'fred'
+        },
+        {
+          extend:'pageLength',
+          text: 'Pokaż',
+          className: 'fred'
+        },
+      ],
+
     });
     table.buttons().container()
       .appendTo( '#example_wrapper .col-md-6:eq(0)' );
@@ -47,5 +69,5 @@ $(document).ready( function () {
       responsive: true,
       colReorder: true,
       keys: false,
-      select: true,
+      select: false,
     } );

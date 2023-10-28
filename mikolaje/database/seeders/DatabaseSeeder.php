@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
          \App\Models\User::factory(5)->create();
 
         $this->call(VisitsSubmissionsSeeder::class);
-        \App\Models\VisitsSubmissions::factory(1)->create();
+        \App\Models\VisitsSubmissions::factory(0)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

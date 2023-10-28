@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Partners;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -27,12 +28,14 @@ return new class extends Migration
             $table->string('exp_with_children')->nullable();
             $table->string('exp_as_santa')->nullable();
             $table->string('drive_license')->nullable();
+            $table->string('work_before_xmas')->nullable();
             $table->string('work_at_xmas')->nullable();
             $table->longText('candidate_description')->nullable();
             $table->string('candidate_photo')->nullable();
             $table->string('cv')->nullable();
             $table->string('privacy_policy')->nullable();
-            $table->string('partner')->nullable();
+            $table->string('hired')->default('no')->nullable();
+            $table->foreignIdFor(Partners::class)->default(0);
             $table->timestamps();
         });
     }

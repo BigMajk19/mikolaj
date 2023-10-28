@@ -41,7 +41,7 @@ class VisitsController extends Controller
 
         'type_name' => $typeName,
         'visit_name' => $request->visit_name,
-        'length_visit' => $request->length_visit,
+        'length_visit' => $request->totalLength,
         'visit_qty' => $request->visit_qty,
         'facility_name' => $request->facility_name,
         'client_firstname' => $request->client_firstname,
@@ -52,8 +52,8 @@ class VisitsController extends Controller
         'preffered_time' => $request->preffered_time,
         'interval_hours' => $request->interval_hours,
         'guaranted' => $request->guaranted,
-        'price_net' =>  $request->price_net,
-        'price_gross' =>  $request->price_gross,
+        'price_net' =>  $request->totalPriceNet,
+        'price_gross' =>  $request->totalPriceGross,
         'additional_information' => $request->additional_information,
         'street_address' => $request->street_address,
         'street_number' => $request->street_number,
@@ -81,10 +81,12 @@ class VisitsController extends Controller
 
     public function EditVisit($id)
     {
-      $types = VisitsSubmissions::findOrFail($id);
+
+      $visits = VisitsSubmissions::findOrFail($id);
+      $types = VisitsName::find($visits->type_name);
       $vareas = AreaVoivodeship::get();
       $careas = AreaCity::get();
-      return view('backend.visits.edit_visit', compact('types', 'vareas','careas'));
+      return view('backend.visits.edit_visit', compact('visits','types', 'vareas','careas'));
 
     }
 
@@ -97,7 +99,7 @@ class VisitsController extends Controller
       VisitsSubmissions::findOrFail($vid)->update([
 
         'visit_name' => $request->visit_name,
-        'length_visit' => $request->length_visit,
+        'length_visit' => $request->totalLength,
         'visit_qty' => $request->visit_qty,
         'facility_name' => $request->facility_name,
         'client_firstname' => $request->client_firstname,
@@ -108,8 +110,8 @@ class VisitsController extends Controller
         'preffered_time' => $request->preffered_time,
         'interval_hours' => $request->interval_hours,
         'guaranted' => $request->guaranted,
-        'price_net' =>  $request->price_net,
-        'price_gross' =>  $request->price_gross,
+        'price_net' =>  $request->totalPriceNet,
+        'price_gross' =>  $request->totalPriceGross,
         'additional_information' => $request->additional_information,
         'street_address' => $request->street_address,
         'street_number' => $request->street_number,

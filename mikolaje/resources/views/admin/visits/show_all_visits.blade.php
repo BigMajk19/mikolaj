@@ -1,5 +1,26 @@
 {{-- Początek HEAD --}}
 @section('CSSscripts')
+
+<style type="text/css">
+  button.fred {
+  background-color: #070d19;
+  --bs-btn-color: #6571ff;
+  --bs-btn-border-color: #6571ff;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #6571ff;
+  --bs-btn-hover-border-color: #6571ff;
+  --bs-btn-focus-shadow-rgb: 101, 113, 255;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #6571ff;
+  --bs-btn-active-border-color: #6571ff;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #6571ff;
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: #6571ff;
+  --bs-gradient: none;
+  }
+</style>
+
 {{-- for DataTables --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/vendors/datatables.net-bs5/dataTables.bootstrap5.min.css') }}">
 <script src="{{ asset('backend/assets/vendors/datatables.net/jquery.dataTables.min.css') }}"></script>
@@ -66,8 +87,8 @@
                 @foreach($show as $key => $item)
                 <tr>
                   <td>{{ $item->id }}</td>
-                  <td> {{ $item->type_name }} {{ $item->visit_name }}</td>
-                  <td>{{ $item->length_visit*$item->visit_qty }} min.</td>
+                  <td> {{ $item->visit_qty }}x {{ $item->type_name }} {{ $item->visit_name }}</td>
+                  <td>{{ $item->length_visit }} min.</td>
                   <td>{{ $item->visit_date }}</td>
                   <td><a href="tel:{{ $item->phone }}">{{ $item->phone }}</a></td>
                   <td>{{ $item->interval_hours }}</td>

@@ -31,6 +31,7 @@
     ::-webkit-scrollbar-thumb:hover {
     background: #555;
     }
+
   </style>
 
   <!-- Fonts -->

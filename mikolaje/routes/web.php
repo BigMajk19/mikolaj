@@ -8,9 +8,9 @@ use App\Http\Controllers\Backend\VisitsController;
 use App\Http\Controllers\Backend\PartnerController;
 use App\Http\Controllers\Backend\CandidatesController;
 use App\Http\Controllers\Backend\VisitsTypeController;
+use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\Backend\WorkingAreaController;
 use App\Http\Controllers\Admin\AdminDashboardController;
-use App\Http\Controllers\Client\ClientDashboardController;
 use App\Http\Controllers\Partner\PartnerDashboardController;
 use App\Http\Controllers\Employee\EmployeeDashboardController;
 
@@ -43,7 +43,7 @@ Route::middleware('auth')->group(function () {
 
 //For Admin Dashboard Middleware Group
 Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
-    Route::get('dashboard' , [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/dashboard' , [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('logout' , [AdminDashboardController::class, 'AdminLogout'])->name('admin.logout');
     Route::get('profile' , [AdminDashboardController::class, 'AdminProfile'])->name('admin.profile');
     Route::post('profile/store' , [AdminDashboardController::class, 'AdminProfileStore'])->name('admin.profile.store');
@@ -52,15 +52,16 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
     Route::get('inbox' , [InboxController::class, 'ShowAdminInbox'])->name('inbox');
 });//End AdminDashboard Group
 
-//For Displaying Fields in Visits Form
+//For Displaying Fields in New Visits Form
 Route::middleware(['auth','role:admin'])->group(function () {
     Route::controller(DisplayFieldsInForm::class)->group(function () {
-       //For Visits Service
+
+       //For New Visits Service
         Route::get('get/type/name/visit/{typeNameId}', 'GetTypeNameVisit')->name('get.type.name.visit');
         Route::get('get/data/visitname/{visitNameId}', 'GetDataVisit')->name('get.data.visit');
         Route::get('get/voivodeship/name/forvisits/{voivodeshipNameId}', 'GetVoivodeshipNameForVisits')->name('get.voivodeship.name.forvisits');
 
-        // For Area Service
+        // For New Area Service
         Route::get('get/voivodeship/name/{voivodeshipNameId}', 'GetVoivodeshipName')->name('get.voivodeship.name');
         Route::get('get/city/name/{cityNameId}', 'GetCityName')->name('get.city.name');
         Route::get('get/district/name/{districtNameId}', 'GetDistrictData')->name('get.district.name');
@@ -72,6 +73,7 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
 
     //For Visits Controller
     Route::controller(VisitsTypeController::class)->group(function () {
+
         //For Type Visits
         Route::get('all/typevisits', 'AllType')->name('all.typevisits');
         Route::get('add/type', 'AddType')->name('add.type');
@@ -79,6 +81,7 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
         Route::get('edit/type/{id}', 'EditType')->name('edit.type_visits');
         Route::post('update/type', 'UpdateType')->name('update.type');
         Route::get('delete/type/{id}', 'DeleteType')->name('delete.type_visits');
+
         //For Name Visits
         Route::get('add/name', 'AddNameVisit')->name('add.name.visit');
         Route::post('store/name', 'StoreNameVisit')->name('store.name.visit');
@@ -97,6 +100,7 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
         Route::get('edit/visit/{id}', 'EditVisit')->name('edit.visit');
         Route::post('update/visit', 'UpdateVisit')->name('update.visit');
         Route::get('delete/visit/{id}', 'DeleteVisit')->name('delete.visit');
+
         // Show New Visits
         Route::get('show/visits/new', 'ShowVisitsNew')->name('show.visits.new');
         Route::get('show/visits/not_paid', 'ShowVisitsNotPaid')->name('show.visits.not_paid');
@@ -164,26 +168,36 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
         //ShowingArea
         Route::get('show/working/area', 'ShowWorkingArea')->name('show.working.area');
 
-    // Options for Area Voivodeship
+        // Options for Area Voivodeship
         Route::get('add/voivodeship', 'AddVoivodeship')->name('add.voivodeship');
         Route::post('store/voivodeship', 'StoreAreaVoivodeship')->name('store.voivodeship');
         Route::get('edit/voivodeship/{id}', 'EditAreaVoivodeship')->name('edit.voivodeship');
         Route::post('update/voivodeship', 'UpdateAreaVoivodeship')->name('update.voivodeship');
         Route::get('delete/voivodeship/{id}', 'DeleteAreaVoivodeship')->name('delete.voivodeship');
-    //For Area City
+        //For Area City
         Route::get('add/city', 'AddCity')->name('add.city');
         Route::post('store/city', 'StoreAreaCity')->name('store.city');
         Route::get('edit/city/{id}', 'EditAreaCity')->name('edit.city');
         Route::post('update/city', 'UpdateAreaCity')->name('update.city');
         Route::get('delete/city/{id}', 'DeleteAreaCity')->name('delete.city');
 
-    //For Area City District
+        //For Area City District
         Route::get('add/district', 'AddDistrict')->name('add.district');
         Route::post('store/district', 'StoreAreaDistrict')->name('store.district');
         Route::get('edit/district/{id}', 'EditAreaDistrict')->name('edit.district');
         Route::post('update/district', 'UpdateAreaDistrict')->name('update.district');
         Route::get('delete/district/{id}', 'DeleteAreaDistrict')->name('delete.district');
 
+    // For Import & Export
+        Route::get('/import/voivodeship', 'ImportVoivodeship')->name('import.voivodeship');
+        Route::get('/export/voivodeship', 'ExportVoivodeship')->name('export.voivodeship');
+        Route::post('/export/voivodeship/file', 'ImportVoivodeshipFile')->name('import.voivodeship.file');
+        Route::get('/import/city', 'ImportCity')->name('import.city');
+        Route::get('/export/city', 'ExportCity')->name('export.city');
+        Route::post('/import/city/file', 'ImportCityFile')->name('import.city.file');
+        Route::get('/import/district', 'ImportDistrict')->name('import.district');
+        Route::get('/export/district', 'ExportDistrict')->name('export.district');
+        Route::post('/import/district/file', 'ImportDistrictFile')->name('import.district.file');
     });
 
 }); //End Admin Middleware Group
@@ -202,9 +216,9 @@ Route::prefix('employee')->middleware(['auth','role:employee'])->group(function 
 });
 
 //For Client Middleware Group
-Route::prefix('client')->middleware(['auth','role:client'])->group(function () {
-    Route::get('dashboard' , [ClientDashboardController::class, 'index'])->name('client.dashboard');
-    Route::get('logout' , [ClientDashboardController::class, 'ClientLogout'])->name('client.logout');
+Route::prefix('user')->middleware(['auth','role:user'])->group(function () {
+    Route::get('dashboard' , [UserDashboardController::class, 'index'])->name('user.dashboard');
+    Route::get('logout' , [UserDashboardController::class, 'UserLogout'])->name('user.logout');
 });
 
 

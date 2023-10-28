@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers\Backend;
 
-
-
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\AreaCity;
+use App\Exports\CityExport;
+use App\Imports\CityImport;
 use App\Models\AreaDistrict;
+use Illuminate\Http\Request;
+use App\Exports\DistrictExport;
+use App\Imports\DistrictImport;
 use App\Models\AreaVoivodeship;
+use App\Exports\VoivodeshipExport;
+use App\Imports\VoivodeshipImport;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class WorkingAreaController extends Controller
 {
@@ -189,6 +194,61 @@ class WorkingAreaController extends Controller
 
         $notification = array(
             'message' => 'Dzielnica została pomyślnie usunięta.',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    //For Imports & Exports ImportVoivodeshipFile
+    public function ImportVoivodeship(){
+        return view('backend.workingArea.import.import_voivodeship');
+    }
+
+    public function ExportVoivodeship(){
+        return Excel::download(new VoivodeshipExport, 'voivodeship.xlsx');
+    }
+
+    public function ImportVoivodeshipFile (Request $request) {
+        Excel::import(new VoivodeshipImport, $request->file('import_voivodeship'));
+
+        $notification = array(
+            'message' => 'Województwa zostały pomyślnie wgrane.',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    public function ImportCity(){
+        return view('backend.workingArea.import.import_city');
+    }
+
+    public function ExportCity(){
+        return Excel::download(new CityExport, 'city.xlsx');
+    }
+
+    public function ImportCityFile (Request $request) {
+        Excel::import(new CityImport, $request->file('import_city'));
+
+        $notification = array(
+            'message' => 'Miasta zostały pomyślnie wgrane.',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    public function ImportDistrict(){
+        return view('backend.workingArea.import.import_district');
+    }
+
+    public function ExportDistrict(){
+        return Excel::download(new DistrictExport, 'district.xlsx');
+    }
+
+    public function ImportDistrictFile (Request $request) {
+        Excel::import(new DistrictImport, $request->file('import_district'));
+
+        $notification = array(
+            'message' => 'Dzielnice zostały pomyślnie wgrane.',
             'alert-type' => 'success',
         );
         return redirect()->back()->with($notification);

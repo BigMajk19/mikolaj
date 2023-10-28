@@ -25,8 +25,8 @@ class UserFactory extends Factory
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'phone_number' => fake(locale:'pl_PL')->phoneNumber(),
             'photo' => fake()->imageUrl('60','60'),
-            'role_as' => fake()->randomElement(['admin','partner','employee','client']),
-            'status' => fake()->randomElement(['active','notactive']),
+            'role_as' => fake()->randomElement(['admin','partner','employee','user']),
+            'status' => fake()->randomElement(['active','not_active']),
             'company_name' => fake(locale:'pl_PL')->company(),
             'NIP' => fake(locale:'pl_PL')->phoneNumber(),
             'street_address' => fake(locale:'pl_PL')->streetAddress(),

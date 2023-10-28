@@ -17,7 +17,9 @@
 {{-- Obszar działania --}}
   <nav class="page-breadcrumb">
     <ol class="breadcrumb">
-      <a href="{{ route('add.voivodeship') }}" class="btn btn-inverse-warning">Dodaj województwo</a>
+      <a href="{{ route('add.voivodeship') }}" class="btn btn-inverse-warning">Dodaj województwo</a>&nbsp;&nbsp;&nbsp;
+      <a href="{{ route('import.voivodeship') }}" class="btn btn-inverse-success">Import</a>&nbsp;&nbsp;&nbsp;
+      <a href="{{ route('export.voivodeship') }}" class="btn btn-inverse-danger">Export</a>
     </ol>
   </nav>
   <div class="row">
@@ -57,7 +59,9 @@
 
   <nav class="page-breadcrumb">
     <ol class="breadcrumb">
-      <a href="{{ route('add.city') }}" class="btn btn-inverse-warning">Dodaj miasto</a>
+      <a href="{{ route('add.city') }}" class="btn btn-inverse-warning">Dodaj miasto</a>&nbsp;&nbsp;&nbsp;
+      <a href="{{ route('import.city') }}" class="btn btn-inverse-success">Import</a>&nbsp;&nbsp;&nbsp;
+      <a href="{{ route('export.city') }}" class="btn btn-inverse-danger">Export</a>
     </ol>
   </nav>
 
@@ -107,7 +111,9 @@
   {{-- Dzielnice --}}
   <nav class="page-breadcrumb">
     <ol class="breadcrumb">
-      <a href="{{ route('add.district') }}" class="btn btn-inverse-warning">Dodaj dzielnicę</a>
+      <a href="{{ route('add.district') }}" class="btn btn-inverse-warning">Dodaj dzielnicę</a>&nbsp;&nbsp;&nbsp;
+      <a href="{{ route('import.district') }}" class="btn btn-inverse-success">Import</a>&nbsp;&nbsp;&nbsp;
+      <a href="{{ route('export.district') }}" class="btn btn-inverse-danger">Export</a>
     </ol>
   </nav>
   <div class="row">

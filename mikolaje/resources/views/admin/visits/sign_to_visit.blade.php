@@ -33,30 +33,30 @@
                 <div class="row mb-3">
                   <div class="col-md-4">
                     <h6>Rodzaj wizyty</h6>
-                    <input type="text" class="form-control" name="type_name" id="exampleInputDisabled1" disabled="" value="{{ $types->type_name }}">
+                    <input type="text" class="form-control" name="type_name" id="exampleInputDisabled1" readonly value="{{ $types->type_name }}">
                   </div>
                   <div class="col-md-4">
                     <h6>Nazwa wizyty</h6>
-                    <input type="text" class="form-control" id="exampleInputDisabled1" disabled="" name="visit_name" value="{{ $types->visit_name }}">
+                    <input type="text" class="form-control" id="exampleInputDisabled1" readonly name="visit_name" value="{{ $types->visit_name }}">
                   </div>
                   <div class="col-md-4">
                     <h6>Data wizyty</h6>
-                    <input type="text" class="form-control" id="exampleInputDisabled1" disabled="" value="{{ $types->visit_date }}">
+                    <input type="text" class="form-control" id="exampleInputDisabled1" readonly value="{{ $types->visit_date }}">
                   </div>
                 </div>
                 <h4>Dane adresowe wizyty</h4>
                 <div class="row mb-3">
                   <div class="col-md-4">
                     <h6>Województwo</h6>
-                    <input type="text" class="form-control" id="exampleInputDisabled1" disabled=""  value="{{ $types->voivodeship }}">
+                    <input type="text" class="form-control" id="exampleInputDisabled1" readonly  value="{{ $types->voivodeship }}">
                   </div>
                   <div class="col-md-4">
                     <h6>Miasto</h6>
-                    <input type="text" class="form-control" id="exampleInputDisabled1" disabled="" value="{{ $types->city }}">
+                    <input type="text" class="form-control" id="exampleInputDisabled1" readonly value="{{ $types->city }}">
                   </div>
                   <div class="col-md-4">
                     <h6>Miejscowość (okoliczna)</h6>
-                    <input type="text" class="form-control" id="exampleInputDisabled1" disabled="" value="{{ $types->counties }}">
+                    <input type="text" class="form-control" id="exampleInputDisabled1" readonly value="{{ $types->counties }}">
                   </div>
                 </div>
                 <div class="form-group row mb-3">
