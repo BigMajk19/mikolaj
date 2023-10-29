@@ -23,7 +23,7 @@
 
   <nav class="page-breadcrumb">
     <ol class="breadcrumb">
-      <a href="{{ route('add.partner') }}" class="btn btn-inverse-warning">Dodaj Partnera</a>
+      <a href="{{ route('add.partner') }}" class="btn btn-outline-warning">Dodaj Partnera</a>
     </ol>
   </nav>
 
@@ -59,8 +59,8 @@
                   <td>{{ $item->partner_voivodeship }}</td>
                   <td>{{ $item->partner_city }}</td>
                   <td class="display">
-                    <a href="{{ route('edit.partner',$item->id) }}" class="btn btn-inverse-success">Edycja</a>&nbsp;&nbsp;&nbsp;
-                    <a href="{{ route('confirm.new.partner',$item->id) }}" class="btn btn-inverse-warning" id="activatePartner">Aktywuj Partnera</a>&nbsp;&nbsp;&nbsp;
+                    <a href="{{ route('edit.partner',$item->id) }}" class="btn btn-outline-success">Edytuj</a>&nbsp;&nbsp;&nbsp;
+                    <a href="{{ route('confirm.new.partner',$item->id) }}" class="btn btn-outline-warning" id="activatePartner">Aktywuj</a>&nbsp;&nbsp;&nbsp;
                     <a href="{{ route('delete.partner',$item->id) }}" class="btn btn-inverse-danger" id="deletePartner">Usuń</a>
                   </td>
                 </tr>

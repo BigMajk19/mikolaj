@@ -20,7 +20,7 @@ class PartnerController extends Controller
     public function ShowNotActivePartners ()
     {
 
-        $notactive_partners = Partners::where('partner_status', 'notactive')->get();
+        $notactive_partners = Partners::where('partner_status', 'not_active')->get();
         return view('admin.partners.show_notactive_partners',compact('notactive_partners'));
     }
 

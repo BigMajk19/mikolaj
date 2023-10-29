@@ -52,7 +52,7 @@
                     <option value="not_active">Not active</option>
                   </select>
                 </div>
-                <button type="submit" class="btn btn-primary me-2">Zapisz zmiany</button>
+                <button type="submit" class="btn btn-outline-success">Zapisz zmiany</button>
                 <a href="{{ route('show.working.area') }}" class="btn btn-inverse-warning">Cofnij</a>
               </form>
             </div>

@@ -45,7 +45,7 @@
                   <input type="text" name= "district_name" id="DistrictName" value= "{{ $darea->district_name }}" class="form-control">
                 </div>
 
-                <button type="submit" class="btn btn-primary me-2">Zapisz zmiany</button>
+                <button type="submit" class="btn btn-outline-success">Zapisz zmiany</button>
                 <a href="{{ route('show.working.area') }}" class="btn btn-inverse-warning">Cofnij</a>
               </form>
             </div>

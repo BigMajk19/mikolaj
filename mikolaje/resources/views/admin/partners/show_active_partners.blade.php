@@ -59,7 +59,7 @@
                   <td>{{ $item->partner_voivodeship }}</td>
                   <td>{{ $item->partner_city }}</td>
                   <td>
-                    <a href="{{ route('edit.partner',$item->id) }}" class="btn btn-inverse-success">Edycja</a>&nbsp;&nbsp;&nbsp;
+                    <a href="{{ route('edit.partner',$item->id) }}" class="btn btn-outline-success">Edycja</a>&nbsp;&nbsp;&nbsp;
                     <a href="{{ route('delete.partner',$item->id) }}" class="btn btn-inverse-danger" id="deleteCandidate">Usuń</a>
                   </td>
                 </tr>

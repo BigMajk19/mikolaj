@@ -61,7 +61,7 @@
                   </div>
                 </div>
                 <br/>
-                <button type="submit" class="btn btn-inverse-success">Przypisz partnera</button>&nbsp;&nbsp;&nbsp;
+                <button type="submit" class="btn btn-outline-success">Przypisz partnera</button>&nbsp;&nbsp;&nbsp;
                 <a href="{{ route('show.all.candidates') }}" class="btn btn-inverse-warning">Cofnij</a>
               </form>
             </div>

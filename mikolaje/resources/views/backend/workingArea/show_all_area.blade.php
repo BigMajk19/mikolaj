@@ -17,9 +17,9 @@
 {{-- Obszar działania --}}
   <nav class="page-breadcrumb">
     <ol class="breadcrumb">
-      <a href="{{ route('add.voivodeship') }}" class="btn btn-inverse-warning">Dodaj województwo</a>&nbsp;&nbsp;&nbsp;
-      <a href="{{ route('import.voivodeship') }}" class="btn btn-inverse-success">Import</a>&nbsp;&nbsp;&nbsp;
-      <a href="{{ route('export.voivodeship') }}" class="btn btn-inverse-danger">Export</a>
+      <a href="{{ route('add.voivodeship') }}" class="btn btn-outline-warning">Dodaj województwo</a>&nbsp;&nbsp;&nbsp;
+      <a href="{{ route('import.voivodeship') }}" class="btn btn-outline-success">Import</a>&nbsp;&nbsp;&nbsp;
+      <a href="{{ route('export.voivodeship') }}" class="btn btn-outline-danger">Export</a>
     </ol>
   </nav>
   <div class="row">
@@ -43,7 +43,7 @@
                   <td>{{ $item->id }}</td>
                   <td>{{ $item->voivodeship_name }}</td>
                   <td>
-                    <a href="{{ route('edit.voivodeship',$item->id) }}" class="btn btn-inverse-success">Edycja</a>
+                    <a href="{{ route('edit.voivodeship',$item->id) }}" class="btn btn-outline-light">Edycja</a>
                     <a href="{{ route('delete.voivodeship',$item->id) }}" class="btn btn-inverse-danger" id="deleteVoivodeship">Usuń</a>
                   </td>
                 </tr>
@@ -59,9 +59,9 @@
 
   <nav class="page-breadcrumb">
     <ol class="breadcrumb">
-      <a href="{{ route('add.city') }}" class="btn btn-inverse-warning">Dodaj miasto</a>&nbsp;&nbsp;&nbsp;
-      <a href="{{ route('import.city') }}" class="btn btn-inverse-success">Import</a>&nbsp;&nbsp;&nbsp;
-      <a href="{{ route('export.city') }}" class="btn btn-inverse-danger">Export</a>
+      <a href="{{ route('add.city') }}" class="btn btn-outline-warning">Dodaj miasto</a>&nbsp;&nbsp;&nbsp;
+      <a href="{{ route('import.city') }}" class="btn btn-outline-success">Import</a>&nbsp;&nbsp;&nbsp;
+      <a href="{{ route('export.city') }}" class="btn btn-outline-danger">Export</a>
     </ol>
   </nav>
 
@@ -95,7 +95,7 @@
                   <td>{{ $item->city_name }}</td>
                   <td>{{ $item->status }}</td>
                   <td>
-                    <a href="{{ route('edit.city',$item->id) }}" class="btn btn-inverse-success">Edycja</a>
+                    <a href="{{ route('edit.city',$item->id) }}" class="btn btn-outline-light">Edycja</a>
                     <a href="{{ route('delete.city',$item->id) }}" class="btn btn-inverse-danger" id="deleteCity">Usuń</a>
                   </td>
                 </tr>
@@ -111,9 +111,9 @@
   {{-- Dzielnice --}}
   <nav class="page-breadcrumb">
     <ol class="breadcrumb">
-      <a href="{{ route('add.district') }}" class="btn btn-inverse-warning">Dodaj dzielnicę</a>&nbsp;&nbsp;&nbsp;
-      <a href="{{ route('import.district') }}" class="btn btn-inverse-success">Import</a>&nbsp;&nbsp;&nbsp;
-      <a href="{{ route('export.district') }}" class="btn btn-inverse-danger">Export</a>
+      <a href="{{ route('add.district') }}" class="btn btn-outline-warning">Dodaj dzielnicę</a>&nbsp;&nbsp;&nbsp;
+      <a href="{{ route('import.district') }}" class="btn btn-outline-success">Import</a>&nbsp;&nbsp;&nbsp;
+      <a href="{{ route('export.district') }}" class="btn btn-outline-danger">Export</a>
     </ol>
   </nav>
   <div class="row">
@@ -144,7 +144,7 @@
                   @endif
                   <td>{{ $item->district_name }}</td>
                   <td>
-                    <a href="{{ route('edit.district',$item->id) }}" class="btn btn-inverse-success">Edycja</a>
+                    <a href="{{ route('edit.district',$item->id) }}" class="btn btn-outline-light">Edycja</a>
                     <a href="{{ route('delete.district',$item->id) }}" class="btn btn-inverse-danger" id="deleteDistrict">Usuń</a>
                   </td>
                 </tr>

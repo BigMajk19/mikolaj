@@ -15,7 +15,7 @@
 {{-- Kategorie wizyt --}}
   <nav class="page-breadcrumb">
     <ol class="breadcrumb">
-      <a href="{{ route('add.type') }}" class="btn btn-inverse-warning">Dodaj kategorię</a>
+      <a href="{{ route('add.type') }}" class="btn btn-outline-warning">Dodaj kategorię</a>
     </ol>
   </nav>
 
@@ -41,7 +41,7 @@
                   <td>{{ $item->type_name }}</td>
                   <td>{{ $item->type_icon }}</td>
                   <td>
-                    <a href="{{ route('edit.type_visits',$item->id) }}" class="btn btn-inverse-success">Edycja</a>&nbsp;&nbsp;&nbsp;
+                    <a href="{{ route('edit.type_visits',$item->id) }}" class="btn btn-outline-light">Edycja</a>&nbsp;&nbsp;&nbsp;
                     <a href="{{ route('delete.type_visits',$item->id) }}" class="btn btn-inverse-danger" id="delete">Usuń</a>
                   </td>
                 </tr>
@@ -56,7 +56,7 @@
 {{-- Rodzaje wizyt --}}
   <nav class="page-breadcrumb">
     <ol class="breadcrumb">
-      <a href="{{ route('add.name.visit') }}" class="btn btn-inverse-warning">Dodaj rodzaj wizyty</a>
+      <a href="{{ route('add.name.visit') }}" class="btn btn-outline-warning">Dodaj rodzaj wizyty</a>
     </ol>
   </nav>
 
@@ -96,7 +96,7 @@
                   <td>{{ $item->visit_price_gross }} PLN</td>
                   <td>{{ $item->visit_image }}</td>
                   <td>
-                    <a href="{{ route('edit.name.visit',$item->id) }}" class="btn btn-inverse-success">Edycja</a>&nbsp;&nbsp;&nbsp;
+                    <a href="{{ route('edit.name.visit',$item->id) }}" class="btn btn-outline-light">Edycja</a>&nbsp;&nbsp;&nbsp;
                     <a href="{{ route('delete.name.visit',$item->id) }}" class="btn btn-inverse-danger" id="delete">Usuń</a>
                   </td>
                 </tr>

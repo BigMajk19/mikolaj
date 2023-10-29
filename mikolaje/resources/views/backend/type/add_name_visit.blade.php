@@ -57,7 +57,7 @@
                   <label for="grossInput" class="form-label" ><b>Cena brutto</b></label>
                   <input type="text" name= "visit_price_gross" class="form-control" id="grossInput"  oninput="calculateNet()">
                 </div>
-                <button type="submit" class="btn btn-inverse-info">Zapisz zmiany</button> &nbsp;&nbsp;&nbsp;
+                <button type="submit" class="btn btn-outline-info">Zapisz zmiany</button> &nbsp;&nbsp;&nbsp;
                 <a href="{{ route('all.typevisits') }}" class="btn btn-inverse-warning">Cofnij</a>
               </form>
             </div>

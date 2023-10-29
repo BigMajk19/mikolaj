@@ -50,7 +50,7 @@
 
   <nav class="page-breadcrumb">
     <ol class="breadcrumb">
-      <a href="{{ route('add.visit') }}" class="btn btn-inverse-warning">Dodaj Wizytę</a>
+      <a href="{{ route('add.visit') }}" class="btn btn-outline-warning">Dodaj Wizytę</a>
     </ol>
   </nav>
 
@@ -100,8 +100,8 @@
                   <td>{{ $item->voivodeship }}</td>
                   <td>dropdown</td>
                   <td>
-                    <a href="{{ route('edit.visit',$item->id) }}" class="btn btn-inverse-success">Edycja</a>&nbsp;&nbsp;&nbsp;
-                    <a href="{{ route('delete.visit',$item->id) }}" class="btn btn-inverse-danger" id="delete">Usuń</a>
+                    <a href="{{ route('edit.visit',$item->id) }}" class="btn btn-outline-light">Edycja</a>&nbsp;&nbsp;&nbsp;
+                    <a href="{{ route('delete.visit',$item->id) }}" class="btn btn-outline-danger" id="delete">Usuń</a>
                   </td>
                 </tr>
                 @endforeach

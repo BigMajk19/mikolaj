@@ -15,7 +15,7 @@
 <div class="page-content">
   <nav class="page-breadcrumb">
     <ol class="breadcrumb">
-      <a href="{{ route('export.city') }}" class="btn btn-inverse-danger">Download Xlsx</a>
+      <a href="{{ route('export.city') }}" class="btn btn-outline-danger">Download Xlsx</a>
     </ol>
   </nav>
 
@@ -36,7 +36,7 @@
                   <label for="ImportCity" class="form-label">Import pliku Excel</label>
                   <input type="file" name= "import_city" class="form-control">
                 </div>
-                <button type="submit" class="btn btn-inverse-success">Upload</button>
+                <button type="submit" class="btn btn-outline-success">Upload</button>
                 <a href="{{ route('show.working.area') }}" class="btn btn-inverse-warning">Cofnij</a>
               </form>
             </div>

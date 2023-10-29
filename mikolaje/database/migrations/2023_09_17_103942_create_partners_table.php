@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('partner_firstname')->nullable();
             $table->string('partner_lastname')->nullable();
             $table->string('partner_phone')->nullable();
+            $table->string('partner_email')->nullable();
             $table->string('partner_NIP')->nullable();
             $table->string('partner_adress_street')->nullable();
             $table->string('partner_adress_number')->nullable();

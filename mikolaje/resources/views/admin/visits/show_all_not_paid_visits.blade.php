@@ -70,7 +70,7 @@
                   <td>{{ $item->price_net }}</td>
 
                   <td>
-                    <a href="{{ route('paid.new.visit',$item->id) }}" class="btn btn-inverse-success" id="paid">Opłacono</a>&nbsp;&nbsp;&nbsp;
+                    <a href="{{ route('paid.new.visit',$item->id) }}" class="btn btn-outline-success" id="paid">Opłacono</a>&nbsp;&nbsp;&nbsp;
                     <a href="{{ route('cancel.new.visit',$item->id) }}" class="btn btn-inverse-danger" id="cancel">Anuluj wizytę</a>
                   </td>
                 </tr>

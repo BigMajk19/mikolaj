@@ -62,7 +62,7 @@
                     {{ $item->street_address }} {{ $item->street_number }} /{{ $item->flat_number }}</a></td>
                   <td>{{ $item->voivodeship }}</td>
                   <td class="nowrap">
-                    <a href="{{ route('signto.visit',$item->id) }}" class="btn btn-inverse-warning">Przypisz wizytę</a>&nbsp;&nbsp;&nbsp;
+                    <a href="{{ route('signto.visit',$item->id) }}" class="btn btn-outline-warning">Przypisz wizytę</a>&nbsp;&nbsp;&nbsp;
                     <a href="{{ route('cancel.new.visit',$item->id) }}" class="btn btn-inverse-danger" id="delete">Anuluj wizytę</a>
                   </td>
                 </tr>

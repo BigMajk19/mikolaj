@@ -330,7 +330,7 @@
                   </div>
                 @endif
                 <br/>
-                <button type="submit" class="btn btn-inverse-success">Zapisz zmiany</button>&nbsp;&nbsp;&nbsp;
+                <button type="submit" class="btn btn-outline-success">Zapisz zmiany</button>&nbsp;&nbsp;&nbsp;
                 <a href="{{ route('show.all.visits') }}" class="btn btn-inverse-warning">Cofnij</a>
               </form>
             </div>

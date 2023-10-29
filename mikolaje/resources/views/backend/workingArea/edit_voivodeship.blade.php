@@ -36,7 +36,7 @@
                   <label for="toUpdateVisitsCat" class="form-label">Nazwa województwa</label>
                   <input type="text" name= "voivodeship_name" class="form-control" value="{{ $varea->voivodeship_name }}">
                 </div>
-                <button type="submit" class="btn btn-primary me-2">Zapisz zmiany</button>
+                <button type="submit" class="btn btn-outline-success">Zapisz zmiany</button>
                 <a href="{{ route('show.working.area') }}" class="btn btn-inverse-warning">Cofnij</a>
               </form>
             </div>
