@@ -1,11 +1,13 @@
 $(document).ready(function() {
+
     // Obsługa zmiany wyboru w pierwszym polu select >>>TypeName<<<
     $('#typeName').on('change', function() {
-      var selectedTypeName = $('#typeName option:selected').text();
-      $('#selectedTypeName').val(selectedTypeName);
-      var typeNameId = $(this).val();
+        var selectedTypeName = $('#typeName option:selected').text();
+        $('#selectedTypeName').val(selectedTypeName);
+        var typeNameId = $(this).val();
 
       // Wyślij żądanie AJAX do kontrolera Laravel, aby pobrać opcje dla drugiego pola select Visit Name
+
       $.ajax({
         url: '/get/type/name/visit/' + typeNameId,
         type: 'GET',
@@ -18,7 +20,7 @@ $(document).ready(function() {
           // Dodaj stałą opcję "Wybierz wizytę" w Visit Name
           $('#visitName').append($('<option>', {
             value: '',
-            text: 'Wybierz wizytę',
+            text: 'Wybierz wizytę...',
             selected: true,
             disabled: true
           }));
@@ -29,10 +31,13 @@ $(document).ready(function() {
               value: value,
               text: value,
               data: {
-                  id: key
+                id: key
               }
             }));
           });
+
+          updateTable();
+
         }
       });
 
@@ -45,10 +50,19 @@ $(document).ready(function() {
           $('#additionalFields').hide();
         }
 
-        updateTable();
+        // updateTable();
+
+
+      $('#typeIdInput').on('change', function() {
+        var typeNameId = $(this).val();
+        loadVisitNameOptions(typeNameId);
+      });
+
     });
 
+
     // Obsługa zmiany wyboru w drugim polu select >>>Visit Name<<<
+
     $('#visitName').on('change', function() {
       var selectedOption = $('#visitName option:selected');
       var visitNameId = selectedOption.data('id');
@@ -63,10 +77,11 @@ $(document).ready(function() {
           $('#lengthVisit').val(data.lengthVisit);
           $('#priceNet').val(data.priceNet);
           $('#priceGross').val(data.priceGross);
+          updateTable();
         }
       });
 
-      updateTable();
+
     });
 
     // Obsługa zmiany ilości wizyt
@@ -100,7 +115,10 @@ $(document).ready(function() {
       $('#totalLengthInput').val(totalLength);
       $('#totalPriceNetInput').val(totalPriceNet);
       $('#totalPriceGrossInput').val(totalPriceGross);
-  }
+    }
+    updateTable();
+
+
 
     // Obsługa zmiany wyboru w pierwszym polu select VoivodeshipName
     $('#voivodeshipName').on('change', function() {
@@ -191,7 +209,7 @@ $(document).ready(function() {
     $('#cityName').on('change', function() {
       var selectedCity = $(this).val();
 
-      if (selectedCity === 'inne') {
+      if (selectedCity === 'Inne') {
         // Jeśli wybrano "okolice", pokaż pole wprowadzania miejscowości i ukryj pole wyboru dzielnicy
         $('#countiesField').show();
         $('#driveFeeField').show();
@@ -205,7 +223,7 @@ $(document).ready(function() {
         // Tutaj można wykonać zapytanie AJAX, aby pobrać opcje dzielnic na podstawie wybranego miasta
         // Otrzymane dane umieść w polu select o id "districtName"
       }
-  });
+    });
 
 
 

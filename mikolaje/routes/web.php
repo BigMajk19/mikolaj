@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DisplayFieldsInForm;
 use App\Http\Controllers\Backend\VisitsController;
 use App\Http\Controllers\Backend\PartnerController;
+use App\Http\Controllers\Backend\DriveFeeController;
 use App\Http\Controllers\Backend\CandidatesController;
 use App\Http\Controllers\Backend\VisitsTypeController;
 use App\Http\Controllers\User\UserDashboardController;
@@ -89,6 +90,15 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
         Route::post('update/name', 'UpdateNameVisit')->name('update.name.visit');
         Route::get('delete/name/{id}', 'DeleteNameVisit')->name('delete.name.visit');
 
+    });
+    Route::controller(DriveFeeController::class)->group(function () {
+
+        //For Drive Fee Visits
+        Route::get('add/drive_fee', 'AddDriveFee')->name('add.drive_fee');
+        Route::post('store/drive_fee', 'StoreDriveFee')->name('store.drive_fee');
+        Route::get('edit/drive_fee/{id}', 'EditDriveFee')->name('edit.drive_fee');
+        Route::post('update/drive_fee', 'UpdateDriveFee')->name('update.drive_fee');
+        Route::get('delete/drive_fee/{id}', 'DeleteDriveFee')->name('delete.drive_fee');
 
     });
 

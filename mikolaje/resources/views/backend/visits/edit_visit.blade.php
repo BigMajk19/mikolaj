@@ -42,21 +42,29 @@
                 <div class="form-group row mb-3">
                   <div class="col-md-6">
                     <label for="typeName">Rodzaj wizyty:</label>
-                    <input type="text" class="form-control" name="type_name" id="typeName" readonly value="{{ $visits->type_name }}">
+                    <select class="form-select" id="typeName" name="type_name" >
+                      @foreach($types as $key => $item)
+                      <option value="{{ $item->id }}" {{ $item->type_name == $visits->type_name ? 'selected' : '' }}>{{ $item->type_name }}</option>
+                      @endforeach
+                    </select>
+                    {{-- <input type="text" class="form-control" id="typeName" name="type_name" value="{{ $visits->type_name}}" readonly>
+                    <input type="hidden" id="typeIdInput" value="{{ $visits->visits_type__id }}"> --}}
                   </div>
                   <div class="col-md-6">
                     <label for="visitName">Nazwa wizyty:</label>
-                    <input type="text" class="form-control" name="visit_name" id="visitName" readonly value="{{ $visits->visit_name }}">
+                    <select class="form-select" id="visitName" name="visit_name" >
+                      <option selected="" value="{{ $visits->visit_name_id }}">{{ $visits->visit_name }}</option>
+                    </select>
                   </div>
                 </div>
                 <div class="form-group row mb-3">
                   <div class="col-md-3">
                     <label for="lengthVisit">Długość wizyty</label>
-                    <input type="text" class="form-control" id="lengthVisit" name="length_visit" readonly value="{{ $visits->length_visit }}">
+                    <input type="text" class="form-control" id="lengthVisit" name="length_visit" readonly value="{{ $vnames->visit_length }}">
                   </div>
                   <div class="col-md-2">
                     <label for="visit_qty">Ilość wizyt:</label>
-                    <input type="number" id="visit_qty" name= "visit_qty" class="form-control" value="{{ $visits->visit_qty }}" placeholder="Ilość" required>
+                    <input type="number" id="visit_qty" name= "visit_qty" class="form-control" value="{{ $visits->visit_qty }}" placeholder="Ilość" required min='1'>
                   </div>
                   <div class="col-md-3">
                     <label for="guaranted">Godz. gwar.</label>
@@ -67,11 +75,11 @@
                   </div>
                   <div class="col-md-4">
                     <label for="priceNet">Cena netto</label>
-                    <input type="text" name= "price_net" id="priceNet" class="form-control" readonly value="{{ $visits->price_net }}">
+                    <input type="text" name= "price_net" id="priceNet" class="form-control" readonly value="{{ $vnames->visit_price_net }}">
                   </div>
                   <div class="col-md-4">
                     <label for="priceGross">Cena brutto</label>
-                    <input type="text" name= "price_gross" id="priceGross" class="form-control" readonly value="{{ $visits->price_gross }}">
+                    <input type="text" name= "price_gross" id="priceGross" class="form-control" readonly value="{{ $vnames->visit_price_gross }}">
                   </div>
                 </div>
                 <div class="form-group row mb-3">

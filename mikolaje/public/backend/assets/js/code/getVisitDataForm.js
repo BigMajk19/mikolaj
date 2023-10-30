@@ -37,7 +37,7 @@ $(document).ready(function() {
     });
 
     var selectedValue = $(this).val();
-      if (selectedValue === '1' || selectedValue === '3') {
+      if (selectedValue === '2' || selectedValue === '3') {
         // Jeśli wybrano "Firmowa" lub "Przedszkolna", pokaż dodatkowe pola
         $('#additionalFields').show();
       } else {
@@ -74,6 +74,10 @@ $(document).ready(function() {
     // Aktualizuj tabelę po zmianie ilości wizyt
     updateTable();
     });
+  $('#driveFee').on('change', function() {
+    // Aktualizuj tabelę po zmianie Opłaty dojazdowej
+    updateTable();
+    });
 
   function updateTable() {
     var selectedTypeName = $('#typeName option:selected').text();
@@ -82,6 +86,7 @@ $(document).ready(function() {
     var priceNet = parseFloat($('#priceNet').val()); // Pobierz cenę netto jako float
     var priceGross = parseFloat($('#priceGross').val()); // Pobierz cenę netto jako float
     var visitQty = parseInt($('#visit_qty').val()); // Pobierz ilość wizyt jako int
+    var driveFee = parseFloat($('#driveFee').val());
 
 
     // Aktualizuj div z podsumowaniem
@@ -89,12 +94,20 @@ $(document).ready(function() {
 
     // Oblicz długość wizyty i cenę pomnożone przez ilość wizyt
     var totalLength = lengthVisit * visitQty;
+    var totalVisitPriceNet = priceNet * visitQty;
+    var totalVisitPriceGross = priceGross * visitQty;
+    var totalDriveFeeNet = driveFee;
+    var totalDriveFeeGross = driveFee;
     var totalPriceNet = priceNet * visitQty;
     var totalPriceGross = priceGross * visitQty;
 
     $('#lengthVisitCell').text(totalLength + " minut");
-    $('#priceNetCell').text(totalPriceNet + " PLN");
-    $('#priceGrossCell').text(totalPriceGross + " PLN");
+    $('#priceVisitNetCell').text(totalVisitPriceNet + " PLN");
+    $('#priceVisitGrossCell').text(totalVisitPriceGross + " PLN");
+    $('#priceDriveFeeCell').text(totalDriveFeeGross + " PLN");
+
+    $('#totalPriceNetCell').text(totalPriceNet + " PLN");
+    $('#totalPriceGrossCell').text(totalPriceGross + totalDriveFeeGross + " PLN");
 
     // Ustawienie wartości ukrytych pól
     $('#totalLengthInput').val(totalLength);
@@ -191,7 +204,7 @@ $(document).ready(function() {
   $('#cityName').on('change', function() {
     var selectedCity = $(this).val();
 
-    if (selectedCity === 'inne') {
+    if (selectedCity === 'Inne') {
       // Jeśli wybrano "okolice", pokaż pole wprowadzania miejscowości i ukryj pole wyboru dzielnicy
       $('#countiesField').show();
       $('#driveFeeField').show();

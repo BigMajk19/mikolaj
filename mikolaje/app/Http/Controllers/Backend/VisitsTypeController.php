@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\User;
+use App\Models\DriveFee;
 use App\Models\VisitsName;
 use App\Models\VisitsType;
 use Illuminate\Http\Request;
@@ -15,7 +16,8 @@ class VisitsTypeController extends Controller
     {
         $types = VisitsType::latest()->get();
         $names = VisitsName::latest()->get();
-        return view('backend.type.all_type', compact('types', 'names'));
+        $driveFee = DriveFee::latest()->get();
+        return view('backend.type.all_type', compact('types', 'names','driveFee'));
     }
 
     public function AddType()

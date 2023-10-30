@@ -43,7 +43,7 @@
                   <td>{{ $item->id }}</td>
                   <td>{{ $item->voivodeship_name }}</td>
                   <td>
-                    <a href="{{ route('edit.voivodeship',$item->id) }}" class="btn btn-outline-light">Edycja</a>
+                    <a href="{{ route('edit.voivodeship',$item->id) }}" class="btn btn-outline-light">Edycja</a>&nbsp;&nbsp;&nbsp;
                     <a href="{{ route('delete.voivodeship',$item->id) }}" class="btn btn-inverse-danger" id="deleteVoivodeship">Usuń</a>
                   </td>
                 </tr>
@@ -95,7 +95,7 @@
                   <td>{{ $item->city_name }}</td>
                   <td>{{ $item->status }}</td>
                   <td>
-                    <a href="{{ route('edit.city',$item->id) }}" class="btn btn-outline-light">Edycja</a>
+                    <a href="{{ route('edit.city',$item->id) }}" class="btn btn-outline-light">Edycja</a>&nbsp;&nbsp;&nbsp;
                     <a href="{{ route('delete.city',$item->id) }}" class="btn btn-inverse-danger" id="deleteCity">Usuń</a>
                   </td>
                 </tr>
@@ -144,7 +144,7 @@
                   @endif
                   <td>{{ $item->district_name }}</td>
                   <td>
-                    <a href="{{ route('edit.district',$item->id) }}" class="btn btn-outline-light">Edycja</a>
+                    <a href="{{ route('edit.district',$item->id) }}" class="btn btn-outline-light">Edycja</a>&nbsp;&nbsp;&nbsp;
                     <a href="{{ route('delete.district',$item->id) }}" class="btn btn-inverse-danger" id="deleteDistrict">Usuń</a>
                   </td>
                 </tr>

@@ -108,6 +108,57 @@
       </div>
     </div>
   </div>
+  {{-- Kategorie wizyt --}}
+  <nav class="page-breadcrumb">
+    <ol class="breadcrumb">
+      <a href="{{ route('add.drive_fee') }}" class="btn btn-outline-warning">Dodaj Opłatę dojazdową</a>
+    </ol>
+  </nav>
+
+  <div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title">Opłaty dojazdowe</h6>
+          <div class="table-responsive">
+            <table id="example" class="table table-striped dt-responsive table-hover display nowrap">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Rodzaj</th>
+                  <th>Odległość</th>
+                  <th>Cena netto</th>
+                  <th>Cena brutto</th>
+                  <th></th>
+                </tr>
+              </thead>
+
+              <tbody>
+                @foreach($driveFee as $key => $item)
+                @php
+                  $vname = App\Models\VisitsType::where('id',$item->visits_type_id)->value('type_name');
+                @endphp
+                <tr>
+                  <td>{{ $item->id }}</td>
+                  @if ($item->visits_type_id)
+                  <td> {{ $vname }}</td>
+                  @endif
+                  <td>{{ $item->distance }} km</td>
+                  <td>{{ $item->price_net }} PLN</td>
+                  <td>{{ $item->price_gross }} PLN</td>
+                  <td>
+                    <a href="{{ route('edit.drive_fee',$item->id) }}" class="btn btn-outline-light">Edycja</a>&nbsp;&nbsp;&nbsp;
+                    <a href="{{ route('delete.drive_fee',$item->id) }}" class="btn btn-inverse-danger" id="delete">Usuń</a>
+                  </td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 

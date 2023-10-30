@@ -83,10 +83,12 @@ class VisitsController extends Controller
     {
 
       $visits = VisitsSubmissions::findOrFail($id);
-      $types = VisitsName::find($visits->type_name);
+
+      $types = VisitsType::findOrFail($visits->visits_type_id)->get();
+      $vnames = VisitsName::findOrFail($visits->visits_name_id);
       $vareas = AreaVoivodeship::get();
       $careas = AreaCity::get();
-      return view('backend.visits.edit_visit', compact('visits','types', 'vareas','careas'));
+      return view('backend.visits.edit_visit', compact('vnames','visits','types', 'vareas','careas'));
 
     }
 

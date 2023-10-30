@@ -286,8 +286,20 @@
                       <tr>
                         <td id="selectedTypeHeader"></td>
                         <td id="lengthVisitCell"></td>
-                        <td id="priceNetCell"></td>
-                        <td id="priceGrossCell"></td>
+                        <td id="priceVisitNetCell"></td>
+                        <td id="priceVisitGrossCell"></td>
+                      </tr>
+                      <tr>
+                        <td id="">Opłata dojazdowa</td>
+                        <td id=""></td>
+                        <td id=""></td>
+                        <td id="priceDriveFeeCell"></td>
+                      </tr>
+                      <tr>
+                        <td id=""><b>Łącznie do zapłaty:</b></td>
+                        <td id=""></td>
+                        <td id="totalPriceNetCell"></td>
+                        <td id="totalPriceGrossCell"></td>
                       </tr>
                     </tbody>
                   </table>
