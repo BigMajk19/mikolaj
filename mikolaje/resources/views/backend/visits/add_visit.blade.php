@@ -35,7 +35,7 @@
                 <div class="form-group row mb-3">
                   <div class="col-md-4">
                     <label for="typeName">Rodzaj wizyty:</label>
-                    <select class="form-select" id="typeName" name="type_name" >
+                    <select class="form-select" id="typeName" name="visits_type_id" >
                       <option selected="" disabled="">Rodzaj wizyty</option>
                       @foreach($types as $key => $item)
                       <option value="{{ $item->id }}">{{ $item->type_name }}</option>
@@ -48,6 +48,7 @@
                     <select class="form-select" id="visitName" name="visit_name" >
                       <option selected="" disabled="">Nazwa wizyty</option>
                     </select>
+                    <input type="hidden" id="selectedNameVisitId" name="selected_name_visit_id" value="">
                   </div>
                   <div class="col-md-2">
                     <label for="visit_qty">Qty:</label>

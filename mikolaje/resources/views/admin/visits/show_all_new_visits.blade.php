@@ -99,6 +99,7 @@
                   <td>dropdown</td>
                   <td>
                     <a href="{{ route('confirm.new.visit',$item->id) }}" class="btn btn-outline-warning" id="confirm">Potwierdź Zgłoszenie</a>&nbsp;&nbsp;&nbsp;
+                    <a href="{{ route('reserve.list.visit',$item->id) }}" class="btn btn-outline-info" id="confirm">Lista Rezerwowa</a>&nbsp;&nbsp;&nbsp;
                     <a href="{{ route('cancel.new.visit',$item->id) }}" class="btn btn-inverse-danger" id="cancel">Anuluj wizytę</a>
                   </td>
                 </tr>

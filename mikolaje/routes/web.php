@@ -91,6 +91,7 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
         Route::get('delete/name/{id}', 'DeleteNameVisit')->name('delete.name.visit');
 
     });
+    //For Drive Fee Controller
     Route::controller(DriveFeeController::class)->group(function () {
 
         //For Drive Fee Visits
@@ -127,6 +128,7 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function () {
         Route::get('signto/visit/{id}', 'SignToNewVisit')->name('signto.visit');
         Route::post('update/visit/sign/partner/', 'SignPartnerToNewVisit')->name('update.visit.sign.partner');
         Route::get('change/status/new/visit/{id}', 'ChangeStatusNewVisit')->name('change.status.new.visit');
+        Route::get('reserve_list/visit/{id}', 'ChangeStatusReserveListVisit')->name('reserve.list.visit');
 
         // Option for Realized Visits
         Route::get('show/visits/realized', 'ShowVisitsRealized')->name('show.visits.realized');

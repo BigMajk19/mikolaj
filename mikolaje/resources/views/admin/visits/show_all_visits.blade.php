@@ -69,6 +69,7 @@
                 <tr>
                   <th>Id</th>
                   <th>Rodzaj Wizyty: </th>
+                  <th>Status</th>
                   <th>Długość: </th>
                   <th>Data Wizyty: </th>
                   <th>Telefon: </th>
@@ -88,6 +89,16 @@
                 <tr>
                   <td>{{ $item->id }}</td>
                   <td> {{ $item->visit_qty }}x {{ $item->type_name }} {{ $item->visit_name }}</td>
+                  <td>
+                    @if($item->status == 'new')<span class="badge rounded-pill border border-light text-light">Nowa</span>
+                    @elseif($item->status == 'not_paid')<span class="badge rounded-pill border border-warning text-warning">Nie opłacona</span>
+                    @elseif($item->status == 'paid')<span class="badge rounded-pill border border-success text-success">Opłacona</span>
+                    @elseif($item->status == 'reserve_list')<span class="badge rounded-pill border border-info text-info">Lista rezerwowa</span>
+                    @elseif($item->status == 'canceled')<span class="badge rounded-pill border border-danger text-danger">Anulowana</span>
+                    @elseif($item->status == 'realized')<span class="badge rounded-pill border border-secondary text-secondary">Zrealizowana</span>
+                    @endif
+
+                  </td>
                   <td>{{ $item->length_visit }} min.</td>
                   <td>{{ $item->visit_date }}</td>
                   <td><a href="tel:{{ $item->phone }}">{{ $item->phone }}</a></td>
@@ -110,6 +121,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Rodzaj Wizyty</th>
+                    <th>Status</th>
                     <th>Długość</th>
                     <th>Data Wizyty</th>
                     <th>Telefon</th>

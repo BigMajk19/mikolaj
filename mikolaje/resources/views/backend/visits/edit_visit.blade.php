@@ -42,19 +42,21 @@
                 <div class="form-group row mb-3">
                   <div class="col-md-6">
                     <label for="typeName">Rodzaj wizyty:</label>
-                    <select class="form-select" id="typeName" name="type_name" >
+                    <select class="form-select" id="typeName" name="visits_type_id" >
                       @foreach($types as $key => $item)
                       <option value="{{ $item->id }}" {{ $item->type_name == $visits->type_name ? 'selected' : '' }}>{{ $item->type_name }}</option>
                       @endforeach
                     </select>
                     {{-- <input type="text" class="form-control" id="typeName" name="type_name" value="{{ $visits->type_name}}" readonly>
-                    <input type="hidden" id="typeIdInput" value="{{ $visits->visits_type__id }}"> --}}
+                    <input type="hidden" id="typeIdInput" value="{{ $visits->visits_type_id }}"> --}}
+                    <input type="hidden" id="selectedTypeName" name="selected_type_name" value="">
                   </div>
                   <div class="col-md-6">
                     <label for="visitName">Nazwa wizyty:</label>
                     <select class="form-select" id="visitName" name="visit_name" >
                       <option selected="" value="{{ $visits->visit_name_id }}">{{ $visits->visit_name }}</option>
                     </select>
+                    <input type="hidden" id="selectedNameVisitId" name="selected_name_visit_id" value="">
                   </div>
                 </div>
                 <div class="form-group row mb-3">

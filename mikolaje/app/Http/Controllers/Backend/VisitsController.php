@@ -34,12 +34,17 @@ class VisitsController extends Controller
       $selectedTypeName = $request->input('selected_type_name');
       $typeName = VisitsType::where('type_name', $selectedTypeName)->value('type_name');
 
+      $selectedNameVisitId = $request->input('selected_name_visit_id');
+    //   $typeName = VisitsName::where('id', $selectedNameVisitId)->value('id');
+
       $selectedVoivodeshipName = $request->input('selected_voivodeship_name');
       $voivodeshipName = AreaVoivodeship::where('voivodeship_name', $selectedVoivodeshipName)->value('voivodeship_name');
 
       VisitsSubmissions::insert([
 
+        'visits_type_id' => $request->visits_type_id,
         'type_name' => $typeName,
+        'visits_name_id' => $selectedNameVisitId,
         'visit_name' => $request->visit_name,
         'length_visit' => $request->totalLength,
         'visit_qty' => $request->visit_qty,
@@ -95,11 +100,18 @@ class VisitsController extends Controller
     public function UpdateVisit(Request $request)
     {
       $vid = $request->id;
+      $selectedTypeName = $request->input('selected_type_name');
+      $typeName = VisitsType::where('type_name', $selectedTypeName)->value('type_name');
+      $selectedNameVisitId = $request->input('selected_name_visit_id');
+
       $selectedVoivodeshipName = $request->input('selected_voivodeship_name');
       $voivodeshipName = AreaVoivodeship::where('voivodeship_name', $selectedVoivodeshipName)->value('voivodeship_name');
 
       VisitsSubmissions::findOrFail($vid)->update([
 
+        'visits_type_id' => $request->visits_type_id,
+        'type_name' => $typeName,
+        'visits_name_id' => $selectedNameVisitId,
         'visit_name' => $request->visit_name,
         'length_visit' => $request->totalLength,
         'visit_qty' => $request->visit_qty,
@@ -296,6 +308,20 @@ class VisitsController extends Controller
 
     }
 
+    public function ChangeStatusReserveListVisit($id)
+    {
+        VisitsSubmissions::findOrFail($id)->update([
+
+            'status' => 'reserve_list',
+        ]);
+
+        $notification = array(
+            'message' => 'Wizyta została wpisana na Listę Rezerwową',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
+
+    }
 
 
 

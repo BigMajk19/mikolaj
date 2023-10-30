@@ -66,6 +66,7 @@ $(document).ready(function() {
     $('#visitName').on('change', function() {
       var selectedOption = $('#visitName option:selected');
       var visitNameId = selectedOption.data('id');
+      $('#selectedNameVisitId').val(visitNameId);
 
       // Wyślij żądanie AJAX, aby pobrać długość trwania i cenę na podstawie wyboru w drugim polu select w Visit Name
       $.ajax({
