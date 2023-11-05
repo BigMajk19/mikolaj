@@ -66,7 +66,6 @@
                 <tr>
                   <th>Id</th>
                   <th>Telefon: </th>
-                  <th>Praca: </th>
                   <th>Lokalizacja: </th>
                   <th>Prawo jazdy: </th>
                   <th>Praca w Wigilię: </th>
@@ -77,6 +76,7 @@
                   <th>Rozmiar: </th>
                   <th>Imię i Nazwisko: </th>
                   <th>Opis: </th>
+                  <th>Zdjęcie</th>
                   <th>CV: </th>
                   <th><u>Przypisany do partnera:</u></th>
                   <th></th>
@@ -87,9 +87,20 @@
                 @foreach($show_new_snowflake as $key => $item)
                 <tr>
                   <td>{{ $item->id }}</td>
-                  <td><a href="tel:{{ $item->candidate_phone }}">{{ $item->candidate_phone }} </a></td>
-                  <td>{{ $item->job_as }}</td>
-                  <td>{{ $item->location_city }}</td>
+                  <td>
+                    <a href="tel:{{ $item->candidate_phone }}">{{ $item->candidate_phone }} </a><br/>
+                    @if($item->job_as == 'santa')<span class="badge rounded-pill border border-danger text-danger">Mikołaj</span>
+                    @elseif($item->job_as == 'elf')<span class="badge rounded-pill border border-success text-success">Elf</span>
+                    @elseif($item->job_as == 'snowflake')<span class="badge rounded-pill border border-light text-light">Śnieżynka</span>
+                    @endif
+                  </td>
+                  <td>
+                    @if ($item->candidate_city === 'Inne')
+                     {{ $item->candidate_county }}
+                    @elseif ($item->candidate_city !== 'Inne')
+                     {{ $item->candidate_city }}
+                    @endif
+                  </td>
                   <td>
                     @if($item->drive_license  == '1') Tak
                     @elseif ($item->drive_license  == '0') Nie
@@ -115,9 +126,16 @@
                   <td>{{ $item->cloth_size }}</td>
                   <td>{{ $item->candidate_firstname }} {{ $item->candidate_lastname }}</td>
                   <td>{{ $item->candidate_description }}</td>
-                  <td>{{ $item->cv }}</td>
-                  <td>{{ $item->partner }}</td>
+                  <td><img id="showImage" class="wd-300 ht-300" src="{{ (!empty($item->candidate_photo)) ? url('upload/images/candidates/'.$item->candidate_photo) : url('upload/images/no_image.png') }}" ></td>
                   <td>
+                    @if (!empty($item->cv))
+                    <a href="{{ url('upload/cv/'.$item->cv)}}" target="_blank">Pobierz CV</a>
+                    @elseif(empty($item->cv))
+                    Brak
+                    @endif
+                  </td>
+                  <td>{{ $item->partner }}</td>
+                  <td><br/>
                     <a href="{{ route('edit.candidate',$item->id) }}" class="btn btn-inverse-success">Edycja</a>&nbsp;&nbsp;&nbsp;
                     <a href="{{ route('sign.candidate',$item->id) }}" class="btn btn-inverse-warning" id="signCandidate">Przypisz kandydata</a>&nbsp;&nbsp;&nbsp;
                     <a href="{{ route('delete.candidate',$item->id) }}" class="btn btn-inverse-danger" id="deleteCandidate">Usuń</a>
@@ -125,26 +143,6 @@
                 </tr>
                 @endforeach
               </tbody>
-              <tfoot>
-                <tr>
-                  <th>Id</th>
-                  <th>Telefon: </th>
-                  <th>Praca: </th>
-                  <th>Lokalizacja: </th>
-                  <th>Prawo jazdy: </th>
-                  <th>Praca w Wigilię: </th>
-                  <th>Doświadczenie: </th>
-                  <th>Wiek: </th>
-                  <th>Wzrost: </th>
-                  <th>Waga: </th>
-                  <th>Rozmiar: </th>
-                  <th>Imię i Nazwisko: </th>
-                  <th>Opis: </th>
-                  <th>CV: </th>
-                  <th>Przypisany do partnera:</th>
-                  <th></th>
-                </tr>
-              </tfoot>
             </table>
           </div>
         </div>

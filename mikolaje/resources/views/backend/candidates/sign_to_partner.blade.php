@@ -1,9 +1,11 @@
 {{-- Początek HEAD --}}
 @section('CSSscripts')
-<link rel="stylesheet" href="{{ asset('backend/assets/vendors/select2/select2.min.css') }}">
-<link rel="stylesheet" href="{{ asset('backend/assets/vendors/font-awesome/css/font-awesome.min.css') }}">
-<link rel="stylesheet" href="{{ asset('backend/assets/vendors/jquery-tags-input/jquery.tagsinput.min.css') }}">
+<link rel="stylesheet" href="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.css') }}">
+@endsection
 
+@section('JSscripts')
+<script src="{{ asset('backend/assets/js/code/candidateDataForm.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 @endsection
 {{-- Koniec HEAD --}}
 
@@ -13,7 +15,8 @@
 
 @section('admin')
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> --}}
+
 
 <div class="page-content">
   <div class="row profile-body">
@@ -30,34 +33,41 @@
                 @csrf
                 <input type="hidden" name="id" value="{{$types->id}}">
                 <h4>Dane Kandydata</h4>
-                <div class="row mb-3">
+                <div class="form-group row mb-3">
                   <div class="col-md-4">
-                    <h6>Inię</h6>
-                    <input type="text" class="form-control" name="candidate_firstname" id="exampleInputDisabled1" disabled="" value="{{ $types->candidate_firstname }}">
+                    <label for="candidate_firstname">Imię</label>
+                    <input type="text" class="form-control" name="candidate_firstname" id="candidate_firstname" disabled="" value="{{ $types->candidate_firstname }}">
                   </div>
                   <div class="col-md-4">
-                    <h6>Nazwisko</h6>
-                    <input type="text" class="form-control" id="exampleInputDisabled1" disabled="" name="candidate_lastname" value="{{ $types->candidate_lastname }}">
+                    <label for="candidate_lastname">Nazwisko</label>
+                    <input type="text" class="form-control" id="candidate_lastname" disabled="" name="candidate_lastname" value="{{ $types->candidate_lastname }}">
                   </div>
                   <div class="col-md-4">
-                    <h6>Praca jako:</h6>
-                    <input type="text" class="form-control" name="job_as" id="exampleInputDisabled1" disabled="" value="{{ $types->job_as }}">
+                    <label for="job_as">Praca jako:</label>
+                    <input type="text" class="form-control" name="job_as" id="job_as" disabled="" value="{{ $types->job_as }}">
                   </div>
                 </div>
                 <div class="row mb-3">
                   <div class="col-md-4">
-                    <h6>Miasto</h6>
-                    <input type="text" class="form-control" name="location_city" id="exampleInputDisabled1" disabled=""  value="{{ $types->location_city }}">
+                    <label for="candidate_city">Miasto</label>
+                    @if ($types->candidate_city === 'Inne')
+                      <input type="text" class="form-control" name="candidate_county" id="candidate_county" disabled=""  value="{{ $types->candidate_county }}">
+
+                    @elseif ($types->candidate_city !== 'Inne')
+                      <input type="text" class="form-control" name="candidate_city" id="candidate_city" disabled=""  value="{{ $types->candidate_city }}">
+                    @endif
                   </div>
                 </div>
                 <div class="form-group row mb-3">
                   <div class="col-md-6">
-                    <select class="js-example-basic-single form-select select2-hidden-accessible" data-width="100%" data-select2-id="2" tabindex="-1" aria-hidden="true" id="choosePartner" name="partner">
+                    <label for="partners_id">Przypisz partnera</label>
+                    <select class="form-select" id="choosePartner" name="partners_id" required>
                       <option selected="" disabled="">Wybierz partnera</option>
                       @foreach($partners as $key => $item)
-                      <option>{{ $item->partner_name }}</option>
+                      <option value="{{ $item->id }}">{{ $item->partner_name }} - {{ $item->partner_voivodeship }}</option>
                       @endforeach
                     </select>
+                    <input type="hidden" id="selectedNamePartner" name="selected_name_partner" value="">
                   </div>
                 </div>
                 <br/>
@@ -76,18 +86,14 @@
   $(document).ready(function (){
     $('#myForm').validate({
       rules: {
-        partner: {
-          required : true,
+        partners_id: {
+            required : true,
         },
-
-
       },
       messages :{
-        partner: {
+        partners_id: {
           required : 'Wybierz Partnera do przydzielenia wizyty',
         },
-
-
       },
       errorElement : 'span',
       errorPlacement: function (error,element) {
@@ -107,10 +113,11 @@
 @endsection
 
 @section('JSscripts')
-<script src="{{ asset('backend/assets/vendors/select2/select2.min.js') }}"></script>
-<script src="{{ asset('backend/assets/js/select2.js') }}"></script>
+{{-- <script src="{{ asset('backend/assets/vendors/select2/select2.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/select2.js') }}"></script> --}}
 <script src="{{ asset('backend/assets/js/code/validate.min.js') }}"></script>
-
+<script src="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/flatpickr.js') }}"></script>
 @endsection
 
 {{-- koniec BODY --}}

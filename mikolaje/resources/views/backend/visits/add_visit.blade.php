@@ -338,7 +338,7 @@
   $(document).ready(function (){
     $('#myForm').validate({
       rules: {
-        type_name: {
+        visits_type_id: {
           required : true,
         },
         visit_name: {
@@ -399,7 +399,7 @@
 
       },
       messages :{
-        type_name: {
+        visits_type_id: {
           required : 'Podaj rodzaj wizyty',
         },
         visit_name: {

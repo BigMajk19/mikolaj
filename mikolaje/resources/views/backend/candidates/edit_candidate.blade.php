@@ -2,6 +2,10 @@
 @section('CSSscripts')
 
 @endsection
+
+@section('JSscripts')
+<script src="{{ asset('backend/assets/js/code/candidateDataForm.js') }}"></script>
+@endsection
 {{-- Koniec HEAD --}}
 
 
@@ -73,11 +77,27 @@
                     <textarea name="candidate_description" id="maxlength-textarea" class="form-control" maxlength="500" rows="8" value="{{ $types->candidate_description }}">{{ $types->candidate_description }}</textarea>
                   </div>
                 </div>
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    Gdzie chcesz pracować?
-                    <input type="text" name= "location_city" class="form-control" value="{{ $types->location_city }}">
+                <div class="form-group row mb-3">
+                  <div class="col-md-4">
+                    <label for="voivodeshipName">Województwo:</label>
+                    <select class="form-select" id="voivodeshipName" name="candidate_voivodeship" >
+                      <option selected="" disabled="">Wybierz...</option>
+                      @foreach($vareas as $key => $item)
+                      <option value="{{ $item->id }}">{{ $item->voivodeship_name }}</option>
+                      @endforeach
+                    </select>
+                    <input type="hidden" id="selectedVoivodeshipName" name="selected_voivodeship_name" value="">
                   </div>
+                </div>
+                <div class="col-md-4">
+                  <label for="cityName">Miasto:</label>
+                  <select class="form-select" id="cityName" name="candidate_city" >
+                    <option selected="" disabled="">Wybierz...</option>
+                  </select>
+                </div>
+                <div class="col-md-4" id="countiesField" style="display: none">
+                  <label for="counties" >Miejscowość</label>
+                  <input type="text" name= "candidate_county" id="counties" class="form-control" placeholder="Miejscowość">
                 </div>
                 <div class="form-group row mb-3">
                   <div class="col-md-3">

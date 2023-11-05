@@ -4,14 +4,14 @@ $(document).ready( function () {
       dom: 'Bfrtip',
       select: true,
       buttons: [
-        {
-          extend:'excel',
-          className: 'fred'
-        },
-        {
-          extend:'pdf',
-          className: 'fred'
-        },
+        // {
+        //   extend:'excel',
+        //   className: 'fred'
+        // },
+        // {
+        //   extend:'pdf',
+        //   className: 'fred'
+        // },
         {
           extend:'colvis',
           text: 'Ukryj kolumny',

@@ -28,12 +28,6 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css">
 {{-- ColReorder --}}
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/colreorder/1.7.0/css/colReorder.bootstrap5.min.css">
-{{-- KeyTables --}}
-{{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/keytable/2.10.0/css/keyTable.bootstrap5.min.css"> --}}
-{{-- Date range filter DataTables --}}
-{{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/datetime/1.5.1/css/dataTables.dateTime.min.css"> --}}
-{{-- Select (blue stripe) --}}
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.7.0/css/select.bootstrap5.min.css">
 
 {{-- end for DataTables --}}
 
@@ -50,7 +44,7 @@
 
   <nav class="page-breadcrumb">
     <ol class="breadcrumb">
-      <a href="{{ route('add.candidate') }}" class="btn btn-inverse-warning">Dodaj Kandydata</a>
+      <a href="{{ route('add.candidate') }}" class="btn btn-outline-warning">Dodaj Kandydata</a>
     </ol>
   </nav>
 
@@ -60,24 +54,32 @@
         <div class="card-body">
           <h6 class="card-title">Kandydaci do pracy</h6>
           <div class="table-responsive">
+            <span><b><u>Punktacja Kandydatów:</u></b>
+              <br/>- Prawo jazdy: <b>3 pkt.</b>
+              <br/>- Praca w Wigilię: <b>15 pkt.</b>
+              <br/>- Praca przed Wigilią: <b>3 pkt.</b>
+              <br/>- Doświadczenie w pracy z dziećmi: <b>1 pkt.</b>
+              <br/>- Doświadczenie jako Mikołaj/Śnieżynka/Elf: <b>2 pkt.</b>
+              <br/>
+            </span>
             {{-- dataTableExample --}}
-            <table id="example" class="display table-hover table-sm table-striped dt-responsive" cellspacing="0" width="100%">
+            <table id="example" class="display table table-hover table-sm table-striped dt-responsive" cellspacing="0" width="100%">
               <thead>
                 <tr>
                   <th>Id</th>
                   <th>Telefon: </th>
                   <th>Pkt. </th>
-                  <th>Praca: </th>
                   <th>Lokalizacja: </th>
                   <th>Prawo jazdy: </th>
-                  <th>Praca w Wigilię: </th>
-                  <th class="all">Doświadczenie: </th>
+                  <th>Kiedy chce pracować: </th>
+                  <th>Doświadczenie: </th>
                   <th>Wiek: </th>
                   <th>Wzrost: </th>
                   <th>Waga: </th>
                   <th>Rozmiar: </th>
                   <th>Imię i Nazwisko: </th>
-                  <th class="none">Opis: </th>
+                  <th>Opis: </th>
+                  <th>Zdjęcie</th>
                   <th>CV: </th>
                   <th><u>Przypisany do partnera:</u></th>
                   <th></th>
@@ -88,74 +90,72 @@
                 @foreach($show_candidates as $key => $item)
                 <tr>
                   <td>{{ $item->id }}</td>
-                  <td><a href="tel:{{ $item->candidate_phone }}">{{ $item->candidate_phone }} </a></td>
+                  <td>
+                    <a href="tel:{{ $item->candidate_phone }}">{{ $item->candidate_phone }} </a><br/>
+                    @if($item->job_as == 'santa')<span class="badge rounded-pill border border-danger text-danger">Mikołaj</span>
+                    @elseif($item->job_as == 'elf')<span class="badge rounded-pill border border-success text-success">Elf</span>
+                    @elseif($item->job_as == 'snowflake')<span class="badge rounded-pill border border-light text-light">Śnieżynka</span>
+                    @endif
+                  </td>
                   <td>
                     @if($item->drive_license  !== 'on' ? $drive_pkt=0 : $drive_pkt=3)@endif
-                    @if($item->work_at_xmas  !== 'on' ? $work_xmas_pkt=0 : $work_xmas_pkt=5)@endif
+                    @if($item->work_at_xmas  !== 'on' ? $work_xmas_pkt=0 : $work_xmas_pkt=15)@endif
+                    @if($item->work_before_xmas  !== 'on' ? $work_bxmas_pkt=0 : $work_bxmas_pkt=3)@endif
                     @if($item->exp_with_children  !== 'on' ? $exp_child_pkt=0 : $exp_child_pkt=1)@endif
                     @if($item->exp_as_santa !== 'on' ? $exp_santa_pkt=0 : $exp_santa_pkt=2)@endif
                     @php
-                      echo ($drive_pkt+$work_xmas_pkt+$exp_child_pkt+$exp_santa_pkt)
+                      echo ($drive_pkt+$work_xmas_pkt+$work_bxmas_pkt+$exp_child_pkt+$exp_santa_pkt)
                     @endphp
                   </td>
                   <td>
-                    @if($item->job_as == 'santa')<span class="badge border border-danger text-danger">Mikołaj</span>
-                    @elseif($item->job_as == 'elf')<span class="badge border border-success text-success">Elf</span>
-                    @elseif($item->job_as == 'snowflake')<span class="badge border border-light text-light">Śnieżynka</span>
-                    @endif
-                  </td>
-                  <td>{{ $item->location_city }}</td>
-                  <td>
-                    @if($item->drive_license  == 'on') Tak
-                    @elseif ($item->drive_license  == NULL) Nie
+                    @if ($item->candidate_city === 'Inne')
+                     {{ $item->candidate_county }}
+                    @elseif ($item->candidate_city !== 'Inne')
+                     {{ $item->candidate_city }}
                     @endif
                   </td>
                   <td>
-                    @if($item->work_at_xmas  == 'on') Tak
-                    @elseif ($item->work_at_xmas  == NULL) Nie
+                    @if($item->drive_license  == 'on') <span class="badge rounded-pill border border-success text-success"><b>Tak</b></span>
+                    @elseif ($item->drive_license  == NULL) <span class="badge rounded-pill border border-danger text-danger"><b>Nie</b></span>
                     @endif
                   </td>
                   <td>
-                    @if($item->exp_with_children  == 'on') Praca z dziećmi: <b> Tak </b><br/>
+                    @if($item->work_before_xmas  == 'on') poza Wigilią: <span class="badge rounded-pill border border-success text-success"><b>Tak</b></span><br/>
+                    @elseif ($item->work_before_xmas  == NULL) poza Wigilią: <span class="badge rounded-pill border border-danger text-danger"><b>Nie</b></span><br/>
                     @endif
-                    @if($item->exp_as_santa  == 'on') Praca jako Mikołaj: <b>Tak</b>
-                    @endif</td>
+                    @if($item->work_at_xmas  == 'on') w Wigilię: <span class="badge rounded-pill border border-success text-success"><b>Tak</b></span><br/>
+                    @elseif ($item->work_at_xmas  == NULL) w Wigilię: <span class="badge rounded-pill border border-danger text-danger"><b>Nie</b></span><br/>
+                    @endif
+                  </td>
+                  <td>
+                    @if($item->exp_with_children  == 'on') Praca z dziećmi: <span class="badge rounded-pill border border-success text-success"><b> Tak </b></span><br/>
+                    @endif
+                    @if($item->exp_as_santa  == 'on') Praca jako Mikołaj: <span class="badge rounded-pill border border-success text-success"><b> Tak </b></span>
+                    @endif
+                  </td>
                   <td>{{ $item->candidate_age }}</td>
                   <td>{{ $item->candidate_growth }}</td>
                   <td>{{ $item->candidate_weight }}</td>
                   <td>{{ $item->cloth_size }}</td>
                   <td>{{ $item->candidate_firstname }} {{ $item->candidate_lastname }}</td>
                   <td>{{ $item->candidate_description }}</td>
-                  <td><img class="wd-300 ht-300 rounded-circle" src="{{ (!empty($item->cv)) ? url('upload/images/candidates/'.$item->cv) : url('upload/images/no_image.jpg') }}" ></td>
-                  <td>{{ $item->partner }}</td>
+                  <td><img id="showImage" class="wd-300 ht-300" src="{{ (!empty($item->candidate_photo)) ? url('upload/images/candidates/'.$item->candidate_photo) : url('upload/images/no_image.png') }}" ></td>
                   <td>
+                    @if (!empty($item->cv))
+                    <a href="{{ url('upload/cv/'.$item->cv)}}" target="_blank">Pobierz CV</a>
+                    @elseif(empty($item->cv))
+                    Brak
+                    @endif
+                  </td>
+                  <td>{{ $item->partner }}</td>
+                  <td><br/>
                     <a href="{{ route('edit.candidate',$item->id) }}" class="btn btn-inverse-success">Edycja</a>&nbsp;&nbsp;&nbsp;
+                    <a href="{{ route('sign.candidate',$item->id) }}" class="btn btn-inverse-warning" id="signCandidate">Przypisz kandydata</a>&nbsp;&nbsp;&nbsp;
                     <a href="{{ route('delete.candidate',$item->id) }}" class="btn btn-inverse-danger" id="deleteCandidate">Usuń</a>
                   </td>
                 </tr>
                 @endforeach
               </tbody>
-              <tfoot>
-                <tr>
-                  <th>Id</th>
-                  <th>Telefon: </th>
-                  <th>Pkt. </th>
-                  <th>Praca: </th>
-                  <th>Lokalizacja: </th>
-                  <th>Prawo jazdy: </th>
-                  <th>Praca w Wigilię: </th>
-                  <th>Doświadczenie: </th>
-                  <th>Wiek: </th>
-                  <th>Wzrost: </th>
-                  <th>Waga: </th>
-                  <th>Rozmiar: </th>
-                  <th>Imię i Nazwisko: </th>
-                  <th>Opis: </th>
-                  <th>CV: </th>
-                  <th>Przypisany do partnera:</th>
-                  <th></th>
-                  </tr>
-              </tfoot>
             </table>
           </div>
         </div>
@@ -172,7 +172,7 @@
 <script src="{{ asset('backend/assets/vendors/datatables.net/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('backend/assets/vendors/datatables.net-bs5/dataTables.bootstrap5.min.js') }}"></script>
 {{-- DataTables Sorting --}}
-<script src="{{ asset('backend/assets/sortingScript.js') }}"></script>
+<script src="{{ asset('backend/assets/js/code/candidateTable.js') }}"></script>
 {{-- Responsive --}}
 <script src="{{ asset('backend/assets/vendors/responsive/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('backend/assets/vendors/responsive/responsive.bootstrap5.min.js') }}"></script>
@@ -187,11 +187,6 @@
 <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
 {{-- ColReorder --}}
 <script src="https://cdn.datatables.net/colreorder/1.7.0/js/dataTables.colReorder.min.js"></script>
-{{-- Select (blue stripe) --}}
-<script src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js"></script>
-
-
-{{-- JS for DataTables --}}
 
 @endsection
 

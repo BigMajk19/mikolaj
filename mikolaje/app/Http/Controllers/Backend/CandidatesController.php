@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Partners;
 use App\Models\Candidates;
 use Illuminate\Http\Request;
+use App\Models\AreaVoivodeship;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,20 +21,33 @@ class CandidatesController extends Controller
 
     public function AddCandidate()
     {
-        return view('backend.candidates.add_candidate');
+        $vareas = AreaVoivodeship::get();
+        return view('backend.candidates.add_candidate', compact('vareas'));
     }
 
     public function StoreNewCandidate(Request $request)
     {
 
-        // $imagePath = $request->file('cv')->store('public/backend/upload/images/candidates');
-        $photo=$request->file('candidate_photo');
-        $photoname= date('YmdHis').$photo;
-        $photo->move(public_path('upload/images/candidates'), $photoname);
+        $selectedVoivodeshipName = $request->input('selected_voivodeship_name');
+        $voivodeshipName = AreaVoivodeship::where('voivodeship_name', $selectedVoivodeshipName)->value('voivodeship_name');
 
-        // $file=$request->file('cv');
-        // $filename= date('YmdHis').$file;
-        // $file->move(public_path('upload/cv/candidates'), $filename);
+        if ($request->hasFile('candidate_photo')) {
+          $photo = $request->file('candidate_photo');
+          $photoFilename = date('YmdHis') . $photo->getClientOriginalName();
+          $photo->move(public_path('upload/images/candidates'), $photoFilename);
+          $photoPath = str_replace('upload/images/candidates', '', $photoFilename);
+          } else {
+              $photoPath = null;
+          }
+
+          if ($request->hasFile('cv')) {
+              $cv = $request->file('cv');
+              $cvFilename = date('YmdHis') . $cv->getClientOriginalName();
+              $cv->move(public_path('upload/cv'), $cvFilename);
+              $cvPath = str_replace('upload/cv', '', $cvFilename);
+          } else {
+              $cvPath = null;
+          }
 
         Candidates::insert([
 
@@ -43,7 +57,7 @@ class CandidatesController extends Controller
             'candidate_email' => $request->candidate_email,
             'job_as' => $request->job_as,
             'candidate_city' => $request->candidate_city,
-            'candidate_voivodeship' => $request->candidate_voivodeship,
+            'candidate_voivodeship' => $voivodeshipName,
             'candidate_age' => $request->candidate_age,
             'candidate_growth' => $request->candidate_growth,
             'candidate_weight' => $request->candidate_weight,
@@ -54,17 +68,16 @@ class CandidatesController extends Controller
             'work_before_xmas' => $request->work_before_xmas,
             'work_at_xmas' => $request->work_at_xmas,
             'candidate_description' => $request->candidate_description,
-            'candidate_photo' => $photoname,
-            'cv' => $photoname,
+            'candidate_photo' => $photoPath,
+            'cv' => $cvPath,
             'privacy_policy' => $request->privacy_policy,
-            'hired' => $request->hired,
         ]);
-
 
         $notification = array(
             'message' => 'Pomyślnie dodano nowego kandydata.',
             'alert-type' => 'success',
         );
+
         return redirect()->route('show.all.candidates')->with($notification);
     }
 
@@ -98,8 +111,6 @@ class CandidatesController extends Controller
             'work_before_xmas' => $request->work_before_xmas,
             'work_at_xmas' => $request->work_at_xmas,
             'candidate_description' => $request->candidate_description,
-            'candidate_photo' => $request->candidate_photo,
-            'cv' => $request->cv,
             'privacy_policy' => $request->privacy_policy,
             'hired' => $request->hired,
         ]);
@@ -154,7 +165,7 @@ class CandidatesController extends Controller
     // For Service Candidates
     public function SignCandidate($id)
     {
-        $partners = Partners::latest()->get();
+        $partners = Partners::where('partner_status', 'active')->get();
         $types = Candidates::findOrFail($id);
         return view('backend.candidates.sign_to_partner', compact('types','partners'));
 
@@ -164,9 +175,20 @@ class CandidatesController extends Controller
     {
         $cid = $request->id;
 
+        // Walidacja danych po stronie serwera
+        $request->validate([
+            'partners_id' => 'required',
+        ], [
+            'partners_id.required' => 'Wybierz Partnera do przydzielenia wizyty',
+        ]);
+
+        $selectedIdPartner = $request->input('partners_id');
+        $partnerName = Partners::where('id', $selectedIdPartner)->value('partner_name');
+
         Candidates::findOrFail($cid)->update([
 
-            'partner' => $request->partner,
+            'partners_id' => $request->partners_id,
+            'partner' => $partnerName,
         ]);
         $notification = array(
             'message' => 'Kandydat został pomyślnie przypisany do Partnera',

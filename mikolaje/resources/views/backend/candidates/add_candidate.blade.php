@@ -2,6 +2,10 @@
 @section('CSSscripts')
 
 @endsection
+
+@section('JSscripts')
+<script src="{{ asset('backend/assets/js/code/candidateDataForm.js') }}"></script>
+@endsection
 {{-- Koniec HEAD --}}
 
 
@@ -32,8 +36,7 @@
               <h4>Dodaj nowego Kandydata</h4>
             </div>
             <div class="card-body">
-              <form id="myForm" method="post" action="{{ route('store.candidate') }}"
-                class="forms-sample" enctype="multipart/form-data">
+              <form id="myForm" method="post" action="{{ route('store.candidate') }}" class="forms-sample" enctype="multipart/form-data">
                 @csrf
                 <h4>Dane Kandydata/ki</h4>
                 {{-- Imię i nazwisko --}}
@@ -74,11 +77,25 @@
                 </div>
                 <div class="form-group row mb-3">
                 {{-- Lokalizacja --}}
-                  <div class="col-md-6">
-                    <input type="text" name= "candidate_city" class="form-control" placeholder="Gdzie chcesz pracować?">
+                  <div class="col-md-4">
+                    <label for="voivodeshipName">Województwo:</label>
+                    <select class="form-select" id="voivodeshipName" name="candidate_voivodeship" >
+                      <option selected="" disabled="">Wybierz...</option>
+                      @foreach($vareas as $key => $item)
+                      <option value="{{ $item->id }}">{{ $item->voivodeship_name }}</option>
+                      @endforeach
+                    </select>
+                    <input type="hidden" id="selectedVoivodeshipName" name="selected_voivodeship_name" value="">
                   </div>
-                  <div class="col-md-6">
-                    <input type="text" name= "candidate_voivodeship" class="form-control" placeholder="Województwo">
+                  <div class="col-md-4">
+                    <label for="cityName">Miasto:</label>
+                    <select class="form-select" id="cityName" name="candidate_city" >
+                      <option selected="" disabled="">Wybierz...</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4" id="countiesField" style="display: none">
+                    <label for="counties" >Miejscowość</label>
+                    <input type="text" name= "candidate_county" id="counties" class="form-control" placeholder="Miejscowość">
                   </div>
                 </div>
                 <div class="form-group row mb-3">
@@ -119,11 +136,11 @@
                 <div class="row mb-3">
                   <div class="form-check form-switch mb-2">
                     <input type="checkbox" name="work_before_xmas" class="form-check-input">
-                    <label class="form-check-label" for="formSwitch1">Czy praca poza Wigilią 24 grudnia również Cię interesuje?</label>
+                    <label class="form-check-label" for="formSwitch1">Praca w dn. 01.12 - 23.12?</label>
                   </div>
                   <div class="form-check form-switch mb-2">
                     <input type="checkbox" name="work_at_xmas" class="form-check-input">
-                    <label class="form-check-label" for="formSwitch1">Czy praca w Wigilię 24 grudnia również Cię interesuje?</label>
+                    <label class="form-check-label" for="formSwitch1">Praca w dn. 24.12?</label>
                   </div>
                 </div>
                 <div class="row mb-3">
@@ -133,8 +150,12 @@
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Zdjęcie profilowe</label>
+                  <label for="exampleInputEmail1" class="form-label">Zdjęcie </label>
                   <input class="form-control" name="candidate_photo" type="file" id="image">
+                </div>
+                <div class="row mb-3">
+                  <label for="exampleInputEmail1" class="form-label">CV</label>
+                  <input class="form-control" name="cv" type="file">
                 </div>
                 <br/>
                 <button type="submit" class="btn btn-outline-success">Zapisz zmiany</button>&nbsp;&nbsp;&nbsp;

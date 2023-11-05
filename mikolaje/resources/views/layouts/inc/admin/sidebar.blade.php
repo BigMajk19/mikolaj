@@ -8,6 +8,7 @@
     $countAllNewVisits = $countAllNew+$countAllNot_paid+$countAllNot_sign_to+$countAllReserve_list;
     $countPaid = App\Models\VisitsSubmissions::whereNotNull('partner')->where('status','paid')->count();
     $countRealized = App\Models\VisitsSubmissions::where('status', 'realized')->count();
+    $countAllPaidAndRealized = $countPaid+$countRealized;
     $countCanceled = App\Models\VisitsSubmissions::where('status', 'canceled')->count();
     $countSignVisits = App\Models\VisitsSubmissions::whereNotNull('partner')->count();
     // For Counting Candidates
@@ -115,13 +116,13 @@
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#PoszczegolneWizyty" role="button" aria-expanded="false" aria-controls="visits">
           <i class="link-icon" data-feather="mail"></i>
-          <span class="link-title">Przypisane wizyty</span>
+          <span class="link-title">Przypisane wizyty ( {{ $countAllPaidAndRealized }} )</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
         </a>
         <div class="collapse" id="PoszczegolneWizyty">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="{{ route('show.visits.paid_and_sign_to') }}" class="nav-link">Opłacone( {{ $countPaid }} )</a>
+              <a href="{{ route('show.visits.paid_and_sign_to') }}" class="nav-link">Opłacone ( {{ $countPaid }} )</a>
             </li>
             <li class="nav-item">
               <a href="{{ route('show.visits.realized') }}" class="nav-link">Zrealizowane ( {{ $countRealized }} )</a>
