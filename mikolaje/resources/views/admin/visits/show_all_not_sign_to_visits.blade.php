@@ -56,7 +56,13 @@
                   <td>{{ $item->id }}</td>
                   <td> {{ $item->visit_qty }}x {{ $item->type_name }} {{ $item->visit_name }}</td>
                   <td>{{ $item->length_visit }} min.</td>
-                  <td>{{ $item->city }}</td>
+                  <td>
+                    @if ($item->city === 'Inne')
+                     {{ $item->counties }}
+                    @elseif ($item->city !== 'Inne')
+                     {{ $item->city }}
+                    @endif
+                  </td>
                   <td>{{ $item->district }}</td>
                   <td><a target="blank" href="https://www.google.pl/maps/place/{{ $item->street_address }}+{{ $item->street_number }},+{{ $item->zipcode }}+{{ $item->city }}">
                     {{ $item->street_address }} {{ $item->street_number }} /{{ $item->flat_number }}</a></td>

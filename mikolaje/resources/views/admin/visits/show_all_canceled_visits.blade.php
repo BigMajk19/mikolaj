@@ -62,7 +62,13 @@
                   <td> {{ $item->visit_qty }}x {{ $item->type_name }} {{ $item->visit_name }}</td>
                   <td>{{ $item->length_visit }} min.</td>
                   <td>{{ $item->visit_date }}</td>
-                  <td>{{ $item->city }}</td>
+                  <td>
+                    @if ($item->city === 'Inne')
+                     {{ $item->counties }}
+                    @elseif ($item->city !== 'Inne')
+                     {{ $item->city }}
+                    @endif
+                  </td>
                   <td>{{ $item->voivodeship }}</td>
                 </tr>
                 @endforeach

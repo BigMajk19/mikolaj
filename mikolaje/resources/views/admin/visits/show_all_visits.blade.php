@@ -88,10 +88,10 @@
                   <td>{{ $item->id }}</td>
                   <td> {{ $item->visit_qty }}x {{ $item->type_name }} {{ $item->visit_name }}</td>
                   <td>
-                    @if($item->status == 'new')<span class="badge rounded-pill border border-light text-light">Nowa</span>
+                    @if($item->status == 'new')<span class="badge rounded-pill border border-success text-success">Nowa</span>
                     @elseif($item->status == 'not_paid')<span class="badge rounded-pill border border-warning text-warning">Nie opłacona</span>
-                    @elseif($item->status == 'paid')<span class="badge rounded-pill border border-success text-success">Opłacona</span>
-                    @elseif($item->status == 'reserve_list')<span class="badge rounded-pill border border-info text-info">Lista rezerwowa</span>
+                    @elseif($item->status == 'paid')<span class="badge rounded-pill border border-info text-info">Opłacona</span>
+                    @elseif($item->status == 'reserve_list')<span class="badge rounded-pill border border-light text-light">Lista rezerwowa</span>
                     @elseif($item->status == 'canceled')<span class="badge rounded-pill border border-danger text-danger">Anulowana</span>
                     @elseif($item->status == 'realized')<span class="badge rounded-pill border border-secondary text-secondary">Zrealizowana</span>
                     @endif
@@ -101,11 +101,22 @@
                   <td>{{ $item->visit_date }}</td>
                   <td><a href="tel:{{ $item->phone }}">{{ $item->phone }}</a></td>
                   <td>{{ $item->interval_hours }}</td>
-                  <td>{{ $item->guaranted }}</td>
-                  <td>{{ $item->city }}</td>
+                  <td>
+                    @if($item->guaranted  == 'yes') <span class="badge rounded-pill border border-success text-success"><b>Tak</b></span><br/>
+                    @elseif ($item->guaranted  == 'no') <span class="badge rounded-pill border border-danger text-danger"><b>Nie</b></span><br/>
+                    @endif
+                  </td>
+                  <td>
+                    @if ($item->city === 'Inne')
+                     {{ $item->counties }}
+                    @elseif ($item->city !== 'Inne')
+                     {{ $item->city }}
+                    @endif
+                  </td>
                   <td>{{ $item->district }}</td>
-                  <td><a target="blank" href="https://www.google.pl/maps/place/{{ $item->street_address }}+{{ $item->street_number }},+{{ $item->zipcode }}+{{ $item->city }}">
-                    {{ $item->street_address }} {{ $item->street_number }} /{{ $item->flat_number }}</a></td>
+                  <td><a target="blank" href="https://www.google.pl/maps/place/{{ $item->street_address }}+{{ $item->street_number }},+{{ $item->zipcode }}+@if($item->city === 'Inne'){{ $item->counties }}@elseif ($item->city !== 'Inne'){{ $item->city }}
+                   @endif">
+                    {{ $item->street_address }} {{ $item->street_number }} @if($item->flat_number === null) @elseif ($item->flat_number !== null) / {{ $item->flat_number }}@endif</a></td>
                   <td>{{ $item->voivodeship }}</td>
                   <td>dropdown</td>
                   <td>

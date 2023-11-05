@@ -93,7 +93,13 @@
                   <td><a href="tel:{{ $item->phone }}">{{ $item->phone }}</a></td>
                   <td>{{ $item->interval_hours }}</td>
                   <td>{{ $item->guaranted }}</td>
-                  <td>{{ $item->city }}</td>
+                  <td>
+                    @if ($item->city === 'Inne')
+                     {{ $item->counties }}
+                    @elseif ($item->city !== 'Inne')
+                     {{ $item->city }}
+                    @endif
+                  </td>
                   <td>{{ $item->district }}</td>
                   <td><a target="blank" href="https://www.google.pl/maps/place/{{ $item->street_address }}+{{ $item->street_number }},+{{ $item->zipcode }}+{{ $item->city }}">
                     {{ $item->street_address }} {{ $item->street_number }} /{{ $item->flat_number }}</a></td>

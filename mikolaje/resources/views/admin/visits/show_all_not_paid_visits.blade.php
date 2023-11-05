@@ -65,7 +65,13 @@
                   <td>{{ $item->length_visit }} min.</td>
                   <td>{{ $item->visit_date }}</td>
                   <td><a href="tel:{{ $item->phone }}">{{ $item->phone }}</a></td>
-                  <td>{{ $item->city }}</td>
+                  <td>
+                    @if ($item->city === 'Inne')
+                     {{ $item->counties }}
+                    @elseif ($item->city !== 'Inne')
+                     {{ $item->city }}
+                    @endif
+                  </td>
                   <td>{{ $item->voivodeship }}</td>
                   <td>{{ $item->price_net }}</td>
 
