@@ -120,11 +120,11 @@
                     @endif
                   </td>
                   <td>
-                    @if($item->work_before_xmas  == 'on') poza Wigilią: <span class="badge rounded-pill border border-success text-success"><b>Tak</b></span><br/>
-                    @elseif ($item->work_before_xmas  == NULL) poza Wigilią: <span class="badge rounded-pill border border-danger text-danger"><b>Nie</b></span><br/>
+                    @if($item->work_before_xmas  == 'on') poza Wigilią: &nbsp;&nbsp;<span class="badge rounded-pill border border-success text-success"><b>Tak</b></span><br/>
+                    @elseif ($item->work_before_xmas  == NULL) poza Wigilią: &nbsp;&nbsp;<span class="badge rounded-pill border border-danger text-danger"><b>Nie</b></span><br/>
                     @endif
-                    @if($item->work_at_xmas  == 'on') w Wigilię: <span class="badge rounded-pill border border-success text-success"><b>Tak</b></span><br/>
-                    @elseif ($item->work_at_xmas  == NULL) w Wigilię: <span class="badge rounded-pill border border-danger text-danger"><b>Nie</b></span><br/>
+                    @if($item->work_at_xmas  == 'on') w Wigilię: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="badge rounded-pill border border-success text-success"><b>Tak</b></span><br/>
+                    @elseif ($item->work_at_xmas  == NULL) w Wigilię: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="badge rounded-pill border border-danger text-danger"><b>Nie</b></span><br/>
                     @endif
                   </td>
                   <td>

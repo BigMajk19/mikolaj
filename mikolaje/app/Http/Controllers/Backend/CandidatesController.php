@@ -57,6 +57,7 @@ class CandidatesController extends Controller
             'candidate_email' => $request->candidate_email,
             'job_as' => $request->job_as,
             'candidate_city' => $request->candidate_city,
+            'candidate_county' => $request->candidate_county,
             'candidate_voivodeship' => $voivodeshipName,
             'candidate_age' => $request->candidate_age,
             'candidate_growth' => $request->candidate_growth,
@@ -84,13 +85,16 @@ class CandidatesController extends Controller
     public function EditNewCandidate($id)
     {
         $types = Candidates::findOrFail($id);
-        return view('backend.candidates.edit_candidate', compact('types'));
+        $vareas = AreaVoivodeship::get();
+        return view('backend.candidates.edit_candidate', compact('types','vareas'));
 
     }
 
     public function UpdateNewCandidate(Request $request)
     {
         $cid = $request->id;
+        $selectedVoivodeshipName = $request->input('selected_voivodeship_name');
+        $voivodeshipName = AreaVoivodeship::where('voivodeship_name', $selectedVoivodeshipName)->value('voivodeship_name');
 
         Candidates::findOrFail($cid)->update([
 
@@ -100,7 +104,8 @@ class CandidatesController extends Controller
             'candidate_email' => $request->candidate_email,
             'job_as' => $request->job_as,
             'candidate_city' => $request->candidate_city,
-            'candidate_voivodeship' => $request->candidate_voivodeship,
+            'candidate_county' => $request->candidate_county,
+            'candidate_voivodeship' => $voivodeshipName,
             'candidate_age' => $request->candidate_age,
             'candidate_growth' => $request->candidate_growth,
             'candidate_weight' => $request->candidate_weight,

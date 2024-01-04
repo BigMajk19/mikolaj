@@ -3,6 +3,13 @@
 
 <link rel="stylesheet" href="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.css') }}">
 @endsection
+
+@section('JSscripts')
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="{{ asset('backend/assets/js/code/getVisitDataForm.js') }}"></script>
+<script src="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/flatpickr.js') }}"></script>
+@endsection
 {{-- Koniec HEAD --}}
 
 
@@ -11,7 +18,7 @@
 
 @section('admin')
 
-<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+{{-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script> --}}
 
 <div class="page-content">
 
@@ -33,7 +40,7 @@
                 @csrf
                 <h4>Dane wizyty</h4>
                 <div class="form-group row mb-3">
-                  <div class="col-md-4">
+                  <div class="col-md-6">
                     <label for="typeName">Rodzaj wizyty:</label>
                     <select class="form-select" id="typeName" name="visits_type_id" >
                       <option selected="" disabled="">Rodzaj wizyty</option>
@@ -43,41 +50,50 @@
                     </select>
                     <input type="hidden" id="selectedTypeName" name="selected_type_name" value="">
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-6">
                     <label for="visitName">Nazwa wizyty:</label>
                     <select class="form-select" id="visitName" name="visit_name" >
                       <option selected="" disabled="">Nazwa wizyty</option>
                     </select>
                     <input type="hidden" id="selectedNameVisitId" name="selected_name_visit_id" value="">
                   </div>
-                  <div class="col-md-2">
-                    <label for="visit_qty">Qty:</label>
-                    <input type="number" id="visit_qty" name= "visit_qty" class="form-control" min="1">
-                  </div>
-                  <div class="col-md-2">
-                    <label for="lengthVisit">Długość</label>
-                    <input type="text" class="form-control" id="lengthVisit" name="length_visit" readonly>
-                  </div>
+
                 </div>
                 <div class="form-group row mb-3">
                   <div class="col-md-3">
-                    <label for="guaranted">Godz. gwar.</label>
+                    <label for="lengthVisit">Długość</label>
+                    <input type="text" class="form-control" id="lengthVisit" name="length_visit" readonly>
+                  </div>
+                  <div class="col-md-3">
+                    <label for="visit_qty">Ilość:</label>
+                    <input type="number" id="visit_qty" name= "visit_qty" class="form-control" min="1">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="guaranted">Godzina gwarantowana</label>
                     <select class="form-select" id="guaranted" name="guaranted">
-                      {{-- <option selected="" disabled="">Gwarantowana</option> --}}
                       <option value="no">Nie</option>
                       <option value="yes">Tak</option>
                     </select>
                   </div>
-                  <div class="col-md-3">
+                </div>
+                <div class="form-group row mb-3">
+                  <div class="col-md-6">
                     <label for="priceNet">Cena netto</label>
                     <input type="text" name= "price_net" id="priceNet" class="form-control" placeholder="Cena netto" readonly>
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-6">
                     <label for="priceGross">Cena brutto</label>
                     <input type="text" name= "price_gross" id="priceGross" class="form-control" placeholder="Cena brutto" readonly>
                   </div>
                 </div>
                 <div class="form-group row mb-3">
+                  <div class="col-md-4">
+                    <label for="visit_date">Data wizyty</label>
+                    <div class="input-group flatpickr" id="flatpickr-date">
+                      <input type="text" name= "visit_date" id="visit_date" class="form-control flatpickr-input"  data-input="" placeholder='Select Date'>
+                      <span class="input-group-text input-group-addon" data-toggle=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
+                    </div>
+                  </div>
                   <div class="col-md-4">
                     <label for="intervalHours">Przedział godzinowy</label>
                     <select class="form-select" id="intervalHours" name="interval_hours" >
@@ -135,13 +151,6 @@
                       <option>20:30 - 22:30</option>
                       <option>20:45 - 22:45</option>
                     </select>
-                  </div>
-                  <div class="col-md-4">
-                    <label for="visit_date">Data wizyty</label>
-                    <div class="input-group flatpickr" id="flatpickr-date">
-                      <input type="text" name= "visit_date" id="visit_date" class="form-control flatpickr-input"  data-input="" placeholder='Select Date'>
-                      <span class="input-group-text input-group-addon" data-toggle=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
-                    </div>
                   </div>
                   <div class="col-md-4">
                     <label for="preffered_time">Preferowana godz.</label>
@@ -276,7 +285,7 @@
                   <table id="example" class="table table-striped dt-responsive table-hover display nowrap">
                     <thead>
                       <tr>
-                        <th>Rodzaj wizyty</th>
+                        <th>Nazwa</th>
                         <th>Długość</th>
                         <th>Cena netto</th>
                         <th>Cena brutto</th>
@@ -291,10 +300,16 @@
                         <td id="priceVisitGrossCell"></td>
                       </tr>
                       <tr>
-                        <td id="">Opłata dojazdowa</td>
+                        <td id="driveFeeHeader"></td>
                         <td id=""></td>
+                        <td id="priceDriveFeeNetCell"></td>
+                        <td id="priceDriveFeeGrossCell"></td>
+                      </tr>
+                      <tr>
+                        <td id="guarantedFeeHeader"></td>
                         <td id=""></td>
-                        <td id="priceDriveFeeCell"></td>
+                        <td id="guarantedFeeNetCell"></td>
+                        <td id="guarantedFeeGrossCell"></td>
                       </tr>
                       <tr>
                         <td id=""><b>Łącznie do zapłaty:</b></td>
@@ -479,9 +494,6 @@
 
 @section('JSscripts')
 <script src="{{ asset('backend/assets/js/code/validate.min.js') }}"></script>
-<script src="{{ asset('backend/assets/js/code/getVisitDataForm.js') }}"></script>
-<script src="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.js') }}"></script>
-<script src="{{ asset('backend/assets/js/flatpickr.js') }}"></script>
 <script src="{{ asset('backend/assets/vendors/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
 <script src="{{ asset('backend/assets/js/bootstrap-maxlength.js') }}"></script>
 @endsection

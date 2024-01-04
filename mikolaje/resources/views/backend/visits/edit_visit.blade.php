@@ -5,8 +5,13 @@
 @endsection
 
 @section('JSscripts')
-
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="{{ asset('backend/assets/js/code/getVisitDataInEditForm.js') }}"></script>
+<script src="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/flatpickr.js') }}"></script>
+<script>
+    var visitIdFromBackend = "{{ $vnames }}";
+</script>
 @endsection
 {{-- Koniec HEAD --}}
 
@@ -16,7 +21,7 @@
 
 @section('admin')
 
-<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
 
 <div class="page-content">
 
@@ -44,25 +49,21 @@
                     <label for="typeName">Rodzaj wizyty:</label>
                     <select class="form-select" id="typeName" name="visits_type_id" >
                       @foreach($types as $key => $item)
-                      <option value="{{ $item->id }}" {{ $item->type_name == $visits->type_name ? 'selected' : '' }}>{{ $item->type_name }}</option>
+                      <option value="{{ $item->id }}" {{ $item->id == $visits->visits_type_id ? 'selected' : '' }}>{{ $item->type_name }}</option>
                       @endforeach
                     </select>
-                    {{-- <input type="text" class="form-control" id="typeName" name="type_name" value="{{ $visits->type_name}}" readonly>
-                    <input type="hidden" id="typeIdInput" value="{{ $visits->visits_type_id }}"> --}}
-                    <input type="hidden" id="selectedTypeName" name="selected_type_name" value="">
                   </div>
                   <div class="col-md-6">
                     <label for="visitName">Nazwa wizyty:</label>
                     <select class="form-select" id="visitName" name="visit_name" >
-                      <option selected="" value="{{ $visits->visit_name_id }}">{{ $visits->visit_name }}</option>
+                      <option selected="" value="{{ $visits->visits_name_id }}">{{ $visits->visit_name }}</option>
                     </select>
-                    <input type="hidden" id="selectedNameVisitId" name="selected_name_visit_id" value="">
                   </div>
                 </div>
                 <div class="form-group row mb-3">
                   <div class="col-md-3">
                     <label for="lengthVisit">Długość wizyty</label>
-                    <input type="text" class="form-control" id="lengthVisit" name="length_visit" readonly value="{{ $vnames->visit_length }}">
+                    <input type="text" class="form-control" id="lengthVisit" name="length_visit" readonly value="{{ $visits->length_visit }}">
                   </div>
                   <div class="col-md-2">
                     <label for="visit_qty">Ilość wizyt:</label>
@@ -152,7 +153,7 @@
                   <div class="col-md-4">
                     <label for="preffered_time">Preferowana godz.</label>
                     <div class="input-group flatpickr" id="flatpickr-time">
-                      <input type="text" name="preffered_time" id="preffered_time" value="{{ $visits->preffered_time }}" class="form-control flatpickr-input" data-input="" readonly="readonly">
+                      <input type="text" name="preffered_time" id="preffered_time" value="{{ $visits->preffered_time }}" class="form-control flatpickr-input" data-input="" >
                       <span class="input-group-text input-group-addon" data-toggle="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></span>
                     </div>
@@ -207,7 +208,7 @@
                     </div>
                     <div class="col-md-5">
                       <label for="companyAdress">Adres siedziby</label>
-                      <input type="text" name= "invoice_company_adress" id="companyName" value="{{ $visits->invoice_company_adress }}" class="form-control">
+                      <input type="text" name= "invoice_company_adress" id="companyAdress" value="{{ $visits->invoice_company_adress }}" class="form-control">
                     </div>
                   </div>
                 </div>
@@ -284,7 +285,7 @@
                   <table id="example" class="table table-striped dt-responsive table-hover display nowrap">
                     <thead>
                       <tr>
-                        <th>Rodzaj wizyty</th>
+                        <th>Nazwa</th>
                         <th>Długość</th>
                         <th>Cena netto</th>
                         <th>Cena brutto</th>
@@ -295,8 +296,26 @@
                       <tr>
                         <td id="selectedTypeHeader"></td>
                         <td id="lengthVisitCell"></td>
-                        <td id="priceNetCell"></td>
-                        <td id="priceGrossCell"></td>
+                        <td id="priceVisitNetCell"></td>
+                        <td id="priceVisitGrossCell"></td>
+                      </tr>
+                      <tr>
+                        <td id="driveFeeHeader"></td>
+                        <td id=""></td>
+                        <td id="priceDriveFeeNetCell"></td>
+                        <td id="priceDriveFeeGrossCell"></td>
+                      </tr>
+                      <tr>
+                        <td id="guarantedFeeHeader"></td>
+                        <td id=""></td>
+                        <td id="guarantedFeeNetCell"></td>
+                        <td id="guarantedFeeGrossCell"></td>
+                      </tr>
+                      <tr>
+                        <td id=""><b>Łącznie do zapłaty:</b></td>
+                        <td id=""></td>
+                        <td id="totalPriceNetCell"></td>
+                        <td id="totalPriceGrossCell"></td>
                       </tr>
                     </tbody>
                   </table>
@@ -491,9 +510,8 @@
 @section('JSscripts')
 
 <script src="{{ asset('backend/assets/js/code/validate.min.js') }}"></script>
-{{-- <script src="{{ asset('backend/assets/js/code/getVisitDataForm.js') }}"></script> --}}
-<script src="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.js') }}"></script>
-<script src="{{ asset('backend/assets/js/flatpickr.js') }}"></script>
+
+
 <script src="{{ asset('backend/assets/vendors/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
 <script src="{{ asset('backend/assets/js/bootstrap-maxlength.js') }}"></script>
 @endsection

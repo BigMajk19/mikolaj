@@ -88,9 +88,8 @@ class VisitsController extends Controller
     {
 
       $visits = VisitsSubmissions::findOrFail($id);
-
-      $types = VisitsType::findOrFail($visits->visits_type_id)->get();
-      $vnames = VisitsName::findOrFail($visits->visits_name_id);
+      $types = VisitsType::find($visits->visits_type_id)->get();
+      $vnames = VisitsName::find($visits->visits_name_id);
       $vareas = AreaVoivodeship::get();
       $careas = AreaCity::get();
       return view('backend.visits.edit_visit', compact('vnames','visits','types', 'vareas','careas'));
@@ -101,18 +100,31 @@ class VisitsController extends Controller
     {
       $vid = $request->id;
       $selectedTypeName = $request->input('selected_type_name');
-      $typeName = VisitsType::where('type_name', $selectedTypeName)->value('type_name');
-      $selectedNameVisitId = $request->input('selected_name_visit_id');
+      $type = VisitsType::where('type_name', $selectedTypeName)->value('type_name');
 
-      $selectedVoivodeshipName = $request->input('selected_voivodeship_name');
-      $voivodeshipName = AreaVoivodeship::where('voivodeship_name', $selectedVoivodeshipName)->value('voivodeship_name');
+
+      $typeNameId = VisitsSubmissions::findOrFail($vid)->where('visits_type_id')->get();
+      $typeName = VisitsSubmissions::where('id', $vid)->value('type_name');
+      $visitNameId = VisitsSubmissions::findOrFail($vid)->value('visits_name_id');
+      $visitName = VisitsSubmissions::where('id', $vid)->value('visit_name');
+      $visitDate = VisitsSubmissions::where('id', $vid)->value('visit_date');
+      $selectedVoivodeshipName = VisitsSubmissions::where('id', $vid)->value('voivodeship');
+
+
+      $visitsTypeId = $request->visits_type_id ? $request->visits_type_id : $typeNameId;
+      $visitsType = $request->type_name ?? $typeName;
+      $visitsNameId = $request->visits_name_id ?? $visitNameId;
+      $visitsName = $request->visit_name ? $request->visit_name : $visitName;
+      $visitsDate = $request->visit_date ? $request->visit_date : $visitDate;
+      $voivodeshipNameId = $request->voivodeship ? $request->voivodeship : $selectedVoivodeshipName;
+      $voivodeshipName = AreaVoivodeship::where('id', $voivodeshipNameId)->value('voivodeship_name');
 
       VisitsSubmissions::findOrFail($vid)->update([
 
-        'visits_type_id' => $request->visits_type_id,
-        'type_name' => $typeName,
-        'visits_name_id' => $selectedNameVisitId,
-        'visit_name' => $request->visit_name,
+        'visits_type_id' => $visitsTypeId,
+        'type_name' => $visitsType,
+        'visits_name_id' => $visitsNameId,
+        'visit_name' => $visitsName,
         'length_visit' => $request->totalLength,
         'visit_qty' => $request->visit_qty,
         'facility_name' => $request->facility_name,
@@ -120,7 +132,7 @@ class VisitsController extends Controller
         'client_lastname' => $request->client_lastname,
         'phone' => $request->phone,
         'email' => $request->email,
-        'visit_date' => $request->visit_date,
+        'visit_date' => $visitsDate,
         'preffered_time' => $request->preffered_time,
         'interval_hours' => $request->interval_hours,
         'guaranted' => $request->guaranted,

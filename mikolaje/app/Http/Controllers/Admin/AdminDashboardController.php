@@ -39,7 +39,8 @@ class AdminDashboardController extends Controller
     {
         $id = Auth::user()->id;
         $data = User::find($id);
-        $data->name = $request->name;
+        $data->firstname = $request->firstname;
+        $data->lastname = $request->lastname;
         $data->email = $request->email;
         $data->phone_number = $request->phone_number;
         $data->company_name = $request->company_name;

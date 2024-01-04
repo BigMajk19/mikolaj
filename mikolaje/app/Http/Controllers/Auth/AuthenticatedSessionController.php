@@ -39,9 +39,9 @@ class AuthenticatedSessionController extends Controller
         } else if($request->user()->role_as === 'employee')
         {
             $url = 'employee/dashboard';
-        }else if($request->user()->role_as === 'client')
+        }else if($request->user()->role_as === 'user')
         {
-            $url = 'client/dashboard';
+            $url = 'dashboard';
         }
 
         return redirect()->intended($url)->with('message','Successfully');

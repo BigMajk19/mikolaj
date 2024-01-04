@@ -88,16 +88,16 @@
                     </select>
                     <input type="hidden" id="selectedVoivodeshipName" name="selected_voivodeship_name" value="">
                   </div>
-                </div>
-                <div class="col-md-4">
-                  <label for="cityName">Miasto:</label>
-                  <select class="form-select" id="cityName" name="candidate_city" >
-                    <option selected="" disabled="">Wybierz...</option>
-                  </select>
-                </div>
-                <div class="col-md-4" id="countiesField" style="display: none">
-                  <label for="counties" >Miejscowość</label>
-                  <input type="text" name= "candidate_county" id="counties" class="form-control" placeholder="Miejscowość">
+                  <div class="col-md-4">
+                    <label for="cityName">Miasto:</label>
+                    <select class="form-select" id="cityName" name="candidate_city" >
+                      <option selected="" disabled="">Wybierz...</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4" id="countiesField" style="display: none">
+                    <label for="counties" >Miejscowość</label>
+                    <input type="text" name= "candidate_county" id="counties" class="form-control" placeholder="Miejscowość">
+                  </div>
                 </div>
                 <div class="form-group row mb-3">
                   <div class="col-md-3">

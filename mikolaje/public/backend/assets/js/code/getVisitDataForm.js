@@ -1,5 +1,6 @@
 $(document).ready(function() {
   // Obsługa zmiany wyboru w pierwszym polu select >>>TypeName<<<
+  $('#typeName').off('change');
   $('#typeName').on('change', function() {
     var selectedTypeName = $('#typeName option:selected').text();
     $('#selectedTypeName').val(selectedTypeName);
@@ -48,6 +49,7 @@ $(document).ready(function() {
       updateTable();
   });
 
+  $('#visitName').off('change');
   // Obsługa zmiany wyboru w drugim polu select >>>Visit Name<<<
   $('#visitName').on('change', function() {
     var selectedOption = $('#visitName option:selected');
@@ -75,6 +77,10 @@ $(document).ready(function() {
     // Aktualizuj tabelę po zmianie ilości wizyt
     updateTable();
     });
+  $('#guaranted').on('change', function() {
+    // Aktualizuj tabelę po zmianie Opłaty dojazdowej
+    updateTable();
+    });
   $('#driveFee').on('change', function() {
     // Aktualizuj tabelę po zmianie Opłaty dojazdowej
     updateTable();
@@ -87,28 +93,77 @@ $(document).ready(function() {
     var priceNet = parseFloat($('#priceNet').val()); // Pobierz cenę netto jako float
     var priceGross = parseFloat($('#priceGross').val()); // Pobierz cenę netto jako float
     var visitQty = parseInt($('#visit_qty').val()); // Pobierz ilość wizyt jako int
-    var driveFee = parseFloat($('#driveFee').val());
+    if (selectedTypeName === 'Firmowa' || selectedTypeName === 'Przedszkolna') {
+      // Jeśli wybrano "Firmowa" lub "Przedszkolna", oblicz Drive Fee z vat
+      var driveFeeNet = parseFloat($('#driveFee').val());
+      var driveFeeGross = (driveFeeNet * 1.23);
+
+    } else{
+      // W przeciwnym razie ukryj dodatkowe pola
+      var driveFeeGross = parseFloat($('#driveFee').val());
+      var driveFeeNet = (driveFeeGross / 1.23);
+    }
+
+    if ($('#guaranted').val() === 'yes') {
+      if (selectedTypeName === 'Firmowa' || selectedTypeName === 'Przedszkolna') {
+        var guarantedFeeNet = 130;
+        var guarantedFeeGross = guarantedFeeNet * 1.23;
+        $('#guarantedFeeHeader').text("Godzina Gwarantowana");
+        $('#guarantedFeeNetCell').text(guarantedFeeNet.toFixed(2) + " PLN");
+        $('#guarantedFeeGrossCell').text(guarantedFeeGross.toFixed(2) + " PLN");
+
+      } else{
+        var guarantedFeeGross = 130;
+        var guarantedFeeNet = guarantedFeeGross / 1.23;
+        $('#guarantedFeeHeader').text("Godzina Gwarantowana");
+        $('#guarantedFeeNetCell').text(guarantedFeeNet.toFixed(2) + " PLN");
+        $('#guarantedFeeGrossCell').text(guarantedFeeGross.toFixed(2) + " PLN");
+      }
+    } else {
+      var guarantedFeeGross = 0;
+      var guarantedFeeNet = 0;
+    }
 
 
     // Aktualizuj div z podsumowaniem
     $('#selectedTypeHeader').text(selectedTypeName +' '+ selectedVisitName);
+  // Oblicz długość wizyty i cenę pomnożone przez ilość wizyt
+    if (!isNaN(lengthVisit)){
+      var totalLength = lengthVisit * visitQty;
+    } else {
+      var totalLength = 0 * visitQty;
+    }
 
-    // Oblicz długość wizyty i cenę pomnożone przez ilość wizyt
-    var totalLength = lengthVisit * visitQty;
-    var totalVisitPriceNet = priceNet * visitQty;
-    var totalVisitPriceGross = priceGross * visitQty;
-    var totalDriveFeeNet = driveFee;
-    var totalDriveFeeGross = driveFee;
-    var totalPriceNet = priceNet * visitQty;
-    var totalPriceGross = priceGross * visitQty;
+    if (!isNaN(priceNet) && !isNaN(priceGross)){
+      var totalVisitPriceNet = priceNet * visitQty;
+      var totalVisitPriceGross = priceGross * visitQty;
+    } else {
+      var totalVisitPriceNet = 0 * visitQty;
+      var totalVisitPriceGross = 0 * visitQty;
+    }
+
+    if (!isNaN(driveFeeNet) && !isNaN(driveFeeGross)){
+      var totalDriveFeeNet = driveFeeNet;
+      var totalDriveFeeGross = driveFeeGross;
+      $('#driveFeeHeader').text("Opłata dojazdowa");
+      $('#priceDriveFeeNetCell').text(totalDriveFeeNet.toFixed(2) + " PLN");
+      $('#priceDriveFeeGrossCell').text(totalDriveFeeGross.toFixed(2) + " PLN");
+    } else {
+      var totalDriveFeeNet = 0;
+      var totalDriveFeeGross = 0;
+    }
+
+
+    var totalPriceNet = (totalVisitPriceNet + totalDriveFeeNet + guarantedFeeNet);
+    var totalPriceGross = (totalVisitPriceGross + totalDriveFeeGross + guarantedFeeGross);
 
     $('#lengthVisitCell').text(totalLength + " minut");
-    $('#priceVisitNetCell').text(totalVisitPriceNet + " PLN");
-    $('#priceVisitGrossCell').text(totalVisitPriceGross + " PLN");
-    $('#priceDriveFeeCell').text(totalDriveFeeGross + " PLN");
+    $('#priceVisitNetCell').text(totalVisitPriceNet.toFixed(2) + " PLN");
+    $('#priceVisitGrossCell').text(totalVisitPriceGross.toFixed(2) + " PLN");
 
-    $('#totalPriceNetCell').text(totalPriceNet + " PLN");
-    $('#totalPriceGrossCell').text(totalPriceGross + totalDriveFeeGross + " PLN");
+
+    $('#totalPriceNetCell').text(totalPriceNet.toFixed(2) + " PLN");
+    $('#totalPriceGrossCell').text(totalPriceGross.toFixed(2) + " PLN");
 
     // Ustawienie wartości ukrytych pól
     $('#totalLengthInput').val(totalLength);

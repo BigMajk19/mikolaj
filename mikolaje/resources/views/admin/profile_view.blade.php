@@ -23,7 +23,7 @@
           </div>
           <div class="mt-3">
             <label class="tx-11 fw-bolder mb-0 text-uppercase">Imię i Nazwisko:</label>
-            <p class="text-muted">{{ $profileData->name }}</p>
+            <p class="text-muted">{{ $profileData->firstname }} {{ $profileData->lastname }}</p>
           </div>
           <div class="mt-3">
             <label class="tx-11 fw-bolder mb-0 text-uppercase">Nazwa Firmy:</label>
@@ -72,8 +72,10 @@
               class="forms-sample" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                  <label for="exampleInputUsername1" class="form-label">Imię i Nazwisko</label>
-                  <input type="text" name= "name" class="form-control" id="exampleInputUsername1" autocomplete="off" required value="{{ $profileData->name }}">
+                  <label for="exampleInputUsername1" class="form-label">Imię</label>
+                  <input type="text" name= "firstname" class="form-control" id="exampleInputUsername1" autocomplete="off" required value="{{ $profileData->firstname }}">
+                  <label for="exampleInputUsername1" class="form-label">Nazwisko</label>
+                  <input type="text" name= "lastname" class="form-control" id="exampleInputUsername1" autocomplete="off" required value="{{ $profileData->lastname }}">
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Adres Email</label>
