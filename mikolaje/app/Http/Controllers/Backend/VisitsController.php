@@ -100,21 +100,22 @@ class VisitsController extends Controller
     {
       $vid = $request->id;
       $selectedTypeName = $request->input('selected_type_name');
-      $type = VisitsType::where('type_name', $selectedTypeName)->value('type_name');
+      $typeName = VisitsType::where('type_name', $selectedTypeName)->value('type_name');
+
 
 
       $typeNameId = VisitsSubmissions::findOrFail($vid)->where('visits_type_id')->get();
-      $typeName = VisitsSubmissions::where('id', $vid)->value('type_name');
-      $visitNameId = VisitsSubmissions::findOrFail($vid)->value('visits_name_id');
+    //   $typeName = VisitsSubmissions::where('id', $vid)->value('type_name');
+      $visitNameId = VisitsSubmissions::where('id',$vid)->value('visits_name_id');
       $visitName = VisitsSubmissions::where('id', $vid)->value('visit_name');
       $visitDate = VisitsSubmissions::where('id', $vid)->value('visit_date');
       $selectedVoivodeshipName = VisitsSubmissions::where('id', $vid)->value('voivodeship');
 
 
       $visitsTypeId = $request->visits_type_id ? $request->visits_type_id : $typeNameId;
-      $visitsType = $request->type_name ?? $typeName;
+    //   $visitsType = $request->type_name ? $request->type_name : $typeName;
       $visitsNameId = $request->visits_name_id ?? $visitNameId;
-      $visitsName = $request->visit_name ? $request->visit_name : $visitName;
+      $visitsName = $request->visit_name ?? $visitName;
       $visitsDate = $request->visit_date ? $request->visit_date : $visitDate;
       $voivodeshipNameId = $request->voivodeship ? $request->voivodeship : $selectedVoivodeshipName;
       $voivodeshipName = AreaVoivodeship::where('id', $voivodeshipNameId)->value('voivodeship_name');
@@ -122,7 +123,7 @@ class VisitsController extends Controller
       VisitsSubmissions::findOrFail($vid)->update([
 
         'visits_type_id' => $visitsTypeId,
-        'type_name' => $visitsType,
+        'type_name' => $typeName,
         'visits_name_id' => $visitsNameId,
         'visit_name' => $visitsName,
         'length_visit' => $request->totalLength,

@@ -94,27 +94,13 @@ $(document).ready(function() {
     });
 
     // Wywołaj funkcję obsługującą zmianę w polu #typeName przy starcie strony
-    // handleTypeNameChange();
+    handleTypeNameChange();
     // alternatywa
     // if ($('#typeName').val()) {
     //     handleTypeNameChange();
     // }
 
-    // Obsługa zmiany ilości wizyt
-    $('#visit_qty').on('change', function() {
-        // Aktualizuj tabelę po zmianie ilości wizyt
-        updateTable();
-    });
 
-    $('#guaranted').on('change', function() {
-        // Aktualizuj tabelę po zmianie Opłaty dojazdowej
-        updateTable();
-    });
-
-    $('#driveFee').on('change', function() {
-        // Aktualizuj tabelę po zmianie Opłaty dojazdowej
-        updateTable();
-    });
 
     function updateTable() {
         var selectedTypeName = $('#typeName option:selected').text();
@@ -150,6 +136,21 @@ $(document).ready(function() {
             var guarantedFeeGross = 0;
             var guarantedFeeNet = 0;
         }
+         // Obsługa zmiany ilości wizyt
+        $('#visit_qty').on('change', function() {
+            // Aktualizuj tabelę po zmianie ilości wizyt
+            updateTable();
+        });
+
+        $('#guaranted').on('change', function() {
+            // Aktualizuj tabelę po zmianie Opłaty dojazdowej
+            updateTable();
+        });
+
+        $('#driveFee').on('change', function() {
+            // Aktualizuj tabelę po zmianie Opłaty dojazdowej
+            updateTable();
+        });
         // Aktualizuj div z podsumowaniem
         $('#selectedTypeHeader').text(selectedTypeName + ' ' + selectedVisitName);
 

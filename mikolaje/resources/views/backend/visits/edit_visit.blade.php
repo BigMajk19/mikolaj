@@ -52,6 +52,7 @@
                       <option value="{{ $item->id }}" {{ $item->id == $visits->visits_type_id ? 'selected' : '' }}>{{ $item->type_name }}</option>
                       @endforeach
                     </select>
+                    <input type="hidden" id="selectedTypeName" name="selected_type_name" value="">
                   </div>
                   <div class="col-md-6">
                     <label for="visitName">Nazwa wizyty:</label>
@@ -63,7 +64,7 @@
                 <div class="form-group row mb-3">
                   <div class="col-md-3">
                     <label for="lengthVisit">Długość wizyty</label>
-                    <input type="text" class="form-control" id="lengthVisit" name="length_visit" readonly value="{{ $visits->length_visit }}">
+                    <input type="text" class="form-control" id="lengthVisit" name="length_visit" readonly value="{{ $vnames->length_visit }}">
                   </div>
                   <div class="col-md-2">
                     <label for="visit_qty">Ilość wizyt:</label>

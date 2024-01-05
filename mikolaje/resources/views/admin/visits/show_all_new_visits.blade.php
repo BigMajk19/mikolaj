@@ -18,6 +18,9 @@
     --bs-btn-disabled-border-color: #6571ff;
     --bs-gradient: none;
     }
+    table.dataTable thead th {
+    white-space: wrap
+    }
   </style>
 {{-- for DataTables --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/vendors/datatables.net-bs5/dataTables.bootstrap5.min.css') }}">
@@ -70,7 +73,7 @@
                   <th>Długość: </th>
                   <th>Data Wizyty: </th>
                   <th>Telefon: </th>
-                  <th>Przedział godzinowy: </th>
+                  <th>Przedział godz. / <br>Godz. gwarantowana </th>
                   <th>GW: </th>
                   <th>Miejscowość: </th>
                   <th>Dzielnica: </th>
@@ -89,7 +92,8 @@
                   <td>{{ $item->length_visit }} min.</td>
                   <td>{{ $item->visit_date }}</td>
                   <td><a href="tel:{{ $item->phone }}">{{ $item->phone }}</a></td>
-                  <td>{{ $item->interval_hours }}</td>
+                  <td>
+                    {{ $item->interval_hours === null ? $item->preffered_time : $item->interval_hours}}</td>
                   <td>{{ $item->guaranted }}</td>
                   <td>
                     @if ($item->city === 'Inne')
@@ -111,23 +115,6 @@
                 </tr>
                 @endforeach
               </tbody>
-              <tfoot>
-                <tr>
-                    <th>Id</th>
-                    <th>Rodzaj Wizyty</th>
-                    <th>Długość</th>
-                    <th>Data Wizyty</th>
-                    <th>Telefon</th>
-                    <th>Przedział godzinowy</th>
-                    <th>GW</th>
-                    <th>Miejscowość</th>
-                    <th>Dzielnica</th>
-                    <th>Adres</th>
-                    <th>Województwo</th>
-                    <th>Przydziel</th>
-                    <th></th>
-                  </tr>
-              </tfoot>
             </table>
           </div>
         </div>
