@@ -24,39 +24,39 @@ $(document).ready(function() {
                     disabled: true
                 }));
 
-            // Dodaj nowe opcje na podstawie odpowiedzi AJAX Visit Name
-            $.each(data, function(key, value) {
-                $('#visitName').append($('<option>', {
-                    value: value,
-                    text: value,
-                    data: {
-                        id: key
-                    }
-                }));
-            });
+                // Dodaj nowe opcje na podstawie odpowiedzi AJAX Visit Name
+                $.each(data, function(key, value) {
+                    $('#visitName').append($('<option>', {
+                        value: value,
+                        text: value,
+                        data: {
+                            id: key
+                        }
+                    }));
+                });
 
-            // Pobierz wartość z bazy danych i ustaw ją jako wartość domyślną
-            if (visitIdFromBackend) {
-                // Wybierz opcję, która odpowiada wartości w bazie danych
-                $('#visitName').val(visitIdFromBackend);
-            }
+                // Pobierz wartość z bazy danych i ustaw ją jako wartość domyślną
+                // if (visitIdFromBackend) {
+                //     // Wybierz opcję, która odpowiada wartości w bazie danych
+                //     $('#visitName').val(visitIdFromBackend);
+                // }
 
-            handleVisitNameChange();
+                // handleVisitNameChange();
             updateTable();
           }
         });
 
-        var selectedValue = $(this).val();
+        var selectedValue = $('#typeName').val();
 
-        if (selectedValue === '1' || selectedValue === '3') {
-            // Jeśli wybrano "Firmowa" lub "Przedszkolna", pokaż dodatkowe pola
-            $('#additionalFields').show();
-        } else {
-            // W przeciwnym razie ukryj dodatkowe pola
-            $('#additionalFields').hide();
-        }
+            if (selectedValue === '2' || selectedValue === '3') {
+                // Jeśli wybrano "Firmowa" lub "Przedszkolna", pokaż dodatkowe
+                $('#additionalFields').show();
+            } else {
+                // W przeciwnym razie ukryj dodatkowe pola
+                $('#additionalFields').hide();
+            }
 
-        updateTable();
+            updateTable();
     }
 
     // Obsługa zmiany wyboru w pierwszym polu select >>>TypeName<<<
@@ -88,6 +88,17 @@ $(document).ready(function() {
         });
     }
 
+    // Obsługa zmiany Switchera przy fakturze
+    $('#invoiceSwitcher').on('change', function() {
+        if ($('#invoiceSwitcher').is(':checked')) {
+            // Jeśli przełącznik jest zaznaczony, pokaż dodatkowe pola
+            $('#additionalFieldsInvoice').show();
+        } else {
+            // W przeciwnym razie ukryj dodatkowe pola
+            $('#additionalFieldsInvoice').hide();
+        }
+    });
+
     // Obsługa zmiany wyboru w drugim polu select >>>Visit Name<<<
     $('#visitName').on('change', function() {
         handleVisitNameChange();
@@ -95,11 +106,6 @@ $(document).ready(function() {
 
     // Wywołaj funkcję obsługującą zmianę w polu #typeName przy starcie strony
     handleTypeNameChange();
-    // alternatywa
-    // if ($('#typeName').val()) {
-    //     handleTypeNameChange();
-    // }
-
 
 
     function updateTable() {
@@ -143,7 +149,7 @@ $(document).ready(function() {
         });
 
         $('#guaranted').on('change', function() {
-            // Aktualizuj tabelę po zmianie Opłaty dojazdowej
+            // Aktualizuj tabelę po zmianie Godziny grawantowanej
             updateTable();
         });
 
@@ -152,7 +158,7 @@ $(document).ready(function() {
             updateTable();
         });
         // Aktualizuj div z podsumowaniem
-        $('#selectedTypeHeader').text(selectedTypeName + ' ' + selectedVisitName);
+        $('#selectedTypeHeader').text(`${selectedTypeName} ${selectedVisitName}`);
 
         // Oblicz długość wizyty i cenę pomnożone przez ilość wizyt
         if (!isNaN(lengthVisit)) {
@@ -183,7 +189,7 @@ $(document).ready(function() {
         var totalPriceNet = (totalVisitPriceNet + totalDriveFeeNet + guarantedFeeNet);
         var totalPriceGross = (totalVisitPriceGross + totalDriveFeeGross + guarantedFeeGross);
 
-        $('#lengthVisitCell').text(totalLength + " minut");
+        $('#lengthVisitCell').text(`${totalLength} minut`);
         $('#priceVisitNetCell').text(totalVisitPriceNet.toFixed(2) + " PLN");
         $('#priceVisitGrossCell').text(totalVisitPriceGross.toFixed(2) + " PLN");
 
@@ -196,8 +202,6 @@ $(document).ready(function() {
         $('#totalPriceGrossInput').val(totalPriceGross);
     }
     updateTable();
-
-
 
     // Obsługa zmiany wyboru w pierwszym polu select VoivodeshipName
     $('#voivodeshipName').on('change', function() {
@@ -274,16 +278,7 @@ $(document).ready(function() {
     });
     });
 
-    // Obsługa zmiany Switchera przy fakturze
-    $('#invoiceSwitcher').on('change', function() {
-    if ($(this).is(':checked')) {
-        // Jeśli przełącznik jest zaznaczony, pokaż dodatkowe pola
-        $('#additionalFieldsInvoice').show();
-    } else {
-        // W przeciwnym razie ukryj dodatkowe pola
-        $('#additionalFieldsInvoice').hide();
-    }
-    });
+
 
     $('#cityName').on('change', function() {
         var selectedCity = $(this).val();

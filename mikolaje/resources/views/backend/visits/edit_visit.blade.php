@@ -57,7 +57,7 @@
                   <div class="col-md-6">
                     <label for="visitName">Nazwa wizyty:</label>
                     <select class="form-select" id="visitName" name="visit_name" >
-                      <option selected="" value="{{ $visits->visits_name_id }}">{{ $visits->visit_name }}</option>
+                      {{-- <option selected="" value="{{ $visits->visits_name_id }}">{{ $visits->visit_name }}</option> --}}
                     </select>
                   </div>
                 </div>

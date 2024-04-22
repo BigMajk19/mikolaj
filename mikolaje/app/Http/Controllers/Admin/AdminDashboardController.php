@@ -13,6 +13,11 @@ use Illuminate\Http\RedirectResponse;
 
 class AdminDashboardController extends Controller
 {
+    public function testy()
+    {
+        return view('test');
+    }
+
     public function index()
     {
         return view('admin.index');

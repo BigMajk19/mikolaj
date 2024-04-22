@@ -36,6 +36,7 @@ $(document).ready(function() {
         });
       }
     });
+    updateTable();
 
     var selectedValue = $(this).val();
       if (selectedValue === '2' || selectedValue === '3') {
@@ -274,7 +275,7 @@ $(document).ready(function() {
       // Tutaj można wykonać zapytanie AJAX, aby pobrać opcje dzielnic na podstawie wybranego miasta
       // Otrzymane dane umieść w polu select o id "districtName"
     }
-});
+  });
 
 
 

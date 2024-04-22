@@ -42,7 +42,7 @@
                 <div class="form-group row mb-3">
                   <div class="col-md-6">
                     <label for="typeName">Rodzaj wizyty:</label>
-                    <select class="form-select" id="typeName" name="visits_type_id" >
+                    <select class="form-select" id="typeName" name="visits_type_id" required>
                       <option selected="" disabled="">Rodzaj wizyty</option>
                       @foreach($types as $key => $item)
                       <option value="{{ $item->id }}">{{ $item->type_name }}</option>
@@ -52,7 +52,7 @@
                   </div>
                   <div class="col-md-6">
                     <label for="visitName">Nazwa wizyty:</label>
-                    <select class="form-select" id="visitName" name="visit_name" >
+                    <select class="form-select" id="visitName" name="visit_name" required>
                       <option selected="" disabled="">Nazwa wizyty</option>
                     </select>
                     <input type="hidden" id="selectedNameVisitId" name="selected_name_visit_id" value="">
@@ -66,11 +66,11 @@
                   </div>
                   <div class="col-md-3">
                     <label for="visit_qty">Ilość:</label>
-                    <input type="number" id="visit_qty" name= "visit_qty" class="form-control" min="1">
+                    <input type="number" id="visit_qty" name= "visit_qty" class="form-control" min="1" required>
                   </div>
                   <div class="col-md-6">
                     <label for="guaranted">Godzina gwarantowana</label>
-                    <select class="form-select" id="guaranted" name="guaranted">
+                    <select class="form-select" id="guaranted" name="guaranted" required>
                       <option value="no">Nie</option>
                       <option value="yes">Tak</option>
                     </select>
@@ -90,13 +90,13 @@
                   <div class="col-md-4">
                     <label for="visit_date">Data wizyty</label>
                     <div class="input-group flatpickr" id="flatpickr-date">
-                      <input type="text" name= "visit_date" id="visit_date" class="form-control flatpickr-input"  data-input="" placeholder='Select Date'>
+                      <input type="text" name= "visit_date" id="visit_date" class="form-control flatpickr-input"  data-input="" placeholder='Select Date' required>
                       <span class="input-group-text input-group-addon" data-toggle=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <label for="intervalHours">Przedział godzinowy</label>
-                    <select class="form-select" id="intervalHours" name="interval_hours" >
+                    <select class="form-select" id="intervalHours" name="interval_hours" required>
                       <option selected="" disabled="">Wybierz</option>
                       <option>08:00 - 10:00</option>
                       <option>08:15 - 10:15</option>
@@ -155,7 +155,7 @@
                   <div class="col-md-4">
                     <label for="preffered_time">Preferowana godz.</label>
                     <div class="input-group flatpickr" id="flatpickr-time">
-                      <input type="text" name="preffered_time" id="preffered_time" class="form-control flatpickr-input" data-input="" readonly="readonly">
+                      <input type="text" name="preffered_time" id="preffered_time" class="form-control flatpickr-input" data-input="" readonly="readonly" required>
                       <span class="input-group-text input-group-addon" data-toggle="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></span>
                     </div>
@@ -172,21 +172,21 @@
                 <div class="form-group row mb-3">
                   <div class="col-md-6">
                     <label for="client_firstname">Imię</label>
-                    <input type="text" name= "client_firstname" id="client_firstname"class="form-control" placeholder="Wprowadź imię">
+                    <input type="text" name= "client_firstname" id="client_firstname"class="form-control" placeholder="Wprowadź imię" required>
                   </div>
                   <div class="col-md-6">
                     <label for="client_lastname">Nazwisko</label>
-                    <input type="text" name= "client_lastname" id="client_lastname"class="form-control" placeholder="Wprowadź nazwisko">
+                    <input type="text" name= "client_lastname" id="client_lastname"class="form-control" placeholder="Wprowadź nazwisko" required>
                   </div>
                 </div>
                 <div class="form-group row mb-3">
                   <div class="col-md-6">
                     <label for="phone">Telefon</label>
-                    <input type="text" name= "phone" id="phone" class="form-control" placeholder="Nr. telefonu">
+                    <input type="text" name= "phone" id="phone" class="form-control" placeholder="Nr. telefonu" required>
                   </div>
                   <div class="col-md-6">
                     <label for="email">Email</label>
-                    <input name="email" id="email" class="form-control mb-4 mb-md-0" data-inputmask="'alias': 'email'" inputmode="email" placeholder="E-mail">
+                    <input name="email" id="email" class="form-control mb-4 mb-md-0" data-inputmask="'alias': 'email'" inputmode="email" placeholder="E-mail" required>
                   </div>
                 </div>
                 <div class="form-check form-switch mb-2">
@@ -198,15 +198,15 @@
                   <div class="row mb-3">
                     <div class="col-md-3">
                       <label for="nip">NIP</label>
-                      <input type="text" name= "invoice_NIP" id="nip" class="form-control" placeholder="Podaj NIP">
+                      <input type="text" name= "invoice_NIP" id="nip" class="form-control" placeholder="Podaj NIP" required>
                     </div>
                     <div class="col-md-4">
                       <label for="companyName">Nazwa firmy</label>
-                      <input type="text" name= "invoice_company_name" id="companyName" class="form-control" placeholder="Wprowadź nazwę">
+                      <input type="text" name= "invoice_company_name" id="companyName" class="form-control" placeholder="Wprowadź nazwę" required>
                     </div>
                     <div class="col-md-5">
                       <label for="companyAdress">Adres siedziby</label>
-                      <input type="text" name= "invoice_company_adress" id="companyAdress" class="form-control" placeholder="Podaj adres">
+                      <input type="text" name= "invoice_company_adress" id="companyAdress" class="form-control" placeholder="Podaj adres" required>
                     </div>
                   </div>
                 </div>
@@ -223,11 +223,11 @@
                 <div class="form-group row mb-3">
                   <div class="col-md-6">
                     <label for="street">Ulica</label>
-                    <input type="text" name= "street_address" id="street" class="form-control" placeholder="Ulica">
+                    <input type="text" name= "street_address" id="street" class="form-control" placeholder="Ulica" required>
                   </div>
                   <div class="col-md-3">
                     <label for="streetNum">Nr ulicy</label>
-                    <input type="text" name= "street_number" id="streetNum" class="form-control" placeholder="Nr domu">
+                    <input type="text" name= "street_number" id="streetNum" class="form-control" placeholder="Nr domu" required>
                   </div>
                   <div class="col-md-3">
                     <label for="flatNum">Nr lok.</label>
@@ -237,7 +237,7 @@
                 <div class="form-group row mb-3">
                   <div class="col-md-4">
                     <label for="voivodeshipName">Województwo:</label>
-                    <select class="form-select" id="voivodeshipName" name="voivodeship" >
+                    <select class="form-select" id="voivodeshipName" name="voivodeship" required>
                       <option selected="" disabled="">Wybierz...</option>
                       @foreach($vareas as $key => $item)
                       <option value="{{ $item->id }}">{{ $item->voivodeship_name }}</option>
@@ -254,24 +254,24 @@
                   </div>
                   <div class="col-md-4" id="districtField" style="display: none">
                     <label for="districtName">Dzielnica</label>
-                    <select class="form-select" id="districtName" name="district">
+                    <select class="form-select" id="districtName" name="district" required>
                       <option selected="" disabled="">Wybierz</option>
                     </select>
                   </div>
                   <div class="col-md-4" id="countiesField" style="display: none">
                     <label for="counties" >Miejscowość</label>
-                    <input type="text" name= "counties" id="counties" class="form-control" placeholder="Miejscowość">
+                    <input type="text" name= "counties" id="counties" class="form-control" placeholder="Miejscowość" required>
                   </div>
                 </div>
                 <div class="form-group row mb-3">
                   <div class="col-md-4">
                     <label for="zipcode">Kod pocztowy</label>
-                    <input name="zipcode" id="zipcode" placeholder="Kod pocztowy" class="form-control" data-inputmask-alias="99-999" inputmode="text">
+                    <input name="zipcode" id="zipcode" placeholder="Kod pocztowy" class="form-control" data-inputmask-alias="99-999" inputmode="text" required>
                   </div>
 
                   <div class="col-md-4" id="driveFeeField" style="display: none">
                     <label for="driveFee">Opłata dojazdowa</label>
-                    <select class="form-select" id="driveFee" name="drive_fee" >
+                    <select class="form-select" id="driveFee" name="drive_fee" required>
                       <option selected="" disabled="">Opłata dojazdowa</option>
                       <option value="50">10 km - 50 zł</option>
                       <option value="100">20 km - 100 zł</option>

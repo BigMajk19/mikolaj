@@ -31,6 +31,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/testy', function () {
+    return view('test');}) ->name('testy');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
